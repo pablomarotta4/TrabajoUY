@@ -1,12 +1,21 @@
-package userInterface;
+package GUI;
 
 import java.awt.EventQueue;
 
+import javax.swing.Icon;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import interfaces.Factory;
+import interfaces.IUsuario;
 
 public class MainFrame {
 
 	private JFrame frame;
+	private JMenuBar menuBar;
+	private JMenu fileMenu;
+	private JMenuItem newMenuItem;
 
 	/**
 	 * Launch the application.
@@ -38,7 +47,21 @@ public class MainFrame {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//asdfasdf
+		
+		menuBar = new JMenuBar();
+		fileMenu = new JMenu("File");
+		newMenuItem = new JMenuItem("hola");
+		fileMenu.add(newMenuItem);
+
+
+		
+		Factory f = new Factory();
+		IUsuario ius = f.getUsuario();
+		JMenuItem item1 = new JMenuItem(ius.prueba());
+		fileMenu.add(item1);
+		
+		menuBar.add(fileMenu);
+		frame.setJMenuBar(menuBar);
 	}
 
 }
