@@ -1,6 +1,6 @@
-package controladores;
+package logica.controladores;
 
-import interfaces.IUsuario;
+import logica.interfaces.IUsuario;
 
 public class ControladorUsuario implements IUsuario{
 	
@@ -9,7 +9,7 @@ public class ControladorUsuario implements IUsuario{
 	}
 	
 	public String prueba() {
-		return "helloworld";
+		return "hola";
 	}
 	
 }

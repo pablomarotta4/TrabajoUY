@@ -1,4 +1,4 @@
-package GUI;
+package presentacion;
 
 import java.awt.EventQueue;
 
@@ -7,8 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import interfaces.Factory;
-import interfaces.IUsuario;
+
+import logica.interfaces.Factory;
+import logica.interfaces.IUsuario;
 
 public class MainFrame {
 

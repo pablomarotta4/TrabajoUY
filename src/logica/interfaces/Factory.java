@@ -1,6 +1,6 @@
-package interfaces;
+package logica.interfaces;
 
-import controladores.ControladorUsuario;
+import logica.controladores.*;
 
 public class Factory {
 	

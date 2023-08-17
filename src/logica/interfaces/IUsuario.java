@@ -1,4 +1,4 @@
-package interfaces;
+package logica.interfaces;
 
 public interface IUsuario {
 
