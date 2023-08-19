@@ -1,6 +1,9 @@
 package logica.interfaces;
 
-public interface IUsuario {
+public interface IControladorUsuario {
 
 	public String prueba();
+	
+	
+	
 }

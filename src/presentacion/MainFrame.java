@@ -1,23 +1,23 @@
 package presentacion;
 
 import java.awt.EventQueue;
-
-import javax.swing.Icon;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import logica.interfaces.Factory;
-import logica.interfaces.IUsuario;
+import logica.interfaces.IControladorUsuario;
+import logica.interfaces.IControladorOferta;
 
 public class MainFrame {
 
 	private JFrame frame;
-	private JMenuBar menuBar;
-	private JMenu fileMenu;
-	private JMenuItem newMenuItem;
-
+	private IControladorOferta ico;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -39,6 +39,10 @@ public class MainFrame {
 	 */
 	public MainFrame() {
 		initialize();
+		
+		// Guardar el controlador como atributo
+		Factory f = Factory.getInstance();
+		ico = f.getControladorOferta();
 	}
 
 	/**
@@ -46,23 +50,35 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 700, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		menuBar = new JMenuBar();
-		fileMenu = new JMenu("File");
-		newMenuItem = new JMenuItem("hola");
-		fileMenu.add(newMenuItem);
-
-
-		
-		Factory f = new Factory();
-		IUsuario ius = f.getUsuario();
-		JMenuItem item1 = new JMenuItem(ius.prueba());
-		fileMenu.add(item1);
-		
-		menuBar.add(fileMenu);
+		JMenuBar menuBar = new JMenuBar();
+		JMenu menuRegistros = new JMenu("Registros");
+		JMenu menuConsultas = new JMenu("Consultas");
 		frame.setJMenuBar(menuBar);
+		menuBar.add(menuRegistros);
+		menuBar.add(menuConsultas);
+		
+		JMenuItem menuCrearOferta = new JMenuItem("Crear Oferta Laboral");
+		menuCrearOferta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico);
+				frame.getContentPane().add(crearOfertaInternalFrame);
+				crearOfertaInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuAltaUsuario = new JMenuItem("Crear Usuario");
+		JMenuItem menuConsultarOferta = new JMenuItem("Consultar Oferta Laboral");
+		JMenuItem menuCrearUsuario = new JMenuItem("Consultar Usuario");
+		menuRegistros.add(menuCrearOferta);
+		menuRegistros.add(menuAltaUsuario);
+		menuConsultas.add(menuConsultarOferta);
+		menuConsultas.add(menuCrearUsuario);
+		
+		
+		
 	}
 
 }

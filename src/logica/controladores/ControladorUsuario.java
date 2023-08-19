@@ -1,8 +1,8 @@
 package logica.controladores;
 
-import logica.interfaces.IUsuario;
+import logica.interfaces.IControladorUsuario;
 
-public class ControladorUsuario implements IUsuario{
+public class ControladorUsuario implements IControladorUsuario{
 	
 	public ControladorUsuario() {
 		
