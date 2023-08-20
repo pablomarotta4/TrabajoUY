@@ -17,6 +17,7 @@ public class MainFrame {
 
 	private JFrame frame;
 	private IControladorOferta ico;
+	private IControladorUsuario icu;
 	
 	/**
 	 * Launch the application.
@@ -38,11 +39,12 @@ public class MainFrame {
 	 * Create the application.
 	 */
 	public MainFrame() {
-		initialize();
-		
-		// Guardar el controlador como atributo
+		// Guardar los controladores como atributo
 		Factory f = Factory.getInstance();
 		ico = f.getControladorOferta();
+		icu = f.getControladorUsuario();
+		
+		initialize();
 	}
 
 	/**
@@ -60,6 +62,7 @@ public class MainFrame {
 		menuBar.add(menuRegistros);
 		menuBar.add(menuConsultas);
 		
+		// Se agrega la accion para que al hacer click a la opcion del menu se cree la ventana del caso de uso
 		JMenuItem menuCrearOferta = new JMenuItem("Crear Oferta Laboral");
 		menuCrearOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -70,14 +73,39 @@ public class MainFrame {
 		});
 		
 		JMenuItem menuAltaUsuario = new JMenuItem("Crear Usuario");
+		menuAltaUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CrearUsuario crearUsuarioInternalFrame = new CrearUsuario(icu);
+				frame.getContentPane().add(crearUsuarioInternalFrame);
+				crearUsuarioInternalFrame.setVisible(true);
+			}
+		});
+		
+		
 		JMenuItem menuConsultarOferta = new JMenuItem("Consultar Oferta Laboral");
-		JMenuItem menuCrearUsuario = new JMenuItem("Consultar Usuario");
+		menuConsultarOferta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico);
+				frame.getContentPane().add(consultarOfertaInternalFrame);
+				consultarOfertaInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuConsultarUsuario = new JMenuItem("Consultar Usuario");
+		menuConsultarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConsultarUsuario consultarUsuarioInternalFrame = new ConsultarUsuario(icu);
+				frame.getContentPane().add(consultarUsuarioInternalFrame);
+				consultarUsuarioInternalFrame.setVisible(true);
+			}
+		});
+		
+		
+		
 		menuRegistros.add(menuCrearOferta);
 		menuRegistros.add(menuAltaUsuario);
 		menuConsultas.add(menuConsultarOferta);
-		menuConsultas.add(menuCrearUsuario);
-		
-		
+		menuConsultas.add(menuConsultarUsuario);
 		
 	}
 

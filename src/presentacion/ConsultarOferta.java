@@ -4,11 +4,11 @@ import javax.swing.JInternalFrame;
 
 import logica.interfaces.IControladorOferta;
 
-public class CrearOfertaLaboral extends JInternalFrame{
+public class ConsultarOferta extends JInternalFrame{
 	
 	private IControladorOferta ctrlOferta;
 	
-	public CrearOfertaLaboral(IControladorOferta cop) {
+	public ConsultarOferta(IControladorOferta cop) {
 		ctrlOferta = cop;	
 		setResizable(true);
         setResizable(true);
@@ -18,5 +18,5 @@ public class CrearOfertaLaboral extends JInternalFrame{
         setTitle("Crear Oferta Laboral");
         setBounds(10, 40, 360, 150);
 	}
-	
+
 }
