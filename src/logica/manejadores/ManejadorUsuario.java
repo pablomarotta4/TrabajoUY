@@ -1,6 +1,6 @@
 package logica.manejadores;
 
-import logica.clases.Usuario;
+import logica.entidades.Usuario;
 import logica.interfaces.IManejadorUsuario;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package logica.clases;
+package logica.entidades;
 
 public class Usuario {
 
