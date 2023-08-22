@@ -9,23 +9,27 @@ import java.util.Map;
 public class ManejadorUsuario implements IManejadorUsuario{
 	
 	public static ManejadorUsuario instance = null;
-	private Map<String, Usuario> usuariosCi;
+	private Map<String, Usuario> usuarios;
 	
 	
 	private ManejadorUsuario() {
-        this.usuariosCi = new HashMap<String, Usuario>();
+        this.usuarios = new HashMap<String, Usuario>();
 	}
 	
-	public static ManejadorUsuario getInstance() {
+	public static IManejadorUsuario getInstance() {
 		if(instance == null) {
 			instance = new ManejadorUsuario();
 		}
 		return instance;
 	}
 	
-	public void agregarUsuario() {
-		//
+
+	public void agregarUsuario(Usuario u) {
+		this.usuarios.put(u.getNickname(), u);
 	}
 	
-	
+	public Map<String, Usuario> getUsuarios(){
+		return this.usuarios;
+	}
+		
 }

@@ -52,7 +52,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 800);
+		frame.setBounds(100, 100, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -66,7 +66,7 @@ public class MainFrame {
 		JMenuItem menuCrearOferta = new JMenuItem("Crear Oferta Laboral");
 		menuCrearOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico);
+				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico, icu);
 				frame.getContentPane().add(crearOfertaInternalFrame);
 				crearOfertaInternalFrame.setVisible(true);
 			}
@@ -100,13 +100,10 @@ public class MainFrame {
 			}
 		});
 		
-		
-		
 		menuRegistros.add(menuCrearOferta);
 		menuRegistros.add(menuAltaUsuario);
 		menuConsultas.add(menuConsultarOferta);
 		menuConsultas.add(menuConsultarUsuario);
-		
 	}
 
 }
