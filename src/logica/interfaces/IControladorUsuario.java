@@ -8,7 +8,7 @@ import logica.entidades.Usuario;
 
 public interface IControladorUsuario {
 	
-	public List<Empresa> listarEmpresas();
+	public List<String> listarNickEmpresas();
 	
 	
 	

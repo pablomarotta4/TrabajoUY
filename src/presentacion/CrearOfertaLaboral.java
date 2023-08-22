@@ -2,6 +2,7 @@ package presentacion;
 
 import javax.swing.JInternalFrame;
 
+import logica.entidades.Empresa;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
 
@@ -11,6 +12,9 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import javax.swing.JComboBox;
 import java.awt.Insets;
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 
 public class CrearOfertaLaboral extends JInternalFrame{
@@ -38,7 +42,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         getContentPane().setLayout(gridBagLayout);
         
         // ####### Fila 1 #########
-        JLabel lblEmpresa = new JLabel("Empresas");
+        JLabel lblEmpresa = new JLabel("Seleccionar empresa");
         GridBagConstraints gbc_lblEmpresa = new GridBagConstraints();
         gbc_lblEmpresa.insets = new Insets(0, 0, 5, 5);
         gbc_lblEmpresa.fill = GridBagConstraints.VERTICAL;
@@ -46,17 +50,22 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_lblEmpresa.gridy = 0;
         getContentPane().add(lblEmpresa, gbc_lblEmpresa);
         
-        JComboBox comboBox = new JComboBox();
+        JComboBox<String> comboBox = new JComboBox<String>();
         GridBagConstraints gbc_comboBox = new GridBagConstraints();
         gbc_comboBox.insets = new Insets(0, 0, 5, 0);
         gbc_comboBox.fill = GridBagConstraints.VERTICAL;
         gbc_comboBox.gridx = 1;
         gbc_comboBox.gridy = 0;
         getContentPane().add(comboBox, gbc_comboBox);
+        
+      
+        // Datos de prueba
+        comboBox.addItem("nickempresa1");
+        comboBox.addItem("nickempresa2");
         //################################################################
         
         // Fila 2
-        JLabel lblTipoPublicacion = new JLabel("Tipos de publicacion");
+        JLabel lblTipoPublicacion = new JLabel("Seleccionar tipo de publicacion");
         GridBagConstraints gbc_lblTipoPublicacion = new GridBagConstraints();
         gbc_lblTipoPublicacion.fill = GridBagConstraints.VERTICAL;
         gbc_lblTipoPublicacion.insets = new Insets(0, 0, 5, 5);

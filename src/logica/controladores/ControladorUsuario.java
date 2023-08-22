@@ -18,14 +18,13 @@ public class ControladorUsuario implements IControladorUsuario{
 		this.manejadorUsuario = f.getManejadorUsuario();
 	}
 
-	public List<Empresa> listarEmpresas() {
-		List<Empresa> list = new ArrayList<Empresa>();
+	public List<String> listarNickEmpresas() {
+		List<String> list = new ArrayList<String>();
 		
 		for(Usuario u : manejadorUsuario.getUsuarios().values()) {
-			// Si usuario es instancia de Empresa, lo casteo a tipo Empresa, y lo meto en la lista que retorno
+			// Si usuario es instancia de Empresa guardo el nickname en la lista a retornar
 			if(u instanceof Empresa) {
-				Empresa e = (Empresa) u;
-				list.add(e);
+				list.add(u.getNickname());
 			}
 		}
 		
