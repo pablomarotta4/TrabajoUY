@@ -9,19 +9,26 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
+
+import excepciones.ElementoRepetidoException;
+import excepciones.UsuarioRepetidoException;
+
 import java.awt.Insets;
 
 public class AltaKeyword extends JInternalFrame {
 
 	private IControladorOferta ctrlOf;
-	private JTextField textField;
+	private JTextField textNombreKeyword;
 
 
 	public AltaKeyword(IControladorOferta ico) {
@@ -41,6 +48,28 @@ public class AltaKeyword extends JInternalFrame {
         JButton botonAceptar = new JButton("Aceptar");
         botonAceptar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		JFrame frame = new JFrame("Ejemplo de Popup");
+                frame.setSize(300, 150);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                try {
+                	String valorTextNombreKeyword = textNombreKeyword.getText();
+                	ico.altaKeyword(valorTextNombreKeyword);
+                	JOptionPane.showMessageDialog(
+    						frame,
+    						"La operación se ha realizado con éxito",
+    						"Éxito",
+    						JOptionPane.INFORMATION_MESSAGE
+    						);
+                	setVisible(false);
+                } catch (ElementoRepetidoException ex){
+                	JOptionPane.showMessageDialog(
+                            frame,
+                            ex.getMessage(),
+                            "Error",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                	
+                }
         	}
         });
         panel.add(botonAceptar);
@@ -70,13 +99,13 @@ public class AltaKeyword extends JInternalFrame {
         gbc_lblNewLabel.gridy = 4;
         panel_1.add(lblNewLabel, gbc_lblNewLabel);
         
-        textField = new JTextField();
-        GridBagConstraints gbc_textField = new GridBagConstraints();
-        gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textField.gridx = 3;
-        gbc_textField.gridy = 4;
-        panel_1.add(textField, gbc_textField);
-        textField.setColumns(10);
+        textNombreKeyword = new JTextField();
+        GridBagConstraints gbc_textNombreKeyword = new GridBagConstraints();
+        gbc_textNombreKeyword.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textNombreKeyword.gridx = 3;
+        gbc_textNombreKeyword.gridy = 4;
+        panel_1.add(textNombreKeyword, gbc_textNombreKeyword);
+        textNombreKeyword.setColumns(10);
         
 	}
 

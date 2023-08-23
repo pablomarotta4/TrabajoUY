@@ -1,38 +1,27 @@
 package presentacion;
 
-import java.awt.EventQueue;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 
-import javax.swing.JInternalFrame;
-
-import logica.interfaces.IControladorCompraTipo;
-import logica.interfaces.IControladorOferta;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
-import java.awt.event.ActionListener;
-import java.time.LocalDate;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextArea;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import excepciones.UsuarioRepetidoException;
-
-import java.awt.Color;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.util.Date;
+import logica.interfaces.IControladorCompraTipo;
 
 public class CrearTipoPublicacion extends JInternalFrame {
 	

@@ -3,6 +3,8 @@ package logica.interfaces;
 import java.util.Date;
 import java.util.List;
 
+import excepciones.ElementoRepetidoException;
+
 public interface IControladorOferta {
 
 	public void altaOfertaLaboral(
@@ -17,4 +19,6 @@ public interface IControladorOferta {
 			Date fechaAlta,
 			List<String> keywords
 		);
+	
+	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException;
 }
