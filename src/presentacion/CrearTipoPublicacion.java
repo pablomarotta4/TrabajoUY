@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 
+import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorOferta;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -24,13 +26,17 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+
+import excepciones.UsuarioRepetidoException;
+
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.util.Date;
 
 public class CrearTipoPublicacion extends JInternalFrame {
 	
-	private IControladorOferta ctrlOferta;
+	private IControladorCompraTipo ctrlCompraTipo;
 	private JTextField textNombre;
 	private JTextField textExposicion;
 	private JTextField textDuracion;
@@ -39,7 +45,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
 	private JTextArea textDescripcion;
 	
 
-	public CrearTipoPublicacion(IControladorOferta cop) {
+	public CrearTipoPublicacion(IControladorCompraTipo compTip) {
 		
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		setTitle("Crear Tipo de Publicacion");
@@ -175,44 +181,60 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		// ### Agrego la del boton Aceptar
 		botonAceptar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		JFrame frame = new JFrame("Ejemplo de Popup");
+                frame.setSize(300, 150);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         		try {
         			String valorTextNombre = textNombre.getText();
         			String valorTextDescripcion = textDescripcion.getText();
+        			
         			String valorTextExposicion = textExposicion.getText();
-        			try {
-        				int numTextExposicion = Integer.parseInt(valorTextExposicion);
-        			} catch (NumberFormatException ex) {
-        				System.out.println("No se ingreso un numero valido");
-        			}
+        			int numTextExposicion = Integer.parseInt(valorTextExposicion);
         			
         			String valorTextDuracion = textDuracion.getText();
-        			try {
-        				int numTextDuracion = Integer.parseInt(valorTextDuracion);
-        			} catch (NumberFormatException ex) {
-        				System.out.println("No se ingreso un numero valido");
-        			}
+        			int numTextDuracion = Integer.parseInt(valorTextDuracion);
         			
         			String valorTextCosto = textCosto.getText();
-        			try {
-        				int numTextCosto = Integer.parseInt(valorTextCosto);
-        			} catch (NumberFormatException ex) {
-        				System.out.println("No se ingreso un numero valido");
-        			}
-        			JFrame frame = new JFrame("Ejemplo de Popup");
-                    frame.setSize(300, 150);
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        			int numTextCosto = Integer.parseInt(valorTextCosto);
 
-                    JOptionPane.showMessageDialog(
-                            frame,
-                            "La operación se ha realizado con éxito",
-                            "Éxito",
-                            JOptionPane.INFORMATION_MESSAGE
-                        );
+        			
+        			
+        			Date fecha = new Date();
+        			
+        			try {
+        				compTip.crearTipoPublicacion(valorTextNombre, valorTextDescripcion, numTextExposicion, numTextDuracion, numTextCosto, fecha);        				
+        				JOptionPane.showMessageDialog(
+        						frame,
+        						"La operación se ha realizado con éxito",
+        						"Éxito",
+        						JOptionPane.INFORMATION_MESSAGE
+        						);
+        				
+        				
+        				setVisible(false);
+        			} catch (UsuarioRepetidoException ex) {
+        				JOptionPane.showMessageDialog(
+                                frame,
+                                ex.getMessage(),
+                                "Error",
+                                JOptionPane.INFORMATION_MESSAGE
+                            );
+        			}
+        			
+        			
+
+                    
+                    
                     
         		} catch (NumberFormatException ex) {
-        			System.out.println("No se ingreso ningun dato");
+        			JOptionPane.showMessageDialog(
+                            frame,
+                            "No se ingreso un numero valido. Intente de nuevo",
+                            "Error",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
         		}
-        		setVisible(false);
+        		
         		
         	}
         });
