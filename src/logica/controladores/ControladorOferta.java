@@ -29,13 +29,6 @@ public class ControladorOferta implements IControladorOferta{
 			Date fechaAlta,
 			List<String> keywords
 	) {
-		System.out.println(empresa);
-		System.out.println(tipoPublicacion);
-		System.out.println(nombre);
-		System.out.println(descripcion);
-		System.out.println(horario);
-		System.out.println(remuneracion);
-		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(
 						nombre,
