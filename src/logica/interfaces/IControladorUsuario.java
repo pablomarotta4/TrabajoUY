@@ -10,6 +10,4 @@ public interface IControladorUsuario {
 	
 	public List<String> listarNickEmpresas();
 	
-	
-	
 }

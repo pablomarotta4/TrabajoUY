@@ -41,7 +41,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         getContentPane().setLayout(gridBagLayout);
         
-        // ####### Fila 1 #########
+        // ####################### Fila 1 ###############################
         JLabel lblEmpresa = new JLabel("Seleccionar empresa");
         GridBagConstraints gbc_lblEmpresa = new GridBagConstraints();
         gbc_lblEmpresa.insets = new Insets(0, 0, 5, 5);
@@ -58,13 +58,18 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_comboBox.gridy = 0;
         getContentPane().add(comboBox, gbc_comboBox);
         
-      
         // Datos de prueba
-        comboBox.addItem("nickempresa1");
-        comboBox.addItem("nickempresa2");
+        List<String> list = ctrlUsuario.listarNickEmpresas();
+        list.add("nickname1");
+        list.add("nickname2");
+        for(int i = 0; i <= list.size() - 1; i++) {
+        	comboBox.addItem(list.get(i));
+        }
+        
         //################################################################
         
-        // Fila 2
+        //######################### Fila 2 #############################
+        
         JLabel lblTipoPublicacion = new JLabel("Seleccionar tipo de publicacion");
         GridBagConstraints gbc_lblTipoPublicacion = new GridBagConstraints();
         gbc_lblTipoPublicacion.fill = GridBagConstraints.VERTICAL;
@@ -72,7 +77,8 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_lblTipoPublicacion.gridx = 0;
         gbc_lblTipoPublicacion.gridy = 1;
         getContentPane().add(lblTipoPublicacion, gbc_lblTipoPublicacion);
-        // ####
+        
+        // ###############################################################
      
 
 	}

@@ -1,11 +1,13 @@
 package logica.entidades;
 
 import java.util.Date;
+import java.util.List;
 
 public class Postulante extends Usuario{
 
 	private Date fechaNacimiento;
 	private String nacionalidad;
+	private List<Postulacion> postulaciones;
 	
 	public Postulante(String nick, 
 			String nombre, 
