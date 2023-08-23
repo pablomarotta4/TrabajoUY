@@ -19,6 +19,7 @@ public class ControladorOferta implements IControladorOferta{
 	public ControladorOferta() {
 		Factory f = Factory.getInstance();
 		this.manejadorOferta = f.getManejadorOferta();
+		this.manejadorKeys = f.getManejadorKeywords();
 	}
 	
 	public void altaOfertaLaboral(

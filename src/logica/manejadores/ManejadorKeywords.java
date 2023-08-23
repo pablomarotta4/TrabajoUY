@@ -16,7 +16,7 @@ public class ManejadorKeywords implements IManejadorKeywords {
 		this.keywords = new HashMap<String, Keyword>();
 	}
 	
-	public IManejadorKeywords getInstance() {
+	public static IManejadorKeywords getInstance() {
 		if(instance == null) {
 			instance = new ManejadorKeywords();
 		}

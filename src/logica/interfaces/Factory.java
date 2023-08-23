@@ -1,6 +1,7 @@
 package logica.interfaces;
 
 import logica.controladores.*;
+import logica.manejadores.ManejadorKeywords;
 import logica.manejadores.ManejadorOferta;
 import logica.manejadores.ManejadorPaquetes;
 import logica.manejadores.ManejadorUsuario;
@@ -40,5 +41,9 @@ public class Factory {
 	
 	public IControladorCompraTipo getControladorCompraTipo() {
 		return new ControladorCompraTipo();
+	}
+	
+	public IManejadorKeywords getManejadorKeywords() {
+		return ManejadorKeywords.getInstance();
 	}
 }
