@@ -22,7 +22,7 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		
 		// ## Si ya existe el tipo con ese nombre THROW EXCEPTION
 		if(manejadorPaquetes.getTiposPublicacion().containsKey(nombre)) {
-			throw new UsuarioRepetidoException("Usuario ya existe");
+			throw new UsuarioRepetidoException("Ya existe un Tipo de Publicacion con el mismo nombre. Intente de nuevo");
 		}
 		TipoPublicacion tipo = new TipoPublicacion(nombre, descripcion, exposicion, duracion, costo, fecha);
 		manejadorPaquetes.agregarTipo(tipo);

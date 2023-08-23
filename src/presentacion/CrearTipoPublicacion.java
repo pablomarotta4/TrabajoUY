@@ -200,8 +200,18 @@ public class CrearTipoPublicacion extends JInternalFrame {
         			
         			
         			Date fecha = new Date();
+        			
         			try {
         				compTip.crearTipoPublicacion(valorTextNombre, valorTextDescripcion, numTextExposicion, numTextDuracion, numTextCosto, fecha);        				
+        				JOptionPane.showMessageDialog(
+        						frame,
+        						"La operación se ha realizado con éxito",
+        						"Éxito",
+        						JOptionPane.INFORMATION_MESSAGE
+        						);
+        				
+        				
+        				setVisible(false);
         			} catch (UsuarioRepetidoException ex) {
         				JOptionPane.showMessageDialog(
                                 frame,
@@ -213,15 +223,6 @@ public class CrearTipoPublicacion extends JInternalFrame {
         			
         			
 
-                    JOptionPane.showMessageDialog(
-                            frame,
-                            "La operación se ha realizado con éxito",
-                            "Éxito",
-                            JOptionPane.INFORMATION_MESSAGE
-                        );
-                    
-                    
-                    setVisible(false);
                     
                     
                     
