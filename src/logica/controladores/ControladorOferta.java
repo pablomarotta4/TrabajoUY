@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import logica.entidades.OfertaLaboral;
+import logica.interfaces.Factory;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IManejadorOferta;
 
@@ -11,8 +12,9 @@ public class ControladorOferta implements IControladorOferta{
 	
 	private IManejadorOferta manejadorOferta;
 	
-	public void altaOfertaLaboral() {
-		//
+	public ControladorOferta() {
+		Factory f = Factory.getInstance();
+		this.manejadorOferta = f.getManejadorOferta();
 	}
 	
 	public void altaOfertaLaboral(
@@ -27,17 +29,25 @@ public class ControladorOferta implements IControladorOferta{
 			Date fechaAlta,
 			List<String> keywords
 	) {
-		OfertaLaboral nuevaOferta = new OfertaLaboral(
-				nombre,
-				descripcion,
-				ciudad,
-				departamento,
-				horario,
-				remuneracion,
-				fechaAlta,
-				keywords
-			);
-		this.manejadorOferta.agregarOferta(nuevaOferta);
+		System.out.println(empresa);
+		System.out.println(tipoPublicacion);
+		System.out.println(nombre);
+		System.out.println(descripcion);
+		System.out.println(horario);
+		System.out.println(remuneracion);
+		
+		this.manejadorOferta.agregarOferta( 
+				new OfertaLaboral(
+						nombre,
+						descripcion,
+						ciudad,
+						departamento,
+						horario,
+						remuneracion,
+						fechaAlta,
+						keywords
+				)
+		);
 	}
 	
 }
