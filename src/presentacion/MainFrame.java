@@ -52,7 +52,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 800);
+		frame.setBounds(400, 400, 600, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -69,6 +69,15 @@ public class MainFrame {
 				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico);
 				frame.getContentPane().add(crearOfertaInternalFrame);
 				crearOfertaInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuCrearTipoPublicacion = new JMenuItem("Crear Tipo de Publicacion");
+		menuCrearTipoPublicacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CrearTipoPublicacion crearTipoPubliacionInternalFrame = new CrearTipoPublicacion(ico);
+				frame.getContentPane().add(crearTipoPubliacionInternalFrame);
+				crearTipoPubliacionInternalFrame.setVisible(true);
 			}
 		});
 		
@@ -104,6 +113,7 @@ public class MainFrame {
 		
 		menuRegistros.add(menuCrearOferta);
 		menuRegistros.add(menuAltaUsuario);
+		menuRegistros.add(menuCrearTipoPublicacion);
 		menuConsultas.add(menuConsultarOferta);
 		menuConsultas.add(menuConsultarUsuario);
 		
