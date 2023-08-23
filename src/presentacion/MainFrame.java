@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import logica.interfaces.Factory;
+import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorUsuario;
 import logica.interfaces.IControladorOferta;
 
@@ -18,6 +19,7 @@ public class MainFrame {
 	private JFrame frame;
 	private IControladorOferta ico;
 	private IControladorUsuario icu;
+	private IControladorCompraTipo ict;
 	
 	/**
 	 * Launch the application.
@@ -43,6 +45,7 @@ public class MainFrame {
 		Factory f = Factory.getInstance();
 		ico = f.getControladorOferta();
 		icu = f.getControladorUsuario();
+		ict = f.getControladorCompraTipo();
 		
 		initialize();
 	}
@@ -75,7 +78,7 @@ public class MainFrame {
 		JMenuItem menuCrearTipoPublicacion = new JMenuItem("Crear Tipo de Publicacion");
 		menuCrearTipoPublicacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CrearTipoPublicacion crearTipoPubliacionInternalFrame = new CrearTipoPublicacion(ico);
+				CrearTipoPublicacion crearTipoPubliacionInternalFrame = new CrearTipoPublicacion(ict);
 				frame.getContentPane().add(crearTipoPubliacionInternalFrame);
 				crearTipoPubliacionInternalFrame.setVisible(true);
 			}
