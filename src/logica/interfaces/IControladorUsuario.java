@@ -1,8 +1,14 @@
 package logica.interfaces;
 
-public interface IControladorUsuario {
+import java.util.List;
+import java.util.Map;
 
-	public String prueba();
+import logica.entidades.Empresa;
+import logica.entidades.Usuario;
+
+public interface IControladorUsuario {
+	
+	public List<String> listarNickEmpresas();
 	
 	
 	

@@ -1,6 +1,7 @@
 package logica.interfaces;
 
 import logica.controladores.*;
+import logica.manejadores.ManejadorUsuario;
 
 public class Factory {
 	
@@ -21,5 +22,9 @@ public class Factory {
 	
 	public IControladorOferta getControladorOferta() {
 		return new ControladorOferta();
+	}
+	
+	public IManejadorUsuario getManejadorUsuario() {
+		return ManejadorUsuario.getInstance();
 	}
 }
