@@ -26,6 +26,9 @@ import javax.swing.GroupLayout.Alignment;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+
+import excepciones.UsuarioRepetidoException;
+
 import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -196,8 +199,18 @@ public class CrearTipoPublicacion extends JInternalFrame {
 
         			
         			
-        			Date fecha = new Date();	
-        			compTip.crearTipoPublicacion(valorTextNombre, valorTextDescripcion, numTextExposicion, numTextDuracion, numTextCosto, fecha);
+        			Date fecha = new Date();
+        			try {
+        				compTip.crearTipoPublicacion(valorTextNombre, valorTextDescripcion, numTextExposicion, numTextDuracion, numTextCosto, fecha);        				
+        			} catch (UsuarioRepetidoException ex) {
+        				JOptionPane.showMessageDialog(
+                                frame,
+                                ex.getMessage(),
+                                "Error",
+                                JOptionPane.INFORMATION_MESSAGE
+                            );
+        			}
+        			
         			
 
                     JOptionPane.showMessageDialog(

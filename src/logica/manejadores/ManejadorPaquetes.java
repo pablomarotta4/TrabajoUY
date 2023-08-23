@@ -29,5 +29,17 @@ public class ManejadorPaquetes implements IManejadorPaquetes{
 		this.tipos.put(tipo.getNombre(), tipo);
 	}
 	
+	public Map<String, TipoPublicacion> getTiposPublicacion(){
+		return this.tipos;
+	}
+	
+	
+	//prueba
+	public void getNombresDeTipo() {
+		for(TipoPublicacion t : tipos.values()) {
+			System.out.println(t.getNombre());
+		}
+	}
+	
 	
 }
