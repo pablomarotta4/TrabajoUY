@@ -112,9 +112,20 @@ public class MainFrame {
 			}
 		});
 		
+		JMenuItem menuAltaKeyword = new JMenuItem("Alta de Keywords");
+		menuAltaKeyword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AltaKeyword altaKeywordInternalFrame = new AltaKeyword(ico);
+				frame.getContentPane().add(altaKeywordInternalFrame);
+				altaKeywordInternalFrame.setVisible(true);
+			}
+		});
+		
 		menuRegistros.add(menuCrearOferta);
 		menuRegistros.add(menuAltaUsuario);
 		menuRegistros.add(menuCrearTipoPublicacion);
+		
+		menuRegistros.add(menuAltaKeyword);
 		menuConsultas.add(menuConsultarOferta);
 		menuConsultas.add(menuConsultarUsuario);
 	}
