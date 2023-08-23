@@ -29,6 +29,8 @@ public class ControladorOferta implements IControladorOferta{
 			Date fechaAlta,
 			List<String> keywords
 	) {
+		
+		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(
 						nombre,

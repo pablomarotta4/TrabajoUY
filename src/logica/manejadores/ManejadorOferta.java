@@ -26,5 +26,9 @@ public class ManejadorOferta implements IManejadorOferta{
 	public void agregarOferta(OfertaLaboral of) {
 		this.ofertasLaborales.put(of.getNombre(), of);
 	}
+	
+	public boolean existeOferta(String nombreOferta) {
+		return this.ofertasLaborales.containsKey(nombreOferta);
+	}
 
 }

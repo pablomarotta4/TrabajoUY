@@ -48,7 +48,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{300, 300};
-        gridBagLayout.rowHeights = new int[]{50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50};
+        gridBagLayout.rowHeights = new int[]{35, 35, 35, 35, 35, 30, 35, 35, 35, 35, 35, 35};
         gridBagLayout.columnWeights = new double[]{0.0, 1.0};
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         getContentPane().setLayout(gridBagLayout);
@@ -283,7 +283,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
 							listKeywords
 					);
 					
-				} catch(Exception ex) {
+				}  catch(Exception ex) {
 					System.out.println(ex.getMessage());
 				}
 			}
