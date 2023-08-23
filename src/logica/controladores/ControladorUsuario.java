@@ -1,5 +1,11 @@
 package logica.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import logica.entidades.Empresa;
+import logica.entidades.Usuario;
+import logica.interfaces.Factory;
 import logica.interfaces.IControladorUsuario;
 import logica.interfaces.IManejadorUsuario;
 
