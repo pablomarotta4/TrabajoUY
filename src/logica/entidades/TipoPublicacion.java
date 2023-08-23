@@ -20,4 +20,8 @@ public class TipoPublicacion {
 		this.costo = costo;
 		this.fecha = fecha;
 	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
 }

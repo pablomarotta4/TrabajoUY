@@ -9,7 +9,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
@@ -33,6 +36,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
 	private JTextField textDuracion;
 	private JTextField textCosto;
 	private JTextField textFecha;
+	private JTextArea textDescripcion;
 	
 
 	public CrearTipoPublicacion(IControladorOferta cop) {
@@ -49,18 +53,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		JButton botonAceptar = new JButton("Aceptar");
-		botonAceptar.setHorizontalAlignment(SwingConstants.RIGHT);
-		panel.add(botonAceptar);
-		
-		JButton botonCancelar = new JButton("Cancelar");
-        botonCancelar.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		setVisible(false);
-        	}
-        });
-		panel.add(botonCancelar);
+
 		
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
@@ -175,6 +168,65 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		gbc_textFecha.gridy = 6;
 		panel_1.add(textFecha, gbc_textFecha);
 		textFecha.setColumns(10);
+		
+		
+		JButton botonAceptar = new JButton("Aceptar");
+		
+		// ### Agrego la del boton Aceptar
+		botonAceptar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		try {
+        			String valorTextNombre = textNombre.getText();
+        			String valorTextDescripcion = textDescripcion.getText();
+        			String valorTextExposicion = textExposicion.getText();
+        			try {
+        				int numTextExposicion = Integer.parseInt(valorTextExposicion);
+        			} catch (NumberFormatException ex) {
+        				System.out.println("No se ingreso un numero valido");
+        			}
+        			
+        			String valorTextDuracion = textDuracion.getText();
+        			try {
+        				int numTextDuracion = Integer.parseInt(valorTextDuracion);
+        			} catch (NumberFormatException ex) {
+        				System.out.println("No se ingreso un numero valido");
+        			}
+        			
+        			String valorTextCosto = textCosto.getText();
+        			try {
+        				int numTextCosto = Integer.parseInt(valorTextCosto);
+        			} catch (NumberFormatException ex) {
+        				System.out.println("No se ingreso un numero valido");
+        			}
+        			JFrame frame = new JFrame("Ejemplo de Popup");
+                    frame.setSize(300, 150);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                    JOptionPane.showMessageDialog(
+                            frame,
+                            "La operación se ha realizado con éxito",
+                            "Éxito",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
+                    
+        		} catch (NumberFormatException ex) {
+        			System.out.println("No se ingreso ningun dato");
+        		}
+        		setVisible(false);
+        		
+        	}
+        });
+		botonAceptar.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(botonAceptar);
+		
+		// ## BOTON CANCELAR
+		JButton botonCancelar = new JButton("Cancelar");
+        botonCancelar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		setVisible(false);
+        	}
+        });
+		panel.add(botonCancelar);
 
 	}
 }

@@ -1,5 +1,9 @@
 package logica.interfaces;
 
-public interface IManejadorPaquetes {
+import logica.entidades.TipoPublicacion;
 
+public interface IManejadorPaquetes {
+	
+	public void agregarTipo(TipoPublicacion tipo);
+	
 }
