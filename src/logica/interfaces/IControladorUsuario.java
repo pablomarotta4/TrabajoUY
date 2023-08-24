@@ -16,6 +16,4 @@ public interface IControladorUsuario {
 	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion;
 	public List<String> listarNickEmpresas();
 	
-	
-	
 }

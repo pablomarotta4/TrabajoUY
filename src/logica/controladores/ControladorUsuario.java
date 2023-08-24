@@ -38,6 +38,5 @@ public class ControladorUsuario implements IControladorUsuario{
 			}
 		}
 		return list;
-	}
-	
+	}	
 }
