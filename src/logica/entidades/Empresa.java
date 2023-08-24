@@ -12,11 +12,9 @@ public class Empresa extends Usuario{
 			String nombre, 
 			String apellido, 
 			String email,
-			String nombreEmpresa,
 			String descripcion,
 			String link) {
 		super(nick, nombre, apellido, email);
-		this.nombreEmpresa  = nombreEmpresa;
 		this.descripcion = descripcion;
 		this.linkWeb = link;
 	}

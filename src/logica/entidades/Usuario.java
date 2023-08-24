@@ -18,4 +18,8 @@ public class Usuario {
 		return this.nickname;
 	}
 	
+	public String getEmail() {
+		return this.email;
+	}
+	
 }

@@ -1,8 +1,10 @@
 package logica.controladores;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import excepciones.UsuarioRepetidoException;
 import logica.entidades.Empresa;
 import logica.entidades.Usuario;
 import logica.interfaces.Factory;
@@ -17,17 +19,23 @@ public class ControladorUsuario implements IControladorUsuario{
 		Factory f = Factory.getInstance();
 		this.manejadorUsuario = f.getManejadorUsuario();
 	}
-
+	
+	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException {
+		manejadorUsuario.crearPostulante(nickname, nombre, apellido, email, nacionalidad, nacimiento);
+	}
+	
+	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String descripcion, String link) throws UsuarioRepetidoException {
+		manejadorUsuario.crearEmpresa(nickname, nombre, apellido, email, descripcion, link);
+	}
+	
 	public List<String> listarNickEmpresas() {
 		List<String> list = new ArrayList<String>();
-		
 		for(Usuario u : manejadorUsuario.getUsuarios().values()) {
 			// Si usuario es instancia de Empresa guardo el nickname en la lista a retornar
 			if(u instanceof Empresa) {
 				list.add(u.getNickname());
 			}
 		}
-		
 		return list;
 	}
 	

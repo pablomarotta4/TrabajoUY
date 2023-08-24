@@ -1,11 +1,11 @@
 package presentacion;
 
-import java.awt.EventQueue;
+
 
 import javax.swing.JInternalFrame;
 
 import logica.interfaces.IControladorOferta;
-import javax.swing.BoxLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -17,14 +17,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-import java.awt.GridLayout;
+
 import java.awt.GridBagLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
-import java.awt.Color;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
