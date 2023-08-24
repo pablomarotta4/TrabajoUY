@@ -1,10 +1,12 @@
 package logica.manejadores;
 
 import logica.entidades.Usuario;
+
 import logica.entidades.Postulante;
 import logica.entidades.Empresa;
 import logica.interfaces.IManejadorUsuario;
 import excepciones.UsuarioRepetidoException;
+import excepciones.CamposVaciosExcepcion;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -26,10 +28,20 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		return instance;
 	}
 	
-	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException {
+	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		if(!existeUsuarioNick(nickname) && !existeUsuarioEmail(email)) {
+			if(nickname.isEmpty()) 
+				throw new CamposVaciosExcepcion("Debe ingresar un nickname.");
+			else if(email.isEmpty())
+				throw new CamposVaciosExcepcion("Debe ingresar un email.");
+			else if(nombre.isEmpty() || apellido.isEmpty())
+				throw new CamposVaciosExcepcion("Debe ingresar un nombre y un apellido.");
+			else if(nacionalidad.isEmpty())
+				throw new CamposVaciosExcepcion("Debe ingresar una descripcion.");
+			else {
 			Postulante user = new Postulante(nickname, nombre, apellido, email, nacimiento, nacionalidad);
 			agregarUsuario(user);
+			}
 		}
 		else{
 			if(existeUsuarioNick(nickname)&& existeUsuarioEmail(email))
@@ -41,10 +53,20 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		}
 	}
 	
-	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String descripcion,String link) throws UsuarioRepetidoException {	
+	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String descripcion,String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {	
 		if(!existeUsuarioNick(nickname) && !existeUsuarioEmail(email)) {
+			if(nickname.isEmpty()) 
+				throw new CamposVaciosExcepcion("Debe ingresar un nickname.");
+			else if(email.isEmpty())
+				throw new CamposVaciosExcepcion("Debe ingresar un email.");
+			else if(nombre.isEmpty() || apellido.isEmpty())
+				throw new CamposVaciosExcepcion("Debe ingresar un nombre y un apellido.");
+			else if(descripcion.isEmpty())
+				throw new CamposVaciosExcepcion("Debe ingresar una descripcion.");
+			else {
 			Empresa user = new Empresa(nickname, nombre, apellido, email, descripcion, link);
 			agregarUsuario(user);
+			}
 		}
 		else{
 			if(existeUsuarioNick(nickname)&& existeUsuarioEmail(email))

@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.Font;
 import com.toedter.calendar.JCalendar;
+
+import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import javax.swing.JButton;
 import java.util.Date;
@@ -290,7 +292,6 @@ public class CrearUsuario extends JInternalFrame{
                         icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), nacionalidadField.getText(), calendar.getDate());
                     }
                     
-                    
                     JOptionPane.showMessageDialog(CrearUsuario.this, "Usuario creado exitosamente");
                     
                    
@@ -298,6 +299,9 @@ public class CrearUsuario extends JInternalFrame{
                 } catch (UsuarioRepetidoException ex) {
                     JOptionPane.showMessageDialog(CrearUsuario.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 }
+            	catch (CamposVaciosExcepcion ex) {
+                    JOptionPane.showMessageDialog(CrearUsuario.this, ex.getMessage(), "Error de Validación", JOptionPane.ERROR_MESSAGE);
+            	}
             }
         });
 	}

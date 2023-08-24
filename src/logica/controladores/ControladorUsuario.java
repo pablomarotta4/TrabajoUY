@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import logica.entidades.Empresa;
 import logica.entidades.Usuario;
@@ -20,11 +21,11 @@ public class ControladorUsuario implements IControladorUsuario{
 		this.manejadorUsuario = f.getManejadorUsuario();
 	}
 	
-	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException {
+	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		manejadorUsuario.crearPostulante(nickname, nombre, apellido, email, nacionalidad, nacimiento);
 	}
 	
-	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String descripcion, String link) throws UsuarioRepetidoException {
+	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		manejadorUsuario.crearEmpresa(nickname, nombre, apellido, email, descripcion, link);
 	}
 	
