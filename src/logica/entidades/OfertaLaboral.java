@@ -1,5 +1,6 @@
 package logica.entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class OfertaLaboral {
 	private Date fechaAlta;
 	private float costo;
 	private List<Postulacion> postulaciones;
+	private Empresa empresa;
 	
 	public OfertaLaboral(
 			String nombre,
@@ -23,7 +25,8 @@ public class OfertaLaboral {
 			String horario,
 			float remuneracion,
 			Date fechaAlta,
-			List<String> keywords
+			List<String> keywords,
+			Empresa emp
 	){
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -32,6 +35,8 @@ public class OfertaLaboral {
 		this.horario = horario;
 		this.remuneracion = remuneracion;
 		this.fechaAlta = fechaAlta;
+		this.postulaciones = new ArrayList<Postulacion>();
+		this.empresa = emp;
 	}	
 	
 	public String getNombre() {

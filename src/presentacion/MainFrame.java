@@ -69,7 +69,7 @@ public class MainFrame {
 		JMenuItem menuCrearOferta = new JMenuItem("Crear Oferta Laboral");
 		menuCrearOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico, icu);
+				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico, icu, ict);
 				frame.getContentPane().add(crearOfertaInternalFrame);
 				crearOfertaInternalFrame.setVisible(true);
 			}

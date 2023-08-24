@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import excepciones.ElementoRepetidoException;
+import logica.entidades.Empresa;
 import logica.entidades.Keyword;
 import logica.entidades.OfertaLaboral;
 import logica.interfaces.Factory;
@@ -15,15 +16,17 @@ public class ControladorOferta implements IControladorOferta{
 	
 	private IManejadorOferta manejadorOferta;
 	private IManejadorKeywords manejadorKeys;
+	private ControladorUsuario ctrlUsuario;
 	
 	public ControladorOferta() {
 		Factory f = Factory.getInstance();
 		this.manejadorOferta = f.getManejadorOferta();
 		this.manejadorKeys = f.getManejadorKeywords();
+		this.ctrlUsuario = new ControladorUsuario();
 	}
 	
 	public void altaOfertaLaboral(
-			String empresa,
+			String nickEmpresa,
 			String tipoPublicacion,
 			String nombre,
 			String descripcion,
@@ -34,7 +37,7 @@ public class ControladorOferta implements IControladorOferta{
 			Date fechaAlta,
 			List<String> keywords
 	) {
-		
+		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
 		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(
@@ -45,7 +48,8 @@ public class ControladorOferta implements IControladorOferta{
 						horario,
 						remuneracion,
 						fechaAlta,
-						keywords
+						keywords,
+						empresa
 				)
 		);
 	}

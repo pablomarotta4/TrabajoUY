@@ -5,7 +5,10 @@ import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IManejadorPaquetes;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import excepciones.UsuarioRepetidoException;
 
@@ -28,5 +31,18 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		manejadorPaquetes.agregarTipo(tipo);
 	}
 	
+	public List<String> listarTiposPublicacion(){
+		List<String> listaTipos = new ArrayList<String>();
+		Map<String, TipoPublicacion> tiposPublicacion = this.manejadorPaquetes.getTiposPublicacion();
+		
+		if(tiposPublicacion.size() > 0) {
+//			System.out.println(tiposPublicacion.keySet());
+			for(String nombre : tiposPublicacion.keySet()) {
+				listaTipos.add(nombre);	
+			}
+		}
+
+		return listaTipos;
+	}
 	
 }

@@ -3,14 +3,19 @@ package presentacion;
 import javax.swing.JInternalFrame;
 
 import logica.entidades.Empresa;
+import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
 
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,11 +26,16 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CrearOfertaLaboral extends JInternalFrame{
 	
 	private IControladorOferta ctrlOferta;
 	private IControladorUsuario ctrlUsuario;
+	private IControladorCompraTipo ctrlTipo;
 	private JTextField textNombreOferta;
 	private JTextField textDescripcion;
 	private JTextField textHorario;
@@ -34,10 +44,21 @@ public class CrearOfertaLaboral extends JInternalFrame{
 	private JTextField textDepartamento;
 	private JTextField textFecha;
 	
-	public CrearOfertaLaboral(IControladorOferta cop, IControladorUsuario cus) {
+	public CrearOfertaLaboral(IControladorOferta cop, IControladorUsuario cus, IControladorCompraTipo cct) {
 		ctrlOferta = cop;	
 		ctrlUsuario = cus;
-		
+		ctrlTipo = cct;
+        List<String> listaEmpresas = ctrlUsuario.listarNickEmpresas();
+        List<String> listaTipos = ctrlTipo.listarTiposPublicacion();
+        
+        if(listaEmpresas.size() == 0) {
+        	// error
+        }
+        
+        if(listaEmpresas.size() == 0) {
+        	// error
+        }
+
 		setResizable(true);
         setResizable(true);
         setIconifiable(true);
@@ -46,6 +67,8 @@ public class CrearOfertaLaboral extends JInternalFrame{
         setTitle("Crear Oferta Laboral");
         setBounds(10, 40, 700, 700);
         
+
+
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{300, 300};
         gridBagLayout.rowHeights = new int[]{35, 35, 35, 35, 35, 30, 35, 35, 35, 35, 35, 35};
@@ -70,13 +93,13 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_comboBox.gridy = 0;
         getContentPane().add(comboBoxEmpresa, gbc_comboBox);
         
-        // Datos de prueba
-        List<String> list = ctrlUsuario.listarNickEmpresas();
-        list.add("empresa1");
-        list.add("empresa2");
-        for(int i = 0; i <= list.size() - 1; i++) {
-        	comboBoxEmpresa.addItem(list.get(i));
+
+        if(listaEmpresas.size() > 0) {
+            for(int i = 0; i <= listaEmpresas.size() - 1; i++) {
+            	comboBoxEmpresa.addItem(listaEmpresas.get(i));
+            }
         }
+        
         //################################################################
         
         //######################### Fila 2 #############################
@@ -90,17 +113,24 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_lblTipoPublicacion.gridy = 1;
         getContentPane().add(lblTipoPublicacion, gbc_lblTipoPublicacion);
         
-        JComboBox comboBoxTipoPublicacion = new JComboBox();
+        JComboBox<String> comboBoxTipoPublicacion = new JComboBox();
         GridBagConstraints gbc_comboBoxTipoPublicacion = new GridBagConstraints();
         gbc_comboBoxTipoPublicacion.insets = new Insets(0, 0, 5, 0);
         gbc_comboBoxTipoPublicacion.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxTipoPublicacion.gridx = 1;
         gbc_comboBoxTipoPublicacion.gridy = 1;
         getContentPane().add(comboBoxTipoPublicacion , gbc_comboBoxTipoPublicacion);
-        comboBoxTipoPublicacion.addItem("tipo1");
-        comboBoxTipoPublicacion.addItem("tipo2");
         
+
+        if (listaTipos.size() > 0) {
+            for(int i = 0; i <= listaTipos.size() - 1; i++) {
+            	comboBoxTipoPublicacion.addItem(listaTipos.get(i));
+            }
+        } else {
+
+        }
         
+
       //######################### Fila 3 #############################
         JLabel lblNewLabel = new JLabel("Nombre de la oferta");
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -157,7 +187,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         textHorario.setColumns(10);
         
       //######################### Fila 6 #############################
-        JLabel lblNewLabel_3 = new JLabel("Remunieracion");
+        JLabel lblNewLabel_3 = new JLabel("Remuneracion");
         GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
         gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
@@ -250,11 +280,11 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_btnNewButton_1.gridy = 10;
         getContentPane().add(btnAceptar, gbc_btnNewButton_1);
         
-        JButton btnNewButton = new JButton("Cancelar");
+        JButton btnCancelar = new JButton("Cancelar");
         GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
         gbc_btnNewButton.gridx = 1;
         gbc_btnNewButton.gridy = 10;
-        getContentPane().add(btnNewButton, gbc_btnNewButton);    
+        getContentPane().add(btnCancelar, gbc_btnNewButton);    
         // ###############################################################
         
         
@@ -265,7 +295,9 @@ public class CrearOfertaLaboral extends JInternalFrame{
 					String nombreOferta = textNombreOferta.getText();
 					String descripcion = textDescripcion.getText();
 					String horario = textHorario.getText();
+				
 					float remuneracion = Float.parseFloat(textRemuneracion.getText());
+					
 					String ciudad = textCiudad.getText();
 					String departamento = textDepartamento.getText();
 					Date fecha = new Date();
@@ -283,12 +315,20 @@ public class CrearOfertaLaboral extends JInternalFrame{
 							listKeywords
 					);
 					
-				}  catch(Exception ex) {
-					System.out.println(ex.getMessage());
+					System.out.println("oferta creada");
+					
+					dispose();
+				}  catch(NumberFormatException ex) {
+
 				}
 			}
         });
         
-	}
-	
+		btnCancelar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+				dispose();
+        	}
+        });
+    }
+		
 }

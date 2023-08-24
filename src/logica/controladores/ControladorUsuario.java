@@ -39,4 +39,9 @@ public class ControladorUsuario implements IControladorUsuario{
 		}
 		return list;
 	}	
+	
+	public Empresa getEmpresa(String nickname) {
+		Empresa e = (Empresa) this.manejadorUsuario.getUsuarios().get(nickname);
+		return e;
+	}
 }
