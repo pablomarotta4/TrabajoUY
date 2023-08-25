@@ -6,8 +6,13 @@ import java.util.List;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
+import logica.datatypes.DataEmpresa;
+import logica.datatypes.DataPostulante;
+import logica.datatypes.DataUsuario;
 import logica.entidades.Empresa;
+import logica.entidades.Postulante;
 import logica.entidades.Usuario;
+import logica.datatypes.DataOfertaLaboral;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorUsuario;
 import logica.interfaces.IManejadorUsuario;
@@ -40,8 +45,32 @@ public class ControladorUsuario implements IControladorUsuario{
 		return list;
 	}	
 	
-	public Empresa getEmpresa(String nickname) {
-		Empresa e = (Empresa) this.manejadorUsuario.getUsuarios().get(nickname);
-		return e;
+	public List<String>listarUsuarios(){
+		return manejadorUsuario.listarNickUsuarios();
 	}
+
+	public DataUsuario consultarDatosUsuario(String nick) {
+		Usuario us = manejadorUsuario.buscarUsuario(nick);
+	    if (us instanceof Postulante) {
+	        Postulante postulante = (Postulante) us;
+	        return new DataPostulante(postulante.getNickname(), postulante.getNombre(), postulante.getApellido(), postulante.getEmail(), postulante.getNacimiento(), postulante.getNacionalidad());
+	    } else if (us instanceof Empresa) {
+	        Empresa empresa = (Empresa) us;
+	        return new DataEmpresa(empresa.getNickname(), empresa.getNombre(), empresa.getApellido(), empresa.getEmail(), empresa.getDescripcion(), empresa.getLink());
+	    }
+		return null;
+	}
+
+	public Empresa getEmpresa(String nickEmpresa) {
+		return (Empresa) manejadorUsuario.buscarUsuario(nickEmpresa);
+	}
+
+	public List<DataOfertaLaboral> consultarPostulaciones(String nick) {
+		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
+	}
+
+	public List<DataOfertaLaboral> consultarOfertas(String nick) {
+		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
+	}
+
 }

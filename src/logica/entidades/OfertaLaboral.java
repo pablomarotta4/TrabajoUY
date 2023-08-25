@@ -44,4 +44,10 @@ public class OfertaLaboral {
 		return this.nombre;
 	}
 	
+	public String getCiudad() {
+		return ciudad;
+	}
+	public Date getFecha() {
+		return fechaAlta;
+	}
 }

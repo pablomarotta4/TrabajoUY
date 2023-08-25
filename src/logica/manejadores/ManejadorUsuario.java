@@ -3,14 +3,19 @@ package logica.manejadores;
 import logica.entidades.Usuario;
 
 import logica.entidades.Postulante;
+import logica.datatypes.DataOfertaLaboral;
 import logica.entidades.Empresa;
+import logica.entidades.OfertaLaboral;
+import logica.entidades.Postulacion;
 import logica.interfaces.IManejadorUsuario;
 import excepciones.UsuarioRepetidoException;
 import excepciones.CamposVaciosExcepcion;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.ArrayList;
 
 public class ManejadorUsuario implements IManejadorUsuario{
 	
@@ -102,6 +107,35 @@ public class ManejadorUsuario implements IManejadorUsuario{
 	public Map<String, Usuario> getUsuarios(){
 		return this.usuarios;
 	}
+	
+	public List<String> listarNickUsuarios(){
+		List<String> listaNick = new ArrayList<>(usuarios.keySet());
+		return listaNick;
+	}
+
+	public List<DataOfertaLaboral> obtenerOfertasPostulaciones(String nick) {
+		Usuario user = buscarUsuario(nick);
+		List<DataOfertaLaboral> dtofertas= new ArrayList<>();
+		if(user instanceof Empresa) {
+			Empresa emp = (Empresa) user;
+			List<OfertaLaboral> ofertas = emp.getOfertas();
+			for(OfertaLaboral of : ofertas) {
+				DataOfertaLaboral dtof = new DataOfertaLaboral(of.getNombre(),of.getCiudad(),of.getFecha());
+				dtofertas.add(dtof);
+			}
+		}
+		else if(user instanceof Postulante) {
+			Postulante pos = (Postulante) user;
+			List<Postulacion> postulaciones = pos.getPostulaciones();
+			for(Postulacion po: postulaciones) {
+				OfertaLaboral of = po.getOfertaLaboral();
+				DataOfertaLaboral dtof = new DataOfertaLaboral(of.getNombre(),of.getCiudad(),of.getFecha());
+				dtofertas.add(dtof);
+			}
+		}
+		return dtofertas;
+	}
+	
 	
 }
 
