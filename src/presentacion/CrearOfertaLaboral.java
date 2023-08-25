@@ -27,6 +27,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.Component;
@@ -67,20 +68,15 @@ public class CrearOfertaLaboral extends JInternalFrame{
         setMaximizable(true);
         setClosable(true);
         setTitle("Crear Oferta Laboral");
-        setBounds(10, 40, 700, 600);
+        setBounds(10, 40, 750, 600);
         
-
-
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{140, 210, 200, 150};
-        gridBagLayout.rowHeights = new int[]{35, 35, 35, 35, 35, 30, 35, 35, 35, 35, 35, 35, 35};
+        gridBagLayout.rowHeights = new int[]{30, 30, 30, 90, 30, 30, 30, 30, 30, 30, 30, 30, 30};
         gridBagLayout.columnWeights = new double[]{0.0, 1.0};
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         getContentPane().setLayout(gridBagLayout);
         
-
-
-   
         // ####################### Fila 1 ###############################
         JLabel lblEmpresa = new JLabel("Seleccionar empresa");
         GridBagConstraints gbc_lblEmpresa = new GridBagConstraints();
@@ -93,7 +89,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         JComboBox<String> comboBoxEmpresa = new JComboBox<String>();
         GridBagConstraints gbc_comboBox = new GridBagConstraints();
-        gbc_comboBox.insets = new Insets(0, 0, 0, 0);
+        gbc_comboBox.insets = new Insets(0, 30, 5, 30);
         gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBox.gridx = 2;
         gbc_comboBox.gridy = 0;
@@ -109,19 +105,18 @@ public class CrearOfertaLaboral extends JInternalFrame{
         //################################################################
         
         //######################### Fila 2 #############################
-        
         JLabel lblTipoPublicacion = new JLabel("Seleccionar tipo de publicacion");
         GridBagConstraints gbc_lblTipoPublicacion = new GridBagConstraints();
         gbc_lblTipoPublicacion.anchor = GridBagConstraints.WEST;
         gbc_lblTipoPublicacion.fill = GridBagConstraints.VERTICAL;
-        gbc_lblTipoPublicacion.insets = new Insets(0, 0, 5, 0);
+        gbc_lblTipoPublicacion.insets = new Insets(0, 0, 5, 5);
         gbc_lblTipoPublicacion.gridx = 1;
         gbc_lblTipoPublicacion.gridy = 1;
         getContentPane().add(lblTipoPublicacion, gbc_lblTipoPublicacion);
         
         JComboBox<String> comboBoxTipoPublicacion = new JComboBox<String>();
         GridBagConstraints gbc_comboBoxTipoPublicacion = new GridBagConstraints();
-        gbc_comboBoxTipoPublicacion.insets = new Insets(0, 0, 5, 0);
+        gbc_comboBoxTipoPublicacion.insets = new Insets(0, 30, 5, 30);
         gbc_comboBoxTipoPublicacion.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxTipoPublicacion.gridx = 2;
         gbc_comboBoxTipoPublicacion.gridy = 1;
@@ -138,14 +133,14 @@ public class CrearOfertaLaboral extends JInternalFrame{
         JLabel lblNewLabel = new JLabel("Nombre de la oferta");
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
-        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel.gridx = 1;
         gbc_lblNewLabel.gridy = 2;
         getContentPane().add(lblNewLabel, gbc_lblNewLabel);
         
         textNombreOferta = new JTextField();
         GridBagConstraints gbc_textField = new GridBagConstraints();
-        gbc_textField.insets = new Insets(0, 0, 5, 0);
+        gbc_textField.insets = new Insets(0, 30, 5, 30);
         gbc_textField.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField.gridx = 2;
         gbc_textField.gridy = 2;
@@ -161,15 +156,20 @@ public class CrearOfertaLaboral extends JInternalFrame{
 		gbc_lblNewLabel_1.gridy = 3;
 		getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
         
-        
+		
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 2;
+		gbc_scrollPane.gridy = 3;
+		getContentPane().add(scrollPane, gbc_scrollPane);
+		
 		JTextArea textDescripcion = new JTextArea();
-		textDescripcion.setLineWrap(true);		
-		GridBagConstraints gbc_textArea = new GridBagConstraints();
-		gbc_textArea.insets = new Insets(0, 0, 5, 5);
-		gbc_textArea.gridx = 2;
-		gbc_textArea.gridy = 3;
-		getContentPane().add(textDescripcion, gbc_textArea);
-        
+		textDescripcion.setLineWrap(true);
+		scrollPane.setViewportView(textDescripcion);
+		
+		
       //######################### Fila 5 #############################
         JLabel lblNewLabel_2 = new JLabel("Horario");
         GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
@@ -181,13 +181,15 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         textHorario = new JTextField();
         GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-        gbc_textField_2.insets = new Insets(0, 0, 5, 5);
+        gbc_textField_2.insets = new Insets(0, 30, 5, 30);
         gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_2.gridx = 2;
         gbc_textField_2.gridy = 4;
         getContentPane().add(textHorario, gbc_textField_2);
         textHorario.setColumns(10);
+
         
+
       //######################### Fila 6 #############################
         JLabel lblNewLabel_3 = new JLabel("Remuneracion");
         GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
@@ -199,7 +201,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         textRemuneracion = new JTextField();
         GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-        gbc_textField_3.insets = new Insets(0, 0, 5, 5);
+        gbc_textField_3.insets = new Insets(0, 30, 5, 30);
         gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_3.gridx = 2;
         gbc_textField_3.gridy = 5;
@@ -217,7 +219,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         textCiudad = new JTextField();
         GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-        gbc_textField_4.insets = new Insets(0, 0, 5, 5);
+        gbc_textField_4.insets = new Insets(0, 30, 5, 30);
         gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_4.gridx = 2;
         gbc_textField_4.gridy = 6;
@@ -234,14 +236,13 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         textDepartamento = new JTextField();
         GridBagConstraints gbc_textField1 = new GridBagConstraints();
-        gbc_textField1.insets = new Insets(0, 0, 5, 5);
+        gbc_textField1.insets = new Insets(0, 30, 5, 30);
         gbc_textField1.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField1.gridx = 2;
         gbc_textField1.gridy = 7;
         getContentPane().add(textDepartamento, gbc_textField1);
         textDepartamento.setColumns(10);
         
-        List<String> listKeywords = ctrlOferta.listarKeywords();
         
         JLabel lblNewLabel_6 = new JLabel("Fecha");
         GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
@@ -253,7 +254,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         textFecha = new JTextField();
         GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-        gbc_textField_5.insets = new Insets(0, 0, 5, 5);
+        gbc_textField_5.insets = new Insets(0, 30, 5, 30);
         gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_5.gridx = 2;
         gbc_textField_5.gridy = 8;
@@ -268,9 +269,12 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_lblNewLabel_7.gridy = 9;
         getContentPane().add(lblNewLabel_7, gbc_lblNewLabel_7);
         
+        
+        // Keywords
+        List<String> listKeywords = ctrlOferta.listarKeywords();
         JComboBox<String> comboKeywords = new JComboBox();
         GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-        gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBox_1.insets = new Insets(0, 30, 5, 30);
         gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBox_1.gridx = 2;
         gbc_comboBox_1.gridy = 9;
@@ -281,16 +285,23 @@ public class CrearOfertaLaboral extends JInternalFrame{
         	}
         }
         
-        JButton btnNewButton = new JButton("Agregar");
-        GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-        gbc_btnNewButton.insets = new Insets(10, 10, 10, 10);
-        gbc_btnNewButton.gridx = 2;
-        gbc_btnNewButton.gridy = 10;
-        getContentPane().add(btnNewButton, gbc_btnNewButton);
-        gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-        gbc_btnNewButton.anchor = GridBagConstraints.WEST;
-        gbc_btnNewButton.gridx = 1;
-        gbc_btnNewButton.gridy = 11;
+        JButton btnAgregarKeyword = new JButton("Agregar");
+        GridBagConstraints gbc_btnAgregarKeyword = new GridBagConstraints();
+        gbc_btnAgregarKeyword.insets = new Insets(10, 10, 10, 10);
+        gbc_btnAgregarKeyword.gridx = 2;
+        gbc_btnAgregarKeyword.gridy = 10;
+        getContentPane().add(btnAgregarKeyword, gbc_btnAgregarKeyword);
+        gbc_btnAgregarKeyword.insets = new Insets(0, 0, 5, 5);
+        gbc_btnAgregarKeyword.anchor = GridBagConstraints.WEST;
+        gbc_btnAgregarKeyword.gridx = 1;
+        gbc_btnAgregarKeyword.gridy = 11;
+        btnAgregarKeyword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				listKeywords.add(comboKeywords.getSelectedItem().toString()); 				
+				System.out.println(comboKeywords.getSelectedItem().toString() + "agregada");
+			}
+        });
+        
         
         
         JButton btnAceptar = new JButton("Aceptar");
