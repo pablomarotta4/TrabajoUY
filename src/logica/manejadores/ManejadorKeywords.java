@@ -30,4 +30,8 @@ public class ManejadorKeywords implements IManejadorKeywords {
 	public boolean existeKeyword(String nombreKeyword) {
 		return this.keywords.containsKey(nombreKeyword);
 	}
+	
+	public Map<String, Keyword> getKeywords(){
+		return this.keywords;
+	}
 }

@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,6 @@ public class ControladorOferta implements IControladorOferta{
 			List<String> keywords
 	) {
 		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
-		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(
 						nombre,
@@ -61,5 +61,14 @@ public class ControladorOferta implements IControladorOferta{
 		Keyword key = new Keyword(nombreKeyword);
 		this.manejadorKeys.agregarKeyword(key);
 	}
-	
+
+	public List<String> listarKeywords(){
+		List<String> listaKeywords = new ArrayList<String>();
+		
+		for(Keyword k : manejadorKeys.getKeywords().values()) {
+			listaKeywords.add(k.getKeyword());
+		}
+		
+		return listaKeywords;
+	}
 }

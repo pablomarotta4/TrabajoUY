@@ -256,7 +256,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         getContentPane().add(textFecha, gbc_textField_5);
         textFecha.setColumns(10);
         
-        List<String> listKeywords = List.of("");
+        List<String> listKeywords = ctrlOferta.listarKeywords();
         JLabel lblNewLabel_7 = new JLabel("Keywords");
         GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
         gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
@@ -265,13 +265,19 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_lblNewLabel_7.gridy = 9;
         getContentPane().add(lblNewLabel_7, gbc_lblNewLabel_7);
         
-        JComboBox comboBox_1 = new JComboBox();
+        JComboBox<String> comboKeywords = new JComboBox();
         GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
         gbc_comboBox_1.insets = new Insets(0, 0, 5, 0);
         gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBox_1.gridx = 1;
         gbc_comboBox_1.gridy = 9;
-        getContentPane().add(comboBox_1, gbc_comboBox_1);
+        getContentPane().add(comboKeywords, gbc_comboBox_1);
+        if(listKeywords.size() > 0) {
+        	for(int i = 0; i <= listKeywords.size()-1; i++) {
+        		comboKeywords.addItem(listKeywords.get(i));
+        	}
+        }
+        
         
         JButton btnAceptar = new JButton("Aceptar");
         GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
