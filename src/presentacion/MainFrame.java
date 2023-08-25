@@ -136,13 +136,11 @@ public class MainFrame {
 		JMenuItem menuCargarDatos = new JMenuItem("Cargar datos de prueba");
 		menuCargarDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				cargarDatos();
-				JOptionPane.showMessageDialog(
-						frame,
-						"La operación se ha realizado con éxito",
-						"Éxito",
-						JOptionPane.INFORMATION_MESSAGE
-						);
+				try {
+					cargarDatos();					
+				} catch (Exception e) {
+					//
+				}
 			}
 		});
 		
@@ -427,6 +425,15 @@ public class MainFrame {
 					desc, 
 					"TechSolutions.com"
 			);
+			
+			
+			JOptionPane.showMessageDialog(
+					frame,
+					"La operación se ha realizado con éxito",
+					"Éxito",
+					JOptionPane.INFORMATION_MESSAGE
+					);
+			
 		} catch (UsuarioRepetidoException ex) {
 			JOptionPane.showMessageDialog(
                     frame,
