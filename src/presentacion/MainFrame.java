@@ -4,7 +4,9 @@ import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -159,6 +161,148 @@ public class MainFrame {
 		this.cargarUsuarios();
 		this.cargarTiposPublicacion();
 		this.cargarKeywords();
+		this.cargarOfertas();
+	}
+	
+	public void cargarOfertas() {
+		try {
+			String desc = 
+					"Unete a nuestro equipo de desarrollo frontend y crea ´\r\n"
+					+ "experiencias de usuario excepcionales.";
+			this.ico.altaOfertaLaboral(
+					"EcoTech", 
+					"Premium", 
+					"Desarrollador Frontend", 
+					desc, 
+					"09:00 - 18:00", 
+					90000, 
+					"Montevideo", 
+					"Montevideo", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("14/08/23"), 
+					List.of(
+							"Tiempo completo",
+							"Medio tiempo",
+							"Remoto",
+							"Freelance",
+							"Temporal",
+							"Permanente"
+					)
+			);
+			
+			desc = 
+				"Forma parte de nuestro equipo de estrategia y "
+				+ "contribuye al crecimiento de las empresas cliente";
+			this.ico.altaOfertaLaboral(
+					"GlobalHealth", 
+					"Estándar", 
+					"Estratega de Negocios", 
+					desc, 
+					"08:00 - 17:00", 
+					80000, 
+					"Punta del Este", 
+					"Maldonado", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("14/08/23"), 
+					List.of("Temporal")
+			);
+			desc = 
+				"Trabaja en colaboraci´on con nuestro talentoso\r\n"
+				+ "equipo de dise˜no para crear soluciones impactantes.";
+			this.ico.altaOfertaLaboral(
+					"FusionTech", 
+					"Estándar", 
+					"Diseñador UX/UI", 
+					desc, 
+					"14:00 - 18:00", 
+					65000, 
+					"Rosario", 
+					"Colonia", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("13/08/23"), 
+					List.of("Medio tiempo", "Remoto", "Permanente")
+			);
+			
+			desc = 
+				"Ayuda a nuestros clientes a tomar decisiones "
+				+ "informadas basadas en an´alisis y visualizaciones de dat";
+			this.ico.altaOfertaLaboral(
+					"ANTEL", 
+					"Premium", 
+					"Analista de Datos", 
+					desc, 
+					"09:00 - 13:00", 
+					40000, 
+					"Maldonado", 
+					"Maldonado", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("11/08/23"), 
+					List.of("Medio tiempo")
+			);
+			
+			desc = 
+				"Gestiona y crea contenido persuasivo y relevante\r\n"
+				+ "para impulsar la presencia en l´ınea de nuestros\r\n"
+				+ "clientes.\r\n"
+				+ "";
+			this.ico.altaOfertaLaboral(
+					"MIEM", 
+					"Destacada", 
+					"Content Manager", 
+					desc, 
+					"18:00 - 22:00", 
+					10000, 
+					"Montevideo", 
+					"Montevideo", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("20/08/23"), 
+					List.of("Freelance")
+			);
+			
+			desc = 
+				"Ofrece un excelente servicio de soporte t´ecnico a\r\n"
+				+ "nuestros clientes, resolviendo problemas y brindando\r\n"
+				+ "soluciones.";
+			this.ico.altaOfertaLaboral(
+					"TechSolutions", 
+					"Básica", 
+					"Soporte Técnico", 
+					desc, 
+					"09:00 - 18:00", 
+					30000, 
+					"Minas", 
+					"Lavalleja", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("15/08/23"), 
+					List.of("Tiempo completo")
+			);
+			desc = 
+				"Unete a nuestro equipo de marketing y trabaja en ´\r\n"
+				+ "estrategias digitales innovadoras.";
+			this.ico.altaOfertaLaboral(
+					"EcoTech", 
+					"Premium", 
+					"A. de Marketing Digital ", 
+					desc, 
+					"10:00 - 19:00", 
+					80000, 
+					"Flores", 
+					"Flores", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("15/08/23"), 
+					new ArrayList<String>()
+			);
+			desc = 
+				"Únete a nuestro equipo contable y ayuda en la ´\r\n"
+				+ "gesti´on financiera de la empresa";
+			this.ico.altaOfertaLaboral(
+					"GlobalHealth", 
+					"Destacada", 
+					"Contador Senior", 
+					desc, 
+					"08:30 - 17:30 ", 
+					100000, 
+					"Colonia Suiza", 
+					"Colonia", 
+					new SimpleDateFormat("yyyy/MM/dd").parse("16/08/23"), 
+					new ArrayList<String>()
+			);
+		} catch(ParseException e) {
+			
+		}
 	}
 	
 	public void cargarKeywords() {
