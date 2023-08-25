@@ -9,4 +9,5 @@ public interface IManejadorKeywords {
 	public void agregarKeyword(Keyword key);
 	public boolean existeKeyword(String nombreKeyword);
 	public Map<String, Keyword> getKeywords();
+	public Keyword getKeyword(String keyword);
 }

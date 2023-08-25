@@ -31,6 +31,10 @@ public class ManejadorKeywords implements IManejadorKeywords {
 		return this.keywords.containsKey(nombreKeyword);
 	}
 	
+	public Keyword getKeyword(String keyword) {
+		return this.keywords.get(keyword);	
+	}
+	
 	public Map<String, Keyword> getKeywords(){
 		return this.keywords;
 	}
