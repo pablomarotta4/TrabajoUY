@@ -1,12 +1,14 @@
 package logica.entidades;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import logica.entidades.OfertaLaboral;
 
 public class Empresa extends Usuario{
 
-	private String nombreEmpresa;
 	private String descripcion;
 	private String linkWeb;
+	private List<OfertaLaboral> ofertas;
 	
 	public Empresa(String nick, 
 			String nombre, 
@@ -17,6 +19,19 @@ public class Empresa extends Usuario{
 		super(nick, nombre, apellido, email);
 		this.descripcion = descripcion;
 		this.linkWeb = link;
+		this.ofertas = new ArrayList<>();
+	}
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+	
+	public String getLink() {
+		return linkWeb;
+	}
+
+	public List<OfertaLaboral> getOfertas() {
+		return ofertas;
 	}
 	
 }
