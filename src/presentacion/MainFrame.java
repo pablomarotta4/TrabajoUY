@@ -12,6 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import excepciones.CamposVaciosExcepcion;
+import excepciones.ElementoRepetidoException;
 import excepciones.UsuarioRepetidoException;
 
 import java.awt.event.ActionEvent;
@@ -148,6 +149,76 @@ public class MainFrame {
 	}
 
 	public void cargarDatos() {
+		this.cargarUsuarios();
+		this.cargarTiposPublicacion();
+		this.cargarKeywords();
+	}
+	
+	public void cargarKeywords() {
+		try {
+			this.ico.altaKeyword("Tiempo completo");
+			this.ico.altaKeyword("Medio tiempo");
+			this.ico.altaKeyword("Remoto");
+			this.ico.altaKeyword("Freelance");
+			this.ico.altaKeyword("Temporal");
+			this.ico.altaKeyword("Permanente");
+			this.ico.altaKeyword("Computación");
+			this.ico.altaKeyword("Administración");
+			this.ico.altaKeyword("Logística");
+			this.ico.altaKeyword("Contabilidad");
+		} catch(ElementoRepetidoException ex) {
+			
+		}
+	}
+	
+	public void cargarTiposPublicacion() {
+		try {
+			// TIPOS DE PUBLICACION
+			this.ict.crearTipoPublicacion(
+					"Premium",
+					"Obtén máxima visibilidad", 
+					1, 
+					30, 
+					4000, 
+					new SimpleDateFormat("yyyy/MM/dd").parse("10/08/2023")
+			);
+			
+			this.ict.crearTipoPublicacion(
+					"Destacada",
+					"Destaca tu anuncio", 
+					2, 
+					15, 
+					500, 
+					new SimpleDateFormat("yyyy/MM/dd").parse("05/08/2023")
+			);
+			
+			this.ict.crearTipoPublicacion(
+					"Estándar",
+					"Mejora la posición de tu anuncio", 
+					3, 
+					20, 
+					150, 
+					new SimpleDateFormat("yyyy/MM/dd").parse("15/08/2023")
+			);
+			
+			this.ict.crearTipoPublicacion(
+					"Básica",
+					"Publica de forma sencilla en la\r\n"
+					+ "lista de ofertas", 
+					4, 
+					7, 
+					50, 
+					new SimpleDateFormat("yyyy/MM/dd").parse("07/08/2023")
+			);
+		} catch(UsuarioRepetidoException ex){
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void cargarUsuarios() {
 		try {
 			// CARGA DE POSTULANTES
 			this.icu.crearPostulante(
@@ -158,7 +229,6 @@ public class MainFrame {
 					"Uruguaya", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("15/03/1985")
 			);	
-			
 			this.icu.crearPostulante(
 					"matilo", 
 					"Matías", 
@@ -167,7 +237,6 @@ public class MainFrame {
 					"Argentina", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("21/08/1990")
 			);	
-			
 			this.icu.crearPostulante(
 					"maro", 
 					"María", 
@@ -185,7 +254,6 @@ public class MainFrame {
 					"Mexicana", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("05/06/1993")
 			);	
-			
 			this.icu.crearPostulante(
 					"valen25", 
 					"Valentina", 
@@ -194,7 +262,6 @@ public class MainFrame {
 					"Uruguaya", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("25/02/1987")
 			);	
-			
 			this.icu.crearPostulante(
 					"andpe12", 
 					"Andrés", 
@@ -203,7 +270,6 @@ public class MainFrame {
 					"Chilena", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("12/04/1992")
 			);	
-			
 			this.icu.crearPostulante(
 					"sicam", 
 					"Camila", 
@@ -212,7 +278,6 @@ public class MainFrame {
 					"Uruguaya", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("30/09/1989")
 			);	
-			
 			this.icu.crearPostulante(
 					"sebgon", 
 					"Sebastián", 
@@ -221,7 +286,6 @@ public class MainFrame {
 					"Colombiana", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("18/01/1995")
 			);	
-			
 			this.icu.crearPostulante(
 					"isabel", 
 					"Isabella", 
@@ -230,7 +294,6 @@ public class MainFrame {
 					"Uruguaya", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("07/07/1991")
 			);	
-			
 			this.icu.crearPostulante(
 					"marram02", 
 					"Martín", 
@@ -239,7 +302,6 @@ public class MainFrame {
 					"Argentina", 
 					new SimpleDateFormat("yyyy/MM/dd").parse("02/12/1986")
 			);	
-			
 			// CARGA DE EMPRESAS
 			String desc = 
 					"EcoTech Innovations es una empresa l´ıder en soluciones tec-\r\n"
@@ -285,7 +347,6 @@ public class MainFrame {
 					desc, 
 					"http://www.FusionTechDynamics.net"
 			);
-			
 			desc = 
 				"GlobalHealth Dynamics es una empresa comprometida con\r\n"
 				+ "el avance de la atenci´on m´edica a nivel mundial. Como\r\n"
@@ -308,8 +369,6 @@ public class MainFrame {
 					desc, 
 					"http://www.GlobalHealthDynamics.uy/info"
 			);
-			
-			
 			desc = 
 				"En Antel te brindamos servicios de vanguardia en tec-\r\n"
 				+ "nolog´ıa de comunicaci´on en Telefon´ıa M´ovil, Fija, Banda\r\n"
@@ -322,7 +381,6 @@ public class MainFrame {
 					desc, 
 					"ANTEL.com.uy"
 			);
-			
 			desc = 
 				"Balance Energ´etico Nacional (BEN). La Direcci´on Nacional\r\n"
 				+ "de Energ´ıa (DNE) del Ministerio de Industria, Energ´ıa y\r\n"
@@ -335,7 +393,6 @@ public class MainFrame {
 					desc, 
 					"http://www.EcoTechInnovations.com"
 			);
-			
 			desc = 
 				"”TechSolutions Inc.” es una empresa l´ıder en el sector de\r\n"
 				+ "tecnolog´ıa de la informaci´on y el software. Se especializa\r\n"
@@ -352,13 +409,13 @@ public class MainFrame {
 					desc, 
 					"TechSolutions.com"
 			);
-
 		} catch (UsuarioRepetidoException ex) {
 			
-		} catch(CamposVaciosExcepcion ex) {
+		} catch (CamposVaciosExcepcion ex) {
 			
-		} catch(ParseException ex) {
-		
+		} catch (ParseException ex) {
+			
 		}
 	}
+	
 }
