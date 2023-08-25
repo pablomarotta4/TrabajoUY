@@ -43,11 +43,12 @@ public class ControladorUsuario implements IControladorUsuario{
 			}
 		}
 		return list;
-	}
+	}	
 	
 	public List<String>listarUsuarios(){
 		return manejadorUsuario.listarNickUsuarios();
 	}
+
 	public DataUsuario consultarDatosUsuario(String nick) {
 		Usuario us = manejadorUsuario.buscarUsuario(nick);
 	    if (us instanceof Postulante) {
@@ -72,7 +73,4 @@ public class ControladorUsuario implements IControladorUsuario{
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 
-
-	
-	
 }

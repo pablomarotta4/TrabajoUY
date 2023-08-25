@@ -2,14 +2,13 @@ package logica.entidades;
 
 import java.util.ArrayList;
 import java.util.List;
-import logica.entidades.OfertaLaboral;
 
 public class Empresa extends Usuario{
 
 	private String descripcion;
 	private String linkWeb;
 	private List<OfertaLaboral> ofertas;
-	
+
 	public Empresa(String nick, 
 			String nombre, 
 			String apellido, 

@@ -3,6 +3,7 @@ package logica.entidades;
 import java.util.Date;
 
 public class Postulacion {
+
 	private String cvReducido;
 	private String motivacion;
 	private Date fechaPostulacion;

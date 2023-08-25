@@ -20,5 +20,6 @@ public interface IControladorOferta {
 			List<String> keywords
 		);
 	
-	//public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException;
+	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException;
+	public List<String> listarKeywords();
 }

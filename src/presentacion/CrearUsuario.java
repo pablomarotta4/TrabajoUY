@@ -24,6 +24,7 @@ import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import javax.swing.JButton;
 import java.util.Date;
+
 public class CrearUsuario extends JInternalFrame{
 
 	private IControladorUsuario icu;

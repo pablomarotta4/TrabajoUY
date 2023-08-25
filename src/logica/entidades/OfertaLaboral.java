@@ -15,6 +15,7 @@ public class OfertaLaboral {
 	private Date fechaAlta;
 	private float costo;
 	private List<Postulacion> postulaciones;
+	private List<Keyword> keywords;
 	private Empresa empresa;
 	
 	public OfertaLaboral(
@@ -25,7 +26,7 @@ public class OfertaLaboral {
 			String horario,
 			float remuneracion,
 			Date fechaAlta,
-			List<String> keywords,
+			List<Keyword> keywords,
 			Empresa emp
 	){
 		this.nombre = nombre;
@@ -49,5 +50,4 @@ public class OfertaLaboral {
 	public Date getFecha() {
 		return fechaAlta;
 	}
-	
 }
