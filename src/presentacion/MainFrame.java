@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoRepetidoException;
@@ -136,6 +137,12 @@ public class MainFrame {
 		menuCargarDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cargarDatos();
+				JOptionPane.showMessageDialog(
+						frame,
+						"La operación se ha realizado con éxito",
+						"Éxito",
+						JOptionPane.INFORMATION_MESSAGE
+						);
 			}
 		});
 		
@@ -167,7 +174,12 @@ public class MainFrame {
 			this.ico.altaKeyword("Logística");
 			this.ico.altaKeyword("Contabilidad");
 		} catch(ElementoRepetidoException ex) {
-			
+			JOptionPane.showMessageDialog(
+                    frame,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
 		}
 	}
 	
@@ -211,6 +223,12 @@ public class MainFrame {
 					new SimpleDateFormat("yyyy/MM/dd").parse("07/08/2023")
 			);
 		} catch(UsuarioRepetidoException ex){
+			JOptionPane.showMessageDialog(
+                    frame,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -410,10 +428,28 @@ public class MainFrame {
 					"TechSolutions.com"
 			);
 		} catch (UsuarioRepetidoException ex) {
+			JOptionPane.showMessageDialog(
+                    frame,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
 			
 		} catch (CamposVaciosExcepcion ex) {
+			JOptionPane.showMessageDialog(
+                    frame,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
 			
 		} catch (ParseException ex) {
+			JOptionPane.showMessageDialog(
+                    frame,
+                    ex.getMessage(),
+                    "Error",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
 			
 		}
 	}
