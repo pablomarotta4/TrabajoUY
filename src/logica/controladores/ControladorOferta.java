@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import excepciones.ElementoInexistenteException;
 import excepciones.ElementoRepetidoException;
 import logica.datatypes.DTOfertaLaboral;
 import logica.entidades.Empresa;
@@ -40,15 +41,28 @@ public class ControladorOferta implements IControladorOferta{
 			String departamento,
 			LocalDate fechaAlta,
 			List<String> keywordsSeleccionadas
-	) {
-		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
+	) throws ElementoRepetidoException, ElementoInexistenteException {
 		
-		List<Keyword> listaKeywords = new ArrayList<Keyword>();
+		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
+		if(empresa == null) {
+			throw new ElementoInexistenteException("No existe una empresa con nickname " + nickEmpresa);
+		}
+
 		// Obtengo las instancias de Keyword
+		List<Keyword> listaKeywords = new ArrayList<Keyword>();
 		for(int i = 0; i <= keywordsSeleccionadas.size() - 1; i++) {
 			Keyword key = this.manejadorKeys.getKeyword(keywordsSeleccionadas.get(i));
-			listaKeywords.add(key);
+			if(key != null) {
+				listaKeywords.add(key);
+			} else {
+				throw new ElementoInexistenteException("No existe la keyword " + keywordsSeleccionadas.get(i));
+			}
 		}
+		
+		if(this.manejadorOferta.existeOferta(nombre)) {
+			throw new ElementoRepetidoException("Ya existe una oferta con ese nombre.");
+		}
+		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(
 						nombre,

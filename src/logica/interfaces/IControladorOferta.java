@@ -3,6 +3,7 @@ package logica.interfaces;
 import java.time.LocalDate;
 import java.util.List;
 
+import excepciones.ElementoInexistenteException;
 import excepciones.ElementoRepetidoException;
 import logica.datatypes.DTOfertaLaboral;
 
@@ -19,7 +20,7 @@ public interface IControladorOferta {
 			String departamento,
 			LocalDate fechaAlta,
 			List<String> keywords
-		);
+		) throws ElementoRepetidoException, ElementoInexistenteException;
 	
 	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException;
 	public List<String> listarKeywords();
