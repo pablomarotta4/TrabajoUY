@@ -1,3 +1,33 @@
+package presentacion;
+
+import javax.swing.JInternalFrame;
+
+import logica.datatypes.DataUsuario;
+import logica.datatypes.DataPostulante;
+import logica.datatypes.DataEmpresa;
+import logica.datatypes.DataOfertaLaboral;
+import logica.interfaces.IControladorUsuario;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JTextArea;
+
 public class ConsultarUsuario  extends JInternalFrame{
 	
 	/**
