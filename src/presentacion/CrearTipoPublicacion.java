@@ -225,7 +225,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
                                 frame,
                                 ex.getMessage(),
                                 "Error",
-                                JOptionPane.INFORMATION_MESSAGE
+                                JOptionPane.ERROR_MESSAGE
                             );
         			}
         			
