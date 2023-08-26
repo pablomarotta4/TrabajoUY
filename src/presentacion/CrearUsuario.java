@@ -23,9 +23,12 @@ import com.toedter.calendar.JCalendar;
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import javax.swing.JButton;
-import java.util.Date;
 public class CrearUsuario extends JInternalFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IControladorUsuario icu;
 	private JTextField nicknameField;
 	private JTextField nombreField;
@@ -43,7 +46,7 @@ public class CrearUsuario extends JInternalFrame{
         setMaximizable(true);
         setClosable(true);
         setTitle("Crear Usuario");
-        setBounds(10, 40, 450, 450);
+        setBounds(10, 40, 1082, 609);
         getContentPane().setLayout(new BorderLayout(0, 0));
         
         JPanel NorthPanel = new JPanel();
@@ -148,11 +151,11 @@ public class CrearUsuario extends JInternalFrame{
         NorthPanel.add(emailField, gbc_emailField);
         emailField.setColumns(10);
         
-        JPanel SouthPanel = new JPanel();
-        getContentPane().add(SouthPanel, BorderLayout.SOUTH);
-        SouthPanel.setLayout(new BorderLayout(0, 0));
+        JPanel CenterPanel = new JPanel();
+        getContentPane().add(CenterPanel, BorderLayout.CENTER);
+        CenterPanel.setLayout(new BorderLayout(0, 0));
         JPanel postulantePanel = new JPanel();
-        SouthPanel.add(postulantePanel, BorderLayout.NORTH);
+        CenterPanel.add(postulantePanel, BorderLayout.NORTH);
         GridBagLayout gbl_postulantePanel = new GridBagLayout();
         gbl_postulantePanel.columnWidths = new int[]{30, 70, 61, 110, 62, 0};
         gbl_postulantePanel.rowHeights = new int[]{59, 180, 64, 0};
@@ -268,8 +271,11 @@ public class CrearUsuario extends JInternalFrame{
         gbc_calendar.gridy = 1;
         postulantePanel.add(calendar, gbc_calendar);
         
+        JPanel SouthPanel1 = new JPanel();
+        getContentPane().add(SouthPanel1, BorderLayout.SOUTH);
+        
         JPanel CancelConfirmPanel = new JPanel();
-        SouthPanel.add(CancelConfirmPanel, BorderLayout.SOUTH);
+        SouthPanel1.add(CancelConfirmPanel);
         
         JButton ConfirmarButton = new JButton("Confirmar");
         CancelConfirmPanel.add(ConfirmarButton);
@@ -308,8 +314,3 @@ public class CrearUsuario extends JInternalFrame{
 
 
  }
-
-        
-        
-        
-	
