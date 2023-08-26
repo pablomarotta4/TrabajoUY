@@ -21,6 +21,7 @@ public class OfertaLaboral {
 	private List<Postulacion> postulaciones;
 	private List<Keyword> keywords;
 	private Empresa empresa;
+	private TipoPublicacion tipo;
 	
 	public OfertaLaboral(
 			String nombre,
@@ -31,7 +32,8 @@ public class OfertaLaboral {
 			float remuneracion,
 			LocalDate fechaAlta,
 			List<Keyword> keywords,
-			Empresa emp
+			Empresa emp,
+			TipoPublicacion tipo
 	){
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -43,6 +45,8 @@ public class OfertaLaboral {
 		this.postulaciones = new ArrayList<Postulacion>();
 		this.empresa = emp;
 		this.keywords = keywords;
+		this.tipo = tipo;
+		this.costo = tipo.getCosto();
 		System.out.println(nombre);
 		System.out.println(this.keywords);
 		System.out.println("-------");
@@ -89,7 +93,8 @@ public class OfertaLaboral {
 			this.fechaAlta,
 			listaDtPostulacion,
 			listaKeywords,
-			this.empresa.getNickname()
+			this.empresa.getNickname(),
+			this.tipo.getNombre()
 		);
 	}
 	

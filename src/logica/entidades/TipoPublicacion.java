@@ -24,4 +24,8 @@ public class TipoPublicacion {
 	public String getNombre() {
 		return this.nombre;
 	}
+	
+	public float getCosto() {
+		return this.costo;
+	}
 }

@@ -14,13 +14,16 @@ import logica.entidades.Empresa;
 import logica.entidades.Keyword;
 import logica.entidades.OfertaLaboral;
 import logica.entidades.Postulacion;
+import logica.entidades.TipoPublicacion;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IManejadorKeywords;
 import logica.interfaces.IManejadorOferta;
+import logica.interfaces.IManejadorPaquetes;
 
 public class ControladorOferta implements IControladorOferta{
 	
+	private IManejadorPaquetes manejadorPaquetes;
 	private IManejadorOferta manejadorOferta;
 	private IManejadorKeywords manejadorKeys;
 	private ControladorUsuario ctrlUsuario;
@@ -30,6 +33,7 @@ public class ControladorOferta implements IControladorOferta{
 		this.manejadorOferta = f.getManejadorOferta();
 		this.manejadorKeys = f.getManejadorKeywords();
 		this.ctrlUsuario = new ControladorUsuario();
+		this.manejadorPaquetes = f.getManejadorPaquetes();
 	}
 	
 	public void altaOfertaLaboral(
@@ -52,6 +56,9 @@ public class ControladorOferta implements IControladorOferta{
 			Keyword key = this.manejadorKeys.getKeyword(keywordsSeleccionadas.get(i));
 			listaKeywords.add(key);
 		}
+		
+		TipoPublicacion tipo = manejadorPaquetes.getTipo(nombre);
+		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(
 						nombre,
@@ -62,7 +69,8 @@ public class ControladorOferta implements IControladorOferta{
 						remuneracion,
 						fechaAlta,
 						listaKeywords,
-						empresa
+						empresa,
+						tipo
 				)
 		);
 	}

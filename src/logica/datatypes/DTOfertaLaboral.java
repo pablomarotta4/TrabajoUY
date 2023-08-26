@@ -3,7 +3,12 @@ package logica.datatypes;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import logica.controladores.ControladorUsuario;
 import logica.entidades.Empresa;
+import logica.interfaces.Factory;
+import logica.interfaces.IManejadorPaquetes;
+import logica.manejadores.ManejadorPaquetes;
 
 public class DTOfertaLaboral {
 	private String nombre;
@@ -32,8 +37,12 @@ public class DTOfertaLaboral {
 			LocalDate fechaAlta,
 			List<DTPostulacion> postulaciones,
 			List<String> keywords,
-			String nombreEmpresa
+			String nombreEmpresa,
+			String tipoPublicacion
 	){
+		
+		Factory f = Factory.getInstance();
+		IManejadorPaquetes manejadorPaquetes = f.getManejadorPaquetes();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.ciudad = ciudad;
@@ -44,6 +53,7 @@ public class DTOfertaLaboral {
 		this.postulaciones = postulaciones;
 		this.nombreEmpresa = nombreEmpresa;
 		this.keywords = keywords;
+		this.costo = manejadorPaquetes.getTipo(tipoPublicacion).getCosto();
 	}	
 	
 	public String getNombre() {
@@ -76,5 +86,9 @@ public class DTOfertaLaboral {
 	}
 	public List<String> getKeywords() {
 		return this.keywords;
+	}
+	
+	public float getCosto() {
+		return this.costo;
 	}
 }

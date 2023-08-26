@@ -41,5 +41,8 @@ public class ManejadorPaquetes implements IManejadorPaquetes{
 		}
 	}
 	
+	public TipoPublicacion getTipo(String nombre) {
+		return tipos.get(nombre);
+	}
 	
 }

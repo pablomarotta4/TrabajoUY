@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 import logica.datatypes.DTOfertaLaboral;
+import logica.entidades.OfertaLaboral;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
@@ -198,17 +199,36 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         			textField_13.setText("");
         			
         		} else {
-        			DTOfertaLaboral datosOferta = ico.listarDatosOferta((String) comboBox_1.getSelectedItem());
+        			String ofertaName = (String) comboBox_1.getSelectedItem();
+        			DTOfertaLaboral datosOferta = ico.listarDatosOferta(ofertaName);
+        			
+        			List<String> keys = datosOferta.getKeywords();
+        			
+        			String keysText = "";
+        			
+        			
+        			if (keys.size() != 0) {
+        				for(int i = 0; i < keys.size(); i++) {
+        					if (keysText != "") {
+        					keysText = keysText + "\n" + keys.get(i);
+        					} else {
+        						keysText = keys.get(i);
+        					}
+        				}
+        			} else {
+        				keysText = "";
+        			}
+        			
         			
         			textField_5.setText(datosOferta.getNombre());
         			textField_6.setText(datosOferta.getDepartamento());
         			textField_7.setText(datosOferta.getCiudad());
         			textField_8.setText(datosOferta.getRemuneracion().toString());
         			textField_9.setText(datosOferta.getHorario());
-        //costo 	textField_11.setText(datosOferta.getCosto());
+        			textField_11.setText(Float.toString(datosOferta.getCosto()));
         			
         			textArea.setText(datosOferta.getDescripcion());
-        //keyword	textArea_3.setText(datosOferta.get);
+        			textArea_3.setText(keysText);
         			
         			LocalDate fecha = datosOferta.getFechaAlta();
         			Integer dia = fecha.getDayOfMonth();
