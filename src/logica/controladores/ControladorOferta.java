@@ -42,13 +42,11 @@ public class ControladorOferta implements IControladorOferta{
 	) {
 		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
 		List<Keyword> listaKeywords = new ArrayList<Keyword>();
-		
 		// Obtengo las instancias de Keyword
 		for(int i = 0; i <= keywordsSeleccionadas.size() - 1; i++) {
 			Keyword key = this.manejadorKeys.getKeyword(keywordsSeleccionadas.get(i));
 			listaKeywords.add(key);
 		}
-		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(
 						nombre,

@@ -16,6 +16,8 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JList;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -39,23 +41,25 @@ public class ConsultarOferta extends JInternalFrame{
         setMaximizable(true);
         setClosable(true);
         setTitle("Consultar Oferta Laboral");
-        setBounds(10, 40, 700, 800);
+        setBounds(10, 40, 700, 700);
         
         JPanel panel = new JPanel();
         getContentPane().add(panel, BorderLayout.SOUTH);
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
-        JButton btnNewButton = new JButton("New button");
-        panel.add(btnNewButton);
-        
-        JButton btnNewButton_1 = new JButton("New button");
-        panel.add(btnNewButton_1);
-        
+        JButton btnCerrar = new JButton("Cerrar");
+        panel.add(btnCerrar);
+        btnCerrar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+				dispose();
+        	}
+        });
+		
         JPanel panel_1 = new JPanel();
         getContentPane().add(panel_1, BorderLayout.CENTER);
         GridBagLayout gbl_panel_1 = new GridBagLayout();
         gbl_panel_1.columnWidths = new int[]{200, 300, 200};
-        gbl_panel_1.rowHeights = new int[]{30, 30, 30, 30, 90, 30, 30, 30, 30, 30, 30, 30, 30};
+        gbl_panel_1.rowHeights = new int[]{30, 30, 30, 30, 100, 30, 30, 30, 30, 30, 30, 30, 30, 90};
         gbl_panel_1.columnWeights = new double[]{Double.MIN_VALUE};
         gbl_panel_1.rowWeights = new double[]{Double.MIN_VALUE, 0.0, 0.0};
         panel_1.setLayout(gbl_panel_1);
@@ -260,6 +264,23 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_btnNewButton_2.gridx = 2;
         gbc_btnNewButton_2.gridy = 1;
         panel_1.add(btnSelectOferta, gbc_btnNewButton_2);
+        
+        JLabel lblNewLabel_10 = new JLabel("Keywords: ");
+        GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
+        gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel_10.gridx = 0;
+        gbc_lblNewLabel_10.gridy = 12;
+        panel_1.add(lblNewLabel_10, gbc_lblNewLabel_10);
+        JComboBox<String> comboBoxKeywords = new JComboBox<String>();
+        GridBagConstraints gbc_comboKeywords = new GridBagConstraints();
+        gbc_comboKeywords.insets = new Insets(0, 0, 5, 5);
+        gbc_comboKeywords.gridx = 1;
+        gbc_comboKeywords.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboKeywords.gridy = 12;
+        panel_1.add(comboBoxKeywords, gbc_comboKeywords);
+
+        
+        
         btnSelectOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DTOfertaLaboral dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
@@ -270,8 +291,12 @@ public class ConsultarOferta extends JInternalFrame{
 				textHorario.setText(dtOf.getHorario());
 				textRemuneracion.setText(dtOf.getRemuneracion().toString());
 				textFechaAlta.setText(dtOf.getFechaAlta().toString());
-				System.out.println(dtOf.getPostulaciones());
 				textEmpresa.setText(dtOf.getNombreEmpresa());
+				List<String> listaKeywords = dtOf.getKeywords();
+				System.out.println(listaKeywords);
+				for(int i = 0; i <= listaKeywords.size() - 1; i++) {
+					comboBoxKeywords.addItem(listaKeywords.get(i));
+				}
 			}
         });
         
