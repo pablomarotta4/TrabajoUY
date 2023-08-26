@@ -107,8 +107,7 @@ public class OfertaLaboral {
 		return b;
 	}
 	
-	public void agregarPostulacion() {
-		
+	public void agregarPostulacion(Postulacion p) {
+		this.postulaciones.add(p);
 	}
-	
 }

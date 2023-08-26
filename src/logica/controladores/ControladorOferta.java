@@ -18,17 +18,20 @@ import logica.interfaces.Factory;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IManejadorKeywords;
 import logica.interfaces.IManejadorOferta;
+import logica.interfaces.IManejadorPostulaciones;
 
 public class ControladorOferta implements IControladorOferta{
 	
 	private IManejadorOferta manejadorOferta;
 	private IManejadorKeywords manejadorKeys;
+	private IManejadorPostulaciones manejadorPostulacion;
 	private ControladorUsuario ctrlUsuario;
 	
 	public ControladorOferta() {
 		Factory f = Factory.getInstance();
 		this.manejadorOferta = f.getManejadorOferta();
 		this.manejadorKeys = f.getManejadorKeywords();
+		this.manejadorPostulacion = f.getManejadorPostulaciones();
 		this.ctrlUsuario = new ControladorUsuario();
 	}
 	
@@ -110,15 +113,13 @@ public class ControladorOferta implements IControladorOferta{
 		Postulacion pub;
 		OfertaLaboral of = lista.get(oferta);
 		
-		System.out.println(of.estaPostulado(nickname));
-		
 		if (of.estaPostulado(nickname)) {
 			throw new ElementoRepetidoException("Ya se encuentra postulado a esta oferta");
 		}
 		if (manejadorOferta.existeOferta(oferta)) {
-			
-			pub = new Postulacion(cvReducido, motivacion, fecha, ctrlUsuario.getPostulante(nickname), of);	
-			
+			pub = new Postulacion(cvReducido, motivacion, fecha, ctrlUsuario.getPostulante(nickname), of);
+			of.agregarPostulacion(pub);
+			manejadorPostulacion.agregarPostulacion(pub);
 		} else {
 			throw new NoExisteInstancia("No existe una Oferta con ese nombre");
 		}
