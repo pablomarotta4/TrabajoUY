@@ -406,35 +406,35 @@ public class CrearOfertaLaboral extends JInternalFrame{
     						frame,
     						ex.getMessage(),
     						"Error",
-    						JOptionPane.INFORMATION_MESSAGE
+    						JOptionPane.ERROR_MESSAGE
 					);
 				} catch(ElementoInexistenteException ex) {
       				JOptionPane.showMessageDialog(
     						frame,
     						ex.getMessage(),
     						"Error",
-    						JOptionPane.INFORMATION_MESSAGE
+    						JOptionPane.ERROR_MESSAGE
 					);
 				} catch(CamposVaciosExcepcion ex) {
       				JOptionPane.showMessageDialog(
     						frame,
     						ex.getMessage(),
     						"Error",
-    						JOptionPane.INFORMATION_MESSAGE
+    						JOptionPane.ERROR_MESSAGE
 					);
 				} catch(NumberFormatException ex) {
       				JOptionPane.showMessageDialog(
     						frame,
     						"Formato incorrecto",
     						"Error",
-    						JOptionPane.INFORMATION_MESSAGE
+    						JOptionPane.ERROR_MESSAGE
 					);
 				} catch(DateTimeException ex) {
 					JOptionPane.showMessageDialog(
     						frame,
     						"Fecha invalida. Ingrese denuevo.",
     						"Error",
-    						JOptionPane.INFORMATION_MESSAGE
+    						JOptionPane.ERROR_MESSAGE
 					);
 				}
 			}
