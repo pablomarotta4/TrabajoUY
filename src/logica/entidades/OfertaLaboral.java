@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DTPostulacion;
+
 public class OfertaLaboral {
 	
 	private String nombre;
@@ -49,5 +52,30 @@ public class OfertaLaboral {
 	}
 	public Date getFecha() {
 		return fechaAlta;
+	}
+	
+	public DTOfertaLaboral getDataType(){
+		List<DTPostulacion> listaDtPostulacion = new ArrayList<DTPostulacion>();
+		List<String> listaKeywords = new ArrayList<String>();
+		
+		for(int i = 0; i <= this.keywords.size() - 1; i++) {
+			listaKeywords.add(this.keywords.get(i).getKeyword());
+		}
+		for(int i = 0; i <= this.postulaciones.size() - 1; i++) {
+			listaDtPostulacion.add(postulaciones.get(i).getDatatype());
+		}
+		
+		return new DTOfertaLaboral(
+			this.nombre,
+			this.descripcion,
+			this.ciudad,
+			this.departamento,
+			this.horario,
+			this.remuneracion,
+			this.fechaAlta,
+			listaDtPostulacion,
+			listaKeywords,
+			this.empresa.getNickname()
+		);
 	}
 }
