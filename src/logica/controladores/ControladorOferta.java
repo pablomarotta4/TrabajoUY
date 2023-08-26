@@ -14,6 +14,7 @@ import logica.entidades.Empresa;
 import logica.entidades.Keyword;
 import logica.entidades.OfertaLaboral;
 import logica.entidades.Postulacion;
+import logica.entidades.Postulante;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IManejadorKeywords;
@@ -112,13 +113,15 @@ public class ControladorOferta implements IControladorOferta{
 		Map<String, OfertaLaboral> lista = manejadorOferta.getOfertas();
 		Postulacion pub;
 		OfertaLaboral of = lista.get(oferta);
+		Postulante postulante = ctrlUsuario.getPostulante(nickname);
 		
 		if (of.estaPostulado(nickname)) {
 			throw new ElementoRepetidoException("Ya se encuentra postulado a esta oferta");
 		}
 		if (manejadorOferta.existeOferta(oferta)) {
-			pub = new Postulacion(cvReducido, motivacion, fecha, ctrlUsuario.getPostulante(nickname), of);
+			pub = new Postulacion(cvReducido, motivacion, fecha, postulante, of);
 			of.agregarPostulacion(pub);
+			postulante.agregarPostulacion(pub);
 			manejadorPostulacion.agregarPostulacion(pub);
 		} else {
 			throw new NoExisteInstancia("No existe una Oferta con ese nombre");
