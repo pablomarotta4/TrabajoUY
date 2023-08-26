@@ -1,29 +1,3 @@
-package presentacion;
-
-import javax.swing.JInternalFrame;
-
-import logica.datatypes.DataUsuario;
-import logica.datatypes.DataPostulante;
-import logica.datatypes.DataEmpresa;
-import logica.datatypes.DataOfertaLaboral;
-import logica.interfaces.IControladorUsuario;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JTextArea;
-
 public class ConsultarUsuario  extends JInternalFrame{
 	
 	/**
@@ -40,8 +14,8 @@ public class ConsultarUsuario  extends JInternalFrame{
         setIconifiable(true);
         setMaximizable(true);
         setClosable(true);
-        setTitle("Crear Usuario");
-        setBounds(10, 40, 450, 400);
+        setTitle("Consulta Usuario");
+        setBounds(10, 40, 1137, 658);
         getContentPane().setLayout(new BorderLayout(0, 0));
         
         JPanel NorthPanel = new JPanel();
@@ -69,10 +43,10 @@ public class ConsultarUsuario  extends JInternalFrame{
         JPanel CenterPanel = new JPanel();
         getContentPane().add(CenterPanel, BorderLayout.CENTER);
         GridBagLayout gbl_CenterPanel = new GridBagLayout();
-        gbl_CenterPanel.columnWidths = new int[]{30, 327, 0, 0, 0, 0, 100, 0};
-        gbl_CenterPanel.rowHeights = new int[]{0, 30, 30, 30, 60, 46, 25, 0};
-        gbl_CenterPanel.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        gbl_CenterPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+        gbl_CenterPanel.columnWidths = new int[]{30, 327, 0};
+        gbl_CenterPanel.rowHeights = new int[]{30, 30, 30, 30, 30, 211, 25, 0};
+        gbl_CenterPanel.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
+        gbl_CenterPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         CenterPanel.setLayout(gbl_CenterPanel);
         
         JPanel SouthPanel = new JPanel();
@@ -84,9 +58,9 @@ public class ConsultarUsuario  extends JInternalFrame{
         JPanel EastPanel = new JPanel();
         getContentPane().add(EastPanel, BorderLayout.EAST);
         GridBagLayout gbl_EastPanel = new GridBagLayout();
-        gbl_EastPanel.columnWidths = new int[]{112, 112, 0};
-        gbl_EastPanel.rowHeights = new int[]{66, 35, 35, 35, 0};
-        gbl_EastPanel.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+        gbl_EastPanel.columnWidths = new int[]{0, 112, 112, 0};
+        gbl_EastPanel.rowHeights = new int[]{35, 35, 35, 35, 0};
+        gbl_EastPanel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
         gbl_EastPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         EastPanel.setLayout(gbl_EastPanel);
         
@@ -94,7 +68,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         GridBagConstraints gbc_consultarOfertaPostulacion = new GridBagConstraints();
         gbc_consultarOfertaPostulacion.fill = GridBagConstraints.BOTH;
         gbc_consultarOfertaPostulacion.insets = new Insets(0, 0, 5, 5);
-        gbc_consultarOfertaPostulacion.gridx = 0;
+        gbc_consultarOfertaPostulacion.gridx = 1;
         gbc_consultarOfertaPostulacion.gridy = 0;
         consultarOfertaPostulacion.setVisible(false);
         EastPanel.add(consultarOfertaPostulacion, gbc_consultarOfertaPostulacion);
@@ -104,15 +78,16 @@ public class ConsultarUsuario  extends JInternalFrame{
         GridBagConstraints gbc_ofertaPostulacionComboBox = new GridBagConstraints();
         gbc_ofertaPostulacionComboBox.insets = new Insets(0, 0, 5, 0);
         gbc_ofertaPostulacionComboBox.fill = GridBagConstraints.BOTH;
-        gbc_ofertaPostulacionComboBox.gridx = 1;
+        gbc_ofertaPostulacionComboBox.gridx = 2;
         gbc_ofertaPostulacionComboBox.gridy = 0;
         ofertaPostulacionComboBox.setVisible(false);
         EastPanel.add(ofertaPostulacionComboBox, gbc_ofertaPostulacionComboBox);
         
         JLabel nomLabelNoChange = new JLabel("Nombre:");
         GridBagConstraints gbc_nomLabelNoChange = new GridBagConstraints();
+        gbc_nomLabelNoChange.anchor = GridBagConstraints.WEST;
         gbc_nomLabelNoChange.insets = new Insets(0, 0, 5, 5);
-        gbc_nomLabelNoChange.gridx = 0;
+        gbc_nomLabelNoChange.gridx = 1;
         gbc_nomLabelNoChange.gridy = 1;
         EastPanel.add(nomLabelNoChange, gbc_nomLabelNoChange);
         nomLabelNoChange.setVisible(false);
@@ -120,14 +95,15 @@ public class ConsultarUsuario  extends JInternalFrame{
         JTextArea mostrarNombre = new JTextArea("");
         GridBagConstraints gbc_mostrarNombre = new GridBagConstraints();
         gbc_mostrarNombre.insets = new Insets(0, 0, 5, 0);
-        gbc_mostrarNombre.gridx = 1;
+        gbc_mostrarNombre.gridx = 2;
         gbc_mostrarNombre.gridy = 1;
         EastPanel.add(mostrarNombre, gbc_mostrarNombre);
         
         JLabel ciudadLabelNoChange = new JLabel("Ciudad:");
         GridBagConstraints gbc_ciudadLabelNoChange = new GridBagConstraints();
+        gbc_ciudadLabelNoChange.anchor = GridBagConstraints.WEST;
         gbc_ciudadLabelNoChange.insets = new Insets(0, 0, 5, 5);
-        gbc_ciudadLabelNoChange.gridx = 0;
+        gbc_ciudadLabelNoChange.gridx = 1;
         gbc_ciudadLabelNoChange.gridy = 2;
         EastPanel.add(ciudadLabelNoChange, gbc_ciudadLabelNoChange);
         ciudadLabelNoChange.setVisible(false);
@@ -135,21 +111,22 @@ public class ConsultarUsuario  extends JInternalFrame{
         JTextArea mostrarCiudad = new JTextArea("");
         GridBagConstraints gbc_mostrarCiudad = new GridBagConstraints();
         gbc_mostrarCiudad.insets = new Insets(0, 0, 5, 0);
-        gbc_mostrarCiudad.gridx = 1;
+        gbc_mostrarCiudad.gridx = 2;
         gbc_mostrarCiudad.gridy = 2;
         EastPanel.add(mostrarCiudad, gbc_mostrarCiudad);
         
         JLabel fechaLabelNoChange = new JLabel("Fecha:");
         GridBagConstraints gbc_fechaLabelNoChange = new GridBagConstraints();
+        gbc_fechaLabelNoChange.anchor = GridBagConstraints.WEST;
         gbc_fechaLabelNoChange.insets = new Insets(0, 0, 0, 5);
-        gbc_fechaLabelNoChange.gridx = 0;
+        gbc_fechaLabelNoChange.gridx = 1;
         gbc_fechaLabelNoChange.gridy = 3;
         EastPanel.add(fechaLabelNoChange, gbc_fechaLabelNoChange);
         fechaLabelNoChange.setVisible(false);
         
         JTextArea mostrarFecha = new JTextArea("");
         GridBagConstraints gbc_mostrarFecha = new GridBagConstraints();
-        gbc_mostrarFecha.gridx = 1;
+        gbc_mostrarFecha.gridx = 2;
         gbc_mostrarFecha.gridy = 3;
         EastPanel.add(mostrarFecha, gbc_mostrarFecha);
         
@@ -165,8 +142,14 @@ public class ConsultarUsuario  extends JInternalFrame{
         			DataUsuario us = icu.consultarDatosUsuario(seleccionado);
         			List<DataOfertaLaboral> dtofertas = new ArrayList<>();
                     CenterPanel.removeAll();
-                    
-                    JTextArea nombreLabel = new JTextArea("Nombre: " + us.getNombre());
+                    JLabel nombreL = new JLabel("Nombre: ");     
+                    GridBagConstraints gbc_nombreL = new GridBagConstraints();
+                    gbc_nombreL.anchor = GridBagConstraints.WEST;
+                    gbc_nombreL.insets = new Insets(0, 0, 5, 5);
+                    gbc_nombreL.gridx = 0;
+                    gbc_nombreL.gridy = 1;
+                    CenterPanel.add(nombreL, gbc_nombreL);
+                    JTextArea nombreLabel = new JTextArea(us.getNombre());
                     GridBagConstraints gbc_nombreLabel = new GridBagConstraints();
                     gbc_nombreLabel.anchor = GridBagConstraints.WEST;
                     gbc_nombreLabel.insets = new Insets(0, 0, 5, 5);
@@ -178,7 +161,14 @@ public class ConsultarUsuario  extends JInternalFrame{
                     gbc_nombreLabel.fill = GridBagConstraints.HORIZONTAL;
                     CenterPanel.add(nombreLabel, gbc_nombreLabel);
                     
-                    JTextArea apellidoLabel = new JTextArea("Apellido: " + us.getApellido());
+                    JLabel apellidoL = new JLabel("Apellido: ");     
+                    GridBagConstraints gbc_apellidoL = new GridBagConstraints();
+                    gbc_apellidoL.anchor = GridBagConstraints.WEST;
+                    gbc_apellidoL.insets = new Insets(0, 0, 5, 5);
+                    gbc_apellidoL.gridx = 0;
+                    gbc_apellidoL.gridy = 2;
+                    CenterPanel.add(apellidoL, gbc_apellidoL);
+                    JTextArea apellidoLabel = new JTextArea(us.getApellido());
                     GridBagConstraints gbc_apellidoLabel = new GridBagConstraints();
                     gbc_apellidoLabel.anchor = GridBagConstraints.WEST;
                     gbc_apellidoLabel.insets = new Insets(0, 0, 5, 0);
@@ -190,7 +180,14 @@ public class ConsultarUsuario  extends JInternalFrame{
                     gbc_apellidoLabel.fill = GridBagConstraints.HORIZONTAL;
                     CenterPanel.add(apellidoLabel, gbc_apellidoLabel);
                     
-                    JTextArea nicknameLabel = new JTextArea("Nickname: " + us.getNickname());
+                    JLabel nicknameL = new JLabel("Nickname: ");     
+                    GridBagConstraints gbc_nicknameL = new GridBagConstraints();
+                    gbc_nicknameL.anchor = GridBagConstraints.WEST;
+                    gbc_nicknameL.insets = new Insets(0, 0, 5, 5);
+                    gbc_nicknameL.gridx = 0;
+                    gbc_nicknameL.gridy = 3;
+                    CenterPanel.add(nicknameL, gbc_nicknameL);
+                    JTextArea nicknameLabel = new JTextArea(us.getNickname());
                     GridBagConstraints gbc_nicknameLabel = new GridBagConstraints();
                     gbc_nicknameLabel.anchor = GridBagConstraints.WEST;
                     gbc_nicknameLabel.insets = new Insets(0, 0, 5, 5);
@@ -198,7 +195,14 @@ public class ConsultarUsuario  extends JInternalFrame{
                     gbc_nicknameLabel.gridy = 3;
                     CenterPanel.add(nicknameLabel, gbc_nicknameLabel);
                     
-                    JTextArea emailLabel = new JTextArea("Email: " + us.getEmail());
+                    JLabel emailL = new JLabel("Email: ");     
+                    GridBagConstraints gbc_emailL = new GridBagConstraints();
+                    gbc_emailL.anchor = GridBagConstraints.WEST;
+                    gbc_emailL.insets = new Insets(0, 0, 5, 5);
+                    gbc_emailL.gridx = 0;
+                    gbc_emailL.gridy = 4;
+                    CenterPanel.add(emailL, gbc_emailL);
+                    JTextArea emailLabel = new JTextArea(us.getEmail());
                     GridBagConstraints gbc_emailLabel = new GridBagConstraints();
                     gbc_emailLabel.anchor = GridBagConstraints.WEST;
                     gbc_emailLabel.insets = new Insets(0, 0, 0, 5);
@@ -213,17 +217,39 @@ public class ConsultarUsuario  extends JInternalFrame{
                    
                     if(us instanceof DataEmpresa) {
                     	DataEmpresa usE = (DataEmpresa) us;
-                    	JTextArea descripcionLabel = new JTextArea("Descripcion: " + usE.getDescripcion());
-                    	GridBagConstraints gbc_descripcionLabel = new GridBagConstraints();
-                    	gbc_descripcionLabel.anchor = GridBagConstraints.WEST;
-                    	gbc_descripcionLabel.insets = new Insets(0, 0, 5, 5);
-                    	gbc_descripcionLabel.gridx = 1;
-                    	gbc_descripcionLabel.gridy = 5;
-                    	descripcionLabel.setLineWrap(true);
-                    	descripcionLabel.setWrapStyleWord(true);
-                    	gbc_descripcionLabel.gridwidth = GridBagConstraints.REMAINDER;
-                    	gbc_descripcionLabel.fill = GridBagConstraints.HORIZONTAL; 
-                    	JTextArea linkLabel = new JTextArea("Link: " + usE.getLink());
+                    	gbl_CenterPanel.rowHeights = new int[]{30, 30, 30, 30, 30, 211, 30, 0};
+                    	JLabel descripcionL = new JLabel("Descripcion: ");     
+                        GridBagConstraints gbc_descripcionL = new GridBagConstraints();
+                        gbc_descripcionL.anchor = GridBagConstraints.WEST;
+                        gbc_descripcionL.insets = new Insets(0, 0, 5, 5);
+                        gbc_descripcionL.gridx = 0;
+                        gbc_descripcionL.gridy = 5;
+                        CenterPanel.add(descripcionL, gbc_descripcionL);
+                        descripcionL.setVisible(true);
+                    	JTextArea descripcionArea = new JTextArea(usE.getDescripcion());
+                        descripcionArea.setLineWrap(true);
+                        descripcionArea.setWrapStyleWord(true);
+                        JScrollPane descripcionScroll = new JScrollPane(descripcionArea);
+                        descripcionScroll.setPreferredSize(new Dimension(400, 100));
+                        
+                        GridBagConstraints gbc_descripcionScroll = new GridBagConstraints();
+                        gbc_descripcionScroll.anchor = GridBagConstraints.WEST;
+                        gbc_descripcionScroll.insets = new Insets(0, 0, 5, 5);
+                        gbc_descripcionScroll.gridx = 1;
+                        gbc_descripcionScroll.gridy = 5;
+                        gbc_descripcionScroll.gridwidth = 2;
+                        gbc_descripcionScroll.fill = GridBagConstraints.BOTH;
+                        CenterPanel.add(descripcionScroll, gbc_descripcionScroll);
+                    	
+                        JLabel linkL = new JLabel("Link: ");     
+                        GridBagConstraints gbc_linkL = new GridBagConstraints();
+                        gbc_linkL.anchor = GridBagConstraints.WEST;
+                        gbc_linkL.insets = new Insets(0, 0, 5, 5);
+                        gbc_linkL.gridx = 0;
+                        gbc_linkL.gridy = 6;
+                        CenterPanel.add(linkL, gbc_linkL);
+                    	JTextArea linkLabel = new JTextArea(usE.getLink());
+                    	linkL.setVisible(true);
                     	GridBagConstraints gbc_linkLabel = new GridBagConstraints();
                     	linkLabel.setLineWrap(true);
                     	linkLabel.setWrapStyleWord(true);
@@ -233,7 +259,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	gbc_linkLabel.insets = new Insets(0, 0, 0, 5);
                     	gbc_linkLabel.gridx = 1;
                     	gbc_linkLabel.gridy = 6;
-                    	CenterPanel.add(descripcionLabel, gbc_descripcionLabel);
+                    	CenterPanel.add(descripcionScroll, gbc_descripcionScroll);
                     	CenterPanel.add(linkLabel,gbc_linkLabel);
                     	consultarOfertaPostulacion.setText("Ofertas de la empresa: ");
                     	dtofertas = icu.consultarOfertas(us.getNickname());
@@ -250,13 +276,28 @@ public class ConsultarUsuario  extends JInternalFrame{
                     }
                     else if(us instanceof DataPostulante) {
                     	DataPostulante usP = (DataPostulante) us;
-                    	JTextArea nacionalidadLabel = new JTextArea("Nacionalidad: " + usP.getNacionalidad());
+                    	gbl_CenterPanel.rowHeights = new int[]{30, 30, 30, 30, 30, 30, 30, 0};
+                    	 JLabel nacionalidadL = new JLabel("Nacionalidad: ");     
+                         GridBagConstraints gbc_nacionalidadL = new GridBagConstraints();
+                         gbc_nacionalidadL.anchor = GridBagConstraints.WEST;
+                         gbc_nacionalidadL.insets = new Insets(0, 0, 5, 5);
+                         gbc_nacionalidadL.gridx = 0;
+                         gbc_nacionalidadL.gridy = 5;
+                         CenterPanel.add(nacionalidadL, gbc_nacionalidadL);
+                    	JTextArea nacionalidadLabel = new JTextArea(usP.getNacionalidad());
                     	GridBagConstraints gbc_nacionalidadLabel = new GridBagConstraints();
                     	gbc_nacionalidadLabel.anchor = GridBagConstraints.WEST;
                     	gbc_nacionalidadLabel.insets = new Insets(0, 0, 5, 5);
                     	gbc_nacionalidadLabel.gridx = 1;
                     	gbc_nacionalidadLabel.gridy = 5;
-                    	JTextArea nacimientoLabel = new JTextArea("Fecha de nacimiento: " + usP.getNacimiento());
+                    	JLabel nacimientoL = new JLabel("Nacimiento: ");     
+                        GridBagConstraints gbc_nacimientoL = new GridBagConstraints();
+                        gbc_nacimientoL.anchor = GridBagConstraints.WEST;
+                        gbc_nacimientoL.insets = new Insets(0, 0, 5, 5);
+                        gbc_nacimientoL.gridx = 0;
+                        gbc_nacimientoL.gridy = 6;
+                        CenterPanel.add(nacimientoL, gbc_nacimientoL);
+                    	JTextArea nacimientoLabel = new JTextArea(usP.getNacimiento());
                     	GridBagConstraints gbc_nacimientoLabel = new GridBagConstraints();
                     	gbc_nacimientoLabel.anchor = GridBagConstraints.WEST;
                     	gbc_nacimientoLabel.insets = new Insets(0, 0, 0, 5);
