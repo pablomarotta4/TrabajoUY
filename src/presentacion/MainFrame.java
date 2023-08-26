@@ -67,7 +67,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 600);
+		frame.setBounds(100, 100, 750, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -111,7 +111,7 @@ public class MainFrame {
 		JMenuItem menuConsultarOferta = new JMenuItem("Consultar Oferta Laboral");
 		menuConsultarOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico);
+				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu);
 				frame.getContentPane().add(consultarOfertaInternalFrame);
 				consultarOfertaInternalFrame.setVisible(true);
 			}

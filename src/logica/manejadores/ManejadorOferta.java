@@ -30,5 +30,9 @@ public class ManejadorOferta implements IManejadorOferta{
 	public boolean existeOferta(String nombreOferta) {
 		return this.ofertasLaborales.containsKey(nombreOferta);
 	}
+	
+	public Map<String, OfertaLaboral> getOfertas(){
+		return this.ofertasLaborales;
+	}
 
 }
