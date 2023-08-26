@@ -32,4 +32,8 @@ public class Postulante extends Usuario{
 	public List<Postulacion> getPostulaciones() {
 		return postulaciones;
 	}
+	
+	public void agregarPostulacion(Postulacion p) {
+		this.postulaciones.add(p);
+	}
 }

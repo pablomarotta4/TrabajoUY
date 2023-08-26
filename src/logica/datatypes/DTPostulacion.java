@@ -1,5 +1,6 @@
 package logica.datatypes;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import logica.entidades.OfertaLaboral;
@@ -8,14 +9,14 @@ import logica.entidades.Postulante;
 public class DTPostulacion {
 	private String cvReducido;
 	private String motivacion;
-	private Date fechaPostulacion;
+	private LocalDate fechaPostulacion;
 	private String nombreOferta ;
 	private String nickpostulante;
 
 	public DTPostulacion(
 			String cvReducido, 
 			String motivacion, 
-			Date fechaPostulacion, 
+			LocalDate fechaPostulacion, 
 			String nickPostulante, 
 			String nombreOferta) {
 		this.cvReducido = cvReducido;

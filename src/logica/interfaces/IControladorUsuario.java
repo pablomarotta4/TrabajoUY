@@ -17,6 +17,7 @@ public interface IControladorUsuario {
 	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion;
 	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion;
 	public List<String> listarNickEmpresas();
+	public List<String> listarNickPostulantes();
 	public List<String>listarUsuarios();
 	public DataUsuario consultarDatosUsuario(String nick);
 	public List<DataOfertaLaboral> consultarPostulaciones(String nick);
