@@ -241,7 +241,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textEmpresa = new GridBagConstraints();
         gbc_textEmpresa.insets = new Insets(5, 5, 5, 5);
         gbc_textEmpresa.gridx = 1;
-        gbc_textEmpresa.gridy = 9;
+        gbc_textEmpresa.gridy = 11;
         gbc_textEmpresa.fill = GridBagConstraints.HORIZONTAL;
         textEmpresa.setEditable(false);
         panel_1.add(textEmpresa, gbc_textEmpresa);
@@ -271,6 +271,7 @@ public class ConsultarOferta extends JInternalFrame{
 				textRemuneracion.setText(dtOf.getRemuneracion().toString());
 				textFechaAlta.setText(dtOf.getFechaAlta().toString());
 				System.out.println(dtOf.getPostulaciones());
+				textEmpresa.setText(dtOf.getNombreEmpresa());
 			}
         });
         
