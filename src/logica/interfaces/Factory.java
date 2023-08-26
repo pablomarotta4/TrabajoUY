@@ -1,6 +1,11 @@
 package logica.interfaces;
 
 import logica.controladores.*;
+
+import logica.manejadores.ManejadorPostulaciones;
+import logica.manejadores.ManejadorKeywords;
+import logica.manejadores.ManejadorOferta;
+import logica.manejadores.ManejadorPaquetes;
 import logica.manejadores.ManejadorUsuario;
 
 public class Factory {
@@ -26,5 +31,25 @@ public class Factory {
 	
 	public IManejadorUsuario getManejadorUsuario() {
 		return ManejadorUsuario.getInstance();
+	}
+	
+	public IManejadorPostulaciones getManejadorPostulaciones() {
+		return ManejadorPostulaciones.getInstance();
+	}
+
+	public IManejadorOferta getManejadorOferta() {
+		return ManejadorOferta.getInstance();
+	}
+	
+	public IManejadorPaquetes getManejadorPaquetes() {
+		return ManejadorPaquetes.getInstance();
+	}
+	
+	public IControladorCompraTipo getControladorCompraTipo() {
+		return new ControladorCompraTipo();
+	}
+	
+	public IManejadorKeywords getManejadorKeywords() {
+		return ManejadorKeywords.getInstance();
 	}
 }
