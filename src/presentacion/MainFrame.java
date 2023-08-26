@@ -4,8 +4,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -203,8 +203,8 @@ public class MainFrame {
 					"09:00 - 18:00", 
 					90000, 
 					"Montevideo", 
-					"Montevideo", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("14/08/23"), 
+					"Montevideo",
+					LocalDate.of(2023, 8, 14),
 					List.of(
 							"Tiempo completo",
 							"Medio tiempo",
@@ -227,7 +227,7 @@ public class MainFrame {
 					80000, 
 					"Punta del Este", 
 					"Maldonado", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("14/08/23"), 
+					LocalDate.of(2023, 8, 14),
 					List.of("Temporal")
 			);
 			desc = 
@@ -242,7 +242,7 @@ public class MainFrame {
 					65000, 
 					"Rosario", 
 					"Colonia", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("13/08/23"), 
+					LocalDate.of(2023, 8, 13),
 					List.of("Medio tiempo", "Remoto", "Permanente")
 			);
 			
@@ -258,7 +258,7 @@ public class MainFrame {
 					40000, 
 					"Maldonado", 
 					"Maldonado", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("11/08/23"), 
+					LocalDate.of(2023, 8, 11),
 					List.of("Medio tiempo")
 			);
 			
@@ -276,7 +276,7 @@ public class MainFrame {
 					10000, 
 					"Montevideo", 
 					"Montevideo", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("20/08/23"), 
+					LocalDate.of(2023, 8, 20),
 					List.of("Freelance")
 			);
 			
@@ -292,8 +292,8 @@ public class MainFrame {
 					"09:00 - 18:00", 
 					30000, 
 					"Minas", 
-					"Lavalleja", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("15/08/23"), 
+					"Lavalleja",
+					LocalDate.of(2023, 8, 15),
 					List.of("Tiempo completo")
 			);
 			desc = 
@@ -308,7 +308,7 @@ public class MainFrame {
 					80000, 
 					"Flores", 
 					"Flores", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("15/08/23"), 
+					LocalDate.of(2023, 8, 15),
 					new ArrayList<String>()
 			);
 			desc = 
@@ -323,10 +323,10 @@ public class MainFrame {
 					100000, 
 					"Colonia Suiza", 
 					"Colonia", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("16/08/23"), 
+					LocalDate.of(2023, 8, 16),
 					new ArrayList<String>()
 			);
-		} catch(ParseException e) {
+		} catch(Exception e) {
 			
 		}
 	}
