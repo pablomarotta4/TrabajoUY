@@ -17,6 +17,10 @@ public class DTOfertaLaboral {
 	private List<String> keywords;
 	private String nombreEmpresa;
 	
+	public DTOfertaLaboral() {
+		
+	}
+	
 	public DTOfertaLaboral(
 			String nombre,
 			String descripcion,
@@ -38,5 +42,38 @@ public class DTOfertaLaboral {
 		this.fechaAlta = fechaAlta;
 		this.postulaciones = postulaciones;
 		this.nombreEmpresa = nombreEmpresa;
+		this.keywords = keywords;
 	}	
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+	public String getCiudad() {
+		return this.ciudad;
+	}
+	public String getDepartamento() {
+		return this.departamento;
+	}
+	public String getHorario() {
+		return this.horario;
+	}
+	public Float getRemuneracion() {
+		return this.remuneracion;
+	}
+	public Date getFechaAlta() {
+		return this.fechaAlta;
+	}
+	public List<DTPostulacion> getPostulaciones() {
+		return this.postulaciones;
+	}
+	public String getNombreEmpresa() {
+		return this.nombreEmpresa;
+	}
+	public List<String> getKeywords() {
+		return this.keywords;
+	}
 }
