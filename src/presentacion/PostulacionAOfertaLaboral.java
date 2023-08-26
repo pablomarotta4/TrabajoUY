@@ -5,6 +5,7 @@ import excepciones.*;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
+import logica.datatypes.DTOfertaLaboral;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
 import java.awt.GridBagLayout;
@@ -23,10 +24,12 @@ import javax.swing.JComboBox;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JTextArea;
 import javax.swing.DropMode;
+import java.awt.Color;
 
 public class PostulacionAOfertaLaboral extends JInternalFrame {
 	
@@ -50,6 +53,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
 		
 	
 	public PostulacionAOfertaLaboral(IControladorUsuario icu, IControladorOferta ico) {
+		
 		
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
@@ -90,24 +94,42 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         JComboBox<String> comboBox_0 = new JComboBox<String>();
         List<String> listanickempresas = icu.listarNickEmpresas();
         
-        JComboBox<String> comboBox_1 = new JComboBox<String>();
+        JComboBox<String> comboBox = new JComboBox<String>();
+        List<String> listanickpostulantes = icu.listarNickPostulantes();
         
-        if(listanickempresas.size() == 0) {
-        	comboBox_0.addItem("");
-        } else {
-            for(int i = 0; i < listanickempresas.size(); i++)
+        JComboBox<String> comboBox_1 = new JComboBox<String>();
+        comboBox_1.addItem("");
+        
+        comboBox_0.addItem("");
+        for(int i = 0; i < listanickempresas.size(); i++) {
             	comboBox_0.addItem(listanickempresas.get(i));
-        }
 
+        }
+        
+        comboBox.addItem("");
+        for(int i = 0; i < listanickpostulantes.size(); i++) {
+            	comboBox.addItem(listanickpostulantes.get(i));
+
+        }
+        
         comboBox_0.addActionListener((ActionListener) new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
         		if (comboBox_0.getSelectedItem() == "") {
-        			// nada
+                	comboBox_1.removeAllItems();
+                	comboBox_1.addItem("");
+                	comboBox_1.setSelectedIndex(0);
+                	
         		} else {
+                	comboBox_1.removeAllItems();
+                	comboBox_1.addItem("");
         			String empresadelcombo = comboBox_0.getSelectedItem().toString();
-        	      //  List<String> listanombreofertas = ico.listarOfertasByEmpresa(empresadelcombo);
+        	        List<String> listanombreofertas = ico.listarOfertasByEmpresa(empresadelcombo);
+        	        for(int i = 0; i < listanombreofertas.size(); i++)
+                    	comboBox_1.addItem(listanombreofertas.get(i));
+        	        }
+        		// se limpian los campos solos idkw xd mas abajo en el combobox1
         		}	
-        	}
+        	
         });
         comboBox_0.setSelectedIndex(0);
         
@@ -126,9 +148,74 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_1.gridy = 2;
         panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
         
+        // campos
+        textField_5 = new JTextField();
+        textField_6 = new JTextField();
+        textField_7 = new JTextField();
+        textField_8 = new JTextField();
+        textField_9 = new JTextField();
+        textField_11 = new JTextField();
+        
+        JTextArea textArea = new JTextArea();
+        JTextArea textArea_3 = new JTextArea();
+        
+        // fecha
+        textField_10 = new JTextField();
+        textField_12 = new JTextField();
+        textField_13 = new JTextField();
 
         
         
+        
+        
+        
+        
+        comboBox_1.addActionListener((ActionListener) new ActionListener() {
+        	@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent arg0) {
+		
+        		if (comboBox_1.getSelectedItem() == "" || comboBox_1.getSelectedItem() == null) {
+        			// vaciar campos
+        			textField_5.setText("");
+        			textField_6.setText("");
+        			textField_7.setText("");
+        			textField_8.setText("");
+        			textField_9.setText("");
+        			textField_11.setText("");
+        			
+        			textArea.setText("");
+        			textArea_3.setText("");
+        			
+        			textField_10.setText("");
+        			textField_12.setText("");
+        			textField_13.setText("");
+        			
+        		} else {
+        			DTOfertaLaboral datosOferta = ico.listarDatosOferta((String) comboBox_1.getSelectedItem());
+        			
+        			textField_5.setText(datosOferta.getNombre());
+        			textField_6.setText(datosOferta.getDepartamento());
+        			textField_7.setText(datosOferta.getCiudad());
+        			textField_8.setText(datosOferta.getRemuneracion().toString());
+        			textField_9.setText(datosOferta.getHorario());
+        //costo 	textField_11.setText(datosOferta.getCosto());
+        			
+        			textArea.setText(datosOferta.getDescripcion());
+        //keyword	textArea_3.setText(datosOferta.get);
+        			
+        			Date fecha = datosOferta.getFechaAlta();
+        			Integer dia = fecha.getDay();
+        			Integer mes = fecha.getMonth();
+        			Integer anio = fecha.getYear();
+        			
+        			textField_10.setText(dia.toString());
+        			textField_12.setText(mes.toString());
+        			textField_13.setText(anio.toString());
+
+        		}
+        	}
+        });  
+        comboBox_1.setSelectedIndex(0);
         
         GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
         gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
@@ -145,7 +232,8 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_2.gridy = 3;
         panel.add(lblNewLabel_2, gbc_lblNewLabel_2);
         
-        textField_5 = new JTextField();
+        textField_5.setBackground(new Color(255, 255, 255));
+        textField_5.setEditable(false);
         GridBagConstraints gbc_textField_5 = new GridBagConstraints();
         gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_5.insets = new Insets(0, 0, 5, 5);
@@ -162,7 +250,9 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_3.gridy = 4;
         panel.add(lblNewLabel_3, gbc_lblNewLabel_3);
         
-        textField_6 = new JTextField();
+
+        textField_6.setBackground(new Color(255, 255, 255));
+        textField_6.setEditable(false);
         GridBagConstraints gbc_textField_6 = new GridBagConstraints();
         gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_6.insets = new Insets(0, 0, 5, 5);
@@ -179,7 +269,9 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_4.gridy = 5;
         panel.add(lblNewLabel_4, gbc_lblNewLabel_4);
         
-        textField_7 = new JTextField();
+
+        textField_7.setBackground(new Color(255, 255, 255));
+        textField_7.setEditable(false);
         GridBagConstraints gbc_textField_7 = new GridBagConstraints();
         gbc_textField_7.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_7.insets = new Insets(0, 0, 5, 5);
@@ -196,7 +288,9 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_5.gridy = 6;
         panel.add(lblNewLabel_5, gbc_lblNewLabel_5);
         
-        textField_8 = new JTextField();
+
+        textField_8.setBackground(new Color(255, 255, 255));
+        textField_8.setEditable(false);
         GridBagConstraints gbc_textField_8 = new GridBagConstraints();
         gbc_textField_8.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_8.insets = new Insets(0, 0, 5, 5);
@@ -213,7 +307,9 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_6.gridy = 7;
         panel.add(lblNewLabel_6, gbc_lblNewLabel_6);
         
-        textField_9 = new JTextField();
+
+        textField_9.setBackground(new Color(255, 255, 255));
+        textField_9.setEditable(false);
         GridBagConstraints gbc_textField_9 = new GridBagConstraints();
         gbc_textField_9.fill = GridBagConstraints.HORIZONTAL;
         gbc_textField_9.insets = new Insets(0, 0, 5, 5);
@@ -230,7 +326,9 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_10.gridy = 8;
         panel.add(lblNewLabel_10, gbc_lblNewLabel_10);
         
-        textField_11 = new JTextField();
+
+        textField_11.setBackground(new Color(255, 255, 255));
+        textField_11.setEditable(false);
         GridBagConstraints gbc_textField_11 = new GridBagConstraints();
         gbc_textField_11.insets = new Insets(0, 0, 5, 5);
         gbc_textField_11.fill = GridBagConstraints.HORIZONTAL;
@@ -255,7 +353,8 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_scrollPane_1.gridy = 9;
         panel.add(scrollPane_1, gbc_scrollPane_1);
         
-        JTextArea textArea = new JTextArea();
+
+        textArea.setEditable(false);
         textArea.setLineWrap(true);
         scrollPane_1.setViewportView(textArea);
         
@@ -275,7 +374,8 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_scrollPane_4.gridy = 10;
         panel.add(scrollPane_4, gbc_scrollPane_4);
         
-        JTextArea textArea_3 = new JTextArea();
+
+        textArea_3.setEditable(false);
         textArea_3.setLineWrap(true);
         scrollPane_4.setViewportView(textArea_3);
         
@@ -298,21 +398,24 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         JLabel lblNewLabel_12 = new JLabel("Dia:");
         panel_1.add(lblNewLabel_12);
         
-        textField_10 = new JTextField();
+        textField_10.setBackground(new Color(255, 255, 255));
+        textField_10.setEditable(false);
         panel_1.add(textField_10);
         textField_10.setColumns(10);
         
         JLabel lblNewLabel_13 = new JLabel("Mes:");
         panel_1.add(lblNewLabel_13);
         
-        textField_12 = new JTextField();
+        textField_12.setBackground(new Color(255, 255, 255));
+        textField_12.setEditable(false);
         panel_1.add(textField_12);
         textField_12.setColumns(10);
         
         JLabel lblNewLabel_14 = new JLabel("Año:");
         panel_1.add(lblNewLabel_14);
         
-        textField_13 = new JTextField();
+        textField_13.setBackground(new Color(255, 255, 255));
+        textField_13.setEditable(false);
         panel_1.add(textField_13);
         textField_13.setColumns(10);
         
@@ -324,7 +427,10 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel.gridy = 12;
         panel.add(lblNewLabel, gbc_lblNewLabel);
         
-        JComboBox comboBox = new JComboBox();
+
+        
+        
+        
         GridBagConstraints gbc_comboBox = new GridBagConstraints();
         gbc_comboBox.insets = new Insets(0, 0, 5, 5);
         gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -419,7 +525,13 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         JButton btnNewButton = new JButton("Aceptar");
         btnNewButton.addActionListener((ActionListener) new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
-        		
+        		// campos a devolver
+        		String empresaFinal = comboBox_0.getSelectedItem().toString();
+        		String ofertaFinal = comboBox_1.getSelectedItem().toString();
+        		String postulanteFinal = comboBox.getSelectedItem().toString();
+        		String motivacionFinal = textArea_1.getText();
+        		String cvReducidoFinal = textArea_2.getText();
+        		Date fechaFinal;
         	}
         });
         panel_3.add(btnNewButton);

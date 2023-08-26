@@ -45,6 +45,17 @@ public class ControladorUsuario implements IControladorUsuario{
 		return list;
 	}	
 	
+	public List<String> listarNickPostulantes() {
+		List<String> list = new ArrayList<String>();
+		for(Usuario u : manejadorUsuario.getUsuarios().values()) {
+			// Si usuario es instancia de Postulante guardo el nickname en la lista a retornar
+			if(u instanceof Postulante) {
+				list.add(u.getNickname());
+			}
+		}
+		return list;
+	}
+	
 	public List<String>listarUsuarios(){
 		return manejadorUsuario.listarNickUsuarios();
 	}
