@@ -2,6 +2,7 @@ package presentacion;
 
 import javax.swing.JInternalFrame;
 
+import logica.datatypes.DTOfertaLaboral;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
 
@@ -62,20 +63,6 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_label.gridy = 0;
         panel_1.add(label, gbc_label);
 
-        
-        JButton btnSelectEmpresa = new JButton("seleccionar");
-        GridBagConstraints gbc_button = new GridBagConstraints();
-        gbc_button.insets = new Insets(0, 0, 5, 0);
-        gbc_button.gridx = 2;
-        gbc_button.gridy = 0;
-        panel_1.add(btnSelectEmpresa, gbc_button);
-        btnSelectEmpresa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-        });
-        
-        
         JComboBox<String> comboBoxEmpresa = new JComboBox<String>();
         GridBagConstraints gbc_comboBox = new GridBagConstraints();
         gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -83,20 +70,6 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_comboBox.gridx = 1;
         gbc_comboBox.gridy = 0;
         panel_1.add(comboBoxEmpresa, gbc_comboBox);
-        
-        List<String> listaEmpresas = ctrlUsuario.listarNickEmpresas();
-        for(int i = 0; i <= listaEmpresas.size() - 1; i++) {
-        	comboBoxEmpresa.addItem(listaEmpresas.get(i));
-        }
-        
-        
-        JLabel lblNewLabel = new JLabel("Seleccione una oferta");
-        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel.gridx = 0;
-        gbc_lblNewLabel.gridy = 1;
-        panel_1.add(lblNewLabel, gbc_lblNewLabel);
-        
         
         JComboBox<String> comboBoxOferta = new JComboBox<String>();
         GridBagConstraints gbc_comboOferta = new GridBagConstraints();
@@ -106,12 +79,46 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_comboOferta.gridy = 1;
         panel_1.add(comboBoxOferta, gbc_comboOferta);
         
-        JButton btnNewButton_2 = new JButton("seleccionar");
+        JButton btnSelectEmpresa = new JButton("seleccionar");
+        GridBagConstraints gbc_button = new GridBagConstraints();
+        gbc_button.insets = new Insets(0, 0, 5, 0);
+        gbc_button.gridx = 2;
+        gbc_button.gridy = 0;
+        panel_1.add(btnSelectEmpresa, gbc_button);
+        btnSelectEmpresa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List<String> listaOfertas = ctrlOferta.listarOfertasByEmpresa(comboBoxEmpresa.getSelectedItem().toString());
+				for(int i = 0; i <= listaOfertas.size() - 1; i++) {
+					comboBoxOferta.addItem(listaOfertas.get(i));
+				}
+			}
+        });
+        
+        List<String> listaEmpresas = ctrlUsuario.listarNickEmpresas();
+        for(int i = 0; i <= listaEmpresas.size() - 1; i++) {
+        	comboBoxEmpresa.addItem(listaEmpresas.get(i));
+        }
+        
+        JLabel lblNewLabel = new JLabel("Seleccione una oferta");
+        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel.gridx = 0;
+        gbc_lblNewLabel.gridy = 1;
+        panel_1.add(lblNewLabel, gbc_lblNewLabel);
+        
+        JButton btnSelectOferta = new JButton("seleccionar");
         GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
         gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
         gbc_btnNewButton_2.gridx = 2;
         gbc_btnNewButton_2.gridy = 1;
-        panel_1.add(btnNewButton_2, gbc_btnNewButton_2);
+        panel_1.add(btnSelectOferta, gbc_btnNewButton_2);
+        btnSelectOferta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DTOfertaLaboral dtOf = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
+				System.out.println(dtOf);
+			}
+        });
+        
 	}
 
 }

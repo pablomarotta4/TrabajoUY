@@ -54,15 +54,23 @@ public class OfertaLaboral {
 		return fechaAlta;
 	}
 	
+	public String getNickEmpresa() {
+		return this.empresa.getNickname();
+	}
+	
 	public DTOfertaLaboral getDataType(){
 		List<DTPostulacion> listaDtPostulacion = new ArrayList<DTPostulacion>();
 		List<String> listaKeywords = new ArrayList<String>();
 		
-		for(int i = 0; i <= this.keywords.size() - 1; i++) {
-			listaKeywords.add(this.keywords.get(i).getKeyword());
+		if(listaDtPostulacion.size() > 0) {
+			for(int i = 0; i <= this.postulaciones.size() - 1; i++) {
+				listaDtPostulacion.add(postulaciones.get(i).getDatatype());
+			}
 		}
-		for(int i = 0; i <= this.postulaciones.size() - 1; i++) {
-			listaDtPostulacion.add(postulaciones.get(i).getDatatype());
+		if(listaKeywords.size() > 0) {
+			for(int i = 0; i <= this.keywords.size() - 1; i++) {
+				listaKeywords.add(this.keywords.get(i).getKeyword());
+			}
 		}
 		
 		return new DTOfertaLaboral(
