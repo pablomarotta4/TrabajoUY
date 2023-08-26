@@ -1,10 +1,12 @@
 package logica.interfaces;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
+import logica.datatypes.DataOfertaLaboral;
 import logica.entidades.Usuario;
 
 public interface IManejadorUsuario {
@@ -15,7 +17,8 @@ public interface IManejadorUsuario {
 	public Boolean existeUsuarioEmail(String email);
 	public Usuario buscarUsuario(String nick);
 	public void agregarUsuario(Usuario u);
-	
+	public List<String> listarNickUsuarios();
 	public Map<String, Usuario> getUsuarios();
+	public List<DataOfertaLaboral> obtenerOfertasPostulaciones(String nick);
 }
 		
