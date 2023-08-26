@@ -260,7 +260,7 @@ public class MainFrame {
 			+ "contribuir al mantenimiento eficiente";
 			this.ico.altaPostulacion(
 					"javierf", 
-					"Dise˜nador UX/UI", 
+					"Diseñador UX/UI", 
 					cv, 
 					motivacion, 
 					LocalDate.of(2023, 8, 13)
@@ -298,7 +298,7 @@ public class MainFrame {
 			+ "";
 			this.ico.altaPostulacion(
 					"lgarcia", 
-					"Estratega de Negocios ", 
+					"Estratega de Negocios", 
 					cv, 
 					motivacion, 
 					LocalDate.of(2023, 8, 16)

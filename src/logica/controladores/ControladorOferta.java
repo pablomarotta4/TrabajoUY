@@ -60,7 +60,6 @@ public class ControladorOferta implements IControladorOferta{
 			List<String> keywordsSeleccionadas
 	) throws ElementoRepetidoException, ElementoInexistenteException {
 		
-		System.out.println(keywordsSeleccionadas);
 		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);	
 		if(empresa == null) {
 			throw new ElementoInexistenteException("No existe una empresa con nickname " + nickEmpresa);
@@ -153,6 +152,7 @@ public class ControladorOferta implements IControladorOferta{
 			of.agregarPostulacion(pub);
 			postulante.agregarPostulacion(pub);
 			manejadorPostulacion.agregarPostulacion(pub);
+			System.out.println("Postulacion creada.");
 		} else {
 			throw new NoExisteInstancia("No existe una Oferta con ese nombre");
 		}

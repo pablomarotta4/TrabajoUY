@@ -25,4 +25,12 @@ public class DTPostulacion {
 		this.nickpostulante = nickPostulante;
 		this.nombreOferta = nombreOferta;
 	}
+	
+	public String getNickPostulante() {
+		return this.nickpostulante;
+	}
+	
+	public String toString() {
+		return "";
+	}
 }

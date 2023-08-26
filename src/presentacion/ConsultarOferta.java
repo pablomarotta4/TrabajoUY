@@ -3,6 +3,7 @@ package presentacion;
 import javax.swing.JInternalFrame;
 
 import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DTPostulacion;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
 
@@ -13,6 +14,8 @@ import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -56,7 +59,7 @@ public class ConsultarOferta extends JInternalFrame{
         });
 		
         JPanel panel_1 = new JPanel();
-        getContentPane().add(panel_1, BorderLayout.CENTER);
+        getContentPane().add(panel_1, BorderLayout.EAST);
         GridBagLayout gbl_panel_1 = new GridBagLayout();
         gbl_panel_1.columnWidths = new int[]{200, 300, 200};
         gbl_panel_1.rowHeights = new int[]{30, 30, 30, 30, 100, 30, 30, 30, 30, 30, 30, 30, 30, 90};
@@ -228,27 +231,15 @@ public class ConsultarOferta extends JInternalFrame{
         panel_1.add(textFechaAlta, gbc_textFechaAlta);
         
         
-        JLabel lblNewLabel_8 = new JLabel("Postulaciones: ");
-        GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
-        gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_8.gridx = 0;
-        gbc_lblNewLabel_8.gridy = 10;
-        panel_1.add(lblNewLabel_8, gbc_lblNewLabel_8);
+        
+        
         
         JLabel lblNewLabel_9 = new JLabel("Empresa: ");
         GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
         gbc_lblNewLabel_9.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_9.gridx = 0;
-        gbc_lblNewLabel_9.gridy = 11;
+        gbc_lblNewLabel_9.gridy = 10;
         panel_1.add(lblNewLabel_9, gbc_lblNewLabel_9);
-        JTextField textEmpresa = new JTextField();
-        GridBagConstraints gbc_textEmpresa = new GridBagConstraints();
-        gbc_textEmpresa.insets = new Insets(5, 5, 5, 5);
-        gbc_textEmpresa.gridx = 1;
-        gbc_textEmpresa.gridy = 11;
-        gbc_textEmpresa.fill = GridBagConstraints.HORIZONTAL;
-        textEmpresa.setEditable(false);
-        panel_1.add(textEmpresa, gbc_textEmpresa);
         
 
         JLabel lblNewLabel = new JLabel("Seleccione una oferta");
@@ -264,21 +255,63 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_btnNewButton_2.gridx = 2;
         gbc_btnNewButton_2.gridy = 1;
         panel_1.add(btnSelectOferta, gbc_btnNewButton_2);
+        JTextField textEmpresa = new JTextField();
+        GridBagConstraints gbc_textEmpresa = new GridBagConstraints();
+        gbc_textEmpresa.insets = new Insets(5, 5, 5, 5);
+        gbc_textEmpresa.gridx = 1;
+        gbc_textEmpresa.gridy = 10;
+        gbc_textEmpresa.fill = GridBagConstraints.HORIZONTAL;
+        textEmpresa.setEditable(false);
+        panel_1.add(textEmpresa, gbc_textEmpresa);
         
         JLabel lblNewLabel_10 = new JLabel("Keywords: ");
         GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
         gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_10.gridx = 0;
-        gbc_lblNewLabel_10.gridy = 12;
+        gbc_lblNewLabel_10.gridy = 11;
         panel_1.add(lblNewLabel_10, gbc_lblNewLabel_10);
         JComboBox<String> comboBoxKeywords = new JComboBox<String>();
         GridBagConstraints gbc_comboKeywords = new GridBagConstraints();
         gbc_comboKeywords.insets = new Insets(0, 0, 5, 5);
         gbc_comboKeywords.gridx = 1;
         gbc_comboKeywords.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboKeywords.gridy = 12;
+        gbc_comboKeywords.gridy = 11;
         panel_1.add(comboBoxKeywords, gbc_comboKeywords);
-
+        
+        
+        JLabel lblNewLabel_8 = new JLabel("Postulan: ");
+        GridBagConstraints gbc_lblNewLabel_8 = new GridBagConstraints();
+        gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel_8.gridx = 0;
+        gbc_lblNewLabel_8.gridy = 12;
+        panel_1.add(lblNewLabel_8, gbc_lblNewLabel_8);
+        
+        JComboBox<String> comboPostulaciones = new JComboBox<String>();
+        GridBagConstraints gbc_comboPostulaciones = new GridBagConstraints();
+        gbc_comboPostulaciones.insets = new Insets(0, 0, 5, 5);
+        gbc_comboPostulaciones.gridx = 1;
+        gbc_comboPostulaciones.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboPostulaciones.gridy = 12;
+        panel_1.add(comboPostulaciones, gbc_comboPostulaciones);
+        
+        JLabel lblNewLabel_11 = new JLabel("Datos del postulante");
+        GridBagConstraints gbc_lblNewLabel_11 = new GridBagConstraints();
+        gbc_lblNewLabel_11.insets = new Insets(0, 0, 0, 5);
+        gbc_lblNewLabel_11.gridx = 0;
+        gbc_lblNewLabel_11.gridy = 13;
+        panel_1.add(lblNewLabel_11, gbc_lblNewLabel_11);
+        
+        JPanel panelCv = new JPanel();
+        GridBagConstraints gbc_panelCv = new GridBagConstraints();
+        gbc_panelCv.insets = new Insets(0, 0, 0, 5);
+        gbc_panelCv.gridx = 1;
+        gbc_panelCv.gridy = 13;
+        panel_1.add(panelCv, gbc_panelCv);
+		JScrollPane scrollPaneCv = new JScrollPane();
+		GridBagConstraints gbc_scrollPaneCv = new GridBagConstraints();
+		gbc_scrollPaneCv.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPaneCv.fill = GridBagConstraints.BOTH;
+		panelCv.add(scrollPaneCv);
         
         
         btnSelectOferta.addActionListener(new ActionListener() {
@@ -293,9 +326,12 @@ public class ConsultarOferta extends JInternalFrame{
 				textFechaAlta.setText(dtOf.getFechaAlta().toString());
 				textEmpresa.setText(dtOf.getNombreEmpresa());
 				List<String> listaKeywords = dtOf.getKeywords();
-				System.out.println(listaKeywords);
 				for(int i = 0; i <= listaKeywords.size() - 1; i++) {
 					comboBoxKeywords.addItem(listaKeywords.get(i));
+				}
+				List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
+				for(int i = 0; i <= listaPostulaciones.size() - 1; i++) {
+					comboPostulaciones.addItem(listaPostulaciones.get(i).getNickPostulante());
 				}
 			}
         });
