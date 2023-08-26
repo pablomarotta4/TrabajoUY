@@ -11,6 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import java.awt.GridBagConstraints;
 import javax.swing.JComboBox;
@@ -19,20 +20,28 @@ import javax.swing.JFrame;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+
+import excepciones.CamposVaciosExcepcion;
+import excepciones.ElementoInexistenteException;
+import excepciones.ElementoRepetidoException;
+
 import javax.swing.JButton;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.awt.TextArea;
 
@@ -42,13 +51,13 @@ public class CrearOfertaLaboral extends JInternalFrame{
 	private IControladorUsuario ctrlUsuario;
 	private IControladorCompraTipo ctrlTipo;
 	private JTextField textNombreOferta;
-	private JTextField textHorario;
 	private JTextField textRemuneracion;
 	private JTextField textCiudad;
 	private JTextField textDepartamento;
 	private JTextField textFecha;
 	
 	public CrearOfertaLaboral(IControladorOferta cop, IControladorUsuario cus, IControladorCompraTipo cct) {
+		
 		ctrlOferta = cop;	
 		ctrlUsuario = cus;
 		ctrlTipo = cct;
@@ -81,7 +90,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         // ####################### Fila 1 ###############################
         JLabel lblEmpresa = new JLabel("Seleccionar empresa");
         GridBagConstraints gbc_lblEmpresa = new GridBagConstraints();
-        gbc_lblEmpresa.anchor = GridBagConstraints.WEST;
+        gbc_lblEmpresa.anchor = GridBagConstraints.EAST;
         gbc_lblEmpresa.insets = new Insets(0, 0, 5, 5);
         gbc_lblEmpresa.fill = GridBagConstraints.VERTICAL;
         gbc_lblEmpresa.gridx = 1;
@@ -108,7 +117,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         //######################### Fila 2 #############################
         JLabel lblTipoPublicacion = new JLabel("Seleccionar tipo de publicacion");
         GridBagConstraints gbc_lblTipoPublicacion = new GridBagConstraints();
-        gbc_lblTipoPublicacion.anchor = GridBagConstraints.WEST;
+        gbc_lblTipoPublicacion.anchor = GridBagConstraints.EAST;
         gbc_lblTipoPublicacion.fill = GridBagConstraints.VERTICAL;
         gbc_lblTipoPublicacion.insets = new Insets(0, 0, 5, 5);
         gbc_lblTipoPublicacion.gridx = 1;
@@ -133,7 +142,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
       //######################### Fila 3 #############################
         JLabel lblNewLabel = new JLabel("Nombre de la oferta");
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-        gbc_lblNewLabel.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel.gridx = 1;
         gbc_lblNewLabel.gridy = 2;
@@ -151,7 +160,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
       //######################### Fila 4 #############################
 		JLabel lblNewLabel_1 = new JLabel("Descripcion");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 1;
 		gbc_lblNewLabel_1.gridy = 3;
@@ -174,27 +183,37 @@ public class CrearOfertaLaboral extends JInternalFrame{
       //######################### Fila 5 #############################
         JLabel lblNewLabel_2 = new JLabel("Horario");
         GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-        gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_2.gridx = 1;
         gbc_lblNewLabel_2.gridy = 4;
         getContentPane().add(lblNewLabel_2, gbc_lblNewLabel_2);
         
-        textHorario = new JTextField();
-        GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-        gbc_textField_2.insets = new Insets(0, 30, 5, 30);
-        gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textField_2.gridx = 2;
-        gbc_textField_2.gridy = 4;
-        getContentPane().add(textHorario, gbc_textField_2);
-        textHorario.setColumns(10);
+        JPanel panelHorario = new JPanel();
+        GridBagConstraints gbc_panelHorario = new GridBagConstraints();
+        gbc_panelHorario.anchor = GridBagConstraints.WEST;
+        gbc_panelHorario.insets = new Insets(0, 0, 5, 5);
+        gbc_panelHorario.gridx = 2;
+        gbc_panelHorario.gridy = 4;
+        gbc_panelHorario.fill = GridBagConstraints.HORIZONTAL;
+        panelHorario.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        JLabel entrada = new JLabel("Entrada");
+        JTextField textEntrada = new JTextField();
+        textEntrada.setColumns(3);
+        JLabel salida = new JLabel("Salida");
+        JTextField textSalida = new JTextField();
+        textSalida.setColumns(3);
+        panelHorario.add(entrada);
+        panelHorario.add(textEntrada);
+        panelHorario.add(salida);
+        panelHorario.add(textSalida);
+        getContentPane().add(panelHorario, gbc_panelHorario);
 
-        
 
       //######################### Fila 6 #############################
         JLabel lblNewLabel_3 = new JLabel("Remuneracion");
         GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-        gbc_lblNewLabel_3.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_3.gridx = 1;
         gbc_lblNewLabel_3.gridy = 5;
@@ -212,7 +231,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
       //######################### Fila 7 #############################
         JLabel lblNewLabel_4 = new JLabel("Ciudad");
         GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-        gbc_lblNewLabel_4.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_4.gridx = 1;
         gbc_lblNewLabel_4.gridy = 6;
@@ -229,7 +248,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         JLabel lblNewLabel_5 = new JLabel("Departamento");
         GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-        gbc_lblNewLabel_5.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_5.gridx = 1;
         gbc_lblNewLabel_5.gridy = 7;
@@ -247,24 +266,41 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         JLabel lblNewLabel_6 = new JLabel("Fecha");
         GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
-        gbc_lblNewLabel_6.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_6.gridx = 1;
         gbc_lblNewLabel_6.gridy = 8;
         getContentPane().add(lblNewLabel_6, gbc_lblNewLabel_6);
         
-        textFecha = new JTextField();
-        GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-        gbc_textField_5.insets = new Insets(0, 30, 5, 30);
-        gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textField_5.gridx = 2;
-        gbc_textField_5.gridy = 8;
-        getContentPane().add(textFecha, gbc_textField_5);
-        textFecha.setColumns(10);
-
+        JPanel panelFecha = new JPanel();
+        GridBagConstraints gbc_panelFecha = new GridBagConstraints();
+        gbc_panelFecha.anchor = GridBagConstraints.WEST;
+        gbc_panelFecha.insets = new Insets(0, 0, 5, 5);
+        gbc_panelFecha.gridx = 2;
+        gbc_panelFecha.gridy = 8;
+        gbc_panelFecha.fill = GridBagConstraints.HORIZONTAL;
+        
+        panelFecha.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        JLabel dia = new JLabel("Dia");
+        JTextField textDia =new JTextField();
+        textDia.setColumns(3);
+        JLabel mes = new JLabel("Mes");
+        JTextField textMes = new JTextField();
+        textMes.setColumns(3);
+        JLabel year = new JLabel("Año");
+        JTextField textYear = new JTextField();
+        textYear.setColumns(3);
+        panelFecha.add(dia);
+        panelFecha.add(textDia);
+        panelFecha.add(mes);
+        panelFecha.add(textMes);
+        panelFecha.add(year);
+        panelFecha.add(textYear);
+        getContentPane().add(panelFecha, gbc_panelFecha);
+        
         JLabel lblNewLabel_7 = new JLabel("Keywords");
         GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
-        gbc_lblNewLabel_7.anchor = GridBagConstraints.WEST;
+        gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_7.gridx = 1;
         gbc_lblNewLabel_7.gridy = 9;
@@ -296,9 +332,10 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_btnAgregarKeyword.anchor = GridBagConstraints.WEST;
         gbc_btnAgregarKeyword.gridx = 1;
         gbc_btnAgregarKeyword.gridy = 11;
+        List<String> selectedKeywords = new ArrayList<String>();
         btnAgregarKeyword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listKeywords.add(comboKeywords.getSelectedItem().toString()); 				
+				selectedKeywords.add(comboKeywords.getSelectedItem().toString()); 				
 				System.out.println(comboKeywords.getSelectedItem().toString() + "agregada");
 			}
         });
@@ -317,17 +354,33 @@ public class CrearOfertaLaboral extends JInternalFrame{
         // Se crea la oferta a darle aceptar
         btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+        		JFrame frame = new JFrame("Popup");
 				try {
+
 					String nombreOferta = textNombreOferta.getText();
 					String descripcion = textDescripcion.getText();
-					String horario = textHorario.getText();
-				
-					float remuneracion = Float.parseFloat(textRemuneracion.getText());
 					
+					String horaEntrada = textEntrada.getText();
+					String horaSalida = textSalida.getText();
+					String horario = horaEntrada + " - " + horaSalida;
+					
+					float remuneracion = Float.parseFloat(textRemuneracion.getText());
 					String ciudad = textCiudad.getText();
 					String departamento = textDepartamento.getText();
-					LocalDate fecha = LocalDate.of(2000, 1 , 1);
 					
+					Integer dia = Integer.parseInt(textDia.getText());
+					Integer mes = Integer.parseInt(textMes.getText());
+					Integer year = Integer.parseInt(textYear.getText());
+					LocalDate fecha = LocalDate.of(year, mes , dia);
+					
+					boolean algunCampoVacio = nombreOferta.isEmpty() || descripcion.isEmpty() || horaEntrada.isEmpty() || horaSalida.isEmpty() ||
+							textRemuneracion.getText().isEmpty() || ciudad.isEmpty() || departamento.isEmpty() ||
+							textDia.getText().isEmpty() || textMes.getText().isEmpty() || textYear.getText().isEmpty() ;
+					
+					if(algunCampoVacio) {
+						throw new CamposVaciosExcepcion("Complete todos los campos");
+					}
+ 							
 					ctrlOferta.altaOfertaLaboral(
 							comboBoxEmpresa.getSelectedItem().toString(), 
 							comboBoxTipoPublicacion.getSelectedItem().toString(), 
@@ -338,14 +391,51 @@ public class CrearOfertaLaboral extends JInternalFrame{
 							ciudad,
 							departamento,
 							fecha,
-							listKeywords
+							selectedKeywords
 					);
 					
-					System.out.println("oferta creada");
-					
+      				JOptionPane.showMessageDialog(
+    						frame,
+    						"Oferta creada con éxito!",
+    						"Éxito",
+    						JOptionPane.INFORMATION_MESSAGE
+						);
 					dispose();
-				}  catch(NumberFormatException ex) {
-
+				} catch(ElementoRepetidoException ex) {
+      				JOptionPane.showMessageDialog(
+    						frame,
+    						ex.getMessage(),
+    						"Error",
+    						JOptionPane.ERROR_MESSAGE
+					);
+				} catch(ElementoInexistenteException ex) {
+      				JOptionPane.showMessageDialog(
+    						frame,
+    						ex.getMessage(),
+    						"Error",
+    						JOptionPane.ERROR_MESSAGE
+					);
+				} catch(CamposVaciosExcepcion ex) {
+      				JOptionPane.showMessageDialog(
+    						frame,
+    						ex.getMessage(),
+    						"Error",
+    						JOptionPane.ERROR_MESSAGE
+					);
+				} catch(NumberFormatException ex) {
+      				JOptionPane.showMessageDialog(
+    						frame,
+    						"Formato incorrecto",
+    						"Error",
+    						JOptionPane.ERROR_MESSAGE
+					);
+				} catch(DateTimeException ex) {
+					JOptionPane.showMessageDialog(
+    						frame,
+    						"Fecha invalida. Ingrese denuevo.",
+    						"Error",
+    						JOptionPane.ERROR_MESSAGE
+					);
 				}
 			}
         });

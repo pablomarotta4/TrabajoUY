@@ -75,6 +75,10 @@ public class ControladorUsuario implements IControladorUsuario{
 	public Empresa getEmpresa(String nickEmpresa) {
 		return (Empresa) manejadorUsuario.buscarUsuario(nickEmpresa);
 	}
+	
+	public Postulante getPostulante(String nickPostulante) {
+		return (Postulante) manejadorUsuario.buscarUsuario(nickPostulante);
+	}
 
 	public List<DataOfertaLaboral> consultarPostulaciones(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
@@ -83,5 +87,11 @@ public class ControladorUsuario implements IControladorUsuario{
 	public List<DataOfertaLaboral> consultarOfertas(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
+
+//	@Override
+//	public List<String> listarNickPostulantes() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

@@ -6,10 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 import logica.datatypes.DTOfertaLaboral;
+import logica.interfaces.Factory;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
@@ -24,6 +27,7 @@ import javax.swing.JComboBox;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -50,10 +54,13 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
 	private JTextField textField_14;
 	private JTextField textField_15;
 	private JTextField textField_16;
-		
+
 	
-	public PostulacionAOfertaLaboral(IControladorUsuario icu, IControladorOferta ico) {
+	public PostulacionAOfertaLaboral() {
 		
+		Factory f = Factory.getInstance();
+		IControladorOferta ico = f.getControladorOferta();
+		IControladorUsuario icu = f.getControladorUsuario();
 		
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setClosable(true);
@@ -171,7 +178,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         
         
         comboBox_1.addActionListener((ActionListener) new ActionListener() {
-        	@SuppressWarnings("deprecation")
+        	
 			public void actionPerformed(ActionEvent arg0) {
 		
         		if (comboBox_1.getSelectedItem() == "" || comboBox_1.getSelectedItem() == null) {
@@ -203,9 +210,9 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         			textArea.setText(datosOferta.getDescripcion());
         //keyword	textArea_3.setText(datosOferta.get);
         			
-        			Date fecha = datosOferta.getFechaAlta();
-        			Integer dia = fecha.getDay();
-        			Integer mes = fecha.getMonth();
+        			LocalDate fecha = datosOferta.getFechaAlta();
+        			Integer dia = fecha.getDayOfMonth();
+        			Integer mes = fecha.getMonth().getValue();
         			Integer anio = fecha.getYear();
         			
         			textField_10.setText(dia.toString());
@@ -525,13 +532,30 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         JButton btnNewButton = new JButton("Aceptar");
         btnNewButton.addActionListener((ActionListener) new ActionListener() {
         	public void actionPerformed(ActionEvent arg0) {
-        		// campos a devolver
-        		String empresaFinal = comboBox_0.getSelectedItem().toString();
-        		String ofertaFinal = comboBox_1.getSelectedItem().toString();
-        		String postulanteFinal = comboBox.getSelectedItem().toString();
-        		String motivacionFinal = textArea_1.getText();
-        		String cvReducidoFinal = textArea_2.getText();
-        		Date fechaFinal;
+        		JFrame frame = new JFrame("Ejemplo de Popup");
+                frame.setSize(300, 150);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        		
+    			try {
+        			// campos a devolver
+        			String ofertaFinal = comboBox_1.getSelectedItem().toString();
+        			String postulanteFinal = comboBox.getSelectedItem().toString();
+        			String motivacionFinal = textArea_1.getText();
+        			String cvReducidoFinal = textArea_2.getText();
+        			LocalDate fechaFinal = LocalDate.of(Integer.parseInt(textField_14.getText()),Integer.parseInt(textField_15.getText()), Integer.parseInt(textField_16.getText())); // año mes dia
+        			ico.altaPostulacion(postulanteFinal, ofertaFinal, cvReducidoFinal, motivacionFinal, fechaFinal);
+        			JOptionPane.showMessageDialog(frame, "La operacion se ah realizado con exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+        			dispose();
+        		} catch(ElementoRepetidoException e) {
+        			JOptionPane.showMessageDialog(frame, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
+        		} catch(NoExisteInstancia e) {
+        			JOptionPane.showMessageDialog(frame, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
+        		}
+        		
+        		
+        		
+
+        		
         	}
         });
         panel_3.add(btnNewButton);

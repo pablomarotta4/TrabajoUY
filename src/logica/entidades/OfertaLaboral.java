@@ -92,4 +92,22 @@ public class OfertaLaboral {
 			this.empresa.getNickname()
 		);
 	}
+	
+	public boolean estaPostulado(String nickname) {
+		System.out.println(postulaciones);
+		int i = 0;
+		boolean b = false;
+		while((i < postulaciones.size()) && !b) {
+			if(postulaciones.get(i).getPostulante().getNickname() == nickname) {
+				b = true;
+			}
+			i++;
+			System.out.println("yah");
+		}
+		return b;
+	}
+	
+	public void agregarPostulacion(Postulacion p) {
+		this.postulaciones.add(p);
+	}
 }

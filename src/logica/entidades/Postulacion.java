@@ -1,5 +1,6 @@
 package logica.entidades;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import logica.datatypes.DTPostulacion;
@@ -8,15 +9,15 @@ public class Postulacion {
 
 	private String cvReducido;
 	private String motivacion;
-	private Date fechaPostulacion;
+	private LocalDate fechaPostulacion;
 	private OfertaLaboral ofertaLaboral;
 	private Postulante postulante;
 
-	public Postulacion(String cvReducido, String motivacion,Date fechaPostulacion, Postulante postulante, OfertaLaboral of) {
+	public Postulacion(String cvReducido, String motivacion, LocalDate fechaPostulacion, Postulante postulante, OfertaLaboral of) {
 		this.cvReducido = cvReducido;
 		this.motivacion = motivacion;
-		this.setFechaPostulacion(fechaPostulacion);
-		this.setPostulante(postulante);
+		this.fechaPostulacion = fechaPostulacion;
+		this.postulante = postulante;
 		this.ofertaLaboral = of;
 	}
 	public String getMotivacion() {
@@ -37,10 +38,10 @@ public class Postulacion {
 	public void setPostulante(Postulante postulante) {
 		this.postulante = postulante;
 	}
-	public Date getFechaPostulacion() {
+	public LocalDate getFechaPostulacion() {
 		return fechaPostulacion;
 	}
-	public void setFechaPostulacion(Date fechaPostulacion) {
+	public void setFechaPostulacion(LocalDate fechaPostulacion) {
 		this.fechaPostulacion = fechaPostulacion;
 	}
 	public OfertaLaboral getOfertaLaboral() {
