@@ -222,14 +222,14 @@ public class MainFrame {
 	public void cargarPostulaciones() {
 		try {
 			String cv = 
-			"Licenciada en Administraci´on,\r\n"
-			+ "experiencia en gesti´on de equipos\r\n"
-			+ "y proyectos. Conocimientos en\r\n"
+			"Licenciada en Administración, \n"
+			+ "experiencia en gestión de equipos \n"
+			+ "y proyectos. Conocimientos en \n"
 			+ "Microsoft Office";
 					
 			String motivacion = 
-			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
-			+ "equipo din´amico y contribuir con\r\n"
+			"Estoy emocionada por la oportunidad de formar parte de un \n"
+			+ "equipo dinámico y contribuir con \n"
 			+ "mis habilidades de liderazgo.\r\n"
 			+ "";
 			this.ico.altaPostulacion(
@@ -241,13 +241,13 @@ public class MainFrame {
 			);
 			
 			cv = 
-			"Estudiante de Comunicaci´on, habilidades en redacci´on y manejo\r\n"
-			+ "de redes sociales. Experiencia en\r\n"
-			+ "pr´acticas en medios locales";
+			"Estudiante de Comunicación, habilidades en redacción y manejo \n"
+			+ "de redes sociales. Experiencia en \n"
+			+ "prácticas en medios locales";
 					
 			motivacion = 
-			"Me encantar´ıa formar parte de\r\n"
-			+ "un equipo que me permita desarrollar mis habilidades en comunicaci´on "
+			"Me encantaría formar parte de \n"
+			+ "un equipo que me permita desarorollar mis habilidades en comunicación "
 			+ "y marketing.";
 			this.ico.altaPostulacion(
 					"matilo", 
@@ -258,15 +258,15 @@ public class MainFrame {
 			);
 			
 			cv = 
-			"Ingeniero en Sistemas, experiencia en desarrollo web "
-			+ "y aplicaciones m´oviles. Conocimientos\r\n"
+			"Ingeniero en Sistemas, experiencia en desarrollo web "
+			+ "y aplicaciones móviles. Conocimientos\r\n"
 			+ "en JavaScript y React.";
 					
 			motivacion = 
 			"Me entusiasma la posibilidad de\r\n"
 			+ "trabajar en proyectos desafiantes\r\n"
 			+ "y seguir creciendo "
-			+ "como profesional en el campo de la tecnolog´ıa.";
+			+ "como profesional en el campo de la tecnología.";
 			this.ico.altaPostulacion(
 					"maro", 
 					"Desarrollador Frontend", 
@@ -276,14 +276,14 @@ public class MainFrame {
 			);
 			
 			cv = 
-			"T´ecnico en Electricidad, "
-			+ "experiencia en mantenimiento industrial. Conocimientos en lectura\r\n"
-			+ "de planos el´ectricos.";
+			"Técnico en Electricidad, "
+			+ "experiencia en mantenimiento industrial. Conocimientos en lectura\r\n"
+			+ "de planos eléctricos.";
 					
 			motivacion = 
-			"Estoy interesado en formar parte\r\n"
-			+ "de un equipo que me permita\r\n"
-			+ "aplicar mis habilidades t´ecnicas y\r\n"
+			"Estoy interesado en formar parte \n"
+			+ "de un equipo que me permita \n"
+			+ "aplicar mis habilidades t´ecnicas y \n"
 			+ "contribuir al mantenimiento eficiente";
 			this.ico.altaPostulacion(
 					"javierf", 
@@ -294,13 +294,13 @@ public class MainFrame {
 			);
 			
 			cv = 
-			"M´usico profesional, experiencia\r\n"
-			+ "en espect´aculos en vivo. Habilidades en canto y guitarra.\r\n"
+			"Músico profesional, experiencia\r\n"
+			+ "en espectáculos en vivo. Habilidades en canto y guitarra. \n"
 			+ "";
 					
 			motivacion = 
-			"Me gustar´ıa combinar mi pasi´on\r\n"
-			+ "por la m´usica con una oportunidad laboral que me permita\r\n"
+			"Me gustar´ıa combinar mi pasión \n"
+			+ "por la música con una oportunidad laboral que me permita \n"
 			+ "seguir creciendo como artista.\r\n"
 			+ "";
 			this.ico.altaPostulacion(
@@ -312,14 +312,14 @@ public class MainFrame {
 			);
 			
 			cv = 
-			"Licenciada en Administraci´on,\r\n"
+			"Licenciada en Administración,\r\n"
 			+ "me considero genia, experiencia\r\n"
-			+ "en gesti´on de equipos y proyectos. Conocimientos en Microsoft\r\n"
+			+ "en gestión de equipos y proyectos. Conocimientos en Microsoft\r\n"
 			+ "Office";
 					
 			motivacion = 
-			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
-			+ "equipo din´amico y contribuir con\r\n"
+			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
+			+ "equipo dinámico y contribuir con\r\n"
 			+ "mis habilidades de liderazgo.\r\n"
 			+ ""
 			+ "";
@@ -638,111 +638,92 @@ public class MainFrame {
 			);	
 			// CARGA DE EMPRESAS
 			String desc = 
-					"EcoTech Innovations es una empresa l´ıder en soluciones tec-\r\n"
-					+ "nol´ogicas sostenibles. Nuestro enfoque se centra en desar-\r\n"
-					+ "rollar y comercializar productos y servicios que aborden los\r\n"
-					+ "desaf´ıos ambientales m´as apremiantes de nuestro tiempo.\r\n"
-					+ "Desde sistemas de energ´ıa renovable y dispositivos de mon-\r\n"
-					+ "itorizaci´on ambiental hasta soluciones de gesti´on de resid-\r\n"
-					+ "uos inteligentes, nuestra misi´on es proporcionar herramien-\r\n"
-					+ "tas que permitan a las empresas y comunidades adop-\r\n"
-					+ "tar pr´acticas m´as ecol´ogicas sin comprometer la eficiencia.\r\n"
-					+ "Creemos en la convergencia armoniosa entre la tecnolog´ıa y\r\n"
-					+ "la naturaleza, y trabajamos incansablemente para impulsar\r\n"
-					+ "un futuro m´as limpio y sostenible.";
+			        "EcoTech Innovations es una empresa líder en soluciones tecnológicas sostenibles. "
+			        + "Nuestro enfoque se centra en desarrollar y comercializar productos y servicios que "
+			        + "aborden los desafíos ambientales más apremiantes de nuestro tiempo.\n"
+			        + "Desde sistemas de energía renovable y dispositivos de monitorización ambiental hasta "
+			        + "soluciones de gestión de residuos inteligentes, nuestra misión es proporcionar herramientas "
+			        + "que permitan a las empresas y comunidades adoptar prácticas más ecológicas sin comprometer la eficiencia.\n"
+			        + "Creemos en la convergencia armoniosa entre la tecnología y la naturaleza, y trabajamos "
+			        + "incansablemente para impulsar un futuro más limpio y sostenible.";
 			this.icu.crearEmpresa(
-					"EcoTech", 
-					"Sophia", 
-					"Johnson", 
-					"info@EcoTech.com", 
-					desc, 
-					"http://www.EcoTechInnovations.com"
+			        "EcoTech", 
+			        "Sophia", 
+			        "Johnson", 
+			        "info@EcoTech.com", 
+			        desc, 
+			        "http://www.EcoTechInnovations.com"
 			);
-			
-			
+
 			desc = 
-				"FusionTech Dynamics es una empresa pionera en el ´ambito\r\n"
-				+ "de la inteligencia artificial y la automatizaci´on avanzada.\r\n"
-				+ "Nuestro equipo multidisciplinario de ingenieros, cient´ıficos\r\n"
-				+ "de datos y desarrolladores crea soluciones innovadoras que\r\n"
-				+ "aprovechan la potencia de la IA para transformar indus-\r\n"
-				+ "trias. Desde la optimizaci´on de procesos industriales hasta\r\n"
-				+ "la creaci´on de asistentes virtuales altamente personalizados,\r\n"
-				+ "nuestro objetivo es revolucionar la forma en que las empre-\r\n"
-				+ "sas operan y se conectan con sus clientes. Creemos en la\r\n"
-				+ "sinergia entre la mente humana y las capacidades de la IA,\r\n"
-				+ "y trabajamos para construir un mundo donde la tecnolog´ıa\r\n"
-				+ "mejore y ampl´ıe nuestras capacidades innatas." ;
+			    "FusionTech Dynamics es una empresa pionera en el ámbito de la inteligencia artificial y la "
+			    + "automatización avanzada.\n"
+			    + "Nuestro equipo multidisciplinario de ingenieros, científicos de datos y desarrolladores crea "
+			    + "soluciones innovadoras que aprovechan la potencia de la IA para transformar industrias. "
+			    + "Desde la optimización de procesos industriales hasta la creación de asistentes virtuales "
+			    + "altamente personalizados, nuestro objetivo es revolucionar la forma en que las empresas operan y "
+			    + "se conectan con sus clientes.\n"
+			    + "Creemos en la sinergia entre la mente humana y las capacidades de la IA, y trabajamos para "
+			    + "construir un mundo donde la tecnología mejore y amplíe nuestras capacidades innatas.";
 			this.icu.crearEmpresa(
-					"FusionTech", 
-					"William", 
-					"Smith", 
-					"contacto@FusionTech.net", 
-					desc, 
-					"http://www.FusionTechDynamics.net"
+			        "FusionTech", 
+			        "William", 
+			        "Smith", 
+			        "contacto@FusionTech.net", 
+			        desc, 
+			        "http://www.FusionTechDynamics.net"
 			);
 			desc = 
-				"GlobalHealth Dynamics es una empresa comprometida con\r\n"
-				+ "el avance de la atenci´on m´edica a nivel mundial. Como\r\n"
-				+ "l´ıderes en el campo de la salud digital, desarrollamos\r\n"
-				+ "plataformas y herramientas que permiten a los profesionales\r\n"
-				+ "de la salud ofrecer diagn´osticos m´as precisos, tratamien-\r\n"
-				+ "tos personalizados y seguimiento continuo de los pacientes.\r\n"
-				+ "Nuestra visi´on es crear un ecosistema de salud conectado en\r\n"
-				+ "el que los datos m´edicos se utilicen de manera ´etica y segura\r\n"
-				+ "para mejorar la calidad de vida de las personas. A trav´es\r\n"
-				+ "de la innovaci´on constante y la colaboraci´on con exper-\r\n"
-				+ "tos m´edicos, estamos dando forma al futuro de la atenci´on\r\n"
-				+ "m´edica, donde la tecnolog´ıa y la compasi´on se unen para\r\n"
-				+ "salvar vidas y mejorar el bienestar en todo el mundo.";
+			    "GlobalHealth Dynamics es una empresa comprometida con el avance de la atención médica a nivel mundial. "
+			    + "Como líderes en el campo de la salud digital, desarrollamos plataformas y herramientas que permiten a los "
+			    + "profesionales de la salud ofrecer diagnósticos más precisos, tratamientos personalizados y seguimiento continuo de los pacientes.\n"
+			    + "Nuestra visión es crear un ecosistema de salud conectado en el que los datos médicos se utilicen de "
+			    + "manera ética y segura para mejorar la calidad de vida de las personas. A través de la innovación constante "
+			    + "y la colaboración con expertos médicos, estamos dando forma al futuro de la atención médica, donde la tecnología "
+			    + "y la compasión se unen para salvar vidas y mejorar el bienestar en todo el mundo.";
 			this.icu.crearEmpresa(
-					"GlobalHealth", 
-					"Isabella", 
-					"Brown", 
-					"jobs@GlobalHealth.uy", 
-					desc, 
-					"http://www.GlobalHealthDynamics.uy/info"
+			        "GlobalHealth", 
+			        "Isabella", 
+			        "Brown", 
+			        "jobs@GlobalHealth.uy", 
+			        desc, 
+			        "http://www.GlobalHealthDynamics.uy/info"
 			);
 			desc = 
-				"En Antel te brindamos servicios de vanguardia en tec-\r\n"
-				+ "nolog´ıa de comunicaci´on en Telefon´ıa M´ovil, Fija, Banda\r\n"
-				+ "Ancha y Datos";
+			    "En Antel te brindamos servicios de vanguardia en tecnología de comunicación en Telefonía Móvil, Fija, Banda Ancha y Datos.";
 			this.icu.crearEmpresa(
-					"ANTEL", 
-					"Washington", 
-					"Rocha", 
-					"jarrington@ANTEL.com.uy", 
-					desc, 
-					"ANTEL.com.uy"
+			        "ANTEL", 
+			        "Washington", 
+			        "Rocha", 
+			        "jarrington@ANTEL.com.uy", 
+			        desc, 
+			        "ANTEL.com.uy"
 			);
 			desc = 
-				"Balance Energ´etico Nacional (BEN). La Direcci´on Nacional\r\n"
-				+ "de Energ´ıa (DNE) del Ministerio de Industria, Energ´ıa y\r\n"
-				+ "Miner´ıa (MIEM) presenta anualmente el BEN.";
+			    "Balance Energético Nacional (BEN). La Dirección Nacional de Energía (DNE) del Ministerio de Industria, Energía y Minería (MIEM) "
+			    + "presenta anualmente el BEN.";
 			this.icu.crearEmpresa(
-					"MIEM", 
-					"Pablo", 
-					"Bengoechea", 
-					"eldiez@MIEM.org.uy", 
-					desc, 
-					"http://www.EcoTechInnovations.com"
+			        "MIEM", 
+			        "Pablo", 
+			        "Bengoechea", 
+			        "eldiez@MIEM.org.uy", 
+			        desc, 
+			        "http://www.EcoTechInnovations.com"
 			);
 			desc = 
-				"”TechSolutions Inc.” es una empresa l´ıder en el sector de\r\n"
-				+ "tecnolog´ıa de la informaci´on y el software. Se especializa\r\n"
-				+ "en el desarrollo de soluciones de software personalizadas\r\n"
-				+ "para empresas de diversos tama˜nos y sectores. Su enfoque\r\n"
-				+ "se centra en la creaci´on de aplicaciones empresariales in-\r\n"
-				+ "novadoras que optimizan procesos, mejoran la eficiencia y\r\n"
-				+ "brindan una ventaja competitiva a sus clientes.";
+			    "\"TechSolutions Inc.\" es una empresa líder en el sector de tecnología de la información y el software."
+			    + " Se especializa en el desarrollo de soluciones de software personalizadas para empresas de diversos tamaños y sectores. "
+			    + "Su enfoque se centra en la creación de aplicaciones empresariales innovadoras que optimizan procesos, mejoran la eficiencia "
+			    + "y brindan una ventaja competitiva a sus clientes.";
 			this.icu.crearEmpresa(
-					"TechSolutions", 
-					"Mercedes", 
-					"Venn", 
-					"Mercedes@TechSolutions.com.uy", 
-					desc, 
-					"TechSolutions.com"
+			        "TechSolutions", 
+			        "Mercedes", 
+			        "Venn", 
+			        "Mercedes@TechSolutions.com.uy", 
+			        desc, 
+			        "TechSolutions.com"
 			);
+
 			
 			
 			JOptionPane.showMessageDialog(

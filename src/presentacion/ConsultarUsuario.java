@@ -321,6 +321,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextArea mostrarDescripcion = new JTextArea();
+        mostrarDescripcion.setLineWrap(true);
         gbl.setConstraints(mostrarDescripcion, gcon);
         GridBagConstraints gbc_mostrarDescripcion = new GridBagConstraints();
         gbc_mostrarDescripcion.fill = GridBagConstraints.HORIZONTAL;
