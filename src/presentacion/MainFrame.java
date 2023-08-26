@@ -172,7 +172,7 @@ public class MainFrame {
 		menuAcciones.add(menuPostulacionAOfertaLaboral);
 		menuPostulacionAOfertaLaboral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				PostulacionAOfertaLaboral postulacionAOfertaLaboralInternalFrame = new PostulacionAOfertaLaboral(icu, ico);
+				PostulacionAOfertaLaboral postulacionAOfertaLaboralInternalFrame = new PostulacionAOfertaLaboral();
 				frame.getContentPane().add(postulacionAOfertaLaboralInternalFrame);
 				postulacionAOfertaLaboralInternalFrame.setVisible(true);
 			}

@@ -1,16 +1,19 @@
 package logica.controladores;
 
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import excepciones.ElementoRepetidoException;
+import excepciones.NoExisteInstancia;
 import logica.datatypes.DTOfertaLaboral;
 import logica.entidades.Empresa;
 import logica.entidades.Keyword;
 import logica.entidades.OfertaLaboral;
+import logica.entidades.Postulacion;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IManejadorKeywords;
@@ -100,4 +103,25 @@ public class ControladorOferta implements IControladorOferta{
 		System.out.println(ofertas.get(nombreOferta));
 		return ofertas.get(nombreOferta).getDataType();
 	}
+	
+	public void altaPostulacion(String nickname, String oferta, String cvReducido, String motivacion, LocalDate fecha) throws ElementoRepetidoException, NoExisteInstancia {
+		
+		Map<String, OfertaLaboral> lista = manejadorOferta.getOfertas();
+		Postulacion pub;
+		OfertaLaboral of = lista.get(oferta);
+		
+		System.out.println(of.estaPostulado(nickname));
+		
+		if (of.estaPostulado(nickname)) {
+			throw new ElementoRepetidoException("Ya se encuentra postulado a esta oferta");
+		}
+		if (manejadorOferta.existeOferta(oferta)) {
+			
+			pub = new Postulacion(cvReducido, motivacion, fecha, ctrlUsuario.getPostulante(nickname), of);	
+			
+		} else {
+			throw new NoExisteInstancia("No existe una Oferta con ese nombre");
+		}
+	}
+	
 }

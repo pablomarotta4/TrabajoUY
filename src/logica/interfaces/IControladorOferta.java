@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import excepciones.ElementoRepetidoException;
+import excepciones.NoExisteInstancia;
 import logica.datatypes.DTOfertaLaboral;
 
 public interface IControladorOferta {
@@ -25,4 +26,11 @@ public interface IControladorOferta {
 	public List<String> listarKeywords();
 	public List<String> listarOfertasByEmpresa(String nombreEmpresa);
 	public DTOfertaLaboral listarDatosOferta(String nombreOferta);
+	public void altaPostulacion(
+			String nickname,
+			String oferta,
+			String cvReducido,
+			String motivacion,
+			LocalDate fecha
+			) throws ElementoRepetidoException, NoExisteInstancia;
 }
