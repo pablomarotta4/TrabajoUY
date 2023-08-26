@@ -60,7 +60,9 @@ public class ControladorOferta implements IControladorOferta{
 			List<String> keywordsSeleccionadas
 	) throws ElementoRepetidoException, ElementoInexistenteException {
 		
-		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);	
+		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
+		
+		
 		if(empresa == null) {
 			throw new ElementoInexistenteException("No existe una empresa con nickname " + nickEmpresa);
 		}
@@ -83,21 +85,22 @@ public class ControladorOferta implements IControladorOferta{
 			throw new ElementoRepetidoException("Ya existe una oferta con ese nombre.");
 		}
 
-		
-		this.manejadorOferta.agregarOferta( 
+		OfertaLaboral nuevaOferta = 				
 				new OfertaLaboral(
-						nombre,
-						descripcion,
-						ciudad,
-						departamento,
-						horario,
-						remuneracion,
-						fechaAlta,
-						listaKeywords,
-						empresa,
-						tipo
-				)
+				nombre,
+				descripcion,
+				ciudad,
+				departamento,
+				horario,
+				remuneracion,
+				fechaAlta,
+				listaKeywords,
+				empresa,
+				tipo
 		);
+		
+		this.manejadorOferta.agregarOferta(nuevaOferta);
+		empresa.agregarOferta(nuevaOferta);
 	}
 	
 	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException {
@@ -152,7 +155,6 @@ public class ControladorOferta implements IControladorOferta{
 			of.agregarPostulacion(pub);
 			postulante.agregarPostulacion(pub);
 			manejadorPostulacion.agregarPostulacion(pub);
-			System.out.println("Postulacion creada.");
 		} else {
 			throw new NoExisteInstancia("No existe una Oferta con ese nombre");
 		}

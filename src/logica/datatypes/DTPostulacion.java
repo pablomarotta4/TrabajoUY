@@ -31,6 +31,22 @@ public class DTPostulacion {
 	}
 	
 	public String toString() {
-		return "";
+		return 
+			"NICKNAME: " + this.nickpostulante + "\n" +
+			"FECHA DE POSTULACION: " + this.fechaPostulacion.toString() + "\n" +
+			"CV: " + this.cvReducido + "\n" +
+			"MOTIVACION: " + this.motivacion + "\n" + "\n";
 	}
+	
+	public String getCvReducido() {
+		return this.cvReducido;
+	}
+	
+	public String getMotivacion() {
+		return this.motivacion;
+	}
+	public LocalDate getFecha() {
+		return this.fechaPostulacion;
+	}
+
 }

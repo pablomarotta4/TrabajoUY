@@ -33,4 +33,7 @@ public class Empresa extends Usuario{
 		return ofertas;
 	}
 	
+	public void agregarOferta(OfertaLaboral of) {
+		this.ofertas.add(of);
+	}
 }
