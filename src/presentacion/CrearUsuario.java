@@ -4,10 +4,14 @@ import javax.swing.JInternalFrame;
 
 import logica.interfaces.IControladorUsuario;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -23,10 +27,13 @@ import com.toedter.calendar.JCalendar;
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import javax.swing.JButton;
-import java.util.Date;
-
+import javax.swing.JTextArea;
 public class CrearUsuario extends JInternalFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private IControladorUsuario icu;
 	private JTextField nicknameField;
 	private JTextField nombreField;
@@ -44,7 +51,7 @@ public class CrearUsuario extends JInternalFrame{
         setMaximizable(true);
         setClosable(true);
         setTitle("Crear Usuario");
-        setBounds(10, 40, 450, 450);
+        setBounds(10, 40, 1082, 609);
         getContentPane().setLayout(new BorderLayout(0, 0));
         
         JPanel NorthPanel = new JPanel();
@@ -149,11 +156,11 @@ public class CrearUsuario extends JInternalFrame{
         NorthPanel.add(emailField, gbc_emailField);
         emailField.setColumns(10);
         
-        JPanel SouthPanel = new JPanel();
-        getContentPane().add(SouthPanel, BorderLayout.SOUTH);
-        SouthPanel.setLayout(new BorderLayout(0, 0));
+        JPanel CenterPanel = new JPanel();
+        getContentPane().add(CenterPanel, BorderLayout.CENTER);
+        CenterPanel.setLayout(new BorderLayout(0, 0));
         JPanel postulantePanel = new JPanel();
-        SouthPanel.add(postulantePanel, BorderLayout.NORTH);
+        CenterPanel.add(postulantePanel, BorderLayout.NORTH);
         GridBagLayout gbl_postulantePanel = new GridBagLayout();
         gbl_postulantePanel.columnWidths = new int[]{30, 70, 61, 110, 62, 0};
         gbl_postulantePanel.rowHeights = new int[]{59, 180, 64, 0};
@@ -183,7 +190,7 @@ public class CrearUsuario extends JInternalFrame{
         JPanel empresaPanel = new JPanel();
         getContentPane().add(empresaPanel, BorderLayout.WEST);
         GridBagLayout gdbEmpresa = new GridBagLayout();
-        gdbEmpresa.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0};
+        gdbEmpresa.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0};
         gdbEmpresa.rowWeights = new double[]{1.0, 0.0};
         gdbEmpresa.columnWidths = new int[] {30, 71, 59, 155, 124};
         gdbEmpresa.rowHeights = new int[]{35, 28};
@@ -199,14 +206,18 @@ public class CrearUsuario extends JInternalFrame{
         gbc_descripcionText.gridy = 0;
         empresaPanel.add(descripcionText, gbc_descripcionText);
         
-        JTextPane descripcionField = new JTextPane();
-        GridBagConstraints gbc_descripcionField = new GridBagConstraints();
-        gbc_descripcionField.gridwidth = 2;
-        gbc_descripcionField.insets = new Insets(0, 0, 5, 5);
-        gbc_descripcionField.fill = GridBagConstraints.BOTH;
-        gbc_descripcionField.gridx = 2;
-        gbc_descripcionField.gridy = 0;
-        empresaPanel.add(descripcionField, gbc_descripcionField);
+        JTextArea descripcionArea = new JTextArea();
+        descripcionArea.setLineWrap(true);
+        descripcionArea.setWrapStyleWord(true);
+        GridBagConstraints gbc_descripcionArea = new GridBagConstraints();
+        gbc_descripcionArea.gridwidth = 2;
+        gbc_descripcionArea.insets = new Insets(0, 0, 5, 5);
+        gbc_descripcionArea.fill = GridBagConstraints.BOTH;
+        gbc_descripcionArea.gridx = 2;
+        gbc_descripcionArea.gridy = 0;
+        JScrollPane scrollPane = new JScrollPane(descripcionArea);
+        scrollPane.setPreferredSize(new Dimension(250, 150));
+        empresaPanel.add(scrollPane, gbc_descripcionArea);
         
         JLabel linkText = new JLabel("Link:");
         GridBagConstraints gbc_linkText = new GridBagConstraints();
@@ -269,8 +280,11 @@ public class CrearUsuario extends JInternalFrame{
         gbc_calendar.gridy = 1;
         postulantePanel.add(calendar, gbc_calendar);
         
+        JPanel SouthPanel1 = new JPanel();
+        getContentPane().add(SouthPanel1, BorderLayout.SOUTH);
+        
         JPanel CancelConfirmPanel = new JPanel();
-        SouthPanel.add(CancelConfirmPanel, BorderLayout.SOUTH);
+        SouthPanel1.add(CancelConfirmPanel);
         
         JButton ConfirmarButton = new JButton("Confirmar");
         CancelConfirmPanel.add(ConfirmarButton);
@@ -288,7 +302,7 @@ public class CrearUsuario extends JInternalFrame{
             public void actionPerformed(ActionEvent e) {
             	try {
                     if (TipoUsuario.equals("Empresa")) {
-                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), descripcionField.getText(), linkField.getText());
+                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), descripcionArea.getText(), linkField.getText());
                     } else if (TipoUsuario.equals("Postulante")) {
                         icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), nacionalidadField.getText(), calendar.getDate());
                     }
@@ -309,8 +323,3 @@ public class CrearUsuario extends JInternalFrame{
 
 
  }
-
-        
-        
-        
-	

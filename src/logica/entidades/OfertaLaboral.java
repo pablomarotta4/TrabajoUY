@@ -1,5 +1,6 @@
 package logica.entidades;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ public class OfertaLaboral {
 	private String departamento;
 	private String horario;
 	private float remuneracion;
-	private Date fechaAlta;
+	private LocalDate fechaAlta;
 	private float costo;
 	private List<Postulacion> postulaciones;
 	private List<Keyword> keywords;
@@ -28,7 +29,7 @@ public class OfertaLaboral {
 			String departamento,
 			String horario,
 			float remuneracion,
-			Date fechaAlta,
+			LocalDate fechaAlta,
 			List<Keyword> keywords,
 			Empresa emp
 	){
@@ -54,7 +55,7 @@ public class OfertaLaboral {
 	public String getCiudad() {
 		return ciudad;
 	}
-	public Date getFecha() {
+	public LocalDate getFecha() {
 		return fechaAlta;
 	}
 	

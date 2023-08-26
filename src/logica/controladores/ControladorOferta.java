@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,10 +38,11 @@ public class ControladorOferta implements IControladorOferta{
 			float remuneracion,
 			String ciudad,
 			String departamento,
-			Date fechaAlta,
+			LocalDate fechaAlta,
 			List<String> keywordsSeleccionadas
 	) {
 		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
+		
 		List<Keyword> listaKeywords = new ArrayList<Keyword>();
 		// Obtengo las instancias de Keyword
 		for(int i = 0; i <= keywordsSeleccionadas.size() - 1; i++) {

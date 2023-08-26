@@ -1,5 +1,6 @@
 package logica.datatypes;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import logica.entidades.Empresa;
@@ -11,7 +12,7 @@ public class DTOfertaLaboral {
 	private String departamento;
 	private String horario;
 	private float remuneracion;
-	private Date fechaAlta;
+	private LocalDate fechaAlta;
 	private float costo;
 	private List<DTPostulacion> postulaciones;
 	private List<String> keywords;
@@ -28,7 +29,7 @@ public class DTOfertaLaboral {
 			String departamento,
 			String horario,
 			float remuneracion,
-			Date fechaAlta,
+			LocalDate fechaAlta,
 			List<DTPostulacion> postulaciones,
 			List<String> keywords,
 			String nombreEmpresa
@@ -64,7 +65,7 @@ public class DTOfertaLaboral {
 	public Float getRemuneracion() {
 		return this.remuneracion;
 	}
-	public Date getFechaAlta() {
+	public LocalDate getFechaAlta() {
 		return this.fechaAlta;
 	}
 	public List<DTPostulacion> getPostulaciones() {

@@ -1,6 +1,6 @@
 package logica.interfaces;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import excepciones.ElementoRepetidoException;
@@ -17,7 +17,7 @@ public interface IControladorOferta {
 			float remuneracion,
 			String ciudad,
 			String departamento,
-			Date fechaAlta,
+			LocalDate fechaAlta,
 			List<String> keywords
 		);
 	
