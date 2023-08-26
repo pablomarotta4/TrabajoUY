@@ -214,7 +214,6 @@ public class MainFrame {
 							"Permanente"
 					)
 			);
-			
 			desc = 
 				"Forma parte de nuestro equipo de estrategia y "
 				+ "contribuye al crecimiento de las empresas cliente";

@@ -56,8 +56,7 @@ public class ControladorOferta implements IControladorOferta{
 			Keyword key = this.manejadorKeys.getKeyword(keywordsSeleccionadas.get(i));
 			listaKeywords.add(key);
 		}
-		
-		TipoPublicacion tipo = manejadorPaquetes.getTipo(nombre);
+		TipoPublicacion tipo = manejadorPaquetes.getTipo(tipoPublicacion);
 		
 		this.manejadorOferta.agregarOferta( 
 				new OfertaLaboral(

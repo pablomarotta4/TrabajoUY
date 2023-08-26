@@ -47,9 +47,7 @@ public class OfertaLaboral {
 		this.keywords = keywords;
 		this.tipo = tipo;
 		this.costo = tipo.getCosto();
-		System.out.println(nombre);
-		System.out.println(this.keywords);
-		System.out.println("-------");
+		System.out.println("h");
 	}	
 	
 	public String getNombre() {
