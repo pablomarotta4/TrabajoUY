@@ -13,8 +13,12 @@ public interface IManejadorPaquetes {
 	
 	public void getNombresDeTipo();
 	
+
 	public void agregarPaquete(Paquete paquete);
 	
 	public boolean existePaquete(String nombrePaquete);
+
+
+	public TipoPublicacion getTipo(String nombre);
 
 }

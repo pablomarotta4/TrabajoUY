@@ -44,6 +44,9 @@ public class ManejadorPaquetes implements IManejadorPaquetes{
 		}
 	}
 	
+	public TipoPublicacion getTipo(String nombre) {
+		return tipos.get(nombre);
+	}
 	
 	public void agregarPaquete(Paquete paquete) {
 		this.paquetes.put(paquete.getNombre(), paquete);

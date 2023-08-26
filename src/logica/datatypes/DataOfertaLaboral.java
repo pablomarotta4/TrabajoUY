@@ -2,14 +2,15 @@ package logica.datatypes;
 
 import java.awt.Component;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DataOfertaLaboral {
 	private String nombre;
 	private String ciudad;
-	private Date fechaAlta;
+	private LocalDate fechaAlta;
 	
-	public DataOfertaLaboral(String nombre,String ciudad, Date fechaAlta) {
+	public DataOfertaLaboral(String nombre,String ciudad, LocalDate fechaAlta) {
 		this.nombre = nombre;
 		this.ciudad= ciudad;
 		this.fechaAlta = fechaAlta;

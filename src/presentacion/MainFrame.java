@@ -4,7 +4,9 @@ import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -14,6 +16,7 @@ import javax.swing.JOptionPane;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoRepetidoException;
+import excepciones.NoExisteInstancia;
 import excepciones.UsuarioRepetidoException;
 
 import java.awt.event.ActionEvent;
@@ -66,7 +69,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 750, 600);
+		frame.setBounds(100, 100, 750, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -110,7 +113,7 @@ public class MainFrame {
 		JMenuItem menuConsultarOferta = new JMenuItem("Consultar Oferta Laboral");
 		menuConsultarOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico);
+				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu);
 				frame.getContentPane().add(consultarOfertaInternalFrame);
 				consultarOfertaInternalFrame.setVisible(true);
 			}
@@ -133,6 +136,7 @@ public class MainFrame {
 				altaKeywordInternalFrame.setVisible(true);
 			}
 		});
+			
 		
 		JMenuItem menuCrearPaquete = new JMenuItem("Crear Paquete Ofertas");
 		menuCrearPaquete.addActionListener(new ActionListener() {
@@ -176,13 +180,301 @@ public class MainFrame {
 		menuConsultas.add(menuConsultarOferta);
 		menuConsultas.add(menuConsultarUsuario);
 		menuSistema.add(menuCargarDatos);
-		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-	}
+
+		
+		JMenu menuAcciones = new JMenu("Acciones");
+		menuBar.add(menuAcciones);
+		
+		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
+		menuAcciones.add(menuModificarDatosDeUsuario);
+		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario(icu);
+				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
+				modificarDatosDeUsuarioInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuPostulacionAOfertaLaboral = new JMenuItem("Postulacion a Oferta Laboral");
+		menuAcciones.add(menuPostulacionAOfertaLaboral);
+		menuPostulacionAOfertaLaboral.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PostulacionAOfertaLaboral postulacionAOfertaLaboralInternalFrame = new PostulacionAOfertaLaboral();
+				frame.getContentPane().add(postulacionAOfertaLaboralInternalFrame);
+				postulacionAOfertaLaboralInternalFrame.setVisible(true);
+			}
+		});
+		
+
+		
+		
+	} 
+
 
 	public void cargarDatos() {
 		this.cargarUsuarios();
 		this.cargarTiposPublicacion();
 		this.cargarKeywords();
+		this.cargarOfertas();
+		this.cargarPostulaciones();
+	}
+	
+	public void cargarPostulaciones() {
+		try {
+			String cv = 
+			"Licenciada en Administraci´on,\r\n"
+			+ "experiencia en gesti´on de equipos\r\n"
+			+ "y proyectos. Conocimientos en\r\n"
+			+ "Microsoft Office";
+					
+			String motivacion = 
+			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
+			+ "equipo din´amico y contribuir con\r\n"
+			+ "mis habilidades de liderazgo.\r\n"
+			+ "";
+			this.ico.altaPostulacion(
+					"lgarcia", 
+					"Desarrollador Frontend", 
+					cv, 
+					motivacion, 
+					LocalDate.of(2023, 8, 16)
+			);
+			
+			cv = 
+			"Estudiante de Comunicaci´on, habilidades en redacci´on y manejo\r\n"
+			+ "de redes sociales. Experiencia en\r\n"
+			+ "pr´acticas en medios locales";
+					
+			motivacion = 
+			"Me encantar´ıa formar parte de\r\n"
+			+ "un equipo que me permita desarrollar mis habilidades en comunicaci´on "
+			+ "y marketing.";
+			this.ico.altaPostulacion(
+					"matilo", 
+					"Estratega de Negocios", 
+					cv, 
+					motivacion, 
+					LocalDate.of(2023, 8, 15)
+			);
+			
+			cv = 
+			"Ingeniero en Sistemas, experiencia en desarrollo web "
+			+ "y aplicaciones m´oviles. Conocimientos\r\n"
+			+ "en JavaScript y React.";
+					
+			motivacion = 
+			"Me entusiasma la posibilidad de\r\n"
+			+ "trabajar en proyectos desafiantes\r\n"
+			+ "y seguir creciendo "
+			+ "como profesional en el campo de la tecnolog´ıa.";
+			this.ico.altaPostulacion(
+					"maro", 
+					"Desarrollador Frontend", 
+					cv, 
+					motivacion, 
+					LocalDate.of(2023, 8, 16)
+			);
+			
+			cv = 
+			"T´ecnico en Electricidad, "
+			+ "experiencia en mantenimiento industrial. Conocimientos en lectura\r\n"
+			+ "de planos el´ectricos.";
+					
+			motivacion = 
+			"Estoy interesado en formar parte\r\n"
+			+ "de un equipo que me permita\r\n"
+			+ "aplicar mis habilidades t´ecnicas y\r\n"
+			+ "contribuir al mantenimiento eficiente";
+			this.ico.altaPostulacion(
+					"javierf", 
+					"Dise˜nador UX/UI", 
+					cv, 
+					motivacion, 
+					LocalDate.of(2023, 8, 13)
+			);
+			
+			cv = 
+			"M´usico profesional, experiencia\r\n"
+			+ "en espect´aculos en vivo. Habilidades en canto y guitarra.\r\n"
+			+ "";
+					
+			motivacion = 
+			"Me gustar´ıa combinar mi pasi´on\r\n"
+			+ "por la m´usica con una oportunidad laboral que me permita\r\n"
+			+ "seguir creciendo como artista.\r\n"
+			+ "";
+			this.ico.altaPostulacion(
+					"valen25", 
+					"Estratega de Negocios", 
+					cv, 
+					motivacion, 
+					LocalDate.of(2023, 8, 12)
+			);
+			
+			cv = 
+			"Licenciada en Administraci´on,\r\n"
+			+ "me considero genia, experiencia\r\n"
+			+ "en gesti´on de equipos y proyectos. Conocimientos en Microsoft\r\n"
+			+ "Office";
+					
+			motivacion = 
+			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
+			+ "equipo din´amico y contribuir con\r\n"
+			+ "mis habilidades de liderazgo.\r\n"
+			+ ""
+			+ "";
+			this.ico.altaPostulacion(
+					"lgarcia", 
+					"Estratega de Negocios ", 
+					cv, 
+					motivacion, 
+					LocalDate.of(2023, 8, 16)
+			);
+		} catch (ElementoRepetidoException | NoExisteInstancia e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void cargarOfertas() {
+		try {
+			String desc = 
+					"Unete a nuestro equipo de desarrollo frontend y crea ´\r\n"
+					+ "experiencias de usuario excepcionales.";
+			this.ico.altaOfertaLaboral(
+					"EcoTech", 
+					"Premium", 
+					"Desarrollador Frontend", 
+					desc, 
+					"09:00 - 18:00", 
+					90000, 
+					"Montevideo", 
+					"Montevideo",
+					LocalDate.of(2023, 8, 14),
+					List.of(
+							"Tiempo completo",
+							"Medio tiempo",
+							"Remoto",
+							"Freelance",
+							"Temporal",
+							"Permanente"
+					)
+			);
+			desc = 
+				"Forma parte de nuestro equipo de estrategia y "
+				+ "contribuye al crecimiento de las empresas cliente";
+			this.ico.altaOfertaLaboral(
+					"GlobalHealth", 
+					"Estándar", 
+					"Estratega de Negocios", 
+					desc, 
+					"08:00 - 17:00", 
+					80000, 
+					"Punta del Este", 
+					"Maldonado", 
+					LocalDate.of(2023, 8, 14),
+					List.of("Temporal")
+			);
+			desc = 
+				"Trabaja en colaboraci´on con nuestro talentoso\r\n"
+				+ "equipo de dise˜no para crear soluciones impactantes.";
+			this.ico.altaOfertaLaboral(
+					"FusionTech", 
+					"Estándar", 
+					"Diseñador UX/UI", 
+					desc, 
+					"14:00 - 18:00", 
+					65000, 
+					"Rosario", 
+					"Colonia", 
+					LocalDate.of(2023, 8, 13),
+					List.of("Medio tiempo", "Remoto", "Permanente")
+			);
+			
+			desc = 
+				"Ayuda a nuestros clientes a tomar decisiones "
+				+ "informadas basadas en an´alisis y visualizaciones de dat";
+			this.ico.altaOfertaLaboral(
+					"ANTEL", 
+					"Premium", 
+					"Analista de Datos", 
+					desc, 
+					"09:00 - 13:00", 
+					40000, 
+					"Maldonado", 
+					"Maldonado", 
+					LocalDate.of(2023, 8, 11),
+					List.of("Medio tiempo")
+			);
+			
+			desc = 
+				"Gestiona y crea contenido persuasivo y relevante\r\n"
+				+ "para impulsar la presencia en l´ınea de nuestros\r\n"
+				+ "clientes.\r\n"
+				+ "";
+			this.ico.altaOfertaLaboral(
+					"MIEM", 
+					"Destacada", 
+					"Content Manager", 
+					desc, 
+					"18:00 - 22:00", 
+					10000, 
+					"Montevideo", 
+					"Montevideo", 
+					LocalDate.of(2023, 8, 20),
+					List.of("Freelance")
+			);
+			
+			desc = 
+				"Ofrece un excelente servicio de soporte t´ecnico a\r\n"
+				+ "nuestros clientes, resolviendo problemas y brindando\r\n"
+				+ "soluciones.";
+			this.ico.altaOfertaLaboral(
+					"TechSolutions", 
+					"Básica", 
+					"Soporte Técnico", 
+					desc, 
+					"09:00 - 18:00", 
+					30000, 
+					"Minas", 
+					"Lavalleja",
+					LocalDate.of(2023, 8, 15),
+					List.of("Tiempo completo")
+			);
+			desc = 
+				"Unete a nuestro equipo de marketing y trabaja en ´\r\n"
+				+ "estrategias digitales innovadoras.";
+			this.ico.altaOfertaLaboral(
+					"EcoTech", 
+					"Premium", 
+					"A. de Marketing Digital ", 
+					desc, 
+					"10:00 - 19:00", 
+					80000, 
+					"Flores", 
+					"Flores", 
+					LocalDate.of(2023, 8, 15),
+					new ArrayList<String>()
+			);
+			desc = 
+				"Únete a nuestro equipo contable y ayuda en la ´\r\n"
+				+ "gesti´on financiera de la empresa";
+			this.ico.altaOfertaLaboral(
+					"GlobalHealth", 
+					"Destacada", 
+					"Contador Senior", 
+					desc, 
+					"08:30 - 17:30 ", 
+					100000, 
+					"Colonia Suiza", 
+					"Colonia", 
+					LocalDate.of(2023, 8, 16),
+					new ArrayList<String>()
+			);
+		} catch(Exception e) {
+			
+		}
 	}
 	
 	public void cargarKeywords() {
