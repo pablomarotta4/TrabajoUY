@@ -33,6 +33,7 @@ import javax.swing.JTextArea;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 import java.awt.TextArea;
 
 public class CrearOfertaLaboral extends JInternalFrame{
@@ -325,7 +326,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
 					
 					String ciudad = textCiudad.getText();
 					String departamento = textDepartamento.getText();
-					Date fecha = new Date();
+					LocalDate fecha = LocalDate.of(2000, 1 , 1);
 					
 					ctrlOferta.altaOfertaLaboral(
 							comboBoxEmpresa.getSelectedItem().toString(), 
