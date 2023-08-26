@@ -23,6 +23,7 @@ import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorUsuario;
 import logica.interfaces.IControladorOferta;
+import java.awt.BorderLayout;
 
 public class MainFrame {
 
@@ -133,6 +134,25 @@ public class MainFrame {
 			}
 		});
 		
+		JMenuItem menuCrearPaquete = new JMenuItem("Crear Paquete Ofertas");
+		menuCrearPaquete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CrearPaqueteDeTiposDePublicacionDeOfertaLaboral crearPaqueteInternalFrame = new CrearPaqueteDeTiposDePublicacionDeOfertaLaboral(ict);
+				frame.getContentPane().add(crearPaqueteInternalFrame);
+				crearPaqueteInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuAgregarTipoaPaquete = new JMenuItem("Agregar Tipo de Publicacion a Paquete");
+		menuAgregarTipoaPaquete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AgregarTipoDePublicacióndeOfertaLaboralaPaquete agregarTipoInternalFrame = new AgregarTipoDePublicacióndeOfertaLaboralaPaquete(ict);
+				frame.getContentPane().add(agregarTipoInternalFrame);
+				agregarTipoInternalFrame.setVisible(true);
+			}
+		});
+		
+		
 		JMenuItem menuCargarDatos = new JMenuItem("Cargar datos de prueba");
 		menuCargarDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -144,13 +164,19 @@ public class MainFrame {
 			}
 		});
 		
+
 		menuRegistros.add(menuCrearOferta);
 		menuRegistros.add(menuAltaUsuario);
+		menuRegistros.add(menuCrearPaquete);
+		
+		
+		menuRegistros.add(menuAgregarTipoaPaquete);
 		menuRegistros.add(menuCrearTipoPublicacion);
 		menuRegistros.add(menuAltaKeyword);
 		menuConsultas.add(menuConsultarOferta);
 		menuConsultas.add(menuConsultarUsuario);
 		menuSistema.add(menuCargarDatos);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 	}
 
 	public void cargarDatos() {

@@ -2,6 +2,7 @@ package logica.interfaces;
 
 import java.util.Map;
 
+import logica.entidades.Paquete;
 import logica.entidades.TipoPublicacion;
 
 public interface IManejadorPaquetes {
@@ -11,4 +12,9 @@ public interface IManejadorPaquetes {
 	public Map<String, TipoPublicacion> getTiposPublicacion();
 	
 	public void getNombresDeTipo();
+	
+	public void agregarPaquete(Paquete paquete);
+	
+	public boolean existePaquete(String nombrePaquete);
+
 }

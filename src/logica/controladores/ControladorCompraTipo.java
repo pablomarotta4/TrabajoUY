@@ -1,10 +1,12 @@
 package logica.controladores;
 
+import logica.entidades.Paquete;
 import logica.entidades.TipoPublicacion;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IManejadorPaquetes;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,4 +47,13 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		return listaTipos;
 	}
 	
+	
+	public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento,LocalDate fecha) throws UsuarioRepetidoException{
+		if(manejadorPaquetes.existePaquete(valorTextNombre)) {
+			throw new UsuarioRepetidoException("Ya existe un paquete con el nombre ingresado.");
+			
+		}
+		Paquete paq= new Paquete(valorTextNombre, valorTextDescripcion, validez, descuento, fecha); 
+		manejadorPaquetes.agregarPaquete(paq);
+	}
 }

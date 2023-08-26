@@ -1,4 +1,5 @@
 package logica.interfaces;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface IControladorCompraTipo {
 	) throws UsuarioRepetidoException;
 	
 	public List<String> listarTiposPublicacion();
+	
+	
+public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento,LocalDate fecha) throws UsuarioRepetidoException;
 }
+
