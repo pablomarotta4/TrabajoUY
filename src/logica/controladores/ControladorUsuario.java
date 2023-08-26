@@ -88,4 +88,10 @@ public class ControladorUsuario implements IControladorUsuario{
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 
+//	@Override
+//	public List<String> listarNickPostulantes() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 }
