@@ -1,7 +1,5 @@
 package presentacion;
 
-import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
 
 import logica.interfaces.IControladorOferta;
@@ -21,7 +19,6 @@ import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
 import excepciones.ElementoRepetidoException;
-import excepciones.UsuarioRepetidoException;
 
 import java.awt.Insets;
 

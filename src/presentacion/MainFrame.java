@@ -67,11 +67,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-<<<<<<< HEAD
-		frame.setBounds(100, 100, 746, 566);
-=======
 		frame.setBounds(100, 100, 750, 600);
->>>>>>> dev
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -157,7 +153,7 @@ public class MainFrame {
 		menuRegistros.add(menuAltaKeyword);
 		menuConsultas.add(menuConsultarOferta);
 		menuConsultas.add(menuConsultarUsuario);
-<<<<<<< HEAD
+		menuSistema.add(menuCargarDatos);
 		
 		JMenu menuAcciones = new JMenu("Acciones");
 		menuBar.add(menuAcciones);
@@ -186,10 +182,6 @@ public class MainFrame {
 		
 		
 	} 
-=======
-		menuSistema.add(menuCargarDatos);
-	}
->>>>>>> dev
 
 	public void cargarDatos() {
 		this.cargarUsuarios();
