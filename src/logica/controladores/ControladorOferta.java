@@ -43,7 +43,8 @@ public class ControladorOferta implements IControladorOferta{
 			List<String> keywordsSeleccionadas
 	) throws ElementoRepetidoException, ElementoInexistenteException {
 		
-		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
+		System.out.println(keywordsSeleccionadas);
+		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);	
 		if(empresa == null) {
 			throw new ElementoInexistenteException("No existe una empresa con nickname " + nickEmpresa);
 		}

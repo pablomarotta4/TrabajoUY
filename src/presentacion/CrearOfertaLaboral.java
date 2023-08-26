@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,7 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.awt.TextArea;
 
@@ -330,9 +332,10 @@ public class CrearOfertaLaboral extends JInternalFrame{
         gbc_btnAgregarKeyword.anchor = GridBagConstraints.WEST;
         gbc_btnAgregarKeyword.gridx = 1;
         gbc_btnAgregarKeyword.gridy = 11;
+        List<String> selectedKeywords = new ArrayList<String>();
         btnAgregarKeyword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				listKeywords.add(comboKeywords.getSelectedItem().toString()); 				
+				selectedKeywords.add(comboKeywords.getSelectedItem().toString()); 				
 				System.out.println(comboKeywords.getSelectedItem().toString() + "agregada");
 			}
         });
@@ -370,8 +373,9 @@ public class CrearOfertaLaboral extends JInternalFrame{
 					Integer year = Integer.parseInt(textYear.getText());
 					LocalDate fecha = LocalDate.of(year, mes , dia);
 					
-					boolean algunCampoVacio = nombreOferta.isEmpty() || descripcion.isEmpty() || horario.isEmpty() ||
-							textRemuneracion.getText().isEmpty() || ciudad.isEmpty() || departamento.isEmpty();
+					boolean algunCampoVacio = nombreOferta.isEmpty() || descripcion.isEmpty() || horaEntrada.isEmpty() || horaSalida.isEmpty() ||
+							textRemuneracion.getText().isEmpty() || ciudad.isEmpty() || departamento.isEmpty() ||
+							textDia.getText().isEmpty() || textMes.getText().isEmpty() || textYear.getText().isEmpty() ;
 					
 					if(algunCampoVacio) {
 						throw new CamposVaciosExcepcion("Complete todos los campos");
@@ -387,7 +391,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
 							ciudad,
 							departamento,
 							fecha,
-							listKeywords
+							selectedKeywords
 					);
 					
       				JOptionPane.showMessageDialog(
@@ -419,7 +423,19 @@ public class CrearOfertaLaboral extends JInternalFrame{
     						JOptionPane.INFORMATION_MESSAGE
 					);
 				} catch(NumberFormatException ex) {
-					
+      				JOptionPane.showMessageDialog(
+    						frame,
+    						"Formato incorrecto",
+    						"Error",
+    						JOptionPane.INFORMATION_MESSAGE
+					);
+				} catch(DateTimeException ex) {
+					JOptionPane.showMessageDialog(
+    						frame,
+    						"Fecha invalida. Ingrese denuevo.",
+    						"Error",
+    						JOptionPane.INFORMATION_MESSAGE
+					);
 				}
 			}
         });
