@@ -55,7 +55,7 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 700, 600);
+		frame.setBounds(100, 100, 746, 566);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -120,6 +120,7 @@ public class MainFrame {
 				altaKeywordInternalFrame.setVisible(true);
 			}
 		});
+			
 		
 		menuRegistros.add(menuCrearOferta);
 		menuRegistros.add(menuAltaUsuario);
@@ -128,6 +129,33 @@ public class MainFrame {
 		menuRegistros.add(menuAltaKeyword);
 		menuConsultas.add(menuConsultarOferta);
 		menuConsultas.add(menuConsultarUsuario);
-	}
+		
+		JMenu menuAcciones = new JMenu("Acciones");
+		menuBar.add(menuAcciones);
+		
+		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
+		menuAcciones.add(menuModificarDatosDeUsuario);
+		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario(icu);
+				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
+				modificarDatosDeUsuarioInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuPostulacionAOfertaLaboral = new JMenuItem("Postulacion a Oferta Laboral");
+		menuAcciones.add(menuPostulacionAOfertaLaboral);
+		menuPostulacionAOfertaLaboral.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				PostulacionAOfertaLaboral postulacionAOfertaLaboralInternalFrame = new PostulacionAOfertaLaboral(icu, ico);
+				frame.getContentPane().add(postulacionAOfertaLaboralInternalFrame);
+				postulacionAOfertaLaboralInternalFrame.setVisible(true);
+			}
+		});
+		
+
+		
+		
+	} 
 
 }
