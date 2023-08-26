@@ -4,10 +4,14 @@ import javax.swing.JInternalFrame;
 
 import logica.interfaces.IControladorUsuario;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -23,8 +27,7 @@ import com.toedter.calendar.JCalendar;
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import javax.swing.JButton;
-import java.util.Date;
-
+import javax.swing.JTextArea;
 public class CrearUsuario extends JInternalFrame{
 
 	/**
@@ -187,7 +190,7 @@ public class CrearUsuario extends JInternalFrame{
         JPanel empresaPanel = new JPanel();
         getContentPane().add(empresaPanel, BorderLayout.WEST);
         GridBagLayout gdbEmpresa = new GridBagLayout();
-        gdbEmpresa.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0};
+        gdbEmpresa.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0};
         gdbEmpresa.rowWeights = new double[]{1.0, 0.0};
         gdbEmpresa.columnWidths = new int[] {30, 71, 59, 155, 124};
         gdbEmpresa.rowHeights = new int[]{35, 28};
@@ -203,14 +206,18 @@ public class CrearUsuario extends JInternalFrame{
         gbc_descripcionText.gridy = 0;
         empresaPanel.add(descripcionText, gbc_descripcionText);
         
-        JTextPane descripcionField = new JTextPane();
-        GridBagConstraints gbc_descripcionField = new GridBagConstraints();
-        gbc_descripcionField.gridwidth = 2;
-        gbc_descripcionField.insets = new Insets(0, 0, 5, 5);
-        gbc_descripcionField.fill = GridBagConstraints.BOTH;
-        gbc_descripcionField.gridx = 2;
-        gbc_descripcionField.gridy = 0;
-        empresaPanel.add(descripcionField, gbc_descripcionField);
+        JTextArea descripcionArea = new JTextArea();
+        descripcionArea.setLineWrap(true);
+        descripcionArea.setWrapStyleWord(true);
+        GridBagConstraints gbc_descripcionArea = new GridBagConstraints();
+        gbc_descripcionArea.gridwidth = 2;
+        gbc_descripcionArea.insets = new Insets(0, 0, 5, 5);
+        gbc_descripcionArea.fill = GridBagConstraints.BOTH;
+        gbc_descripcionArea.gridx = 2;
+        gbc_descripcionArea.gridy = 0;
+        JScrollPane scrollPane = new JScrollPane(descripcionArea);
+        scrollPane.setPreferredSize(new Dimension(250, 150));
+        empresaPanel.add(scrollPane, gbc_descripcionArea);
         
         JLabel linkText = new JLabel("Link:");
         GridBagConstraints gbc_linkText = new GridBagConstraints();
@@ -295,7 +302,7 @@ public class CrearUsuario extends JInternalFrame{
             public void actionPerformed(ActionEvent e) {
             	try {
                     if (TipoUsuario.equals("Empresa")) {
-                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), descripcionField.getText(), linkField.getText());
+                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), descripcionArea.getText(), linkField.getText());
                     } else if (TipoUsuario.equals("Postulante")) {
                         icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), nacionalidadField.getText(), calendar.getDate());
                     }
