@@ -34,7 +34,9 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
 	private JTextField txtNombre;
 	private JTextField txtValidez;
 	private JTextField txtDescuento;
-	private JTextField txtFecha;
+	private JTextField textDia;
+	private JTextField textMes;
+	private JTextField textAnio;
 
 	/**
 	 * Launch the application.
@@ -76,22 +78,15 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
 		JPanel panel = new JPanel();
 		contentPane.add(panel);
 		GridBagLayout gridBagLO = new GridBagLayout();
-		gridBagLO.columnWidths = new int[]{207, 10, 0, 0};
+		gridBagLO.columnWidths = new int[]{207, 0, 0};
 		gridBagLO.rowHeights = new int[]{10, 0, 0, 0, 0, 0, 0};
-		gridBagLO.columnWeights = new double[]{0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gridBagLO.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLO.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gridBagLO.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel.setLayout(gridBagLO);
-		
-		JPanel panel_1 = new JPanel();
-		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_1.anchor = GridBagConstraints.NORTHWEST;
-		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 0;
-		panel.add(panel_1, gbc_panel_1);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 1;
@@ -99,16 +94,16 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
 		
 		txtNombre = new JTextField();
 		GridBagConstraints gbc_txtNombre = new GridBagConstraints();
-		gbc_txtNombre.insets = new Insets(0, 0, 5, 0);
-		gbc_txtNombre.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtNombre.gridx = 2;
+		gbc_txtNombre.anchor = GridBagConstraints.WEST;
+		gbc_txtNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_txtNombre.gridx = 1;
 		gbc_txtNombre.gridy = 1;
 		panel.add(txtNombre, gbc_txtNombre);
 		txtNombre.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Descripcion:");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
-		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 2;
@@ -118,15 +113,15 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
 		txtDesc.setWrapStyleWord(true);
 		txtDesc.setLineWrap(true);
 		GridBagConstraints gbc_txtDesc = new GridBagConstraints();
-		gbc_txtDesc.anchor = GridBagConstraints.NORTH;
-		gbc_txtDesc.insets = new Insets(0, 0, 5, 0);
-		gbc_txtDesc.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtDesc.gridx = 2;
+		gbc_txtDesc.insets = new Insets(0, 0, 5, 5);
+		gbc_txtDesc.fill = GridBagConstraints.BOTH;
+		gbc_txtDesc.gridx = 1;
 		gbc_txtDesc.gridy = 2;
 		panel.add(txtDesc, gbc_txtDesc);
 		
 		JLabel lblNewLabel_2 = new JLabel("Periodo de validez (dias):");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 0;
 		gbc_lblNewLabel_2.gridy = 3;
@@ -134,15 +129,16 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
 		
 		txtValidez = new JTextField();
 		GridBagConstraints gbc_txtValidez = new GridBagConstraints();
-		gbc_txtValidez.insets = new Insets(0, 0, 5, 0);
-		gbc_txtValidez.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtValidez.gridx = 2;
+		gbc_txtValidez.anchor = GridBagConstraints.WEST;
+		gbc_txtValidez.insets = new Insets(0, 0, 5, 5);
+		gbc_txtValidez.gridx = 1;
 		gbc_txtValidez.gridy = 3;
 		panel.add(txtValidez, gbc_txtValidez);
 		txtValidez.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Descuento (%):");
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.gridx = 0;
 		gbc_lblNewLabel_3.gridy = 4;
@@ -150,27 +146,45 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
 		
 		txtDescuento = new JTextField();
 		GridBagConstraints gbc_txtDescuento = new GridBagConstraints();
-		gbc_txtDescuento.insets = new Insets(0, 0, 5, 0);
-		gbc_txtDescuento.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtDescuento.gridx = 2;
+		gbc_txtDescuento.anchor = GridBagConstraints.WEST;
+		gbc_txtDescuento.insets = new Insets(0, 0, 5, 5);
+		gbc_txtDescuento.gridx = 1;
 		gbc_txtDescuento.gridy = 4;
 		panel.add(txtDescuento, gbc_txtDescuento);
 		txtDescuento.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Fecha de alta (DD/MM/AAAA):");
-		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 0, 5);
-		gbc_lblNewLabel_4.gridx = 0;
-		gbc_lblNewLabel_4.gridy = 5;
-		panel.add(lblNewLabel_4, gbc_lblNewLabel_4);
+		JPanel panel_2 = new JPanel();
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.fill = GridBagConstraints.BOTH;
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 5;
+		gbc_panel_2.gridwidth = 6;
+		panel.add(panel_2, gbc_panel_2);
+		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		txtFecha = new JTextField();
-		GridBagConstraints gbc_txtFecha = new GridBagConstraints();
-		gbc_txtFecha.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtFecha.gridx = 2;
-		gbc_txtFecha.gridy = 5;
-		panel.add(txtFecha, gbc_txtFecha);
-		txtFecha.setColumns(10);
+		JLabel labelFechaDeAlta = new JLabel("Fecha de alta: ");
+		panel_2.add(labelFechaDeAlta);
+		
+		JLabel labelDia = new JLabel("Dia: ");
+		panel_2.add(labelDia);
+		
+		textDia = new JTextField();
+		panel_2.add(textDia);
+		textDia.setColumns(5);
+		
+		JLabel labelMes = new JLabel("Mes: ");
+		panel_2.add(labelMes);
+		
+		textMes = new JTextField();
+		panel_2.add(textMes);
+		textMes.setColumns(5);
+		
+		JLabel labelAnio = new JLabel("Anio: ");
+		panel_2.add(labelAnio);
+		
+		textAnio = new JTextField();
+		panel_2.add(textAnio);
+		textAnio.setColumns(5);
 		
 		JPanel panel_sur = new JPanel();
 		contentPane.add(panel_sur, BorderLayout.SOUTH);
@@ -179,7 +193,7 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
 		JButton btnAceptar = new JButton("Aceptar");
 		panel_sur.add(btnAceptar);
 		
-		LocalDate fecha= LocalDate.of(2000, 10, 7);
+		
 		
 		btnAceptar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -198,7 +212,17 @@ public class CrearPaqueteDeTiposDePublicacionDeOfertaLaboral extends JInternalFr
             		String valorTextDescuento= txtDescuento.getText();
             		int numDescuento = Integer.parseInt(valorTextDescuento);
             		
-            		String valorTextCosto = txtFecha.getText();
+            		String valorDia = textDia.getText();
+            		int numDia = Integer.parseInt(valorDia);
+            		
+            		String valorMes = textMes.getText();
+            		int numMes = Integer.parseInt(valorMes);
+            		
+            		String valorAnio = textAnio.getText();
+            		int numAnio = Integer.parseInt(valorAnio);
+            		
+            		LocalDate fecha = LocalDate.of(numAnio, numMes, numDia);
+            				
             		cct.crearPaquete(valorTextNombre, valorTextDescripcion, numPeriodoValidez, numDescuento, fecha);
             		JOptionPane.showMessageDialog(
     						frame,
