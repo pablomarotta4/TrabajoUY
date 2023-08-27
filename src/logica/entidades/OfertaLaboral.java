@@ -90,7 +90,8 @@ public class OfertaLaboral {
 			listaDtPostulacion,
 			listaKeywords,
 			this.empresa.getNickname(),
-			this.tipo.getNombre()
+			this.tipo.getNombre(),
+			this.costo
 		);
 	}
 	

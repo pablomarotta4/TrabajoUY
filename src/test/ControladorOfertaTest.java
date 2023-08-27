@@ -12,6 +12,8 @@ import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
 import excepciones.ElementoRepetidoException;
 import excepciones.UsuarioRepetidoException;
+import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DTPostulacion;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorOferta;
@@ -33,6 +35,7 @@ class ControladorOfertaTest {
 	
 	@Test
 	void altaOfertaOK() {
+		String nombreOferta = "nombreoferta";
 		try {
 			// Datos que necesita la funcion
 			ctrlUsuario.crearEmpresa(
@@ -47,21 +50,20 @@ class ControladorOfertaTest {
 			ctrlOferta.altaKeyword("keyword1");
 			ctrlOferta.altaKeyword("keyword2");
 			
-			
 			ctrlTipo.crearTipoPublicacion(
 					"nombretipo1", 
 					"descripciontipo", 
 					1, 
 					1, 
-					1, 
-					null
+					10, 
+					LocalDate.of(2000, 1, 1)
 			);
 			
 			// Funcion a testear
 			ctrlOferta.altaOfertaLaboral(
 					"nickempresa", 
-					"tipoPublicacion", 
-					"nombre", 
+					"nombretipo1", 
+					nombreOferta, 
 					"descripcion", 
 					"horario", 
 					10, 
@@ -80,7 +82,24 @@ class ControladorOfertaTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals("", "");
+		
+		DTOfertaLaboral ofertaCreada  = ctrlOferta.listarDatosOferta(nombreOferta);
+		DTOfertaLaboral ofertaEsperada = new DTOfertaLaboral(
+				nombreOferta, 
+				"descripcion", 
+				"ciudad",
+				"departamento",
+				"horario", 
+				10, 
+				LocalDate.of(2000, 2, 2), 
+				List.of(new DTPostulacion()),
+				List.of("keyword1", "keyword2"),
+				"nickempresa",
+				"nombretipo1", 
+				10
+		); 
+		boolean equals = ofertaEsperada.equals(ofertaCreada);
+		assertTrue(equals);
 	}
 
 }

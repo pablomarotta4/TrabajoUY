@@ -13,6 +13,10 @@ public class DTPostulacion {
 	private String nombreOferta ;
 	private String nickpostulante;
 
+	public DTPostulacion() {
+		
+	}
+	
 	public DTPostulacion(
 			String cvReducido, 
 			String motivacion, 
