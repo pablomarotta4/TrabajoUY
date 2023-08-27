@@ -239,7 +239,9 @@ public class CrearTipoPublicacion extends JInternalFrame {
 
         			
         			
+
         			LocalDate fecha = LocalDate.of(numAnio, numMes, numDia);
+
         			
         			try {
         				compTip.crearTipoPublicacion(valorTextNombre, valorTextDescripcion, numTextExposicion, numTextDuracion, numTextCosto, fecha);        				

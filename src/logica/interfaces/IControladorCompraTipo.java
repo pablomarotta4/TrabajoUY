@@ -13,7 +13,7 @@ public interface IControladorCompraTipo {
 			int exposicion, 
 			int duracion, 
 			float costo, 
-			Date fecha
+			LocalDate fecha
 	) throws UsuarioRepetidoException;
 	
 	public List<String> listarTiposPublicacion();

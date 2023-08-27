@@ -23,7 +23,7 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		this.manejadorPaquetes = f.getManejadorPaquetes();
 	}
 	
-	public void crearTipoPublicacion(String nombre, String descripcion, int exposicion, int duracion, float costo, Date fecha) throws UsuarioRepetidoException {
+	public void crearTipoPublicacion(String nombre, String descripcion, int exposicion, int duracion, float costo, LocalDate fecha) throws UsuarioRepetidoException {
 		
 		// ## Si ya existe el tipo con ese nombre THROW EXCEPTION
 		if(manejadorPaquetes.getTiposPublicacion().containsKey(nombre)) {

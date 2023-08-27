@@ -508,7 +508,7 @@ public class MainFrame {
 					1, 
 					30, 
 					4000, 
-					new SimpleDateFormat("yyyy/MM/dd").parse("10/08/2023")
+					LocalDate.of(2023, 8, 10)
 			);
 			
 			this.ict.crearTipoPublicacion(
@@ -517,7 +517,7 @@ public class MainFrame {
 					2, 
 					15, 
 					500, 
-					new SimpleDateFormat("yyyy/MM/dd").parse("05/08/2023")
+					LocalDate.of(2023, 8, 5)
 			);
 			
 			this.ict.crearTipoPublicacion(
@@ -526,7 +526,7 @@ public class MainFrame {
 					3, 
 					20, 
 					150, 
-					new SimpleDateFormat("yyyy/MM/dd").parse("15/08/2023")
+					LocalDate.of(2023, 8, 15)
 			);
 			
 			this.ict.crearTipoPublicacion(
@@ -536,7 +536,7 @@ public class MainFrame {
 					4, 
 					7, 
 					50, 
-					new SimpleDateFormat("yyyy/MM/dd").parse("07/08/2023")
+					LocalDate.of(2023, 8, 7)
 			);
 		} catch(UsuarioRepetidoException ex){
 			JOptionPane.showMessageDialog(
@@ -546,9 +546,6 @@ public class MainFrame {
                     JOptionPane.INFORMATION_MESSAGE
                 );
 			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	
