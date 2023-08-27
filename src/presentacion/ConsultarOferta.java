@@ -43,7 +43,7 @@ public class ConsultarOferta extends JInternalFrame{
 	private JTextField textFechaAlta;
 	private JTextField textEmpresa;
 	
-	public ConsultarOferta(IControladorOferta cop, IControladorUsuario icu) {
+	public ConsultarOferta(IControladorOferta cop, IControladorUsuario icu, String preSeleccion) {
 		ctrlOferta = cop;	
 		ctrlUsuario = icu;
 		setResizable(true);
@@ -333,6 +333,30 @@ public class ConsultarOferta extends JInternalFrame{
 		GridBagConstraints gbc_scrollPaneCv = new GridBagConstraints();
 		gbc_scrollPaneCv.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPaneCv.fill = GridBagConstraints.BOTH;
+		
+		/*if(preSeleccion != null) {
+			DTOfertaLaboral dtOf  = ctrlOferta.listarDatosOferta(preSeleccion);
+			textNombre.setText(dtOf.getNombre());
+			textDescripcion.setText(dtOf.getDescripcion());
+			textCiudad.setText(dtOf.getCiudad());
+			textDepartamento.setText(dtOf.getDepartamento());
+			textHorario.setText(dtOf.getHorario());
+			textRemuneracion.setText(dtOf.getRemuneracion().toString());
+			textFechaAlta.setText(dtOf.getFechaAlta().toString());
+			textEmpresa.setText(dtOf.getNombreEmpresa());
+			
+			List<String> listaKeywords = dtOf.getKeywords();
+			for(int i = 0; i <= listaKeywords.size() - 1; i++) {
+				comboBoxKeywords.addItem(listaKeywords.get(i));
+			}
+			List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
+			String totalDataPostulaciones = "";
+			for(int i = 0; i <= listaPostulaciones.size() - 1; i++) {
+				totalDataPostulaciones += "Postulante " + Integer.toString(i + 1) + "\n";
+				totalDataPostulaciones += listaPostulaciones.get(i).toString();
+			}
+			textDataPostulacion.setText(totalDataPostulaciones.toString());
+		}*/
         
 		
         btnSelectOferta.addActionListener(new ActionListener() {
@@ -360,6 +384,7 @@ public class ConsultarOferta extends JInternalFrame{
 				textDataPostulacion.setText(totalDataPostulaciones.toString());
 			}
         });
+        
 
         
 	}
