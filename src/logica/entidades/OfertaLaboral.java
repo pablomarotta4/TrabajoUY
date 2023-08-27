@@ -109,4 +109,8 @@ public class OfertaLaboral {
 	public void agregarPostulacion(Postulacion p) {
 		this.postulaciones.add(p);
 	}
+	
+	public int getDuracion() {
+		return this.tipo.getDuracion();
+	}
 }

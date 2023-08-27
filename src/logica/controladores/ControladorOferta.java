@@ -144,7 +144,9 @@ public class ControladorOferta implements IControladorOferta{
 		if(!ofertas.containsKey(nombreOferta)) {
 			throw new ElementoInexistenteException("No existe esa oferta" + nombreOferta);
 		}
-		return ofertas.get(nombreOferta).getDataType();
+		DTOfertaLaboral of = ofertas.get(nombreOferta).getDataType();
+		of.setDuracion(ofertas.get(nombreOferta).getDuracion());
+		return of;
 	}
 	
 	public void altaPostulacion(String nickname, String oferta, String cvReducido, String motivacion, LocalDate fecha) throws NoExisteInstancia, ElementoInexistenteException, ElementoRepetidoException {

@@ -29,4 +29,10 @@ public class TipoPublicacion {
 	public float getCosto() {
 		return this.costo;
 	}
+	
+	public int getDuracion() {
+		return this.duracion;
+	}
 }
+
+

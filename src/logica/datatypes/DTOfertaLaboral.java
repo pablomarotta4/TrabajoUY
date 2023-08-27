@@ -22,6 +22,7 @@ public class DTOfertaLaboral {
 	private List<DTPostulacion> postulaciones;
 	private List<String> keywords;
 	private String nombreEmpresa;
+	private int duracion;
 	
 	public DTOfertaLaboral() {
 		
@@ -89,6 +90,14 @@ public class DTOfertaLaboral {
 	
 	public float getCosto() {
 		return this.costo;
+	}
+	
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+	
+	public int getDuracion() {
+		return this.duracion;
 	}
 	
 	public boolean equals(DTOfertaLaboral of) {

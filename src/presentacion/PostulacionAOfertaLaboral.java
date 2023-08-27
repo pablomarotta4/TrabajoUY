@@ -8,6 +8,7 @@ import javax.swing.JInternalFrame;
 import logica.datatypes.DTOfertaLaboral;
 import logica.entidades.OfertaLaboral;
 import logica.interfaces.Factory;
+import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
 import java.awt.GridBagLayout;
@@ -55,6 +56,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
 	private JTextField textField_14;
 	private JTextField textField_15;
 	private JTextField textField_16;
+	private JTextField textField_17;
 
 	
 	public PostulacionAOfertaLaboral() {
@@ -76,9 +78,9 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         scrollPane.setViewportView(panel);
         GridBagLayout gbl_panel = new GridBagLayout();
         gbl_panel.columnWidths = new int[]{150, 300, 150, 0};
-        gbl_panel.rowHeights = new int[]{10, 0, 0, 0, 0, 0, 0, 0, 0, 150, 150, 80, 0, 150, 150, 0, 0, 0};
-        gbl_panel.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-        gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+        gbl_panel.rowHeights = new int[]{10, 0, 0, 0, 0, 0, 0, 0, 0, 150, 150, 80, 0, 20, 0, 150, 150, 0, 0, 0};
+        gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+        gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         panel.setLayout(gbl_panel);
         
         JPanel panel_4 = new JPanel();
@@ -172,10 +174,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         textField_12 = new JTextField();
         textField_13 = new JTextField();
 
-        
-        
-        
-        
+        textField_17 = new JTextField();
         
         
         comboBox_1.addActionListener((ActionListener) new ActionListener() {
@@ -198,12 +197,15 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         			textField_12.setText("");
         			textField_13.setText("");
         			
+        			textField_17.setText("");
+        			
         		} else {
         			try {
         				String ofertaName = (String) comboBox_1.getSelectedItem();
         				DTOfertaLaboral datosOferta = ico.listarDatosOferta(ofertaName);
         				
         				List<String> keys = datosOferta.getKeywords();
+        				
         				
         				String keysText = "";
         				
@@ -239,6 +241,8 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         				textField_10.setText(dia.toString());
         				textField_12.setText(mes.toString());
         				textField_13.setText(anio.toString());
+        				
+        				textField_17.setText(Integer.toString(datosOferta.getDuracion()));
         				
         			}catch (ElementoInexistenteException ex) {
         				
@@ -451,23 +455,45 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         panel_1.add(textField_13);
         textField_13.setColumns(10);
         
+        JLabel lblNewLabel_20 = new JLabel("Duracion:");
+        GridBagConstraints gbc_lblNewLabel_20 = new GridBagConstraints();
+        gbc_lblNewLabel_20.anchor = GridBagConstraints.NORTHEAST;
+        gbc_lblNewLabel_20.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel_20.gridx = 0;
+        gbc_lblNewLabel_20.gridy = 12;
+        panel.add(lblNewLabel_20, gbc_lblNewLabel_20);
+        
+        textField_17.setBackground(new Color(255, 255, 255));
+        textField_17.setEditable(false);
+        GridBagConstraints gbc_textField_17 = new GridBagConstraints();
+        gbc_textField_17.insets = new Insets(0, 0, 5, 5);
+        gbc_textField_17.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textField_17.gridx = 1;
+        gbc_textField_17.gridy = 12;
+        panel.add(textField_17, gbc_textField_17);
+        textField_17.setColumns(10);
+        
+        JPanel panel_5 = new JPanel();
+        GridBagConstraints gbc_panel_5 = new GridBagConstraints();
+        gbc_panel_5.insets = new Insets(0, 0, 5, 5);
+        gbc_panel_5.fill = GridBagConstraints.BOTH;
+        gbc_panel_5.gridx = 1;
+        gbc_panel_5.gridy = 13;
+        panel.add(panel_5, gbc_panel_5);
+        
         JLabel lblNewLabel = new JLabel("Postulante:");
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.anchor = GridBagConstraints.NORTHEAST;
         gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel.gridx = 0;
-        gbc_lblNewLabel.gridy = 12;
+        gbc_lblNewLabel.gridy = 14;
         panel.add(lblNewLabel, gbc_lblNewLabel);
-        
-
-        
-        
         
         GridBagConstraints gbc_comboBox = new GridBagConstraints();
         gbc_comboBox.insets = new Insets(0, 0, 5, 5);
         gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBox.gridx = 1;
-        gbc_comboBox.gridy = 12;
+        gbc_comboBox.gridy = 14;
         panel.add(comboBox, gbc_comboBox);
         
         JLabel lblNewLabel_8 = new JLabel("CV Reducido:");
@@ -475,7 +501,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_8.anchor = GridBagConstraints.NORTHEAST;
         gbc_lblNewLabel_8.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_8.gridx = 0;
-        gbc_lblNewLabel_8.gridy = 13;
+        gbc_lblNewLabel_8.gridy = 15;
         panel.add(lblNewLabel_8, gbc_lblNewLabel_8);
         
         JScrollPane scrollPane_2 = new JScrollPane();
@@ -483,7 +509,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_scrollPane_2.insets = new Insets(0, 0, 5, 5);
         gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
         gbc_scrollPane_2.gridx = 1;
-        gbc_scrollPane_2.gridy = 13;
+        gbc_scrollPane_2.gridy = 15;
         panel.add(scrollPane_2, gbc_scrollPane_2);
         
         JTextArea textArea_1 = new JTextArea();
@@ -495,7 +521,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_11.anchor = GridBagConstraints.NORTHEAST;
         gbc_lblNewLabel_11.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_11.gridx = 0;
-        gbc_lblNewLabel_11.gridy = 14;
+        gbc_lblNewLabel_11.gridy = 16;
         panel.add(lblNewLabel_11, gbc_lblNewLabel_11);
         
         JScrollPane scrollPane_3 = new JScrollPane();
@@ -503,7 +529,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_scrollPane_3.insets = new Insets(0, 0, 5, 5);
         gbc_scrollPane_3.fill = GridBagConstraints.BOTH;
         gbc_scrollPane_3.gridx = 1;
-        gbc_scrollPane_3.gridy = 14;
+        gbc_scrollPane_3.gridy = 16;
         panel.add(scrollPane_3, gbc_scrollPane_3);
         
         JTextArea textArea_2 = new JTextArea();
@@ -515,14 +541,14 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_lblNewLabel_15.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_15.insets = new Insets(0, 0, 5, 5);
         gbc_lblNewLabel_15.gridx = 0;
-        gbc_lblNewLabel_15.gridy = 15;
+        gbc_lblNewLabel_15.gridy = 17;
         panel.add(lblNewLabel_15, gbc_lblNewLabel_15);
         
         JPanel panel_2 = new JPanel();
         GridBagConstraints gbc_panel_2 = new GridBagConstraints();
         gbc_panel_2.insets = new Insets(0, 0, 5, 5);
         gbc_panel_2.gridx = 1;
-        gbc_panel_2.gridy = 15;
+        gbc_panel_2.gridy = 17;
         panel.add(panel_2, gbc_panel_2);
         
         JLabel lblNewLabel_16 = new JLabel("Dia:");
@@ -551,7 +577,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         gbc_panel_3.gridwidth = 3;
         gbc_panel_3.fill = GridBagConstraints.BOTH;
         gbc_panel_3.gridx = 0;
-        gbc_panel_3.gridy = 16;
+        gbc_panel_3.gridy = 18;
         panel.add(panel_3, gbc_panel_3);
         
         JButton btnNewButton = new JButton("Aceptar");
@@ -566,8 +592,17 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         			String postulanteFinal = comboBox.getSelectedItem().toString();
         			String motivacionFinal = textArea_1.getText();
         			String cvReducidoFinal = textArea_2.getText();
-        			LocalDate fechaFinal = LocalDate.of(Integer.parseInt(textField_16.getText()),Integer.parseInt(textField_15.getText()), Integer.parseInt(textField_14.getText())); // año mes dia
-        			ico.altaPostulacion(postulanteFinal, ofertaFinal, cvReducidoFinal, motivacionFinal, fechaFinal);
+        			
+        			
+        		//	LocalDate fechaAlta = LocalDate.of(Integer.parseInt(textField_10.getText()),Integer.parseInt(textField_12.getText()), Integer.parseInt(textField_13.getText()));
+        		//	LocalDate fechaVencimiento = fechaAlta.plusDays(Integer.parseInt(textField_17.getText()));
+        			LocalDate fecha = LocalDate.of(Integer.parseInt(textField_16.getText()),Integer.parseInt(textField_15.getText()), Integer.parseInt(textField_14.getText())); // año mes dia
+        			
+        		//	if(fecha.isBefore(fechaVencimiento) || fecha.isAfter(fechaAlta)) {
+        			//	throw new Exception("Fecha Invalida");
+        		//	}
+
+        			ico.altaPostulacion(postulanteFinal, ofertaFinal, cvReducidoFinal, motivacionFinal, fecha);
         			JOptionPane.showMessageDialog(frame, "La operacion se ah realizado con exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
         			dispose();
         		} catch(ElementoRepetidoException e) {
@@ -579,7 +614,10 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         		} catch(NumberFormatException e) {
         			JOptionPane.showMessageDialog(frame, "Fecha Invalida", "Error", JOptionPane.ERROR_MESSAGE);
         		} catch(Exception e) {
-        			JOptionPane.showMessageDialog(frame, "Algo salio mal", "Error", JOptionPane.ERROR_MESSAGE);
+        			if (e.getMessage() == "Fecha Invalida")
+        				JOptionPane.showMessageDialog(frame, "Fecha Invalida", "Error", JOptionPane.ERROR_MESSAGE);
+        			else
+        				JOptionPane.showMessageDialog(frame, "Algo salio mal", "Error", JOptionPane.ERROR_MESSAGE);
         		}
 
         	}
@@ -597,10 +635,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
 	} // termina constructor
 	
 	protected void cmdRegistroUsuarioActionPerformed(ActionEvent arg0) {
-		
-		
-		
-		
+
 	}
 
 }
