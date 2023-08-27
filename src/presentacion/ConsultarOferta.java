@@ -53,7 +53,7 @@ public class ConsultarOferta extends JInternalFrame{
 		setResizable(true);
         setResizable(true);
         setIconifiable(true);
-        setMaximizable(true);
+        setMaximizable(true); 
         setClosable(true);
         setTitle("Consultar Oferta Laboral");
         setBounds(10, 40, 764, 700);

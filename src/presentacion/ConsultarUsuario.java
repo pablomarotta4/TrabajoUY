@@ -545,10 +545,10 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	}              	
                     }
                     if(comboPostulaciones.isVisible()) {
-                    dtofertas2 = dtofertas;
-                    comboPostulaciones.addActionListener(new ActionListener() {
+                    	dtofertas2 = dtofertas;
+                    	comboPostulaciones.addActionListener(new ActionListener() {
+                   		String seleccion = (String) comboPostulaciones.getSelectedItem();
                     	public void actionPerformed(ActionEvent e) {
-                    		String seleccion = (String) comboPostulaciones.getSelectedItem();
                     		System.out.println(comboPostulaciones.getSelectedItem());
                     		for(DTOfertaLaboral oferta : dtofertas2) {
                     			if(!dtofertas2.isEmpty()) {
@@ -591,28 +591,29 @@ public class ConsultarUsuario  extends JInternalFrame{
                             	String seleccion = (String) comboOfertas.getSelectedItem();
                         		for(DTOfertaLaboral oferta : dtofertas2) {
                         			if(!dtofertas2.isEmpty()) {
-                        			if(oferta.getNombre().equals(seleccion)) {
-                        				ConsultarOfertaButton.setVisible(true);                    		        
-    									mostrarNombreOferta.setText(oferta.getNombre());
-    									mostrarCiudadOferta.setText(oferta.getCiudad());
-    									mostrarFechaOferta.setText(oferta.getFechaAlta().toString());
-                        				mostrarNombreOferta.setVisible(true);
-                        				mostrarCiudadOferta.setVisible(true);
-                        				mostrarFechaOferta.setVisible(true);
-                        				nomOf.setVisible(true);
-                        				ciuOf.setVisible(true);
-                        				fechOf.setVisible(true);
+                        				if(oferta.getNombre().equals(seleccion)) {
+                        					ConsultarOfertaButton.setVisible(true);                    		        
+                        					mostrarNombreOferta.setText(oferta.getNombre());
+                        					mostrarCiudadOferta.setText(oferta.getCiudad());
+                        					mostrarFechaOferta.setText(oferta.getFechaAlta().toString());
+                        					mostrarNombreOferta.setVisible(true);
+                        					mostrarCiudadOferta.setVisible(true);
+                        					mostrarFechaOferta.setVisible(true);
+                        					nomOf.setVisible(true);
+                        					ciuOf.setVisible(true);
+                        					fechOf.setVisible(true);
+                        				}
                         			}
-                        			}
-                        		}ConsultarOfertaButton.addActionListener(new ActionListener() {
-                        		        	public void actionPerformed(ActionEvent e) {
-                        		        		ico.obtenerEmpresaDeOferta(seleccion);
-                        		        		abrirConsultaOferta(ico, icu, seleccion);
-                        		    				
-                        		        	}
-                        		        });
+                        		}
                     		}
                     		});
+                        ConsultarOfertaButton.addActionListener(new ActionListener() {
+                        	public void actionPerformed(ActionEvent e) {
+                        		ico.obtenerEmpresaDeOferta(seleccion);
+                        		abrirConsultaOferta(ico, icu, seleccion);
+                        		
+                        	}
+                        });
                     	}
                     
 
