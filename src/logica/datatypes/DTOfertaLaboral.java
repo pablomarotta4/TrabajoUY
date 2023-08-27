@@ -38,11 +38,10 @@ public class DTOfertaLaboral {
 			List<DTPostulacion> postulaciones,
 			List<String> keywords,
 			String nombreEmpresa,
-			String tipoPublicacion
+			String tipoPublicacion,
+			float costo
 	){
 		
-		Factory f = Factory.getInstance();
-		IManejadorPaquetes manejadorPaquetes = f.getManejadorPaquetes();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.ciudad = ciudad;
@@ -53,7 +52,7 @@ public class DTOfertaLaboral {
 		this.postulaciones = postulaciones;
 		this.nombreEmpresa = nombreEmpresa;
 		this.keywords = keywords;
-		this.costo = manejadorPaquetes.getTipo(tipoPublicacion).getCosto();
+		this.costo = costo;
 	}	
 	
 	public String getNombre() {
@@ -91,4 +90,36 @@ public class DTOfertaLaboral {
 	public float getCosto() {
 		return this.costo;
 	}
+	
+	public boolean equals(DTOfertaLaboral of) {
+		Float rem = this.remuneracion;
+		return 
+				this.nombre.equals(of.getNombre()) &&
+				this.descripcion.equals(of.getDescripcion()) &&
+				this.ciudad.equals(of.getCiudad()) &&
+				this.departamento.equals(of.getDepartamento()) &&
+				this.horario.equals(of.getHorario()) &&
+				rem.equals(of.getRemuneracion()) &&
+				this.fechaAlta.equals(of.getFechaAlta()) &&
+				this.nombreEmpresa.equals(of.getNombreEmpresa()) &&
+				this.keywords.equals(of.getKeywords()) &&
+				this.costo == of.getCosto();
+	}
+	
+	@Override
+	public String toString() {
+	    return "DTOfertaLaboral{" +
+	            "nombre='" + nombre + '\'' +
+	            ", descripcion='" + descripcion + '\'' +
+	            ", ciudad='" + ciudad + '\'' +
+	            ", departamento='" + departamento + '\'' +
+	            ", horario='" + horario + '\'' +
+	            ", remuneracion=" + remuneracion +
+	            ", fechaAlta=" + fechaAlta +
+	            ", costo=" + costo +
+	            ", keywords=" + keywords +
+	            ", nombreEmpresa='" + nombreEmpresa + '\'' +
+	            '}';
+	}
+
 }
