@@ -104,7 +104,6 @@ public class OfertaLaboral {
 				b = true;
 			}
 			i++;
-			System.out.println("yah");
 		}
 		return b;
 	}

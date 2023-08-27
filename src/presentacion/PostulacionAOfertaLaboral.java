@@ -199,47 +199,52 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         			textField_13.setText("");
         			
         		} else {
-        			String ofertaName = (String) comboBox_1.getSelectedItem();
-        			DTOfertaLaboral datosOferta = ico.listarDatosOferta(ofertaName);
-        			
-        			List<String> keys = datosOferta.getKeywords();
-        			
-        			String keysText = "";
-        			
-        			
-        			if (keys.size() != 0) {
-        				for(int i = 0; i < keys.size(); i++) {
-        					if (keysText != "") {
-        					keysText = keysText + "\n" + keys.get(i);
-        					} else {
-        						keysText = keys.get(i);
+        			try {
+        				String ofertaName = (String) comboBox_1.getSelectedItem();
+        				DTOfertaLaboral datosOferta = ico.listarDatosOferta(ofertaName);
+        				
+        				List<String> keys = datosOferta.getKeywords();
+        				
+        				String keysText = "";
+        				
+        				
+        				if (keys.size() != 0) {
+        					for(int i = 0; i < keys.size(); i++) {
+        						if (keysText != "") {
+        							keysText = keysText + "\n" + keys.get(i);
+        						} else {
+        							keysText = keys.get(i);
+        						}
         					}
+        				} else {
+        					keysText = "";
         				}
-        			} else {
-        				keysText = "";
+        				
+        				
+        				textField_5.setText(datosOferta.getNombre());
+        				textField_6.setText(datosOferta.getDepartamento());
+        				textField_7.setText(datosOferta.getCiudad());
+        				textField_8.setText(datosOferta.getRemuneracion().toString());
+        				textField_9.setText(datosOferta.getHorario());
+        				textField_11.setText(Float.toString(datosOferta.getCosto()));
+        				
+        				textArea.setText(datosOferta.getDescripcion());
+        				textArea_3.setText(keysText);
+        				
+        				LocalDate fecha = datosOferta.getFechaAlta();
+        				Integer dia = fecha.getDayOfMonth();
+        				Integer mes = fecha.getMonth().getValue();
+        				Integer anio = fecha.getYear();
+        				
+        				textField_10.setText(dia.toString());
+        				textField_12.setText(mes.toString());
+        				textField_13.setText(anio.toString());
+        				
+        			}catch (ElementoInexistenteException ex) {
+        				
         			}
-        			
-        			
-        			textField_5.setText(datosOferta.getNombre());
-        			textField_6.setText(datosOferta.getDepartamento());
-        			textField_7.setText(datosOferta.getCiudad());
-        			textField_8.setText(datosOferta.getRemuneracion().toString());
-        			textField_9.setText(datosOferta.getHorario());
-        			textField_11.setText(Float.toString(datosOferta.getCosto()));
-        			
-        			textArea.setText(datosOferta.getDescripcion());
-        			textArea_3.setText(keysText);
-        			
-        			LocalDate fecha = datosOferta.getFechaAlta();
-        			Integer dia = fecha.getDayOfMonth();
-        			Integer mes = fecha.getMonth().getValue();
-        			Integer anio = fecha.getYear();
-        			
-        			textField_10.setText(dia.toString());
-        			textField_12.setText(mes.toString());
-        			textField_13.setText(anio.toString());
-
-        		}
+        				
+        			}
         	}
         });  
         comboBox_1.setSelectedIndex(0);

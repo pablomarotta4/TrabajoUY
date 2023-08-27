@@ -66,7 +66,7 @@ public class ControladorOferta implements IControladorOferta{
 		if(empresa == null) {
 			throw new ElementoInexistenteException("No existe una empresa con nickname " + nickEmpresa);
 		}
-		empresa.agregarOferta(null);
+		//empresa.agregarOferta(null);
 		
 		// Obtengo las instancias de Keyword
 		List<Keyword> listaKeywords = new ArrayList<Keyword>();
@@ -139,9 +139,12 @@ public class ControladorOferta implements IControladorOferta{
 		return listaOfertas;
 	}
 	
-	public DTOfertaLaboral listarDatosOferta(String nombreOferta) {
+	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException{
 		Map<String, OfertaLaboral> ofertas = this.manejadorOferta.getOfertas();
-		System.out.println(ofertas.get(nombreOferta));
+		if(!ofertas.containsKey(nombreOferta)) {
+			throw new ElementoInexistenteException("No existe esa oferta" + nombreOferta);
+		}
+		//System.out.println(ofertas.get(nombreOferta));
 		return ofertas.get(nombreOferta).getDataType();
 	}
 	
@@ -163,6 +166,11 @@ public class ControladorOferta implements IControladorOferta{
 		} else {
 			throw new NoExisteInstancia("No existe una Oferta con ese nombre");
 		}
+	}
+	
+	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
+		
+		return this.manejadorOferta.getOfertaDeNombre(nombreOferta).getDataType();
 	}
 	
 }

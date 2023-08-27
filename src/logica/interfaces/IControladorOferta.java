@@ -26,7 +26,7 @@ public interface IControladorOferta {
 	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException;
 	public List<String> listarKeywords();
 	public List<String> listarOfertasByEmpresa(String nombreEmpresa);
-	public DTOfertaLaboral listarDatosOferta(String nombreOferta);
+	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException;
 	public void altaPostulacion(
 			String nickname,
 			String oferta,
@@ -34,4 +34,5 @@ public interface IControladorOferta {
 			String motivacion,
 			LocalDate fecha
 	) throws ElementoRepetidoException, NoExisteInstancia;
+	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta);
 }

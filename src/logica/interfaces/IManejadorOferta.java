@@ -9,4 +9,5 @@ public interface IManejadorOferta {
 	public void agregarOferta(OfertaLaboral of);
 	public boolean existeOferta(String nombreOferta);
 	public Map<String, OfertaLaboral> getOfertas();
+	public OfertaLaboral getOfertaDeNombre(String nombreOferta);
 }

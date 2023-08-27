@@ -35,4 +35,10 @@ public class ManejadorOferta implements IManejadorOferta{
 		return this.ofertasLaborales;
 	}
 
+
+	public OfertaLaboral getOfertaDeNombre(String nombreOferta) {
+		
+		return ofertasLaborales.get(nombreOferta);
+	}
+
 }
