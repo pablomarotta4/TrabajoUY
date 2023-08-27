@@ -1,5 +1,6 @@
 package logica.entidades;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class TipoPublicacion {
@@ -9,10 +10,10 @@ public class TipoPublicacion {
 	private int exposicion;
 	private int duracion;
 	private float costo;
-	private Date fecha;
+	private LocalDate fecha;
 	
 	
-	public TipoPublicacion(String nombre, String descripcion, int exposicion, int duracion, float costo, Date fecha) {
+	public TipoPublicacion(String nombre, String descripcion, int exposicion, int duracion, float costo, LocalDate fecha) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.exposicion = exposicion;

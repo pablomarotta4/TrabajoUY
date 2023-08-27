@@ -79,7 +79,10 @@ public class ControladorOferta implements IControladorOferta{
 		}
 
 		TipoPublicacion tipo = manejadorPaquetes.getTipo(tipoPublicacion);
-
+		
+		if(tipo == null) {
+			throw new ElementoInexistenteException("No existe el tipo de publicacion " + tipoPublicacion);
+		}
 		
 		if(this.manejadorOferta.existeOferta(nombre)) {
 			throw new ElementoRepetidoException("Ya existe una oferta con ese nombre.");

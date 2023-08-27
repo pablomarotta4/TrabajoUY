@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -207,7 +208,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
 
         			
         			
-        			Date fecha = new Date();
+        			LocalDate fecha = LocalDate.of(2000, 10, 1);
         			
         			try {
         				compTip.crearTipoPublicacion(valorTextNombre, valorTextDescripcion, numTextExposicion, numTextDuracion, numTextCosto, fecha);        				
