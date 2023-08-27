@@ -40,9 +40,9 @@ public class ConsultarUsuario  extends JInternalFrame{
 	private List<DTOfertaLaboral> dtofertas2= new ArrayList<>();
 	private JDesktopPane desktopPane;
 	
-	private void abrirConsultaOferta(IControladorOferta ico, IControladorUsuario icu) {
+	private void abrirConsultaOferta(IControladorOferta ico, IControladorUsuario icu, String preSeleccion) {
 		setVisible(false);
-		ConsultarOferta consultaOfertaInternalFrame = new ConsultarOferta(ico, icu);
+		ConsultarOferta consultaOfertaInternalFrame = new ConsultarOferta(ico, icu, preSeleccion);
 	    consultaOfertaInternalFrame.setVisible(true);
 	    getParent().add(consultaOfertaInternalFrame);
 	    try {
@@ -562,7 +562,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                     				ConsultarOfertaButton.addActionListener(new ActionListener() {
                     		        	public void actionPerformed(ActionEvent e) {
                     		        		
-                    		        		abrirConsultaOferta(ico, icu);
+                    		        		abrirConsultaOferta(ico, icu, seleccion);
                     		        		
                 		    				
                     		        	}
@@ -596,7 +596,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                         				ConsultarOfertaButton.addActionListener(new ActionListener() {
                         		        	public void actionPerformed(ActionEvent e) {
                         		        		
-                        		        		abrirConsultaOferta(ico, icu);
+                        		        		abrirConsultaOferta(ico, icu, seleccion);
                         		    				
                         		        	}
                         		        });

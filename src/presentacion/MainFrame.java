@@ -113,7 +113,7 @@ public class MainFrame {
 		JMenuItem menuConsultarOferta = new JMenuItem("Consultar Oferta Laboral");
 		menuConsultarOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu);
+				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu, null);
 				frame.getContentPane().add(consultarOfertaInternalFrame);
 				consultarOfertaInternalFrame.setVisible(true);
 			}
