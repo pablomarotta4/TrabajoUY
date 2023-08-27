@@ -142,37 +142,37 @@ class ControladorUsuarioTest {
 		
 	}
 	
-/*	@Test
+	@Test
 	@Order(65)
-	void consultarPostulacionesUsuarioExistenteCon1Postulacion() {
+	void consultarPostulacionesUsuarioExistenteConPostulacionesExistentes() {
 		
-		assertTrue(cu.consultarPostulaciones("Juan1").size() == 0);
+		try {
+			ct.crearTipoPublicacion("Tipo", "desc", 56, 30, 150, LocalDate.of(2003, 6, 12));
+			
+			co.altaKeyword("key1");
+			
+			List<String> keys = co.listarKeywords();
+			
+			co.altaOfertaLaboral("Empresa1", "Tipo", "Oferta1", "Descr", "L-V 09:00 - 17:00", 1000, "Montevideo", "Montevideo", LocalDate.of(1980, 6, 3), keys);
+			
+			co.altaPostulacion("Juan1", "Oferta1", "cvR", "motivado", LocalDate.of(2005, 4, 12));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("error");
+		}
+
+		assertTrue(cu.consultarPostulaciones("Juan1").size() != 0);
 		
-	} */
+	}
 	
-	
-	//g
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Test
+	@Order(70)
+	void consultarOfertasExistentesDeEmpresaExistente() {
+		
+	assertTrue(cu.consultarOfertas("Empresa1").size() != 0);
+		
+	}
 	
 	@Test
 	@Order(200)
