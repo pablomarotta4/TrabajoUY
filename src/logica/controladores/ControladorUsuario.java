@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,7 +28,7 @@ public class ControladorUsuario implements IControladorUsuario{
 		this.manejadorUsuario = f.getManejadorUsuario();
 	}
 	
-	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
+	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, LocalDate nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		manejadorUsuario.crearPostulante(nickname, nombre, apellido, email, nacionalidad, nacimiento);
 	}
 	

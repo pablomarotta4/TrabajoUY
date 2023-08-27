@@ -141,4 +141,66 @@ class ControladorOfertaTest {
 		);	
 
 	}
+	
+	@Test
+	void altaKeyword() {
+		try {
+			ctrlOferta.altaKeyword("keywordprueba1");
+			ctrlOferta.altaKeyword("keywordprueba2");
+			
+			List<String> listaCreada = ctrlOferta.listarKeywords();
+			List<String> listaEsperada = List.of("keywordprueba1", "keywordprueba2");
+			System.out.println(listaCreada);
+			assertEquals(listaCreada, listaEsperada);
+		} catch (ElementoRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void altaPostulacionOk() {
+		try {
+			ctrlUsuario.crearEmpresa(
+					"nickempresa", 
+					"nombreempresa", 
+					"apellidoempresa",
+					"emailempresa", 
+					"descripcionempresa", 
+					"linkempresa"
+			);
+			ctrlUsuario.crearPostulante(
+					"nickpostulante", 
+					"nombrepostulante", 
+					"apellidopostulante", 
+					"emailpostulante", 
+					"nacionalidadpostulante", 
+					LocalDate.of(2000, 10, 10)
+			);
+			ctrlOferta.altaKeyword("keyword1");
+			ctrlOferta.altaKeyword("keyword2");
+			
+			ctrlTipo.crearTipoPublicacion(
+					"nombretipo1", 
+					"descripciontipo", 
+					1, 
+					1, 
+					10, 
+					LocalDate.of(2000, 1, 1)
+			);
+			
+			ctrlOferta.altaOfertaLaboral(null, null, null, null, null, 0, null, null, null, null);
+			
+			
+			ctrlOferta.altaPostulacion(
+					null, 
+					null, 
+					null, 
+					null, 
+					null
+			);
+		} catch(Exception ex) {
+			
+		}
+	}
 }

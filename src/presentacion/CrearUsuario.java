@@ -17,6 +17,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -304,7 +305,7 @@ public class CrearUsuario extends JInternalFrame{
                     if (TipoUsuario.equals("Empresa")) {
                         icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), descripcionArea.getText(), linkField.getText());
                     } else if (TipoUsuario.equals("Postulante")) {
-                        icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), nacionalidadField.getText(), calendar.getDate());
+                        icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(), nacionalidadField.getText(), /*calendar.getDate()*/ LocalDate.of(1, 1, 1) );
                     }
                     
                     JOptionPane.showMessageDialog(CrearUsuario.this, "Usuario creado exitosamente");

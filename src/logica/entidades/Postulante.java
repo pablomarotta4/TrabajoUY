@@ -2,11 +2,12 @@ package logica.entidades;
 
 import java.util.Date;
 import java.util.List;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Postulante extends Usuario{
 
-	private Date fechaNacimiento;
+	private LocalDate fechaNacimiento;
 	private String nacionalidad;
 	private List<Postulacion> postulaciones;
 	
@@ -14,7 +15,7 @@ public class Postulante extends Usuario{
 			String nombre, 
 			String apellido, 
 			String email,
-			Date fechaNac,
+			LocalDate fechaNac,
 			String nacionalidad) {
 		super(nick, nombre, apellido, email);
 		this.fechaNacimiento = fechaNac;
@@ -22,7 +23,7 @@ public class Postulante extends Usuario{
 		this.postulaciones = new ArrayList<>();
 	}
 	
-	public Date getNacimiento() {
+	public LocalDate getNacimiento() {
 		return fechaNacimiento;
 	}
 	public String getNacionalidad() {

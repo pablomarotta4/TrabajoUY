@@ -2,17 +2,18 @@ package logica.datatypes;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 public class DataPostulante extends DataUsuario {
 
 	private String nacionalidad;
-	private Date nacimiento;
+	private LocalDate nacimiento;
 	
 	public  DataPostulante(String nick, 
 			String nombre, 
 			String apellido, 
 			String email,
-			Date fechaNac,
+			LocalDate fechaNac,
 			String nacionalidad) {
 		super(nick, nombre, apellido, email);
 		this.nacimiento = fechaNac;

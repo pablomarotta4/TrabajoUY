@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ManejadorUsuario implements IManejadorUsuario{
@@ -34,7 +35,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		return instance;
 	}
 	
-	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, Date nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
+	public void crearPostulante(String nickname, String nombre, String apellido, String email, String nacionalidad, LocalDate nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		if(!existeUsuarioNick(nickname) && !existeUsuarioEmail(email)) {
 			if(nickname.isEmpty()) 
 				throw new CamposVaciosExcepcion("Debe ingresar un nickname.");

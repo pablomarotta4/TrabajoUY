@@ -553,86 +553,87 @@ public class MainFrame {
 		try {
 			// CARGA DE POSTULANTES
 			this.icu.crearPostulante(
-					"lgarcia", 
-					"Lucía", 
-					"García", 
-					"lgarcia85@gmail.com", 
-					"Uruguaya", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("15/03/1985")
-			);	
+			    "lgarcia",
+			    "Lucía",
+			    "García",
+			    "lgarcia85@gmail.com",
+			    "Uruguaya",
+			    LocalDate.of(1985, 3, 15)
+			);
 			this.icu.crearPostulante(
-					"matilo", 
-					"Matías", 
-					"López", 
-					"matias.lopez90@hotmail.com", 
-					"Argentina", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("21/08/1990")
-			);	
+			    "matilo",
+			    "Matías",
+			    "López",
+			    "matias.lopez90@hotmail.com",
+			    "Argentina",
+			    LocalDate.of(1990, 8, 21)
+			);
 			this.icu.crearPostulante(
-					"maro", 
-					"María", 
-					"Rodríguez", 
-					"marrod@gmail.com", 
-					"Uruguaya", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("10/11/1988")
-			);	
-			
+			    "maro",
+			    "María",
+			    "Rodríguez",
+			    "marrod@gmail.com",
+			    "Uruguaya",
+			    LocalDate.of(1988, 11, 10)
+			);
+
 			this.icu.crearPostulante(
-					"javierf", 
-					"Javier", 
-					"Fernández", 
-					"javierf93@yahoo.com", 
-					"Mexicana", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("05/06/1993")
-			);	
+			    "javierf",
+			    "Javier",
+			    "Fernández",
+			    "javierf93@yahoo.com",
+			    "Mexicana",
+			    LocalDate.of(1993, 6, 5)
+			);
 			this.icu.crearPostulante(
-					"valen25", 
-					"Valentina", 
-					"Martínez", 
-					"vale87@gmail.com", 
-					"Uruguaya", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("25/02/1987")
-			);	
+			    "valen25",
+			    "Valentina",
+			    "Martínez",
+			    "vale87@gmail.com",
+			    "Uruguaya",
+			    LocalDate.of(1987, 2, 25)
+			);
 			this.icu.crearPostulante(
-					"andpe12", 
-					"Andrés", 
-					"Pérez", 
-					"anpe92@hotmail.com", 
-					"Chilena", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("12/04/1992")
-			);	
+			    "andpe12",
+			    "Andrés",
+			    "Pérez",
+			    "anpe92@hotmail.com",
+			    "Chilena",
+			    LocalDate.of(1992, 4, 12)
+			);
 			this.icu.crearPostulante(
-					"sicam", 
-					"Camila", 
-					"Silva", 
-					"camilasilva89@gmail.com", 
-					"Uruguaya", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("30/09/1989")
-			);	
+			    "sicam",
+			    "Camila",
+			    "Silva",
+			    "camilasilva89@gmail.com",
+			    "Uruguaya",
+			    LocalDate.of(1989, 9, 30)
+			);
 			this.icu.crearPostulante(
-					"sebgon", 
-					"Sebastián", 
-					"González", 
-					"gonza95@yahoo.com", 
-					"Colombiana", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("18/01/1995")
-			);	
+			    "sebgon",
+			    "Sebastián",
+			    "González",
+			    "gonza95@yahoo.com",
+			    "Colombiana",
+			    LocalDate.of(1995, 1, 18)
+			);
 			this.icu.crearPostulante(
-					"isabel", 
-					"Isabella", 
-					"López", 
-					"loisa@gmail.com", 
-					"Uruguaya", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("07/07/1991")
-			);	
+			    "isabel",
+			    "Isabella",
+			    "López",
+			    "loisa@gmail.com",
+			    "Uruguaya",
+			    LocalDate.of(1991, 7, 7)
+			);
 			this.icu.crearPostulante(
-					"marram02", 
-					"Martín", 
-					"Ramírez", 
-					"marram@hotmail.com", 
-					"Argentina", 
-					new SimpleDateFormat("yyyy/MM/dd").parse("02/12/1986")
-			);	
+			    "marram02",
+			    "Martín",
+			    "Ramírez",
+			    "marram@hotmail.com",
+			    "Argentina",
+			    LocalDate.of(1986, 12, 2)
+			);
+
 			// CARGA DE EMPRESAS
 			String desc = 
 			        "EcoTech Innovations es una empresa líder en soluciones tecnológicas sostenibles. "
@@ -739,14 +740,6 @@ public class MainFrame {
                 );
 			
 		} catch (CamposVaciosExcepcion ex) {
-			JOptionPane.showMessageDialog(
-                    frame,
-                    ex.getMessage(),
-                    "Error",
-                    JOptionPane.INFORMATION_MESSAGE
-                );
-			
-		} catch (ParseException ex) {
 			JOptionPane.showMessageDialog(
                     frame,
                     ex.getMessage(),
