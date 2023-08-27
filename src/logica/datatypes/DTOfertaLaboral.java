@@ -106,20 +106,20 @@ public class DTOfertaLaboral {
 				this.costo == of.getCosto();
 	}
 	
-	@Override
-	public String toString() {
-	    return "DTOfertaLaboral{" +
-	            "nombre='" + nombre + '\'' +
-	            ", descripcion='" + descripcion + '\'' +
-	            ", ciudad='" + ciudad + '\'' +
-	            ", departamento='" + departamento + '\'' +
-	            ", horario='" + horario + '\'' +
-	            ", remuneracion=" + remuneracion +
-	            ", fechaAlta=" + fechaAlta +
-	            ", costo=" + costo +
-	            ", keywords=" + keywords +
-	            ", nombreEmpresa='" + nombreEmpresa + '\'' +
-	            '}';
-	}
+//	@Override
+//	public String toString() {
+//	    return "DTOfertaLaboral{" +
+//	            "nombre='" + nombre + '\'' +
+//	            ", descripcion='" + descripcion + '\'' +
+//	            ", ciudad='" + ciudad + '\'' +
+//	            ", departamento='" + departamento + '\'' +
+//	            ", horario='" + horario + '\'' +
+//	            ", remuneracion=" + remuneracion +
+//	            ", fechaAlta=" + fechaAlta +
+//	            ", costo=" + costo +
+//	            ", keywords=" + keywords +
+//	            ", nombreEmpresa='" + nombreEmpresa + '\'' +
+//	            '}';
+//	}
 
 }

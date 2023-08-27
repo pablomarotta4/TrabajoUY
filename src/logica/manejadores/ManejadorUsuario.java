@@ -4,7 +4,6 @@ import logica.entidades.Usuario;
 
 import logica.entidades.Postulante;
 import logica.datatypes.DTOfertaLaboral;
-import logica.datatypes.DataOfertaLaboral;
 import logica.entidades.Empresa;
 import logica.entidades.OfertaLaboral;
 import logica.entidades.Postulacion;

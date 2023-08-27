@@ -20,6 +20,7 @@ import org.junit.jupiter.api.Order;
 
 import logica.datatypes.DTOfertaLaboral;
 import logica.datatypes.DTPostulacion;
+import logica.datatypes.DataUsuario;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorOferta;
@@ -139,7 +140,11 @@ class Tests {
 		} catch(Exception e) {
 			fail("error");
 		}
-		assertNotNull(cu.getPostulante("Juan1"));	
+		DataUsuario u = cu.consultarDatosUsuario("Juan1");
+		assertEquals(u.getNickname(), "Juan1");
+		assertEquals(u.getNombre(), "A");
+		assertEquals(u.getApellido(), "B");
+		assertEquals(u.getEmail(), "Juan1Email");
 	}
 	
 	@Test
@@ -153,11 +158,14 @@ class Tests {
 	void crearEmpresaValidaConLink() {
 		try {
 			cu.crearEmpresa("Empresa1", "A", "B", "Empresa1E", "Empresa1D", "Empresa1L");
+			DataUsuario u = cu.consultarDatosUsuario("Empresa1");
+			assertEquals(u.getNickname(), "Empresa1");
+			assertEquals(u.getNombre(), "A");
+			assertEquals(u.getApellido(), "B");
+			assertEquals(u.getEmail(), "Empresa1E");
 		} catch(Exception e) {
 			fail("error");
-		}
-		assertNotNull(cu.getEmpresa("Empresa1"));	
-		
+		}		
 	}
 	
 	@Test
@@ -165,11 +173,15 @@ class Tests {
 	void crearEmpresaValidaConLinkVacio() {
 		try {
 			cu.crearEmpresa("Empresa2", "A", "B", "Empresa2E", "Empresa2D", "");
+			DataUsuario u = cu.consultarDatosUsuario("Empresa2");
+			assertEquals(u.getNickname(), "Empresa2");
+			assertEquals(u.getNombre(), "A");
+			assertEquals(u.getApellido(), "B");
+			assertEquals(u.getEmail(), "Empresa2E");
 		} catch(Exception e) {
 			fail("error");
 		}
-		assertNotNull(cu.getEmpresa("Empresa2"));	
-		
+//		assertNotNull(cu.getEmpresa("Empresa2"));		
 	}
 	
 	@Test

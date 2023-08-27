@@ -8,7 +8,6 @@ import java.util.Map;
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import logica.datatypes.DTOfertaLaboral;
-import logica.datatypes.DataOfertaLaboral;
 import logica.entidades.Usuario;
 
 public interface IManejadorUsuario {

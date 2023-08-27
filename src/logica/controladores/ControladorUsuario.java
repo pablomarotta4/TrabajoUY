@@ -14,7 +14,6 @@ import logica.datatypes.DataUsuario;
 import logica.entidades.Empresa;
 import logica.entidades.Postulante;
 import logica.entidades.Usuario;
-import logica.datatypes.DataOfertaLaboral;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorUsuario;
 import logica.interfaces.IManejadorUsuario;

@@ -24,12 +24,7 @@ public class DataPostulante extends DataUsuario {
 		return nacionalidad;
 	}
 
-	
 	public String getNacimiento() {
-		//SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		//String date = dateFormat.format(nacimiento);
-		
 		return nacimiento.toString();
 	}
-
 }
