@@ -549,8 +549,9 @@ public class ConsultarUsuario  extends JInternalFrame{
                     comboPostulaciones.addActionListener(new ActionListener() {
                     	public void actionPerformed(ActionEvent e) {
                     		String seleccion = (String) comboPostulaciones.getSelectedItem();
+                    		System.out.println(comboPostulaciones.getSelectedItem());
                     		for(DTOfertaLaboral oferta : dtofertas2) {
-                    			if(!dtofertas2.isEmpty())
+                    			if(!dtofertas2.isEmpty()) {
                     			if(oferta.getNombre().equals(seleccion)) {
                     				ConsultarOfertaButton.setVisible(true);
 									mostrarNombreOferta.setText(oferta.getNombre());
@@ -563,16 +564,14 @@ public class ConsultarUsuario  extends JInternalFrame{
                     				ciuOf.setVisible(true);
                     				fechOf.setVisible(true);
                     		        	
-                    				
+                    			}
                     		        
                     			}
                     			
                     		}ConsultarOfertaButton.addActionListener(new ActionListener() {
                     					public void actionPerformed(ActionEvent e) {
                     						ico.obtenerEmpresaDeOferta(seleccion);
-                    						abrirConsultaOferta(ico, icu, seleccion);
-                    						
-                    						
+                    						abrirConsultaOferta(ico, icu, seleccion);			
                     					}
                     		 });
                     	}
@@ -588,9 +587,10 @@ public class ConsultarUsuario  extends JInternalFrame{
 							e1.printStackTrace();
 						}
                         comboOfertas.addActionListener(new ActionListener() {
-                        	public void actionPerformed(ActionEvent e) {
+                        	public void actionPerformed(ActionEvent e) {  
+                            	String seleccion = (String) comboOfertas.getSelectedItem();
                         		for(DTOfertaLaboral oferta : dtofertas2) {
-                        			if(!dtofertas2.isEmpty())
+                        			if(!dtofertas2.isEmpty()) {
                         			if(oferta.getNombre().equals(seleccion)) {
                         				ConsultarOfertaButton.setVisible(true);                    		        
     									mostrarNombreOferta.setText(oferta.getNombre());
@@ -602,7 +602,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                         				nomOf.setVisible(true);
                         				ciuOf.setVisible(true);
                         				fechOf.setVisible(true);
-                        				
+                        			}
                         			}
                         		}ConsultarOfertaButton.addActionListener(new ActionListener() {
                         		        	public void actionPerformed(ActionEvent e) {
