@@ -11,7 +11,6 @@ public interface IManejadorPaquetes {
 	
 	public Map<String, TipoPublicacion> getTiposPublicacion();
 	
-	public void getNombresDeTipo();
 	
 
 	public void agregarPaquete(Paquete paquete);

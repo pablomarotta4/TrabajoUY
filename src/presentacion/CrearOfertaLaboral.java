@@ -336,7 +336,6 @@ public class CrearOfertaLaboral extends JInternalFrame{
         btnAgregarKeyword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				selectedKeywords.add(comboKeywords.getSelectedItem().toString()); 				
-				System.out.println(comboKeywords.getSelectedItem().toString() + "agregada");
 			}
         });
         

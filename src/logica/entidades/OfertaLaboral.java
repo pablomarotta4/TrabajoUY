@@ -47,7 +47,6 @@ public class OfertaLaboral {
 		this.keywords = keywords;
 		this.tipo = tipo;
 		this.costo = tipo.getCosto();
-		System.out.println("h");
 	}	
 	
 	public String getNombre() {
@@ -96,7 +95,6 @@ public class OfertaLaboral {
 	}
 	
 	public boolean estaPostulado(String nickname) {
-		System.out.println(postulaciones);
 		int i = 0;
 		boolean b = false;
 		while((i < postulaciones.size()) && !b) {
