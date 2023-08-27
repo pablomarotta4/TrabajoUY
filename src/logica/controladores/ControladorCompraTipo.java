@@ -47,7 +47,7 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		return listaTipos;
 	}
 	
-	
+	 
 	public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento,LocalDate fecha) throws UsuarioRepetidoException{
 		if(manejadorPaquetes.existePaquete(valorTextNombre)) {
 			throw new UsuarioRepetidoException("Ya existe un paquete con el nombre ingresado.");
@@ -56,4 +56,5 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		Paquete paq= new Paquete(valorTextNombre, valorTextDescripcion, validez, descuento, fecha); 
 		manejadorPaquetes.agregarPaquete(paq);
 	}
+	
 }
