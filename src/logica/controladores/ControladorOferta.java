@@ -145,13 +145,20 @@ public class ControladorOferta implements IControladorOferta{
 		return ofertas.get(nombreOferta).getDataType();
 	}
 	
-	public void altaPostulacion(String nickname, String oferta, String cvReducido, String motivacion, LocalDate fecha) throws ElementoRepetidoException, NoExisteInstancia {
+	public void altaPostulacion(String nickname, String oferta, String cvReducido, String motivacion, LocalDate fecha) throws ElementoRepetidoException, NoExisteInstancia, ElementoInexistenteException {
 		
 		Map<String, OfertaLaboral> lista = manejadorOferta.getOfertas();
 		Postulacion pub;
 		OfertaLaboral of = lista.get(oferta);
 		Postulante postulante = ctrlUsuario.getPostulante(nickname);
 		
+		if(of == null) {
+			throw new NoExisteInstancia("No existe una Oferta con nombre " + oferta);	
+		}
+		
+		if(postulante == null) {
+			throw new ElementoInexistenteException("No existe postulante con nickname " + nickname);
+		} 
 		if (of.estaPostulado(nickname)) {
 			throw new ElementoRepetidoException("Ya se encuentra postulado a esta oferta");
 		}
@@ -160,9 +167,7 @@ public class ControladorOferta implements IControladorOferta{
 			of.agregarPostulacion(pub);
 			postulante.agregarPostulacion(pub);
 			manejadorPostulacion.agregarPostulacion(pub);
-		} else {
-			throw new NoExisteInstancia("No existe una Oferta con ese nombre");
-		}
+		} 
 	}
 	
 }

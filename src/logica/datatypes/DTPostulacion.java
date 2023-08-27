@@ -39,7 +39,8 @@ public class DTPostulacion {
 			"NICKNAME: " + this.nickpostulante + "\n" +
 			"FECHA DE POSTULACION: " + this.fechaPostulacion.toString() + "\n" +
 			"CV: " + this.cvReducido + "\n" +
-			"MOTIVACION: " + this.motivacion + "\n" + "\n";
+			"MOTIVACION: " + this.motivacion + "\n" +
+			"OFERTA: " + this.nombreOferta + "\n";
 	}
 	
 	public String getCvReducido() {
@@ -52,5 +53,17 @@ public class DTPostulacion {
 	public LocalDate getFecha() {
 		return this.fechaPostulacion;
 	}
-
+	public String getNombreOferta() {
+		return this.nombreOferta;
+	}
+	
+	public boolean equals(DTPostulacion p) {
+		return
+			cvReducido.equals(p.getCvReducido()) &&
+			motivacion.equals(p.getMotivacion()) &&
+			fechaPostulacion.equals(p.getFecha()) &&
+			nickpostulante.equals(p. getNickPostulante()) &&
+			nombreOferta.equals(p.getNombreOferta());
+	}
+	
 }

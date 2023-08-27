@@ -15,6 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import excepciones.CamposVaciosExcepcion;
+import excepciones.ElementoInexistenteException;
 import excepciones.ElementoRepetidoException;
 import excepciones.NoExisteInstancia;
 import excepciones.UsuarioRepetidoException;
@@ -331,6 +332,9 @@ public class MainFrame {
 					LocalDate.of(2023, 8, 16)
 			);
 		} catch (ElementoRepetidoException | NoExisteInstancia e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ElementoInexistenteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
