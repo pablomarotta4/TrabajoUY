@@ -4,6 +4,7 @@ import javax.swing.JInternalFrame;
 
 import logica.datatypes.DataUsuario;
 import logica.datatypes.DataPostulante;
+import logica.datatypes.DTOfertaLaboral;
 import logica.datatypes.DataEmpresa;
 import logica.datatypes.DataOfertaLaboral;
 import logica.interfaces.IControladorUsuario;
@@ -36,7 +37,7 @@ public class ConsultarUsuario  extends JInternalFrame{
 	 */
 	//private static final long serialVersionUID = 1L;
 	private IControladorUsuario icu;
-	private List<DataOfertaLaboral> dtofertas2= new ArrayList<>();
+	private List<DTOfertaLaboral> dtofertas2= new ArrayList<>();
 	
 	public ConsultarUsuario(IControladorUsuario cu) {
 		icu = cu;	
@@ -48,6 +49,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         setBounds(100, 100, 750, 700);
         
         GridBagLayout gbl = new GridBagLayout();
+        gbl.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 0, 0};
         gbl.columnWeights = new double[]{0.0, 1.0, 0.0};
         GridBagConstraints gcon = new GridBagConstraints();
         gcon.weightx = 0;
@@ -100,48 +102,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_ConsultarButton.anchor = GridBagConstraints.WEST;
         getContentPane().add(ConsultarButton, gbc_ConsultarButton);
         
-        /*JPanel CenterPanel = new JPanel();
-        getContentPane().add(CenterPanel, BorderLayout.CENTER);
-        GridBagLayout gbl_CenterPanel = new GridBagLayout();
-        gbl_CenterPanel.columnWidths = new int[]{30, 327, 0};
-        gbl_CenterPanel.rowHeights = new int[]{30, 30, 30, 30, 30, 211, 25, 0};
-        gbl_CenterPanel.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
-        gbl_CenterPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        CenterPanel.setLayout(gbl_CenterPanel);*/
-        
-        /*JPanel SouthPanel = new JPanel();
-        getContentPane().add(SouthPanel, BorderLayout.SOUTH);*/
-        
-       /* JButton ConsultarOfertasButton = new JButton("Consultar ofertas");
-        add(ConsultarOfertasButton);*/
-        
-        /*JPanel EastPanel = new JPanel();
-        getContentPane().add(EastPanel, BorderLayout.EAST);
-        GridBagLayout gbl_EastPanel = new GridBagLayout();
-        gbl_EastPanel.columnWidths = new int[]{0, 112, 112, 0};
-        gbl_EastPanel.rowHeights = new int[]{35, 35, 35, 35, 0};
-        gbl_EastPanel.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-        gbl_EastPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        EastPanel.setLayout(gbl_EastPanel);*/
-        
-      /*  JLabel consultarOfertaPostulacion = new JLabel("OfertaPostulacion");
-        GridBagConstraints gbc_consultarOfertaPostulacion = new GridBagConstraints();
-        gbc_consultarOfertaPostulacion.fill = GridBagConstraints.BOTH;
-        gbc_consultarOfertaPostulacion.insets = new Insets(0, 0, 5, 5);
-        gbc_consultarOfertaPostulacion.gridx = 1;
-        gbc_consultarOfertaPostulacion.gridy = 0;
-        consultarOfertaPostulacion.setVisible(false);
-        EastPanel.add(consultarOfertaPostulacion, gbc_consultarOfertaPostulacion);*/
-        
-       /* JComboBox<String> ofertaPostulacionComboBox = new JComboBox<String>();
-        ofertaPostulacionComboBox.setMaximumRowCount(15);
-        GridBagConstraints gbc_ofertaPostulacionComboBox = new GridBagConstraints();
-        gbc_ofertaPostulacionComboBox.insets = new Insets(0, 0, 5, 0);
-        gbc_ofertaPostulacionComboBox.fill = GridBagConstraints.BOTH;
-        gbc_ofertaPostulacionComboBox.gridx = 2;
-        gbc_ofertaPostulacionComboBox.gridy = 0;
-        ofertaPostulacionComboBox.setVisible(false);
-        EastPanel.add(ofertaPostulacionComboBox, gbc_ofertaPostulacionComboBox);*/
+
         gcon.gridx = 0;
         gcon.gridy = 1;
         gcon.gridx = 1;
@@ -375,7 +336,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         
         JLabel labelPostulaciones = new JLabel("Postulaciones: ");
         GridBagConstraints gbc_labelPostulaciones = new GridBagConstraints();
-        gbc_labelPostulaciones.insets = new Insets(0, 0, 0, 5);
+        gbc_labelPostulaciones.insets = new Insets(0, 0, 5, 5);
         gbc_labelPostulaciones.anchor = GridBagConstraints.EAST;
         gbc_labelPostulaciones.gridx = 0;
         gbc_labelPostulaciones.gridy = 10;
@@ -384,7 +345,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         
         JComboBox comboPostulaciones = new JComboBox();
         GridBagConstraints gbc_comboPostulaciones = new GridBagConstraints();
-        gbc_comboPostulaciones.insets = new Insets(0, 0, 0, 5);
+        gbc_comboPostulaciones.insets = new Insets(0, 0, 5, 5);
         gbc_comboPostulaciones.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboPostulaciones.gridx = 1;
         gbc_comboPostulaciones.gridy = 10;
@@ -392,50 +353,72 @@ public class ConsultarUsuario  extends JInternalFrame{
         comboPostulaciones.setVisible(false);
         comboOfertas.setVisible(false);
         mostrarLink.setVisible(false);
-        mostrarEmail.setVisible(true);
+        mostrarEmail.setVisible(true);   
         
+        JLabel mostrarNombreOferta = new JLabel();
+        GridBagConstraints gbc_mostrarNombreOferta = new GridBagConstraints();
+        gbc_mostrarNombreOferta.insets = new Insets(0, 0, 5, 5);
+        gbc_mostrarNombreOferta.anchor = GridBagConstraints.WEST;
+        gbc_mostrarNombreOferta.gridx = 1;
+        gbc_mostrarNombreOferta.gridy = 11;
+        getContentPane().add(mostrarNombreOferta, gbc_mostrarNombreOferta);
         
-        /*JLabel labelCiudad = new JLabel("Ciudad: ");
-        gcon.gridx = 0;
-        gcon.gridy = 2;
-        gbl.setConstraints(labelCiudad, gcon);
-        add(labelCiudad);
-        labelCiudad.setVisible(false);*/
+        JLabel mostrarCiudadOferta = new JLabel();
+        GridBagConstraints gbc_mostrarCiudadOferta = new GridBagConstraints();
+        gbc_mostrarCiudadOferta.insets = new Insets(0, 0, 5, 5);
+        gbc_mostrarCiudadOferta.anchor = GridBagConstraints.WEST;
+        gbc_mostrarCiudadOferta.gridx = 1;
+        gbc_mostrarCiudadOferta.gridy = 12;
+        getContentPane().add(mostrarCiudadOferta, gbc_mostrarCiudadOferta);
         
+        JLabel mostrarFechaOferta = new JLabel();
+        GridBagConstraints gbc_mostrarFechaOferta = new GridBagConstraints();
+        gbc_mostrarFechaOferta.insets = new Insets(0, 0, 5, 5);
+        gbc_mostrarFechaOferta.anchor = GridBagConstraints.WEST;
+        gbc_mostrarFechaOferta.gridx = 1;
+        gbc_mostrarFechaOferta.gridy = 13;
+        getContentPane().add(mostrarFechaOferta, gbc_mostrarFechaOferta);
         
-        /*JTextField mostrarCiudad = new JTextField();
-        gcon.gridx = 1;
-        gbl.setConstraints(mostrarCiudad, gcon);
-        add(mostrarCiudad);
-        mostrarCiudad.setVisible(false);
-        EastPanel.add(mostrarCiudad, gbc_mostrarCiudad);*/
+        JLabel nomOf = new JLabel("Nombre de la oferta: ");
+        GridBagConstraints gbc_labelnomOf = new GridBagConstraints();
+        gbc_labelnomOf.insets = new Insets(0, 0, 5, 5);
+        gbc_labelnomOf.anchor = GridBagConstraints.EAST;
+        gbc_labelnomOf.gridx = 0;
+        gbc_labelnomOf.gridy = 11;
+        getContentPane().add(nomOf, gbc_labelnomOf);
         
-        /*JLabel fechaLabelNoChange = new JLabel("Fecha:");
-        GridBagConstraints gbc_fechaLabelNoChange = new GridBagConstraints();
-        gbc_fechaLabelNoChange.anchor = GridBagConstraints.WEST;
-        gbc_fechaLabelNoChange.insets = new Insets(0, 0, 0, 5);
-        gbc_fechaLabelNoChange.gridx = 1;
-        gbc_fechaLabelNoChange.gridy = 3;
-        EastPanel.add(fechaLabelNoChange, gbc_fechaLabelNoChange);
-        fechaLabelNoChange.setVisible(false);*/
+        JLabel ciuOf = new JLabel("Ciudad: ");
+        GridBagConstraints gbc_ciuOf = new GridBagConstraints();
+        gbc_ciuOf.insets = new Insets(0, 0, 5, 5);
+        gbc_ciuOf.anchor = GridBagConstraints.EAST;
+        gbc_ciuOf.gridx = 0;
+        gbc_ciuOf.gridy = 12;
+        getContentPane().add(ciuOf, gbc_ciuOf);
         
-        /*JTextArea mostrarFecha = new JTextArea("");
-        GridBagConstraints gbc_mostrarFecha = new GridBagConstraints();
-        gbc_mostrarFecha.gridx = 2;
-        gbc_mostrarFecha.gridy = 3;
-        EastPanel.add(mostrarFecha, gbc_mostrarFecha);*/
+        JLabel fechOf = new JLabel("Fecha: ");
+        GridBagConstraints gbc_fechOf = new GridBagConstraints();
+        gbc_fechOf.insets = new Insets(0, 0, 5, 5);
+        gbc_fechOf.anchor = GridBagConstraints.EAST;
+        gbc_fechOf.gridx = 0;
+        gbc_fechOf.gridy = 13;
+        getContentPane().add(fechOf, gbc_fechOf);
         
-        /*mostrarNombre.setVisible(false);
-		mostrarCiudad.setVisible(false);
-		mostrarFecha.setVisible(false);*/
+        nomOf.setVisible(false);
+        ciuOf.setVisible(false);
+        fechOf.setVisible(false);
         
+        mostrarNombreOferta.setVisible(false);
+        mostrarCiudadOferta.setVisible(false);
+        mostrarFechaOferta.setVisible(false);
+
         
         ConsultarButton.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent e) {
         		String seleccionado = (String) UsuariosComboBox.getSelectedItem();
         		if(!seleccionado.isEmpty()) {
+        			List<DTOfertaLaboral> dtofertas = null;
         			DataUsuario us = icu.consultarDatosUsuario(seleccionado);
-        			List<DataOfertaLaboral> dtofertas = new ArrayList<>();
+        			
         			// NOMBRE
                     labelNombre.setVisible(true);
                     mostrarNombre.setText(us.getNombre());
@@ -481,10 +464,14 @@ public class ConsultarUsuario  extends JInternalFrame{
                         // OFERTAS
                         labelOfertas.setVisible(true);
                         comboOfertas.setVisible(true);
-                        
-
+                        comboPostulaciones.removeAllItems();
+                        dtofertas = icu.consultarPostulaciones(us.getNickname());
+                    	for(DTOfertaLaboral dtof: dtofertas) {
+                    		comboPostulaciones.addItem(dtof.getNombre());
+                    	}
                     }
                     else if(us instanceof DataPostulante) {
+                    	comboPostulaciones.removeAllItems();
                     	DataPostulante usp = (DataPostulante) us;
                     	
                     	labelOfertas.setVisible(false);
@@ -507,36 +494,54 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	// POSTULACIONES
                         labelPostulaciones.setVisible(true);
                         comboPostulaciones.setVisible(true);
-                    	/*consultarOfertaPostulacion.setVisible(true);
-                    	consultarOfertaPostulacion.setText("Postulacion");
                     	dtofertas = icu.consultarPostulaciones(us.getNickname());
-                    	for(DataOfertaLaboral dtof: dtofertas) {
-                    		ofertaPostulacionComboBox.addItem(dtof.getNombre());
-                    	}
-                    	ofertaPostulacionComboBox.setVisible(true);
-                    	consultarOfertaPostulacion.setText("Postulaciones: ");
-                    	nomLabelNoChange.setVisible(false);
-                    	ciudadLabelNoChange.setVisible(false);
-                    	fechaLabelNoChange.setVisible(false);*/
-                        
+                    	for(DTOfertaLaboral dtof: dtofertas) {
+                    		comboPostulaciones.addItem(dtof.getNombre());
+                    	}              	
                     }
+                    if(comboPostulaciones.isVisible()) {
                     dtofertas2 = dtofertas;
-                   /* ofertaPostulacionComboBox.addActionListener(new ActionListener() {
+                    comboPostulaciones.addActionListener(new ActionListener() {
                     	public void actionPerformed(ActionEvent e) {
-                    		String seleccion = (String) ofertaPostulacionComboBox.getSelectedItem();
-                    		for(DataOfertaLaboral oferta : dtofertas2) {
+                    		String seleccion = (String) comboPostulaciones.getSelectedItem();
+                    		for(DTOfertaLaboral oferta : dtofertas2) {
                     			if(!dtofertas2.isEmpty())
                     			if(oferta.getNombre().equals(seleccion)) {
-                    				mostrarNombre.setText(oferta.getNombre());
-                    				mostrarCiudad.setText(oferta.getCuidad());
-                    				mostrarFecha.setText(oferta.getFechaAlta());
-                    				mostrarNombre.setVisible(true);
-                    				mostrarCiudad.setVisible(true);
-                    				mostrarFecha.setVisible(true);
+									mostrarNombreOferta.setText(oferta.getNombre());
+									mostrarCiudadOferta.setText(oferta.getCiudad());
+									mostrarFechaOferta.setText(oferta.getFechaAlta().toString());
+                    				mostrarNombreOferta.setVisible(true);
+                    				mostrarCiudadOferta.setVisible(true);
+                    				mostrarFechaOferta.setVisible(true);
+                    				nomOf.setVisible(true);
+                    				ciuOf.setVisible(true);
+                    				fechOf.setVisible(true);
                     			}
+                    			
                     		}
                     	}
-                    });*/
+                    });
+                    }
+                    else if(comboOfertas.isVisible()){
+                    	dtofertas2 = dtofertas;
+                        comboOfertas.addActionListener(new ActionListener() {
+                        	public void actionPerformed(ActionEvent e) {
+                        		String seleccion = (String) comboOfertas.getSelectedItem();
+                        		for(DTOfertaLaboral oferta : dtofertas2) {
+                        			if(!dtofertas2.isEmpty())
+                        			if(oferta.getNombre().equals(seleccion)) {
+    									mostrarNombreOferta.setText(oferta.getNombre());
+    									mostrarCiudadOferta.setText(oferta.getCiudad());
+    									mostrarFechaOferta.setText(oferta.getFechaAlta().toString());
+                        				mostrarNombreOferta.setVisible(true);
+                        				mostrarCiudadOferta.setVisible(true);
+                        				mostrarFechaOferta.setVisible(true);
+                        			}
+                        		}
+                    		}
+                    		});
+                    	}
+                    
 
                 }
             }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
+import logica.datatypes.DTOfertaLaboral;
 import logica.datatypes.DataEmpresa;
 import logica.datatypes.DataPostulante;
 import logica.datatypes.DataUsuario;
@@ -80,11 +81,11 @@ public class ControladorUsuario implements IControladorUsuario{
 		return (Postulante) manejadorUsuario.buscarUsuario(nickPostulante);
 	}
 
-	public List<DataOfertaLaboral> consultarPostulaciones(String nick) {
+	public List<DTOfertaLaboral> consultarPostulaciones(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 
-	public List<DataOfertaLaboral> consultarOfertas(String nick) {
+	public List<DTOfertaLaboral> consultarOfertas(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 
