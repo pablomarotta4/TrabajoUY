@@ -122,7 +122,7 @@ public class MainFrame {
 		JMenuItem menuConsultarUsuario = new JMenuItem("Consultar Usuario");
 		menuConsultarUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConsultarUsuario consultarUsuarioInternalFrame = new ConsultarUsuario(icu);
+				ConsultarUsuario consultarUsuarioInternalFrame = new ConsultarUsuario(icu,ico);				
 				frame.getContentPane().add(consultarUsuarioInternalFrame);
 				consultarUsuarioInternalFrame.setVisible(true);
 			}
