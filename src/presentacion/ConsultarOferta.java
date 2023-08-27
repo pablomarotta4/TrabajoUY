@@ -54,6 +54,8 @@ public class ConsultarOferta extends JInternalFrame{
         setTitle("Consultar Oferta Laboral");
         setBounds(10, 40, 764, 700);
         
+        
+        
         JPanel panel = new JPanel();
         getContentPane().add(panel, BorderLayout.SOUTH);
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
