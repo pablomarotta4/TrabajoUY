@@ -72,6 +72,24 @@ class ControladorOfertaTest {
 					LocalDate.of(2000, 2, 2), 
 					List.of("keyword1", "keyword2")
 			);
+
+			DTOfertaLaboral ofertaCreada  = ctrlOferta.listarDatosOferta(nombreOferta);
+			DTOfertaLaboral ofertaEsperada = new DTOfertaLaboral(
+					nombreOferta, 
+					"descripcion", 
+					"ciudad",
+					"departamento",
+					"horario", 
+					10, 
+					LocalDate.of(2000, 2, 2), 
+					List.of(new DTPostulacion()),
+					List.of("keyword1", "keyword2"),
+					"nickempresa",
+					"nombretipo1", 
+					10
+			); 
+			boolean equals = ofertaEsperada.equals(ofertaCreada);
+			assertTrue(equals);
 		} catch (ElementoRepetidoException | ElementoInexistenteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,24 +100,45 @@ class ControladorOfertaTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		DTOfertaLaboral ofertaCreada  = ctrlOferta.listarDatosOferta(nombreOferta);
-		DTOfertaLaboral ofertaEsperada = new DTOfertaLaboral(
-				nombreOferta, 
-				"descripcion", 
-				"ciudad",
-				"departamento",
-				"horario", 
-				10, 
-				LocalDate.of(2000, 2, 2), 
-				List.of(new DTPostulacion()),
-				List.of("keyword1", "keyword2"),
-				"nickempresa",
-				"nombretipo1", 
-				10
-		); 
-		boolean equals = ofertaEsperada.equals(ofertaCreada);
-		assertTrue(equals);
 	}
+	
+	@Test
+	void altaOfertaEmpresaNoExiste() {
+		// Funcion a testear
+		try {
+			ctrlOferta.altaOfertaLaboral(
+					"nickempresa", 
+					"nombretipo1", 
+					"nombreOferta", 
+					"descripcion", 
+					"horario", 
+					10, 
+					"ciudad", 
+					"departamento", 
+					LocalDate.of(2000, 2, 2), 
+					List.of("keyword1", "keyword2")
+			);
+		} catch (ElementoRepetidoException ex) {
 
+		} catch (ElementoInexistenteException ex) {
+			
+		}
+		assertThrows(
+				ElementoInexistenteException.class, 
+				()->{ctrlOferta.altaOfertaLaboral(
+						"nickempresa", 
+						"nombretipo1", 
+						"nombreOferta", 
+						"descripcion", 
+						"horario", 
+						10, 
+						"ciudad", 
+						"departamento", 
+						LocalDate.of(2000, 2, 2), 
+						List.of("keyword1", "keyword2")
+					);
+				}
+		);	
+
+	}
 }
