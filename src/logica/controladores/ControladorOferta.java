@@ -167,7 +167,7 @@ public class ControladorOferta implements IControladorOferta{
 			of.agregarPostulacion(pub);
 			postulante.agregarPostulacion(pub);
 			manejadorPostulacion.agregarPostulacion(pub);
-		} 
+		}
 	}
 	
 }
