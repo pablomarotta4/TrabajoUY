@@ -566,7 +566,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         			String postulanteFinal = comboBox.getSelectedItem().toString();
         			String motivacionFinal = textArea_1.getText();
         			String cvReducidoFinal = textArea_2.getText();
-        			LocalDate fechaFinal = LocalDate.of(Integer.parseInt(textField_14.getText()),Integer.parseInt(textField_15.getText()), Integer.parseInt(textField_16.getText())); // año mes dia
+        			LocalDate fechaFinal = LocalDate.of(Integer.parseInt(textField_16.getText()),Integer.parseInt(textField_15.getText()), Integer.parseInt(textField_14.getText())); // año mes dia
         			ico.altaPostulacion(postulanteFinal, ofertaFinal, cvReducidoFinal, motivacionFinal, fechaFinal);
         			JOptionPane.showMessageDialog(frame, "La operacion se ah realizado con exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
         			dispose();

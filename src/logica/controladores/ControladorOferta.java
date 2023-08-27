@@ -144,7 +144,6 @@ public class ControladorOferta implements IControladorOferta{
 		if(!ofertas.containsKey(nombreOferta)) {
 			throw new ElementoInexistenteException("No existe esa oferta" + nombreOferta);
 		}
-		//System.out.println(ofertas.get(nombreOferta));
 		return ofertas.get(nombreOferta).getDataType();
 	}
 	

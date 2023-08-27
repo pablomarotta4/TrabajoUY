@@ -139,8 +139,10 @@ public class ConsultarOferta extends JInternalFrame{
         panel_1_1.add(btnSelectEmpresa, gbc_btnSelectEmpresa);
         btnSelectEmpresa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				comboBoxOferta.removeAllItems();
+				
 				List<String> listaOfertas = ctrlOferta.listarOfertasByEmpresa(comboBoxEmpresa.getSelectedItem().toString());
-				for(int i = 0; i <= listaOfertas.size() - 1; i++) {
+				for(int i = 0; i <= listaOfertas.size() - 1; i++) {					
 					comboBoxOferta.addItem(listaOfertas.get(i));
 				}
 			}

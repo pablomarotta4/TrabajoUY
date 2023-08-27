@@ -38,7 +38,6 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		Map<String, TipoPublicacion> tiposPublicacion = this.manejadorPaquetes.getTiposPublicacion();
 		
 		if(tiposPublicacion.size() > 0) {
-//			System.out.println(tiposPublicacion.keySet());
 			for(String nombre : tiposPublicacion.keySet()) {
 				listaTipos.add(nombre);	
 			}

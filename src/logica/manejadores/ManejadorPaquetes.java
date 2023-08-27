@@ -37,13 +37,6 @@ public class ManejadorPaquetes implements IManejadorPaquetes{
 	}
 	
 	
-	//prueba
-	public void getNombresDeTipo() {
-		for(TipoPublicacion t : tipos.values()) {
-			System.out.println(t.getNombre());
-		}
-	}
-	
 	public TipoPublicacion getTipo(String nombre) {
 		return tipos.get(nombre);
 	}
