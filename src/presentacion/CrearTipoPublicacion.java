@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -49,8 +50,10 @@ public class CrearTipoPublicacion extends JInternalFrame {
 	private JTextField textExposicion;
 	private JTextField textDuracion;
 	private JTextField textCosto;
-	private JTextField textFecha;
 	private JTextArea textDescripcion;
+	private JTextField textDia;
+	private JTextField textMes;
+	private JTextField textAnio;
 	
 
 	public CrearTipoPublicacion(IControladorCompraTipo compTip) {
@@ -75,7 +78,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 0, 122, 0, 0, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
 		JLabel lblNewLabel = new JLabel("Nombre");
@@ -167,7 +170,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		panel_1.add(textCosto, gbc_textCosto);
 		textCosto.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Fecha de Alta");
+		JLabel lblNewLabel_5 = new JLabel("Fecha de Alta:");
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 0, 5);
@@ -175,13 +178,34 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		gbc_lblNewLabel_5.gridy = 6;
 		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
-		textFecha = new JTextField();
-		GridBagConstraints gbc_textFecha = new GridBagConstraints();
-		gbc_textFecha.anchor = GridBagConstraints.WEST;
-		gbc_textFecha.gridx = 3;
-		gbc_textFecha.gridy = 6;
-		panel_1.add(textFecha, gbc_textFecha);
-		textFecha.setColumns(10);
+		JPanel panel_2 = new JPanel();
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.anchor = GridBagConstraints.WEST;
+		gbc_panel_2.gridx = 3;
+		gbc_panel_2.gridy = 6;
+		panel_1.add(panel_2, gbc_panel_2);
+		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JLabel labelDia = new JLabel("Dia: ");
+		panel_2.add(labelDia);
+		
+		textDia = new JTextField();
+		panel_2.add(textDia);
+		textDia.setColumns(5);
+		
+		JLabel labelMes = new JLabel("Mes: ");
+		panel_2.add(labelMes);
+		
+		textMes = new JTextField();
+		panel_2.add(textMes);
+		textMes.setColumns(5);
+		
+		JLabel labelAnio = new JLabel("Anio: ");
+		panel_2.add(labelAnio);
+		
+		textAnio = new JTextField();
+		panel_2.add(textAnio);
+		textAnio.setColumns(5);
 		
 		
 		JButton botonAceptar = new JButton("Aceptar");
@@ -204,10 +228,18 @@ public class CrearTipoPublicacion extends JInternalFrame {
         			
         			String valorTextCosto = textCosto.getText();
         			int numTextCosto = Integer.parseInt(valorTextCosto);
+        			
+        			String valorTextDia = textDia.getText();
+        			int numDia = Integer.parseInt(valorTextDia);
+        			String valorTextMes = textMes.getText();
+        			int numMes = Integer.parseInt(valorTextMes);
+        			String valorTextAnio = textAnio.getText();
+        			int numAnio = Integer.parseInt(valorTextAnio);
+        			
 
         			
         			
-        			Date fecha = new Date();
+        			LocalDate fecha = LocalDate.of(numAnio, numMes, numDia);
         			
         			try {
         				compTip.crearTipoPublicacion(valorTextNombre, valorTextDescripcion, numTextExposicion, numTextDuracion, numTextCosto, fecha);        				
