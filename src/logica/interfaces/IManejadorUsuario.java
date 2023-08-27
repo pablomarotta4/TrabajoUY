@@ -6,6 +6,7 @@ import java.util.Map;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
+import logica.datatypes.DTOfertaLaboral;
 import logica.datatypes.DataOfertaLaboral;
 import logica.entidades.Usuario;
 
@@ -19,6 +20,6 @@ public interface IManejadorUsuario {
 	public void agregarUsuario(Usuario u);
 	public List<String> listarNickUsuarios();
 	public Map<String, Usuario> getUsuarios();
-	public List<DataOfertaLaboral> obtenerOfertasPostulaciones(String nick);
+	public List<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick);
 }
 		

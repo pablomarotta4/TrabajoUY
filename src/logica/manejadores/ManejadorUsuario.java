@@ -3,6 +3,7 @@ package logica.manejadores;
 import logica.entidades.Usuario;
 
 import logica.entidades.Postulante;
+import logica.datatypes.DTOfertaLaboral;
 import logica.datatypes.DataOfertaLaboral;
 import logica.entidades.Empresa;
 import logica.entidades.OfertaLaboral;
@@ -113,15 +114,14 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		return listaNick;
 	}
 
-	public List<DataOfertaLaboral> obtenerOfertasPostulaciones(String nick) {
+	public List<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick) {
 		Usuario user = buscarUsuario(nick);
-		List<DataOfertaLaboral> dtofertas= new ArrayList<>();
+		List<DTOfertaLaboral> dtofertas= new ArrayList<>();
 		if(user instanceof Empresa) {
 			Empresa emp = (Empresa) user;
 			List<OfertaLaboral> ofertas = emp.getOfertas();
 			for(OfertaLaboral of : ofertas) {
-				DataOfertaLaboral dtof = new DataOfertaLaboral(of.getNombre(),of.getCiudad(),of.getFecha());
-				dtofertas.add(dtof);
+				dtofertas.add(of.getDataType());
 			}
 		}
 		else if(user instanceof Postulante) {
@@ -129,8 +129,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 			List<Postulacion> postulaciones = pos.getPostulaciones();
 			for(Postulacion po: postulaciones) {
 				OfertaLaboral of = po.getOfertaLaboral();
-				DataOfertaLaboral dtof = new DataOfertaLaboral(of.getNombre(),of.getCiudad(),of.getFecha());
-				dtofertas.add(dtof);
+				dtofertas.add(of.getDataType());
 			}
 		}
 		return dtofertas;
