@@ -18,6 +18,7 @@ import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -37,6 +38,21 @@ public class ConsultarUsuario  extends JInternalFrame{
 	private IControladorOferta ico;
 	private JInternalFrame frame;
 	private List<DTOfertaLaboral> dtofertas2= new ArrayList<>();
+	private JDesktopPane desktopPane;
+	
+	private void abrirConsultaOferta(IControladorOferta ico, IControladorUsuario icu) {
+		setVisible(false);
+		ConsultarOferta consultaOfertaInternalFrame = new ConsultarOferta(ico, icu);
+	    consultaOfertaInternalFrame.setVisible(true);
+	    getParent().add(consultaOfertaInternalFrame);
+	    try {
+	        consultaOfertaInternalFrame.setSelected(true);
+	    } catch (java.beans.PropertyVetoException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    consultaOfertaInternalFrame.toFront();
+		}
 	
 	public ConsultarUsuario(IControladorUsuario cu, IControladorOferta co) {
 		icu = cu;	
@@ -47,6 +63,9 @@ public class ConsultarUsuario  extends JInternalFrame{
         setClosable(true);
         setTitle("Consulta Usuario");
         setBounds(100, 100, 750, 700);
+        
+        desktopPane = new JDesktopPane();
+        getContentPane().add(desktopPane);
         
         frame = new JInternalFrame();
 		frame.setBounds(100, 100, 750, 700);
@@ -542,9 +561,9 @@ public class ConsultarUsuario  extends JInternalFrame{
                     				fechOf.setVisible(true);
                     				ConsultarOfertaButton.addActionListener(new ActionListener() {
                     		        	public void actionPerformed(ActionEvent e) {
-                    		        		ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu);
-                		    				frame.getContentPane().add(consultarOfertaInternalFrame);
-                		    				consultarOfertaInternalFrame.setVisible(true);
+                    		        		
+                    		        		abrirConsultaOferta(ico, icu);
+                    		        		
                 		    				
                     		        	}
                     		        	
@@ -577,9 +596,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                         				ConsultarOfertaButton.addActionListener(new ActionListener() {
                         		        	public void actionPerformed(ActionEvent e) {
                         		        		
-                        		    				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu);
-                        		    				frame.getContentPane().add(consultarOfertaInternalFrame);
-                        		    				consultarOfertaInternalFrame.setVisible(true);
+                        		        		abrirConsultaOferta(ico, icu);
                         		    				
                         		        	}
                         		        });

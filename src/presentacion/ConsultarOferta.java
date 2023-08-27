@@ -56,9 +56,20 @@ public class ConsultarOferta extends JInternalFrame{
         
         
         
+        
         JPanel panel = new JPanel();
         getContentPane().add(panel, BorderLayout.SOUTH);
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        
+        /*addInternalFrameListener(new InternalFrameAdapter() {
+        	public void internalFrameClosing(InternalFrameEvent e) {
+        		// Código para limpieza, guardar datos, etc., antes de cerrar la ventana
+        		// ...
+        		
+        		setVisible(false); // Oculta la ventana ConsultaOferta
+        		dispose(); // Cierra la ventana ConsultaOferta
+        	}
+        });*/
         
         JButton btnCerrar = new JButton("Cerrar");
         panel.add(btnCerrar);
