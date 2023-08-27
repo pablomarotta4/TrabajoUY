@@ -66,7 +66,8 @@ public class ControladorOferta implements IControladorOferta{
 		if(empresa == null) {
 			throw new ElementoInexistenteException("No existe una empresa con nickname " + nickEmpresa);
 		}
-
+		empresa.agregarOferta(null);
+		
 		// Obtengo las instancias de Keyword
 		List<Keyword> listaKeywords = new ArrayList<Keyword>();
 		for(int i = 0; i <= keywordsSeleccionadas.size() - 1; i++) {
@@ -87,7 +88,7 @@ public class ControladorOferta implements IControladorOferta{
 		if(this.manejadorOferta.existeOferta(nombre)) {
 			throw new ElementoRepetidoException("Ya existe una oferta con ese nombre.");
 		}
-
+		
 		OfertaLaboral nuevaOferta = 				
 				new OfertaLaboral(
 				nombre,
@@ -104,6 +105,7 @@ public class ControladorOferta implements IControladorOferta{
 		
 		this.manejadorOferta.agregarOferta(nuevaOferta);
 		empresa.agregarOferta(nuevaOferta);
+
 	}
 	
 	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException {
