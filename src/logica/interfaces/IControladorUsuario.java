@@ -11,6 +11,7 @@ import logica.datatypes.DTOfertaLaboral;
 import logica.datatypes.DataOfertaLaboral;
 import logica.datatypes.DataUsuario;
 import logica.entidades.Empresa;
+import logica.entidades.Postulante;
 import logica.entidades.Usuario;
 
 public interface IControladorUsuario {
@@ -22,6 +23,8 @@ public interface IControladorUsuario {
 	public List<String> listarNickPostulantes();
 	public List<String>listarUsuarios();
 	public DataUsuario consultarDatosUsuario(String nick);
+	public Empresa getEmpresa(String nickEmpresa);
+	public Postulante getPostulante(String nickPostulante);
 	public List<DTOfertaLaboral> consultarPostulaciones(String nick);
 	public List<DTOfertaLaboral> consultarOfertas(String nick);
 }
