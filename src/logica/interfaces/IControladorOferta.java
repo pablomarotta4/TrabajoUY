@@ -33,6 +33,6 @@ public interface IControladorOferta {
 			String cvReducido,
 			String motivacion,
 			LocalDate fecha
-	) throws ElementoRepetidoException, NoExisteInstancia;
+	) throws ElementoRepetidoException, NoExisteInstancia, ElementoInexistenteException;
 	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta);
 }
