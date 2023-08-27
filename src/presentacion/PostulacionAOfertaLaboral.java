@@ -557,7 +557,6 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         		
     			try {
-        			// campos a devolver
         			String ofertaFinal = comboBox_1.getSelectedItem().toString();
         			String postulanteFinal = comboBox.getSelectedItem().toString();
         			String motivacionFinal = textArea_1.getText();
@@ -570,12 +569,14 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         			JOptionPane.showMessageDialog(frame, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
         		} catch(NoExisteInstancia e) {
         			JOptionPane.showMessageDialog(frame, e.getMessage(), "Registrar Usuario", JOptionPane.ERROR_MESSAGE);
+        		} catch(NullPointerException e) {
+        			JOptionPane.showMessageDialog(frame, "Campos Vacios", "Error", JOptionPane.ERROR_MESSAGE);
+        		} catch(NumberFormatException e) {
+        			JOptionPane.showMessageDialog(frame, "Fecha Invalida", "Error", JOptionPane.ERROR_MESSAGE);
+        		} catch(Exception e) {
+        			JOptionPane.showMessageDialog(frame, "Algo salio mal", "Error", JOptionPane.ERROR_MESSAGE);
         		}
-        		
-        		
-        		
 
-        		
         	}
         });
         panel_3.add(btnNewButton);
