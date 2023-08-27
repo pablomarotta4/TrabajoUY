@@ -590,17 +590,23 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
     			try {
         			String ofertaFinal = comboBox_1.getSelectedItem().toString();
         			String postulanteFinal = comboBox.getSelectedItem().toString();
-        			String motivacionFinal = textArea_1.getText();
+        		 	String motivacionFinal = textArea_1.getText();
         			String cvReducidoFinal = textArea_2.getText();
         			
+        			Integer year = Integer.parseInt(textField_13.getText());
+        			Integer month = Integer.parseInt(textField_12.getText());
+        			Integer day = Integer.parseInt(textField_10.getText());
+	
+        			LocalDate fechaAlta = LocalDate.of(year , month, day);
         			
-        		//	LocalDate fechaAlta = LocalDate.of(Integer.parseInt(textField_10.getText()),Integer.parseInt(textField_12.getText()), Integer.parseInt(textField_13.getText()));
-        		//	LocalDate fechaVencimiento = fechaAlta.plusDays(Integer.parseInt(textField_17.getText()));
         			LocalDate fecha = LocalDate.of(Integer.parseInt(textField_16.getText()),Integer.parseInt(textField_15.getText()), Integer.parseInt(textField_14.getText())); // año mes dia
         			
-        		//	if(fecha.isBefore(fechaVencimiento) || fecha.isAfter(fechaAlta)) {
-        			//	throw new Exception("Fecha Invalida");
-        		//	}
+        			Integer duracion = Integer.parseInt(textField_17.getText());
+        			LocalDate fechaVencimiento = fechaAlta.plusDays(duracion);
+        			
+        			if(fecha.isAfter(fechaVencimiento) || fecha.isBefore(fechaAlta)) {
+        				throw new Exception("ErrorDate");
+        			}
 
         			ico.altaPostulacion(postulanteFinal, ofertaFinal, cvReducidoFinal, motivacionFinal, fecha);
         			JOptionPane.showMessageDialog(frame, "La operacion se ah realizado con exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
@@ -614,10 +620,11 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         		} catch(NumberFormatException e) {
         			JOptionPane.showMessageDialog(frame, "Fecha Invalida", "Error", JOptionPane.ERROR_MESSAGE);
         		} catch(Exception e) {
-        			if (e.getMessage() == "Fecha Invalida")
-        				JOptionPane.showMessageDialog(frame, "Fecha Invalida", "Error", JOptionPane.ERROR_MESSAGE);
-        			else
+        			if (e.getMessage() == "ErrorDate") {
+        				JOptionPane.showMessageDialog(frame, "Fecha de postulacion invalida.", "Error", JOptionPane.ERROR_MESSAGE);
+        			} else {
         				JOptionPane.showMessageDialog(frame, "Algo salio mal", "Error", JOptionPane.ERROR_MESSAGE);
+        			}
         		}
 
         	}
