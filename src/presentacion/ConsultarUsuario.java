@@ -546,10 +546,11 @@ public class ConsultarUsuario  extends JInternalFrame{
                     }
                     if(comboPostulaciones.isVisible()) {
                     	dtofertas2 = dtofertas;
+                		String seleccion = (String) comboPostulaciones.getSelectedItem();
                     	comboPostulaciones.addActionListener(new ActionListener() {
-                   		String seleccion = (String) comboPostulaciones.getSelectedItem();
+                   		
                     	public void actionPerformed(ActionEvent e) {
-                    		System.out.println(comboPostulaciones.getSelectedItem());
+                    		String seleccion = (String) comboPostulaciones.getSelectedItem();
                     		for(DTOfertaLaboral oferta : dtofertas2) {
                     			if(!dtofertas2.isEmpty()) {
                     			if(oferta.getNombre().equals(seleccion)) {
@@ -568,24 +569,19 @@ public class ConsultarUsuario  extends JInternalFrame{
                     		        
                     			}
                     			
-                    		}ConsultarOfertaButton.addActionListener(new ActionListener() {
-                    					public void actionPerformed(ActionEvent e) {
-                    						ico.obtenerEmpresaDeOferta(seleccion);
-                    						abrirConsultaOferta(ico, icu, seleccion);			
-                    					}
-                    		 });
+                    		}
                     	}
                     });
+                    	ConsultarOfertaButton.addActionListener(new ActionListener() {
+        					public void actionPerformed(ActionEvent e) {
+        						ico.obtenerEmpresaDeOferta(seleccion);
+        						abrirConsultaOferta(ico, icu, seleccion);			
+        					}
+        		 });
                     }
                     else if(comboOfertas.isVisible()){
                     	dtofertas2 = dtofertas;
                     	String seleccion = (String) comboOfertas.getSelectedItem();
-                    	try {
-							DTOfertaLaboral ofertaSelec = ico.listarDatosOferta(seleccion);
-						} catch (ElementoInexistenteException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
                         comboOfertas.addActionListener(new ActionListener() {
                         	public void actionPerformed(ActionEvent e) {  
                             	String seleccion = (String) comboOfertas.getSelectedItem();
@@ -614,6 +610,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                         		
                         	}
                         });
+                        
                     	}
                     
 
