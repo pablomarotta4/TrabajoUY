@@ -42,6 +42,7 @@ public class ConsultarUsuario  extends JInternalFrame{
 	private JInternalFrame frame;
 	private List<DTOfertaLaboral> dtofertas2= new ArrayList<>();
 	private JDesktopPane desktopPane;
+	private String comboSeleccion = null;
 	
 	private void abrirConsultaOferta(IControladorOferta ico, IControladorUsuario icu, String preSeleccion) {
 		setVisible(false);
@@ -546,14 +547,11 @@ public class ConsultarUsuario  extends JInternalFrame{
                     }
                     if(comboPostulaciones.isVisible()) {
                     	dtofertas2 = dtofertas;
-                		String seleccion = (String) comboPostulaciones.getSelectedItem();
                     	comboPostulaciones.addActionListener(new ActionListener() {
-                   		
                     	public void actionPerformed(ActionEvent e) {
-                    		String seleccion = (String) comboPostulaciones.getSelectedItem();
                     		for(DTOfertaLaboral oferta : dtofertas2) {
                     			if(!dtofertas2.isEmpty()) {
-                    			if(oferta.getNombre().equals(seleccion)) {
+                    			if(oferta.getNombre().equals((String) comboPostulaciones.getSelectedItem())) {
                     				ConsultarOfertaButton.setVisible(true);
 									mostrarNombreOferta.setText(oferta.getNombre());
 									mostrarCiudadOferta.setText(oferta.getCiudad());
@@ -564,7 +562,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                     				nomOf.setVisible(true);
                     				ciuOf.setVisible(true);
                     				fechOf.setVisible(true);
-                    		        	
+                    				comboSeleccion = (String) comboPostulaciones.getSelectedItem();
                     			}
                     		        
                     			}
@@ -572,22 +570,15 @@ public class ConsultarUsuario  extends JInternalFrame{
                     		}
                     	}
                     });
-                    	ConsultarOfertaButton.addActionListener(new ActionListener() {
-        					public void actionPerformed(ActionEvent e) {
-        						ico.obtenerEmpresaDeOferta(seleccion);
-        						abrirConsultaOferta(ico, icu, seleccion);			
-        					}
-        		 });
+
                     }
                     else if(comboOfertas.isVisible()){
                     	dtofertas2 = dtofertas;
-                    	String seleccion = (String) comboOfertas.getSelectedItem();
                         comboOfertas.addActionListener(new ActionListener() {
                         	public void actionPerformed(ActionEvent e) {  
-                            	String seleccion = (String) comboOfertas.getSelectedItem();
                         		for(DTOfertaLaboral oferta : dtofertas2) {
                         			if(!dtofertas2.isEmpty()) {
-                        				if(oferta.getNombre().equals(seleccion)) {
+                        				if(oferta.getNombre().equals((String) comboOfertas.getSelectedItem())) {
                         					ConsultarOfertaButton.setVisible(true);                    		        
                         					mostrarNombreOferta.setText(oferta.getNombre());
                         					mostrarCiudadOferta.setText(oferta.getCiudad());
@@ -598,24 +589,39 @@ public class ConsultarUsuario  extends JInternalFrame{
                         					nomOf.setVisible(true);
                         					ciuOf.setVisible(true);
                         					fechOf.setVisible(true);
+                        					comboSeleccion = (String) comboOfertas.getSelectedItem();
                         				}
                         			}
                         		}
                     		}
                     		});
-                        ConsultarOfertaButton.addActionListener(new ActionListener() {
-                        	public void actionPerformed(ActionEvent e) {
-                        		ico.obtenerEmpresaDeOferta(seleccion);
-                        		abrirConsultaOferta(ico, icu, seleccion);
-                        		
-                        	}
-                        });
                         
                     	}
                     
 
                 }
+        		if(comboOfertas.isVisible()) {
+                    ConsultarOfertaButton.addActionListener(new ActionListener() {
+                    	public void actionPerformed(ActionEvent e) {
+                    		ico.obtenerEmpresaDeOferta(comboSeleccion);
+                    		abrirConsultaOferta(ico, icu, comboSeleccion);	
+                    		comboSeleccion = null;
+                    	}
+                
+                    });
+    			}
+    			else if(comboPostulaciones.isVisible()) {
+    				ConsultarOfertaButton.addActionListener(new ActionListener() {
+                    	public void actionPerformed(ActionEvent e) {
+                    		ico.obtenerEmpresaDeOferta(comboSeleccion);
+                    		abrirConsultaOferta(ico, icu, comboSeleccion);	
+                    		comboSeleccion = null;
+                    	}
+                
+                    });
+    			}
             }
+        	
         });
 
 	}
