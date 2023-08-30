@@ -81,11 +81,19 @@ public class CrearOfertaLaboral extends JInternalFrame{
         setBounds(10, 40, 750, 600);
         
         GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{140, 210, 200, 150};
+        gridBagLayout.columnWidths = new int[]{50, 170, 200, 50};
         gridBagLayout.rowHeights = new int[]{30, 30, 30, 90, 30, 30, 30, 30, 30, 30, 30, 30, 30};
-        gridBagLayout.columnWeights = new double[]{0.0, 1.0};
-        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0};
+        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
         getContentPane().setLayout(gridBagLayout);
+        
+        JPanel panel_2 = new JPanel();
+        GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+        gbc_panel_2.insets = new Insets(0, 0, 5, 5);
+        gbc_panel_2.fill = GridBagConstraints.BOTH;
+        gbc_panel_2.gridx = 0;
+        gbc_panel_2.gridy = 0;
+        getContentPane().add(panel_2, gbc_panel_2);
         
         // ####################### Fila 1 ###############################
         JLabel lblEmpresa = new JLabel("Seleccionar empresa");
@@ -110,6 +118,14 @@ public class CrearOfertaLaboral extends JInternalFrame{
             	comboBoxEmpresa.addItem(listaEmpresas.get(i));
             }
         }
+        
+        JPanel panel_1 = new JPanel();
+        GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+        gbc_panel_1.insets = new Insets(0, 0, 5, 0);
+        gbc_panel_1.fill = GridBagConstraints.BOTH;
+        gbc_panel_1.gridx = 3;
+        gbc_panel_1.gridy = 0;
+        getContentPane().add(panel_1, gbc_panel_1);
 
         
         //################################################################
@@ -149,6 +165,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         getContentPane().add(lblNewLabel, gbc_lblNewLabel);
         
         textNombreOferta = new JTextField();
+        textNombreOferta.setText("");
         GridBagConstraints gbc_textField = new GridBagConstraints();
         gbc_textField.insets = new Insets(0, 30, 5, 30);
         gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -335,18 +352,66 @@ public class CrearOfertaLaboral extends JInternalFrame{
         List<String> selectedKeywords = new ArrayList<String>();
         btnAgregarKeyword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selectedKeywords.add(comboKeywords.getSelectedItem().toString()); 				
+				JFrame frame = new JFrame("Popup");
+				try {
+					if(comboBoxEmpresa.getSelectedItem() == null || comboBoxTipoPublicacion.getSelectedItem() == null ||
+							comboBoxEmpresa.getSelectedItem().toString() == "" || comboBoxTipoPublicacion.getSelectedItem().toString() == "") {
+						throw new Exception("noEmpNoTipo");
+					} else if (textNombreOferta.getText().equals("")) {
+						throw new Exception("noOferta");
+						
+					} else {
+						selectedKeywords.add(comboKeywords.getSelectedItem().toString()); 
+					
+						JOptionPane.showMessageDialog(
+								frame,
+								"Keyword añadida con éxito!",
+								"Éxito",
+								JOptionPane.INFORMATION_MESSAGE
+								);
+					}
+				
+				} catch(Exception ex) {
+					if (ex.getMessage() == "noEmpNoTipo") {
+						JOptionPane.showMessageDialog(
+								frame,
+								"Seleccione Empresa y Tipo de Publicacion",
+								"Error",
+								JOptionPane.ERROR_MESSAGE );
+					} else if(ex.getMessage() == "noOferta") {
+						JOptionPane.showMessageDialog(
+								frame,
+								"No existe oferta a la cual agregarle la keyword",
+								"Error",
+								JOptionPane.ERROR_MESSAGE
+								);
+					}
+				}
 			}
         });
+        
+        JPanel panel = new JPanel();
+        GridBagConstraints gbc_panel = new GridBagConstraints();
+        gbc_panel.gridwidth = 2;
+        gbc_panel.insets = new Insets(0, 0, 5, 5);
+        gbc_panel.fill = GridBagConstraints.VERTICAL;
+        gbc_panel.gridx = 1;
+        gbc_panel.gridy = 11;
+        getContentPane().add(panel, gbc_panel);
         
         
         
         JButton btnAceptar = new JButton("Aceptar");
-        GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-        gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
-        gbc_btnNewButton_1.gridx = 1;
-        gbc_btnNewButton_1.gridy = 11;
-        getContentPane().add(btnAceptar, gbc_btnNewButton_1);
+        panel.add(btnAceptar);
+        
+        JButton btnCancelar = new JButton("Cancelar");
+        panel.add(btnCancelar);
+        
+		btnCancelar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+				dispose();
+        	}
+        });
         // ###############################################################
         
         
@@ -379,6 +444,16 @@ public class CrearOfertaLaboral extends JInternalFrame{
 					if(algunCampoVacio) {
 						throw new CamposVaciosExcepcion("Complete todos los campos");
 					}
+					
+					if(remuneracion < 0) {
+						throw new ElementoInexistenteException("RemuneracionInvalida");
+						
+					}
+					
+					if(comboBoxEmpresa.getSelectedItem() == null || comboBoxTipoPublicacion.getSelectedItem() == null ||
+						comboBoxEmpresa.getSelectedItem().toString() == "" || comboBoxTipoPublicacion.getSelectedItem().toString() == "") {
+						throw new ElementoInexistenteException("noEmpNoTipo");
+					}
  							
 					ctrlOferta.altaOfertaLaboral(
 							comboBoxEmpresa.getSelectedItem().toString(), 
@@ -408,6 +483,21 @@ public class CrearOfertaLaboral extends JInternalFrame{
     						JOptionPane.ERROR_MESSAGE
 					);
 				} catch(ElementoInexistenteException ex) {
+					if (ex.getMessage() == "RemuneracionInvalida") {
+						JOptionPane.showMessageDialog(
+								frame,
+	    						"Remuneracion invalida",
+	    						"Error",
+	    						JOptionPane.ERROR_MESSAGE );
+					} else if (ex.getMessage() == "noEmpNoTipo") {
+						JOptionPane.showMessageDialog(
+								frame,
+	    						"Seleccione Empresa y Tipo de Publicacion",
+	    						"Error",
+	    						JOptionPane.ERROR_MESSAGE );
+						
+					} else
+
       				JOptionPane.showMessageDialog(
     						frame,
     						ex.getMessage(),
@@ -436,20 +526,8 @@ public class CrearOfertaLaboral extends JInternalFrame{
     						JOptionPane.ERROR_MESSAGE
 					);
 				}
+				
 			}
-        });
-        
-        JButton btnCancelar = new JButton("Cancelar");
-        GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
-        gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
-        gbc_btnCancelar.gridx = 2;
-        gbc_btnCancelar.gridy = 11;
-        getContentPane().add(btnCancelar, gbc_btnCancelar);    
-        
-		btnCancelar.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-				dispose();
-        	}
         });
     }
 		

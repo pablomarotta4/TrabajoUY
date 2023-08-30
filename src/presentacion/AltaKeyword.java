@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
+import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoRepetidoException;
 
 import java.awt.Insets;
@@ -42,6 +43,9 @@ public class AltaKeyword extends JInternalFrame {
         getContentPane().add(panel, BorderLayout.SOUTH);
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
+        textNombreKeyword = new JTextField();
+        textNombreKeyword.setText("");
+        
         JButton botonAceptar = new JButton("Aceptar");
         botonAceptar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -49,7 +53,10 @@ public class AltaKeyword extends JInternalFrame {
                 frame.setSize(300, 150);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 try {
-                	String valorTextNombreKeyword = textNombreKeyword.getText();
+                	String valorTextNombreKeyword = textNombreKeyword.getText().toString();
+                	if (valorTextNombreKeyword.equals("")) {
+                		throw new CamposVaciosExcepcion("Campo Vacio");
+                	}
                 	ico.altaKeyword(valorTextNombreKeyword);
                 	JOptionPane.showMessageDialog(
     						frame,
@@ -66,6 +73,13 @@ public class AltaKeyword extends JInternalFrame {
                             JOptionPane.INFORMATION_MESSAGE
                         );
                 	
+                } catch (CamposVaciosExcepcion ex) {
+                	JOptionPane.showMessageDialog(
+                            frame,
+                            ex.getMessage(),
+                            "Error",
+                            JOptionPane.INFORMATION_MESSAGE
+                        );
                 }
         	}
         });
@@ -96,7 +110,7 @@ public class AltaKeyword extends JInternalFrame {
         gbc_lblNewLabel.gridy = 4;
         panel_1.add(lblNewLabel, gbc_lblNewLabel);
         
-        textNombreKeyword = new JTextField();
+        
         GridBagConstraints gbc_textNombreKeyword = new GridBagConstraints();
         gbc_textNombreKeyword.fill = GridBagConstraints.HORIZONTAL;
         gbc_textNombreKeyword.gridx = 3;

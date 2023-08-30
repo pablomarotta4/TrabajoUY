@@ -1,6 +1,7 @@
 package presentacion;
 
 import logica.interfaces.IControladorOferta;
+import excepciones.CamposVaciosExcepcion;
 import excepciones.UsuarioRepetidoException;
 import logica.interfaces.IControladorCompraTipo;
 
@@ -217,6 +218,8 @@ public class CrearTipoPublicacion extends JInternalFrame {
                 frame.setSize(300, 150);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         		try {
+        			
+        			
         			String valorTextNombre = textNombre.getText();
         			String valorTextDescripcion = textDescripcion.getText();
         			
@@ -236,11 +239,30 @@ public class CrearTipoPublicacion extends JInternalFrame {
         			String valorTextAnio = textAnio.getText();
         			int numAnio = Integer.parseInt(valorTextAnio);
         			
+        			if(valorTextNombre.isBlank() || valorTextDescripcion.isBlank() || valorTextExposicion.isBlank() || valorTextDuracion.isBlank() || valorTextCosto.isBlank() || 
+         				   valorTextDia.isBlank() || valorTextMes.isBlank() || valorTextAnio.isBlank()) {
+             				throw new CamposVaciosExcepcion("Campos Vacios");
+             			}
+        			
+        			if(numTextCosto < 0) {
+        				throw new Exception("costo");
+        				
+        			}
+        			
+        			if(numTextDuracion <= 0) {
+        				throw new Exception("duracion");
+        				
+        			}
 
-        			
-        			
+        			if(numTextExposicion <= 0) {
+        				throw new Exception("exposicion");
+        				
+        			}
 
         			LocalDate fecha = LocalDate.of(numAnio, numMes, numDia);
+        			
+        			
+
 
         			
         			try {
@@ -261,12 +283,8 @@ public class CrearTipoPublicacion extends JInternalFrame {
                                 "Error",
                                 JOptionPane.ERROR_MESSAGE
                             );
-        			}
+        			} 
         			
-        			
-
-                    
-                    
                     
         		} catch (NumberFormatException ex) {
         			JOptionPane.showMessageDialog(
@@ -275,7 +293,37 @@ public class CrearTipoPublicacion extends JInternalFrame {
                             "Error",
                             JOptionPane.INFORMATION_MESSAGE
                         );
-        		}
+        		} catch (CamposVaciosExcepcion ex) {
+    				JOptionPane.showMessageDialog(
+                            frame,
+                            ex.getMessage(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE
+                        );
+    			} catch(Exception ex) {
+    				if(ex.getMessage().equals("costo"))
+    					JOptionPane.showMessageDialog(
+                                frame,
+                                "Costo Invalido",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE
+                            );
+    				if(ex.getMessage().equals("duracion"))
+    					JOptionPane.showMessageDialog(
+                                frame,
+                                "Duracion Invalida",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE
+                            );
+    				if(ex.getMessage().equals("exposicion"))
+    					JOptionPane.showMessageDialog(
+                                frame,
+                                "Exposicion Invalida",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE
+                            );
+    				
+    			}
         		
         		
         	}
