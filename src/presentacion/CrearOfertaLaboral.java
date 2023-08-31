@@ -82,9 +82,9 @@ public class CrearOfertaLaboral extends JInternalFrame{
         
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{50, 170, 200, 50};
-        gridBagLayout.rowHeights = new int[]{30, 30, 30, 90, 30, 30, 30, 30, 30, 30, 30, 30, 30};
+        gridBagLayout.rowHeights = new int[]{30, 30, 30, 90, 30, 30, 30, 30, 30, 30, 0, 30, 30, 30};
         gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0};
-        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+        gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0};
         getContentPane().setLayout(gridBagLayout);
         
         JPanel panel_2 = new JPanel();
@@ -328,7 +328,6 @@ public class CrearOfertaLaboral extends JInternalFrame{
         List<String> listKeywords = ctrlOferta.listarKeywords();
         JComboBox<String> comboKeywords = new JComboBox();
         GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-        gbc_comboBox_1.insets = new Insets(0, 30, 5, 30);
         gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBox_1.gridx = 2;
         gbc_comboBox_1.gridy = 9;
@@ -339,17 +338,25 @@ public class CrearOfertaLaboral extends JInternalFrame{
         	}
         }
         
+        JTextArea areaKeywords = new JTextArea();
+        GridBagConstraints gbc_areaKeywords = new GridBagConstraints();
+        gbc_areaKeywords.fill = GridBagConstraints.BOTH;
+        gbc_areaKeywords.insets = new Insets(0, 0, 5, 5);
+        gbc_areaKeywords.gridx = 2;
+        gbc_areaKeywords.gridy = 10;
+        getContentPane().add(areaKeywords, gbc_areaKeywords);
+        List<String> selectedKeywords = new ArrayList<String>();
+        
         JButton btnAgregarKeyword = new JButton("Agregar");
         GridBagConstraints gbc_btnAgregarKeyword = new GridBagConstraints();
         gbc_btnAgregarKeyword.insets = new Insets(10, 10, 10, 10);
-        gbc_btnAgregarKeyword.gridx = 2;
-        gbc_btnAgregarKeyword.gridy = 10;
+        gbc_btnAgregarKeyword.gridx = 3;
+        gbc_btnAgregarKeyword.gridy = 9;
         getContentPane().add(btnAgregarKeyword, gbc_btnAgregarKeyword);
         gbc_btnAgregarKeyword.insets = new Insets(0, 0, 5, 5);
         gbc_btnAgregarKeyword.anchor = GridBagConstraints.WEST;
         gbc_btnAgregarKeyword.gridx = 1;
         gbc_btnAgregarKeyword.gridy = 11;
-        List<String> selectedKeywords = new ArrayList<String>();
         btnAgregarKeyword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame("Popup");
@@ -361,14 +368,27 @@ public class CrearOfertaLaboral extends JInternalFrame{
 						throw new Exception("noOferta");
 						
 					} else {
-						selectedKeywords.add(comboKeywords.getSelectedItem().toString()); 
-					
-						JOptionPane.showMessageDialog(
-								frame,
-								"Keyword añadida con éxito!",
-								"Éxito",
-								JOptionPane.INFORMATION_MESSAGE
-								);
+						if(selectedKeywords.contains(comboKeywords.getSelectedItem().toString())) {
+							JOptionPane.showMessageDialog(
+									frame,
+									"Keyword repetida",
+									"Error",
+									JOptionPane.ERROR_MESSAGE
+									);
+						}
+						else {
+							areaKeywords.setVisible(true);
+							selectedKeywords.add(comboKeywords.getSelectedItem().toString()); 							
+							JOptionPane.showMessageDialog(
+									frame,
+									"Keyword añadida con éxito!",
+									"Éxito",
+									JOptionPane.INFORMATION_MESSAGE
+									);
+							areaKeywords.append(("- " + comboKeywords.getSelectedItem().toString()) + "\n");							
+						}
+						
+						
 					}
 				
 				} catch(Exception ex) {
@@ -390,13 +410,15 @@ public class CrearOfertaLaboral extends JInternalFrame{
 			}
         });
         
+       
+        
         JPanel panel = new JPanel();
         GridBagConstraints gbc_panel = new GridBagConstraints();
         gbc_panel.gridwidth = 2;
         gbc_panel.insets = new Insets(0, 0, 5, 5);
         gbc_panel.fill = GridBagConstraints.VERTICAL;
         gbc_panel.gridx = 1;
-        gbc_panel.gridy = 11;
+        gbc_panel.gridy = 12;
         getContentPane().add(panel, gbc_panel);
         
         
