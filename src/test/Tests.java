@@ -25,6 +25,8 @@ import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
+import logica.interfaces.IManejadorUsuario;
+import logica.manejadores.ManejadorUsuario;
 
 @TestMethodOrder(OrderAnnotation.class)
 class Tests {
@@ -32,6 +34,7 @@ class Tests {
 	private static IControladorOferta co; 
 	private static IControladorUsuario cu;
 	private static IControladorCompraTipo ct;
+	private static IManejadorUsuario mu;
 	
 	@BeforeAll
 	public static void iniciar() {
@@ -39,6 +42,7 @@ class Tests {
 		co = f.getControladorOferta();
 		cu = f.getControladorUsuario();	
 		ct = f.getControladorCompraTipo();
+		mu = f.getManejadorUsuario();
 	}
 	
 	
@@ -715,5 +719,71 @@ class Tests {
 						LocalDate.of(1, 1, 1)
 				);}
 		);	
+	}
+	
+	@Test
+	@Order(33)
+	void crearPostulanteSinEmail() {
+		try {
+			cu.crearPostulante("65472341", "a", "a", "", "a", LocalDate.of(1, 1, 1));
+		} catch(Exception e) {
+			
+		}
+		assertThrows(CamposVaciosExcepcion.class, () -> { cu.crearPostulante("65472341", "a", "a", "", "a", LocalDate.of(1, 1, 1));});
+	}
+
+	@Test
+	@Order(34)
+	void crearPostulanteSinNombreNiApellido() {
+		try {
+			cu.crearPostulante("65472341", "", "", "57232423", "a", LocalDate.of(1, 1, 1));
+		} catch(Exception e) {
+			
+		}
+		assertThrows(CamposVaciosExcepcion.class, () -> { cu.crearPostulante("65472341", "", "", "57232423", "a", LocalDate.of(1, 1, 1));});
+	}
+	
+	@Test
+	@Order(35)
+	void crearPostulanteSinNacionalidad() {
+		try {
+			cu.crearPostulante("65472341", "a", "a", "6723234234", "", LocalDate.of(1, 1, 1));
+		} catch(Exception e) {
+			
+		}
+		assertThrows(CamposVaciosExcepcion.class, () -> { cu.crearPostulante("65472341", "a", "a", "6723234234", "", LocalDate.of(1, 1, 1));});
+	}
+	
+	@Test
+	@Order(36)
+	void crearPostulanteConNicknameYEmailExistente() {
+		try {
+			cu.crearPostulante("Juan1", "a", "a", "Juan1Email", "a", LocalDate.of(1, 1, 1));
+		} catch(Exception e) {
+			
+		}
+		assertThrows(UsuarioRepetidoException.class, () -> { cu.crearPostulante("Juan1", "a", "a", "Juan1Email", "a", LocalDate.of(1, 1, 1));});
+	}
+	
+	@Test
+	@Order(37)
+	void crearPostulanteConEmailExistente() {
+		try {
+			cu.crearPostulante("73425245", "a", "a", "Juan1Email", "a", LocalDate.of(1, 1, 1));
+		} catch(Exception e) {
+			
+		}
+		assertThrows(UsuarioRepetidoException.class, () -> { cu.crearPostulante("73425245", "a", "a", "Juan1Email", "a", LocalDate.of(1, 1, 1));});
+	}
+	
+	@Test
+	@Order(37)
+	void crearPostulanteConNicknameExistente() {
+		try {
+			cu.crearPostulante("Juan1", "a", "a", "62643f45", "a", LocalDate.of(1, 1, 1));
+		} catch(Exception e) {
+			
+		}
+		assertThrows(UsuarioRepetidoException.class, () -> { cu.crearPostulante("Juan1", "a", "a", "62643f45", "a", LocalDate.of(1, 1, 1));});
 	}
 }
