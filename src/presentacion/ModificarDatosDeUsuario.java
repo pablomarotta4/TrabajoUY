@@ -15,7 +15,7 @@ import java.awt.Insets;
 
 public class ModificarDatosDeUsuario extends JInternalFrame{
 
-	public ModificarDatosDeUsuario(IControladorUsuario icu) {
+	public ModificarDatosDeUsuario() {
 		
 		this.setVisible(true);
 		this.setResizable(true);
