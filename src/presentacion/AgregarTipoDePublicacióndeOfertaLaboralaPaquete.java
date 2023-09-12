@@ -24,6 +24,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.List;
 
 
 
@@ -101,13 +102,31 @@ public class AgregarTipoDePublicacióndeOfertaLaboralaPaquete extends JInternalF
 		gbc_labelPaquetes.gridy = 1;
 		panel_2.add(labelPaquetes, gbc_labelPaquetes);
 		
-		JComboBox cmbPaquetes = new JComboBox();
+		JComboBox<String> cmbPaquetes = new JComboBox<String>();
 		GridBagConstraints gbc_cmbPaquetes = new GridBagConstraints();
 		gbc_cmbPaquetes.insets = new Insets(0, 0, 5, 0);
 		gbc_cmbPaquetes.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cmbPaquetes.gridx = 2;
 		gbc_cmbPaquetes.gridy = 1;
 		panel_2.add(cmbPaquetes, gbc_cmbPaquetes);
+        
+        List<String> paquetesCreados= ict.nombresPaquetes();
+
+        cmbPaquetes.removeAllItems();
+       
+        for (String paquete: paquetesCreados) {
+        	cmbPaquetes.addItem(paquete);
+        }
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		JLabel lblNewLabel_1 = new JLabel("Tipo de pubicacion a agregar:");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();

@@ -1,6 +1,8 @@
 package logica.manejadores;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import logica.entidades.Paquete;
@@ -48,6 +50,15 @@ public class ManejadorPaquetes implements IManejadorPaquetes{
 	public boolean existePaquete(String nombrePaquete) {
 		return this.paquetes.containsKey(nombrePaquete);	
 	}
+
 	
+
+	public List<String> listarNombresPaquetes(){
+		List<String> listaPaq = new ArrayList<>(paquetes.keySet());
+		return listaPaq;
+	
+	}
+	
+
 	
 }

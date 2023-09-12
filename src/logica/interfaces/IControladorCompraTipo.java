@@ -19,5 +19,9 @@ public interface IControladorCompraTipo {
 	public List<String> listarTiposPublicacion();
 	public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento,LocalDate fecha) 
 			throws UsuarioRepetidoException;
+
+	public List<String> nombresPaquetes();
+
+	
 }
 

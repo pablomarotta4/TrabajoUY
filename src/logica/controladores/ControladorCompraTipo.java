@@ -56,4 +56,36 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		manejadorPaquetes.agregarPaquete(paq);
 	}
 	
+	
+	
+	public List<String> nombresPaquetes(){
+		return manejadorPaquetes.listarNombresPaquetes();
+	}
+	
+	
+	/*public List<String> listarNombresPaquetes(){
+		
+		Map<String,Paquete> paquets = this.manejadorPaquetes.listarNombresPaquetes();
+		
+		if(paquets.size() > 0) {
+//			System.out.println(paquets.keySet());
+			for(String nombre : paquets.keySet()) {
+				nombresPaquetes.add(nombre);	
+			}
+		}
+
+		return nombresPaquetes;
+	} */
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

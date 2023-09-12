@@ -1,5 +1,6 @@
 package logica.interfaces;
 
+import java.util.List;
 import java.util.Map;
 
 import logica.entidades.Paquete;
@@ -19,5 +20,7 @@ public interface IManejadorPaquetes {
 
 
 	public TipoPublicacion getTipo(String nombre);
+
+	public List<String> listarNombresPaquetes();
 
 }
