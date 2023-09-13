@@ -186,15 +186,6 @@ public class MainFrame {
 		JMenu menuAcciones = new JMenu("Acciones");
 		menuBar.add(menuAcciones);
 		
-		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
-		menuAcciones.add(menuModificarDatosDeUsuario);
-		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario(icu);
-				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
-				modificarDatosDeUsuarioInternalFrame.setVisible(true);
-			}
-		});
 		
 		JMenuItem menuPostulacionAOfertaLaboral = new JMenuItem("Postulacion a Oferta Laboral");
 		menuAcciones.add(menuPostulacionAOfertaLaboral);
@@ -203,6 +194,26 @@ public class MainFrame {
 				PostulacionAOfertaLaboral postulacionAOfertaLaboralInternalFrame = new PostulacionAOfertaLaboral();
 				frame.getContentPane().add(postulacionAOfertaLaboralInternalFrame);
 				postulacionAOfertaLaboralInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
+		menuAcciones.add(menuModificarDatosDeUsuario);
+		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario();
+				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
+				modificarDatosDeUsuarioInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales = new JMenuItem("Consulta De Paquete De Tipos De Publicación De Ofertas Laborales");
+		menuConsultas.add(menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales);
+		menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales consultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales = new ConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales();
+				frame.getContentPane().add(consultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales);
+				consultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales.setVisible(true);
 			}
 		});
 		
