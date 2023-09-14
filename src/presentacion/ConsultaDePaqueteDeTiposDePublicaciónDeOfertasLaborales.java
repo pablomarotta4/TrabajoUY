@@ -18,6 +18,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -83,13 +87,24 @@ public class ConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales extends JI
 		gbc_lblPaquetes.gridy = 1;
 		panel.add(lblPaquetes, gbc_lblPaquetes);
 		
-		JComboBox cbPaquetes = new JComboBox();
+		JComboBox<String> cbPaquetes = new JComboBox<String>();
 		GridBagConstraints gbc_cbPaquetes = new GridBagConstraints();
 		gbc_cbPaquetes.insets = new Insets(0, 0, 5, 5);
 		gbc_cbPaquetes.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cbPaquetes.gridx = 2;
 		gbc_cbPaquetes.gridy = 1;
 		panel.add(cbPaquetes, gbc_cbPaquetes);
+		List<String> paquetesDisponibles = icc.nombresPaquetes();
+		for(String paquete : paquetesDisponibles) {
+			cbPaquetes.addItem(paquete);
+		}
+		
+		cbPaquetes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String seleccionado = (String) cbPaquetes.getSelectedItem();
+			}
+		});
+		
 		
 		JPanel panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
