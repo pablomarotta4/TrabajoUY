@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modificar Datos</title>
+        <link rel="stylesheet" href="../styles/headerDefault.css">
+        <link rel="stylesheet" href="../styles/basic.css">
+        <link rel="stylesheet" href="../styles/modificarDatos.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="home">
+                <a href="home.html"><img src="../assets/trabajoUy.png" alt=""></a>
+            </div>
+            <div class="navbar">
+                <input type="text" placeholder="Empresas, ofertas, keywords...">
+                <a href=""><input class="btn" type="button" value="Buscar"></a>
+            </div>
+            <div class="login-option">
+                <a href="home.html">Cerrar Sesion</a> <span> | </span> <a href="consultaEmpresa.html"> Mi perfil</a>
+            </div>
+        </header>
+        
+        <main>
+            <div class="box">
+                <form>
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" id="nombre"><br>
+                    <label for="apellido">Apelldio:</label><br>
+                    <input type="text" id="apellido"><br>
+                    <label for="link">Link:</label><br>
+                    <input type="text" id="link"><br>
+                    <label for="contraseña">Contraseña:</label><br>
+                    <input type="password" id="contraseña"><br>
+
+                    <label for="descripcion">Descripcion:</label><br>
+                    <textarea id="descripcion"></textarea><br>
+
+                    <label for="foto">Foto de perfil:</label><br>
+                    <input type="file" id="foto" accept="image/*"><br>
+                    <input type="submit" id="boton" value="Modificar Datos">
+                </form>
+            </div>
+
+        </main>
+
+    </body>
+</html>

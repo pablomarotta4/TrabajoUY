@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Postulacion</title>
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/postularse.css">
+</head>
+<body>
+    <header class="header">
+        <div class="menu">
+            <a href="home.html"><button id="menu-btn">Home</button></a>
+        </div>
+        <div class="navbar">
+            <input type="text" placeholder="Empresas, ofertas, keywords...">
+            <a href="listadoOfertas.html"><input class="btn" type="button" value="Buscar"></a>
+        </div>
+        <div class="login-option">
+            <a href="login.html">Iniciar sesion </a> <span> | </span> <a href="crearUsuario.html"> Registrar usuario</a>
+        </div>
+    </header>
+    <div class = "mainContainer">
+        <div id="card1">
+            <div id="tituloContainer">
+                <h1 id="titulo">Postulacion</h1>
+            </div>
+            <div id="fechaContainer">
+                <label id="fechaLabel" for="fecha">Fecha: </label>
+                <input id="fecha" type="date" name="fecha">
+            </div>
+            <div id="cvContainer">
+                <label id="cvReducidoLabel" for="cv">CV reducido: </label>
+                <textarea id="cvReducido" name="cvReducido" rows="7" cols="10"></textarea>
+            </div>
+            <div id="motivacionContainer">
+                <label id="motivacionLabel" for="motivacion">Motivacion: </label>
+                <textarea id="motivacion" name="motivacion" rows="7" cols="10"></textarea>
+            </div>
+            <div id="botonContainer">
+                <a href="listadoOfertas.html"><input type="button" value="Postularse"></a>
+            </div>
+</body>
+</html>
+<header></header>

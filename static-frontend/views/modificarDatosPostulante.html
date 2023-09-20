@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Modificar Datos</title>
+        <link rel="stylesheet" href="../styles/headerDefault.css">
+        <link rel="stylesheet" href="../styles/basic.css">
+        <link rel="stylesheet" href="../styles/modificarDatos.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="home">
+                <a href="home.html"><img src="../assets/trabajoUy.png" alt=""></a>
+            </div>
+            <div class="navbar">
+                <input type="text" placeholder="Empresas, ofertas, keywords...">
+                <a href=""><input class="btn" type="button" value="Buscar"></a>
+            </div>
+            <div class="login-option">
+                <a href="home.html">Cerrar Sesion</a> <span> | </span> <a href="consultaPostulante.html"> Mi perfil</a>
+            </div>
+        </header>
+        
+        <main>
+            <div class="box">
+                <form>
+                    <label for="nombre" id="name">Nombre:</label><br>
+                    <input type="text" id="nombre"><br>
+                    <label for="apellido">Apelldio:</label><br>
+                    <input type="text" id="apellido"><br>
+                    <label for="nacionalidad">Nacionalidad:</label><br>
+                    <input type="text" id="nacionalidad"><br>
+                    <label for="contraseña">Contraseña:</label><br>
+                    <input type="password" id="contraseña"><br>
+                    <label for="fecha"> Fecha de nacimiento:</label><br>
+                    <input type="date" id="fecha"><br>
+                    <label for="foto">Foto de perfil:</label><br>
+                    <input type="file" id="foto" accept="image/*"><br>
+                    <a href="consultaPostulante.html"><input type="button" id="boton" value="Modificar Datos"></a>
+                </form>
+            </div>
+
+        </main>
+
+    </body>
+</html>
