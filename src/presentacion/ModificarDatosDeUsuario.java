@@ -14,6 +14,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.List;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -71,13 +73,19 @@ public class ModificarDatosDeUsuario extends JInternalFrame{
         gbc_lblUsuarios.gridy = 1;
         panel.add(lblUsuarios, gbc_lblUsuarios);
         
-        JComboBox cbUsuarios = new JComboBox();
+        JComboBox<String> cbUsuarios = new JComboBox<String>();
         GridBagConstraints gbc_cbUsuarios = new GridBagConstraints();
         gbc_cbUsuarios.insets = new Insets(0, 0, 5, 5);
         gbc_cbUsuarios.fill = GridBagConstraints.HORIZONTAL;
         gbc_cbUsuarios.gridx = 2;
         gbc_cbUsuarios.gridy = 1;
         panel.add(cbUsuarios, gbc_cbUsuarios);
+        
+        List<String> listaUsuarios = icu.listarUsuarios();
+        for (String usuario : listaUsuarios) {
+        	cbUsuarios.addItem(usuario);
+        }
+        
         
         JPanel panel_2 = new JPanel();
         GridBagConstraints gbc_panel_2 = new GridBagConstraints();
