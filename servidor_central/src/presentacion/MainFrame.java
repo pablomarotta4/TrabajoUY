@@ -27,6 +27,7 @@ import java.awt.event.ActionListener;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorUsuario;
+import server.WebServer;
 import logica.interfaces.IControladorOferta;
 import java.awt.BorderLayout;
 
@@ -44,6 +45,9 @@ public class MainFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					WebServer webServer = new WebServer();
+					webServer.publicar();
+		
 					MainFrame window = new MainFrame();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
