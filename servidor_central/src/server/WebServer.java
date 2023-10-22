@@ -2,7 +2,7 @@ package server;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import excepciones.CamposVaciosExcepcion;
@@ -87,174 +87,174 @@ public class WebServer {
 		
 	}
     
-//    @WebMethod
-//    public List<String> listarNickEmpresas(){
-//    	return new ArrayList<>();
-//    }
+    @WebMethod
+    public ArrayList<String> listarNickEmpresas(){
+    	return new ArrayList<>();
+    }
     @WebMethod
 	public ArrayList<String> listarNickPostulantes(){
 		return null;
 	}
-//    @WebMethod
-//	public List<String> listarUsuarios(){
-//		List<String> listaUsuarios = null;
-//		return listaUsuarios;
-//	}
+    @WebMethod
+	public ArrayList<String> listarUsuarios(){
+		ArrayList<String> listaUsuarios = null;
+		return listaUsuarios;
+	}
     @WebMethod
 	public DataUsuario consultarDatosUsuario(String nick) {
     	ctrlUsuario = Factory.getInstance().getControladorUsuario();
 		return ctrlUsuario.consultarDatosUsuario(nick);
 	}
-//    @WebMethod
-//	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException{
-//		return false;
-//	}
-//    @WebMethod
-//	public boolean estaPostulado(String nickname, String nombreOferta) {
-//		return false;
-//	}
-//    @WebMethod
-//	public List<DTOfertaLaboral> consultarPostulaciones(String nick){
-//		List<DTOfertaLaboral> listaOfertas = null;
-//		return listaOfertas;
-//	}
-//    @WebMethod
-//	public List<DTOfertaLaboral> consultarOfertas(String nick){
-//		List<DTOfertaLaboral> listaOfertas = null;
-//		return listaOfertas;
-//	}
-//    @WebMethod
-//	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
-//		
-//	}
-//    @WebMethod
-//	public String getFotoUsuario(String nickname) {
-//		return "";
-//	}
-//    @WebMethod
-//	public List<DataUsuario> listarDTUsuarios(){
-//		List<DataUsuario> listaUsuarios = null;
-//		return listaUsuarios;
-//	}
-//    @WebMethod
-//	public Empresa getEmpresa(String nickEmpresa) {
-//		return null;
-//	}
-//    @WebMethod
-//	public void altaOfertaLaboral(
-//			String empresa,
-//			String tipoPublicacion,
-//			String nombre,
-//			String descripcion,
-//			String horario,
-//			float remuneracion,
-//			String ciudad,
-//			String departamento,
-//			LocalDate fechaAlta,
-//			String imageUrl,
-//			List<String> keywords
-//		) throws ElementoRepetidoException, ElementoInexistenteException{
-//		
-//	}
-//    @WebMethod
-//	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException{
-//		
-//	}
-//    @WebMethod
-//	public List<String> listarKeywords(){
-//		return null;
-//	}
-//    @WebMethod
-//	public List<String> listarOfertasByEmpresa(String nombreEmpresa){
-//		return null;
-//	}
-//    @WebMethod
-//	public List<String> listarOfertasAceptadasByEmpresa(String nombreEmpresa){
-//		return null;
-//	}
-//    @WebMethod
-//	public List<String> listarOfertasIngresadasByEmpresa(String nombreEmpresa){
-//		return null;
-//	}
-//    @WebMethod
-//	public List<String> listarNombreOfertas(){
-//		return null;
-//	}
-//    @WebMethod
-//	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException{
-//		return null;
-//	}
-//    @WebMethod
-//	public void altaPostulacion(
-//			String nickname,
-//			String oferta,
-//			String cvReducido,
-//			String motivacion,
-//			LocalDate fecha
-//	) throws ElementoRepetidoException, NoExisteInstancia, ElementoInexistenteException{
-//
-//	}
-//    @WebMethod
-//	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
-//		return null;
-//	}
-//    @WebMethod
-//	public void confirmarOferta(String nombreOferta) {
-//		
-//	}
-//    @WebMethod
-//	public void rechazarOferta(String nombreOferta) {
-//		
-//	}
-//    @WebMethod
-//	public List<DTOfertaLaboral> listarDtOfertas(){
-//		return null;
-//	}
-//    @WebMethod
-//	public List<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
-//		return null;
-//	}
-//    @WebMethod
-//	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta) {
-//		return null;
-//	}
-//    @WebMethod
-//	public void crearTipoPublicacion(
-//			String nombre, 
-//			String descripcion, 
-//			int exposicion, 
-//			int duracion, 
-//			float costo, 
-//			LocalDate fecha
-//	) throws UsuarioRepetidoException{
-//		
-//	}
-//    @WebMethod
-//	public List<String> listarTiposPublicacion(){
-//		return null;
-//	}
-//    @WebMethod
-//	public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento, LocalDate fecha) throws UsuarioRepetidoException{
-//		
-//	}
-//    @WebMethod
-//	public void agregarTipoAPaquete(String nombrePaquete, String tipoPublicacion, int cantidad) {
-//		
-//	}
-//    @WebMethod
-//	public List<String> listarNombresPaquetes(){
-//		return null;
-//	}
-//    @WebMethod
-//	public Map<String, Integer> getTiposYCantidades(String nombrePaquete){
-//		return null;
-//	}
-//    @WebMethod
-//	public Map<String, DataTipoPublicacion> getDataTiposPublicacion(){
-//		return null;
-//	}
-//    @WebMethod
-//	public DataTipoPublicacion listarDatosTipoPubliacion(String nombretipo) {
-//		return null;
-//	}
+    @WebMethod
+	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException{
+		return false;
+	}
+    @WebMethod
+	public boolean estaPostulado(String nickname, String nombreOferta) {
+		return false;
+	}
+    @WebMethod
+	public ArrayList<DTOfertaLaboral> consultarPostulaciones(String nick){
+		ArrayList<DTOfertaLaboral> listaOfertas = null;
+		return listaOfertas;
+	}
+    @WebMethod
+	public ArrayList<DTOfertaLaboral> consultarOfertas(String nick){
+		ArrayList<DTOfertaLaboral> listaOfertas = null;
+		return listaOfertas;
+	}
+    @WebMethod
+	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
+		
+	}
+    @WebMethod
+	public String getFotoUsuario(String nickname) {
+		return "";
+	}
+    @WebMethod
+	public ArrayList<DataUsuario> listarDTUsuarios(){
+		ArrayList<DataUsuario> listaUsuarios = null;
+		return listaUsuarios;
+	}
+    @WebMethod
+	public Empresa getEmpresa(String nickEmpresa) {
+		return null;
+	}
+    @WebMethod
+	public void altaOfertaLaboral(
+			String empresa,
+			String tipoPublicacion,
+			String nombre,
+			String descripcion,
+			String horario,
+			float remuneracion,
+			String ciudad,
+			String departamento,
+			LocalDate fechaAlta,
+			String imageUrl,
+			ArrayList<String> keywords
+		) throws ElementoRepetidoException, ElementoInexistenteException{
+		
+	}
+    @WebMethod
+	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException{
+		
+	}
+    @WebMethod
+	public ArrayList<String> listarKeywords(){
+		return null;
+	}
+    @WebMethod
+	public ArrayList<String> listarOfertasByEmpresa(String nombreEmpresa){
+		return null;
+	}
+    @WebMethod
+	public ArrayList<String> listarOfertasAceptadasByEmpresa(String nombreEmpresa){
+		return null;
+	}
+    @WebMethod
+	public ArrayList<String> listarOfertasIngresadasByEmpresa(String nombreEmpresa){
+		return null;
+	}
+    @WebMethod
+	public ArrayList<String> listarNombreOfertas(){
+		return null;
+	}
+    @WebMethod
+	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException{
+		return null;
+	}
+    @WebMethod
+	public void altaPostulacion(
+			String nickname,
+			String oferta,
+			String cvReducido,
+			String motivacion,
+			LocalDate fecha
+	) throws ElementoRepetidoException, NoExisteInstancia, ElementoInexistenteException{
+
+	}
+    @WebMethod
+	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
+		return null;
+	}
+    @WebMethod
+	public void confirmarOferta(String nombreOferta) {
+		
+	}
+    @WebMethod
+	public void rechazarOferta(String nombreOferta) {
+		
+	}
+    @WebMethod
+	public ArrayList<DTOfertaLaboral> listarDtOfertas(){
+		return null;
+	}
+    @WebMethod
+	public ArrayList<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
+		return null;
+	}
+    @WebMethod
+	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta) {
+		return null;
+	}
+    @WebMethod
+	public void crearTipoPublicacion(
+			String nombre, 
+			String descripcion, 
+			int exposicion, 
+			int duracion, 
+			float costo, 
+			LocalDate fecha
+	) throws UsuarioRepetidoException{
+		
+	}
+    @WebMethod
+	public ArrayList<String> listarTiposPublicacion(){
+		return null;
+	}
+    @WebMethod
+	public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento, LocalDate fecha) throws UsuarioRepetidoException{
+		
+	}
+    @WebMethod
+	public void agregarTipoAPaquete(String nombrePaquete, String tipoPublicacion, int cantidad) {
+		
+	}
+    @WebMethod
+	public ArrayList<String> listarNombresPaquetes(){
+		return null;
+	}
+    @WebMethod
+	public HashMap<String, Integer> getTiposYCantidades(String nombrePaquete){
+		return null;
+	}
+    @WebMethod
+	public HashMap<String, DataTipoPublicacion> getDataTiposPublicacion(){
+		return null;
+	}
+    @WebMethod
+	public DataTipoPublicacion listarDatosTipoPubliacion(String nombretipo) {
+		return null;
+	}
 }
