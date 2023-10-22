@@ -1,11 +1,26 @@
 package server;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import excepciones.CamposVaciosExcepcion;
+import excepciones.ElementoInexistenteException;
+import excepciones.ElementoRepetidoException;
+import excepciones.NoExisteInstancia;
+import excepciones.UsuarioRepetidoException;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.jws.soap.SOAPBinding.ParameterStyle;
 import jakarta.jws.soap.SOAPBinding.Style;
 import jakarta.xml.ws.Endpoint;
+import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DTPostulacion;
+import logica.datatypes.DataTipoPublicacion;
+import logica.datatypes.DataUsuario;
+import logica.entidades.Empresa;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
 import logica.interfaces.IControladorOferta;
@@ -16,9 +31,9 @@ import logica.interfaces.IControladorUsuario;
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
 public class WebServer {
 
-	private IControladorUsuario ctrlUsuario = Factory.getInstance().getControladorUsuario();
-	private IControladorOferta ctrlOferta = Factory.getInstance().getControladorOferta();
-	private IControladorCompraTipo ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
+	private IControladorUsuario ctrlUsuario;
+	private IControladorOferta ctrlOferta;
+	private IControladorCompraTipo ctrlCompraTipo;
 	private Endpoint endpoint = null;
 	
 	@WebMethod(exclude = true)
@@ -32,8 +47,215 @@ public class WebServer {
     }
     
     @WebMethod
-    public int suma(int i, int j){
-        return i + j;
+    public void crearPostulante(
+    		String nick, 
+    		String nombre, 
+    		String apellido, 
+    		String email,
+    		String pass, 
+    		String imageUrl, 
+    		String nacionalidad, 
+    		LocalDate nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
+    	
+    	try {
+    		ctrlUsuario = Factory.getInstance().getControladorUsuario();
+    		ctrlUsuario.crearPostulante(
+    				nick, 
+    				nombre, 
+    				apellido, 
+    				email, 
+    				pass, 
+    				imageUrl, 
+    				nacionalidad, 
+    				nacimiento
+				);
+    	} catch (UsuarioRepetidoException | CamposVaciosExcepcion ex) {
+    		throw ex;
+    	}
     }
     
+    @WebMethod
+	public void crearEmpresa(
+			String nickname, 
+			String nombre, 
+			String apellido, 
+			String email, 
+			String password, 
+			String imageUrl, 
+			String descripcion, 
+			String link) throws UsuarioRepetidoException, CamposVaciosExcepcion{
+		
+	}
+    
+//    @WebMethod
+//    public List<String> listarNickEmpresas(){
+//    	return new ArrayList<>();
+//    }
+//    @WebMethod
+//	public List<String> listarNickPostulantes(){
+//		List<String> listaNickPostulantes = null;
+//		return listaNickPostulantes;
+//	}
+//    @WebMethod
+//	public List<String> listarUsuarios(){
+//		List<String> listaUsuarios = null;
+//		return listaUsuarios;
+//	}
+//    @WebMethod
+//	public DataUsuario consultarDatosUsuario(String nick) {
+//    	ctrlUsuario = Factory.getInstance().getControladorUsuario();
+//		return ctrlUsuario.consultarDatosUsuario(nick);
+//	}
+//    @WebMethod
+//	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException{
+//		return false;
+//	}
+//    @WebMethod
+//	public boolean estaPostulado(String nickname, String nombreOferta) {
+//		return false;
+//	}
+//    @WebMethod
+//	public List<DTOfertaLaboral> consultarPostulaciones(String nick){
+//		List<DTOfertaLaboral> listaOfertas = null;
+//		return listaOfertas;
+//	}
+//    @WebMethod
+//	public List<DTOfertaLaboral> consultarOfertas(String nick){
+//		List<DTOfertaLaboral> listaOfertas = null;
+//		return listaOfertas;
+//	}
+//    @WebMethod
+//	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
+//		
+//	}
+//    @WebMethod
+//	public String getFotoUsuario(String nickname) {
+//		return "";
+//	}
+//    @WebMethod
+//	public List<DataUsuario> listarDTUsuarios(){
+//		List<DataUsuario> listaUsuarios = null;
+//		return listaUsuarios;
+//	}
+//    @WebMethod
+//	public Empresa getEmpresa(String nickEmpresa) {
+//		return null;
+//	}
+//    @WebMethod
+//	public void altaOfertaLaboral(
+//			String empresa,
+//			String tipoPublicacion,
+//			String nombre,
+//			String descripcion,
+//			String horario,
+//			float remuneracion,
+//			String ciudad,
+//			String departamento,
+//			LocalDate fechaAlta,
+//			String imageUrl,
+//			List<String> keywords
+//		) throws ElementoRepetidoException, ElementoInexistenteException{
+//		
+//	}
+//    @WebMethod
+//	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException{
+//		
+//	}
+//    @WebMethod
+//	public List<String> listarKeywords(){
+//		return null;
+//	}
+//    @WebMethod
+//	public List<String> listarOfertasByEmpresa(String nombreEmpresa){
+//		return null;
+//	}
+//    @WebMethod
+//	public List<String> listarOfertasAceptadasByEmpresa(String nombreEmpresa){
+//		return null;
+//	}
+//    @WebMethod
+//	public List<String> listarOfertasIngresadasByEmpresa(String nombreEmpresa){
+//		return null;
+//	}
+//    @WebMethod
+//	public List<String> listarNombreOfertas(){
+//		return null;
+//	}
+//    @WebMethod
+//	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException{
+//		return null;
+//	}
+//    @WebMethod
+//	public void altaPostulacion(
+//			String nickname,
+//			String oferta,
+//			String cvReducido,
+//			String motivacion,
+//			LocalDate fecha
+//	) throws ElementoRepetidoException, NoExisteInstancia, ElementoInexistenteException{
+//
+//	}
+//    @WebMethod
+//	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
+//		return null;
+//	}
+//    @WebMethod
+//	public void confirmarOferta(String nombreOferta) {
+//		
+//	}
+//    @WebMethod
+//	public void rechazarOferta(String nombreOferta) {
+//		
+//	}
+//    @WebMethod
+//	public List<DTOfertaLaboral> listarDtOfertas(){
+//		return null;
+//	}
+//    @WebMethod
+//	public List<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
+//		return null;
+//	}
+//    @WebMethod
+//	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta) {
+//		return null;
+//	}
+//    @WebMethod
+//	public void crearTipoPublicacion(
+//			String nombre, 
+//			String descripcion, 
+//			int exposicion, 
+//			int duracion, 
+//			float costo, 
+//			LocalDate fecha
+//	) throws UsuarioRepetidoException{
+//		
+//	}
+//    @WebMethod
+//	public List<String> listarTiposPublicacion(){
+//		return null;
+//	}
+//    @WebMethod
+//	public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento, LocalDate fecha) throws UsuarioRepetidoException{
+//		
+//	}
+//    @WebMethod
+//	public void agregarTipoAPaquete(String nombrePaquete, String tipoPublicacion, int cantidad) {
+//		
+//	}
+//    @WebMethod
+//	public List<String> listarNombresPaquetes(){
+//		return null;
+//	}
+//    @WebMethod
+//	public Map<String, Integer> getTiposYCantidades(String nombrePaquete){
+//		return null;
+//	}
+//    @WebMethod
+//	public Map<String, DataTipoPublicacion> getDataTiposPublicacion(){
+//		return null;
+//	}
+//    @WebMethod
+//	public DataTipoPublicacion listarDatosTipoPubliacion(String nombretipo) {
+//		return null;
+//	}
 }
