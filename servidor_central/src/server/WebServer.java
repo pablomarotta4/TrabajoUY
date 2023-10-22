@@ -91,21 +91,20 @@ public class WebServer {
 //    public List<String> listarNickEmpresas(){
 //    	return new ArrayList<>();
 //    }
-//    @WebMethod
-//	public List<String> listarNickPostulantes(){
-//		List<String> listaNickPostulantes = null;
-//		return listaNickPostulantes;
-//	}
+    @WebMethod
+	public ArrayList<String> listarNickPostulantes(){
+		return null;
+	}
 //    @WebMethod
 //	public List<String> listarUsuarios(){
 //		List<String> listaUsuarios = null;
 //		return listaUsuarios;
 //	}
-//    @WebMethod
-//	public DataUsuario consultarDatosUsuario(String nick) {
-//    	ctrlUsuario = Factory.getInstance().getControladorUsuario();
-//		return ctrlUsuario.consultarDatosUsuario(nick);
-//	}
+    @WebMethod
+	public DataUsuario consultarDatosUsuario(String nick) {
+    	ctrlUsuario = Factory.getInstance().getControladorUsuario();
+		return ctrlUsuario.consultarDatosUsuario(nick);
+	}
 //    @WebMethod
 //	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException{
 //		return false;
