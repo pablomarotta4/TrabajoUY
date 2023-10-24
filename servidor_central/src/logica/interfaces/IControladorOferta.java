@@ -46,4 +46,5 @@ public interface IControladorOferta {
 	public List<DTOfertaLaboral> listarDtOfertasByFilter(String filter);
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta);
 	public boolean estaPostulado(String nick, String nombreOferta);
+	public List<DTOfertaLaboral> listarOfertasAceptadas();
 }
