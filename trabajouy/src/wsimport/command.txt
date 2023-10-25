@@ -1,1 +1,2 @@
-./wsimport -keep "http://localhost:8085/webService?wsdl"
+descargar: https://eclipse-ee4j.github.io/metro-jax-ws/
+comando: ./wsimport -keep "http://localhost:8085/webService?wsdl"
