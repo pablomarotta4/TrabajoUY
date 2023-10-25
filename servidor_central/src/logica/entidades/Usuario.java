@@ -8,6 +8,7 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String imageUrl;
+
 	
 	public Usuario(String nick, String nombre, String apellido, String email, String password, String imageUrl) {
 		this.nickname = nick;
@@ -16,6 +17,7 @@ public class Usuario {
 		this.email = email;
 		this.password = password;
 		this.imageUrl = imageUrl;
+
 	}
 	
 	//Getters
@@ -39,6 +41,7 @@ public class Usuario {
 	public String getImage() {
 		return this.imageUrl;
 	}
+	
 	
 
 	

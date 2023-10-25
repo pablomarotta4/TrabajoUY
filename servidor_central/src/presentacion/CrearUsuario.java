@@ -45,6 +45,7 @@ public class CrearUsuario extends JInternalFrame{
 	private JTextField linkField;
 	private JTextField nacionalidadField;
 	String TipoUsuario = "";
+	private JTextField contraseñaField;
 	
 	public CrearUsuario(IControladorUsuario cu) {
 		icu = cu;	
@@ -107,6 +108,24 @@ public class CrearUsuario extends JInternalFrame{
         gbc_nicknameField.gridy = 1;
         NorthPanel.add(nicknameField, gbc_nicknameField);
         nicknameField.setColumns(10);
+        
+        JLabel contraseniaText = new JLabel("Contraseña:");
+        GridBagConstraints gbc_contraseniaText = new GridBagConstraints();
+        gbc_contraseniaText.insets = new Insets(0, 0, 5, 5);
+        gbc_contraseniaText.gridx = 3;
+        gbc_contraseniaText.gridy = 1;
+        contraseniaText.setVisible(true);
+        NorthPanel.add(contraseniaText, gbc_contraseniaText);
+        
+        contraseñaField = new JTextField();
+        contraseñaField.setColumns(10);
+        GridBagConstraints gbc_contraseñaField = new GridBagConstraints();
+        gbc_contraseñaField.insets = new Insets(0, 0, 5, 5);
+        gbc_contraseñaField.fill = GridBagConstraints.HORIZONTAL;
+        gbc_contraseñaField.gridx = 4;
+        gbc_contraseñaField.gridy = 1;
+        contraseñaField.setVisible(true);
+        NorthPanel.add(contraseñaField, gbc_contraseñaField);
         
         JLabel nombreText = new JLabel("Nombre:");
         GridBagConstraints gbc_nombreText = new GridBagConstraints();
@@ -305,11 +324,11 @@ public class CrearUsuario extends JInternalFrame{
             public void actionPerformed(ActionEvent e) {
             	try {
                     if (TipoUsuario.equals("Empresa")) {
-                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),"","", descripcionArea.getText(), linkField.getText());
+                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(),"", descripcionArea.getText(), linkField.getText());
                     } else if (TipoUsuario.equals("Postulante")) {
                     	Date fechaInput = calendar.getDate();
                     	LocalDate fecha = fechaInput.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                        icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),"","", nacionalidadField.getText(), fecha );
+                        icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(),"", nacionalidadField.getText(), fecha );
                     }
                     
                     JOptionPane.showMessageDialog(CrearUsuario.this, "Usuario creado exitosamente");

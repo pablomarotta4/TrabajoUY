@@ -3,6 +3,7 @@ package server;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import excepciones.CamposVaciosExcepcion;
@@ -88,16 +89,16 @@ public class WebServer {
 	}
     
     @WebMethod
-    public ArrayList<String> listarNickEmpresas(){
-    	return new ArrayList<>();
+    public List<String> listarNickEmpresas(){
+    	return ctrlUsuario.listarNickEmpresas();
     }
     @WebMethod
-	public ArrayList<String> listarNickPostulantes(){
-		return null;
+	public List<String> listarNickPostulantes(){
+		return ctrlUsuario.listarNickPostulantes();
 	}
     @WebMethod
-	public ArrayList<String> listarUsuarios(){
-		ArrayList<String> listaUsuarios = null;
+	public List<String> listarUsuarios(){
+		List<String> listaUsuarios = ctrlUsuario.listarUsuarios();
 		return listaUsuarios;
 	}
     @WebMethod
@@ -111,34 +112,34 @@ public class WebServer {
 	}
     @WebMethod
 	public boolean estaPostulado(String nickname, String nombreOferta) {
-		return false;
+		return ctrlUsuario.estaPostulado(nickname, nombreOferta);
 	}
     @WebMethod
-	public ArrayList<DTOfertaLaboral> consultarPostulaciones(String nick){
-		ArrayList<DTOfertaLaboral> listaOfertas = null;
+	public List<DTOfertaLaboral> consultarPostulaciones(String nick){
+		List<DTOfertaLaboral> listaOfertas = ctrlUsuario.consultarPostulaciones(nick);
 		return listaOfertas;
 	}
     @WebMethod
-	public ArrayList<DTOfertaLaboral> consultarOfertas(String nick){
-		ArrayList<DTOfertaLaboral> listaOfertas = null;
+	public List<DTOfertaLaboral> consultarOfertas(String nick){
+		List<DTOfertaLaboral> listaOfertas = ctrlUsuario.consultarOfertas(nick);
 		return listaOfertas;
 	}
     @WebMethod
 	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
-		
+    	ctrlUsuario.modificarUsuario(nick, nombre, apellido, email, descripcion, link, fechaNac, nacionalidad);
 	}
     @WebMethod
 	public String getFotoUsuario(String nickname) {
 		return "";
 	}
     @WebMethod
-	public ArrayList<DataUsuario> listarDTUsuarios(){
-		ArrayList<DataUsuario> listaUsuarios = null;
+	public List<DataUsuario> listarDTUsuarios(){
+		List<DataUsuario> listaUsuarios = ctrlUsuario.listarDTUsuarios();
 		return listaUsuarios;
 	}
     @WebMethod
 	public Empresa getEmpresa(String nickEmpresa) {
-		return null;
+		return ctrlUsuario.getEmpresa(nickEmpresa);
 	}
     @WebMethod
 	public void altaOfertaLaboral(
@@ -158,31 +159,31 @@ public class WebServer {
 	}
     @WebMethod
 	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException{
-		
+    	ctrlOferta.altaKeyword(nombreKeyword);
 	}
     @WebMethod
-	public ArrayList<String> listarKeywords(){
-		return null;
+	public List<String> listarKeywords(){
+		return ctrlOferta.listarKeywords();
 	}
     @WebMethod
-	public ArrayList<String> listarOfertasByEmpresa(String nombreEmpresa){
-		return null;
+	public List<String> listarOfertasByEmpresa(String nombreEmpresa){
+		return ctrlOferta.listarOfertasByEmpresa(nombreEmpresa);
 	}
     @WebMethod
-	public ArrayList<String> listarOfertasAceptadasByEmpresa(String nombreEmpresa){
-		return null;
+	public List<String> listarOfertasAceptadasByEmpresa(String nombreEmpresa){
+		return ctrlOferta.listarOfertasAceptadasByEmpresa(nombreEmpresa);
 	}
     @WebMethod
-	public ArrayList<String> listarOfertasIngresadasByEmpresa(String nombreEmpresa){
-		return null;
+	public List<String> listarOfertasIngresadasByEmpresa(String nombreEmpresa){
+		return ctrlOferta.listarOfertasIngresadasByEmpresa(nombreEmpresa);
 	}
     @WebMethod
-	public ArrayList<String> listarNombreOfertas(){
-		return null;
+	public List<String> listarNombreOfertas(){
+		return ctrlOferta.listarNombreOfertas();
 	}
     @WebMethod
 	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException{
-		return null;
+		return ctrlOferta.listarDatosOferta(nombreOferta);
 	}
     @WebMethod
 	public void altaPostulacion(
@@ -192,31 +193,31 @@ public class WebServer {
 			String motivacion,
 			LocalDate fecha
 	) throws ElementoRepetidoException, NoExisteInstancia, ElementoInexistenteException{
-
+    	ctrlOferta.altaPostulacion(nickname, oferta, cvReducido, motivacion, fecha);
 	}
     @WebMethod
 	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
-		return null;
-	}
+		return ctrlOferta.obtenerEmpresaDeOferta(nombreOferta);
+    }
     @WebMethod
 	public void confirmarOferta(String nombreOferta) {
-		
+    	ctrlOferta.confirmarOferta(nombreOferta);
 	}
     @WebMethod
 	public void rechazarOferta(String nombreOferta) {
-		
+    	ctrlOferta.rechazarOferta(nombreOferta);
 	}
     @WebMethod
-	public ArrayList<DTOfertaLaboral> listarDtOfertas(){
-		return null;
+	public List<DTOfertaLaboral> listarDtOfertas(){
+		return ctrlOferta.listarDtOfertas();
 	}
     @WebMethod
-	public ArrayList<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
-		return null;
+	public List<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
+		return ctrlOferta.listarDtOfertasByFilter(filter);
 	}
     @WebMethod
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta) {
-		return null;
+		return ctrlOferta.listarDatosPostulacion(nick, nombreOferta);
 	}
     @WebMethod
 	public void crearTipoPublicacion(
@@ -227,34 +228,34 @@ public class WebServer {
 			float costo, 
 			LocalDate fecha
 	) throws UsuarioRepetidoException{
-		
+    	ctrlCompraTipo.crearTipoPublicacion(nombre, descripcion, exposicion, duracion, costo, fecha);
 	}
     @WebMethod
-	public ArrayList<String> listarTiposPublicacion(){
-		return null;
+	public List<String> listarTiposPublicacion(){
+		return ctrlCompraTipo.listarTiposPublicacion();
 	}
     @WebMethod
 	public void crearPaquete(String valorTextNombre, String valorTextDescripcion,  int validez, int descuento, LocalDate fecha) throws UsuarioRepetidoException{
-		
+    	ctrlCompraTipo.crearPaquete(valorTextNombre, valorTextDescripcion, validez, descuento, fecha);
 	}
     @WebMethod
 	public void agregarTipoAPaquete(String nombrePaquete, String tipoPublicacion, int cantidad) {
-		
+    	ctrlCompraTipo.agregarTipoAPaquete(nombrePaquete, tipoPublicacion, cantidad);
 	}
     @WebMethod
-	public ArrayList<String> listarNombresPaquetes(){
-		return null;
+	public List<String> listarNombresPaquetes(){
+		return ctrlCompraTipo.listarNombresPaquetes();
 	}
     @WebMethod
-	public HashMap<String, Integer> getTiposYCantidades(String nombrePaquete){
-		return null;
+	public Map<String, Integer> getTiposYCantidades(String nombrePaquete){
+		return ctrlCompraTipo.getTiposYCantidades(nombrePaquete);
 	}
     @WebMethod
-	public HashMap<String, DataTipoPublicacion> getDataTiposPublicacion(){
-		return null;
+	public Map<String, DataTipoPublicacion> getDataTiposPublicacion(){
+		return ctrlCompraTipo.getDataTiposPublicacion();
 	}
     @WebMethod
 	public DataTipoPublicacion listarDatosTipoPubliacion(String nombretipo) {
-		return null;
+		return ctrlCompraTipo.listarDatosTipoPubliacion(nombretipo);
 	}
 }

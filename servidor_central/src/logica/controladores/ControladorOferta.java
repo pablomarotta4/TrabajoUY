@@ -307,4 +307,15 @@ public class ControladorOferta implements IControladorOferta{
 		return manejadorOferta.getOfertaDeNombre(element) != null;
 
 	}
+
+	public List<DTOfertaLaboral> listarOfertasAceptadas() {
+	    Map<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
+	    List<DTOfertaLaboral> ofertasConfirmadas = new ArrayList<DTOfertaLaboral>();
+	    for(OfertaLaboral offer : ofertas.values()) {
+		if(offer.getEstado().equals(EstadoOferta.CONFIRMADA)) {
+		    ofertasConfirmadas.add(offer.getDataType());
+		}
+	    }
+	    return ofertasConfirmadas;
+	}
 }
