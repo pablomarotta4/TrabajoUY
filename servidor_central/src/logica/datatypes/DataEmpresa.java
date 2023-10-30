@@ -1,13 +1,19 @@
 package logica.datatypes;
 
-import java.util.List;
+import java.util.ArrayList;
+import logica.datatypes.DTOfertaLaboral;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DataEmpresa extends DataUsuario{
 	
 	private String descripcion;
 	private String link;
-	private List<DTOfertaLaboral> ofertas;
+	private ArrayList<DTOfertaLaboral> ofertas;
+	
 
 	public DataEmpresa(String nick, 
 			String nombre, 
@@ -27,11 +33,11 @@ public class DataEmpresa extends DataUsuario{
 	public String getLink() {
 		return link;
 	}
-	public void setOfertas(List<DTOfertaLaboral> ofertas) {
+	public void setOfertas(ArrayList<DTOfertaLaboral> ofertas) {
 		this.ofertas = ofertas;
 	}
 	
-	public List<DTOfertaLaboral> getOfertasLaborales() {
+	public ArrayList<DTOfertaLaboral> getOfertas() {
 		return this.ofertas;
 	}
 }

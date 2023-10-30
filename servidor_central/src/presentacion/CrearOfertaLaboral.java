@@ -466,7 +466,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
 							departamento,
 							fecha,
 							"",
-							selectedKeywords
+							(ArrayList<String>) selectedKeywords
 					);
 					
       				JOptionPane.showMessageDialog(

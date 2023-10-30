@@ -110,24 +110,24 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		return this.usuarios;
 	}
 	
-	public List<String> listarNickUsuarios(){
-		List<String> listaNick = new ArrayList<>(usuarios.keySet());
+	public ArrayList<String> listarNickUsuarios(){
+		ArrayList<String> listaNick = new ArrayList<>(usuarios.keySet());
 		return listaNick;
 	}
 
-	public List<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick) {
+	public ArrayList<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick) {
 		Usuario user = buscarUsuario(nick);
-		List<DTOfertaLaboral> dtofertas= new ArrayList<>();
+		ArrayList<DTOfertaLaboral> dtofertas= new ArrayList<>();
 		if (user instanceof Empresa) {
 			Empresa emp = (Empresa) user;
-			List<OfertaLaboral> ofertas = emp.getOfertas();
+			ArrayList<OfertaLaboral> ofertas = emp.getOfertas();
 			for (OfertaLaboral of : ofertas) {
 				dtofertas.add(of.getDataType());
 			}
 		}
 		else if (user instanceof Postulante) {
 			Postulante pos = (Postulante) user;
-			List<Postulacion> postulaciones = pos.getPostulaciones();
+			ArrayList<Postulacion> postulaciones = pos.getPostulaciones();
 			for (Postulacion post: postulaciones) {
 				OfertaLaboral ofer = post.getOfertaLaboral();
 				dtofertas.add(ofer.getDataType());
@@ -165,9 +165,9 @@ public class ManejadorUsuario implements IManejadorUsuario{
 	}
 	
 	
-	public List<DataUsuario> listarDTUsuarios(){
+	public ArrayList<DataUsuario> listarDTUsuarios(){
 		Map<String, Usuario> mapaUsr= this.usuarios;
-		List<DataUsuario> listaDTusr= new ArrayList<>();
+		ArrayList<DataUsuario> listaDTusr= new ArrayList<>();
 		for (Usuario usuario: mapaUsr.values()) {	
 			DataUsuario dataUsr= new DataUsuario(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getImage());
 			listaDTusr.add(dataUsr);

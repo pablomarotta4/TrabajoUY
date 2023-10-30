@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="media/styles/basic.css">
    	<link rel="icon" type="image/x-icon" href="media/images/favicon.ico">
     <%@page import="com.trabajouy.controllers.Login"%>
-	<%@page import="com.trabajouy.model.logica.datatypes.DataUsuario"%>
+	<%@page import="server.DataUsuario"%>
 </head>
 <body>
     <!--HEADER-->

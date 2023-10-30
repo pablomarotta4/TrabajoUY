@@ -26,8 +26,6 @@ public class ObjectFactory {
 
     private final static QName _CamposVaciosExcepcion_QNAME = new QName("http://server/", "CamposVaciosExcepcion");
     private final static QName _ElementoInexistenteException_QNAME = new QName("http://server/", "ElementoInexistenteException");
-    private final static QName _ElementoRepetidoException_QNAME = new QName("http://server/", "ElementoRepetidoException");
-    private final static QName _NoExisteInstancia_QNAME = new QName("http://server/", "NoExisteInstancia");
     private final static QName _UsuarioRepetidoException_QNAME = new QName("http://server/", "UsuarioRepetidoException");
 
     /**
@@ -58,26 +56,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ElementoRepetidoException }
-     * 
-     * @return
-     *     the new instance of {@link ElementoRepetidoException }
-     */
-    public ElementoRepetidoException createElementoRepetidoException() {
-        return new ElementoRepetidoException();
-    }
-
-    /**
-     * Create an instance of {@link NoExisteInstancia }
-     * 
-     * @return
-     *     the new instance of {@link NoExisteInstancia }
-     */
-    public NoExisteInstancia createNoExisteInstancia() {
-        return new NoExisteInstancia();
-    }
-
-    /**
      * Create an instance of {@link UsuarioRepetidoException }
      * 
      * @return
@@ -85,16 +63,6 @@ public class ObjectFactory {
      */
     public UsuarioRepetidoException createUsuarioRepetidoException() {
         return new UsuarioRepetidoException();
-    }
-
-    /**
-     * Create an instance of {@link ArrayList }
-     * 
-     * @return
-     *     the new instance of {@link ArrayList }
-     */
-    public ArrayList createArrayList() {
-        return new ArrayList();
     }
 
     /**
@@ -118,23 +86,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataUsuario }
+     * Create an instance of {@link ArrayList }
      * 
      * @return
-     *     the new instance of {@link DataUsuario }
+     *     the new instance of {@link ArrayList }
      */
-    public DataUsuario createDataUsuario() {
-        return new DataUsuario();
-    }
-
-    /**
-     * Create an instance of {@link HashMap }
-     * 
-     * @return
-     *     the new instance of {@link HashMap }
-     */
-    public HashMap createHashMap() {
-        return new HashMap();
+    public ArrayList createArrayList() {
+        return new ArrayList();
     }
 
     /**
@@ -155,6 +113,36 @@ public class ObjectFactory {
      */
     public DtPostulacion createDtPostulacion() {
         return new DtPostulacion();
+    }
+
+    /**
+     * Create an instance of {@link DataEmpresa }
+     * 
+     * @return
+     *     the new instance of {@link DataEmpresa }
+     */
+    public DataEmpresa createDataEmpresa() {
+        return new DataEmpresa();
+    }
+
+    /**
+     * Create an instance of {@link DataUsuario }
+     * 
+     * @return
+     *     the new instance of {@link DataUsuario }
+     */
+    public DataUsuario createDataUsuario() {
+        return new DataUsuario();
+    }
+
+    /**
+     * Create an instance of {@link DataPostulante }
+     * 
+     * @return
+     *     the new instance of {@link DataPostulante }
+     */
+    public DataPostulante createDataPostulante() {
+        return new DataPostulante();
     }
 
     /**
@@ -201,32 +189,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://server/", name = "ElementoInexistenteException")
     public JAXBElement<ElementoInexistenteException> createElementoInexistenteException(ElementoInexistenteException value) {
         return new JAXBElement<>(_ElementoInexistenteException_QNAME, ElementoInexistenteException.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ElementoRepetidoException }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link ElementoRepetidoException }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://server/", name = "ElementoRepetidoException")
-    public JAXBElement<ElementoRepetidoException> createElementoRepetidoException(ElementoRepetidoException value) {
-        return new JAXBElement<>(_ElementoRepetidoException_QNAME, ElementoRepetidoException.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link NoExisteInstancia }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link NoExisteInstancia }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://server/", name = "NoExisteInstancia")
-    public JAXBElement<NoExisteInstancia> createNoExisteInstancia(NoExisteInstancia value) {
-        return new JAXBElement<>(_NoExisteInstancia_QNAME, NoExisteInstancia.class, null, value);
     }
 
     /**

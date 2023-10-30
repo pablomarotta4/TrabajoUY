@@ -9,6 +9,8 @@ import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
 import excepciones.UsuarioRepetidoException;
 import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DataEmpresa;
+import logica.datatypes.DataPostulante;
 import logica.datatypes.DataUsuario;
 import logica.entidades.Empresa;
 import logica.entidades.Postulacion;
@@ -33,10 +35,11 @@ public class ControladorUsuario implements IControladorUsuario{
 	
 	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password, String imageUrl, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		manejadorUsuario.crearEmpresa(nickname, nombre, apellido, email, password, imageUrl, descripcion, link);
+		System.out.println("Empresa" + nickname);
 	}
 	
-	public List<String> listarNickEmpresas() {
-		List<String> list = new ArrayList<String>();
+	public ArrayList<String> listarNickEmpresas() {
+		ArrayList<String> list = new ArrayList<String>();
 		for (Usuario u : manejadorUsuario.getUsuarios().values()) {
 			// Si usuario es instancia de Empresa guardo el nickname en la lista a retornar
 			if (u instanceof Empresa) {
@@ -46,8 +49,8 @@ public class ControladorUsuario implements IControladorUsuario{
 		return list;
 	}	
 	
-	public List<String> listarNickPostulantes() {
-		List<String> list = new ArrayList<String>();
+	public ArrayList<String> listarNickPostulantes() {
+		ArrayList<String> list = new ArrayList<String>();
 		for (Usuario u : manejadorUsuario.getUsuarios().values()) {
 			// Si usuario es instancia de Postulante guardo el nickname en la lista a retornar
 			if (u instanceof Postulante) {
@@ -57,7 +60,7 @@ public class ControladorUsuario implements IControladorUsuario{
 		return list;
 	}
 	
-	public List<String> listarUsuarios(){
+	public ArrayList<String> listarUsuarios(){
 		return manejadorUsuario.listarNickUsuarios();
 	}
 
@@ -81,11 +84,11 @@ public class ControladorUsuario implements IControladorUsuario{
 		return (Postulante) manejadorUsuario.buscarUsuario(nickPostulante);
 	}
 
-	public List<DTOfertaLaboral> consultarPostulaciones(String nick) {
+	public ArrayList<DTOfertaLaboral> consultarPostulaciones(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 
-	public List<DTOfertaLaboral> consultarOfertas(String nick) {
+	public ArrayList<DTOfertaLaboral> consultarOfertas(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 	
@@ -125,8 +128,18 @@ public class ControladorUsuario implements IControladorUsuario{
 	}
 
 	@Override
-	public List<DataUsuario> listarDTUsuarios() {
+	public ArrayList<DataUsuario> listarDTUsuarios() {
 		// TODO Auto-generated method stub
 		return manejadorUsuario.listarDTUsuarios();
+	}
+
+	@Override
+	public DataEmpresa getDTEmpresa(String nick) {
+		return this.getEmpresa(nick).getDataEmpresa();
+	}
+
+	@Override
+	public DataPostulante getDTPostulante(String nick) {
+		return this.getPostulante(nick).getDataPostulante();
 	}
 }

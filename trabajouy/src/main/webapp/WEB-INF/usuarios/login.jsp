@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     
 <%@page import="com.trabajouy.controllers.Login"%>
-<%@page import="com.trabajouy.model.enums.EstadoSesion"%>
+<%@page import="com.trabajouy.enums.EstadoSesion"%>
 
 <!DOCTYPE html>
 <html lang="en">

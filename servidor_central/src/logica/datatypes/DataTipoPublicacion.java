@@ -2,6 +2,10 @@ package logica.datatypes;
 
 import java.time.LocalDate;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DataTipoPublicacion {
 	private String nombre;
 	private String descripcion;

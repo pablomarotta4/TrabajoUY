@@ -1,6 +1,7 @@
 package com.trabajouy.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.trabajouy.model.logica.datatypes.DTOfertaLaboral;
@@ -12,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import server.DtOfertaLaboral;
 
 
 @WebServlet("/ofertas")
@@ -24,12 +26,13 @@ public class ListarOfertas extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String filter = (String) request.getParameter("filter");
-		IControladorOferta ctrlOferta = Factory.getInstance().getControladorOferta();
-		List<DTOfertaLaboral> listaOfertas = null;
+		server.WebServerService servicio = new server.WebServerService();
+		server.WebServer port = servicio.getWebServerPort();
+		ArrayList<DtOfertaLaboral> listaOfertas = null;
 		if (filter != null && !filter.equals("")) {
-			listaOfertas = ctrlOferta.listarDtOfertasByFilter(filter);
+			listaOfertas = port.listarDtOfertasByFilter(filter);
 		} else {
-			listaOfertas = ctrlOferta.listarDtOfertas();
+			listaOfertas = port.listarDtOfertas();
 		}
 		
 		request.setAttribute("lista_ofertas", listaOfertas);

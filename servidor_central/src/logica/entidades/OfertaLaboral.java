@@ -70,8 +70,8 @@ public class OfertaLaboral {
 	}
 	
 	public DTOfertaLaboral getDataType(){
-		List<DTPostulacion> listaDtPostulacion = new ArrayList<DTPostulacion>();
-		List<String> listaKeywords = new ArrayList<String>();
+		ArrayList<DTPostulacion> listaDtPostulacion = new ArrayList<DTPostulacion>();
+		ArrayList<String> listaKeywords = new ArrayList<String>();
 		
 		if (this.postulaciones.size() > 0) {
 			for (int i = 0; i <= this.postulaciones.size() - 1; i++) {

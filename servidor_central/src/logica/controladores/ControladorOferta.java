@@ -2,6 +2,7 @@ package logica.controladores;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +54,7 @@ public class ControladorOferta implements IControladorOferta{
 			String departamento,
 			LocalDate fechaAlta,
 			String imageUrl,
-			List<String> keywordsSeleccionadas
+			ArrayList<String> keywordsSeleccionadas
 	) throws ElementoRepetidoException, ElementoInexistenteException {
 		
 		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
@@ -236,9 +237,9 @@ public class ControladorOferta implements IControladorOferta{
 		return listaOfertas;
 	}
 	
-	public List<DTOfertaLaboral> listarDtOfertas(){
-		List<DTOfertaLaboral> listaOfertas = new ArrayList<>();
-		Map<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
+	public ArrayList<DTOfertaLaboral> listarDtOfertas(){
+		ArrayList<DTOfertaLaboral> listaOfertas = new ArrayList<>();
+		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
 		for (OfertaLaboral oferta : ofertasExistentes.values()) {
 			listaOfertas.add(oferta.getDataType());
 		}
@@ -262,9 +263,9 @@ public class ControladorOferta implements IControladorOferta{
 	    return manejadorPostulacion.existePostulacion(nick, nombreOferta);
 	}
 
-	public List<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
-		List<DTOfertaLaboral> listaOfertas = new ArrayList<>();
-		Map<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
+	public ArrayList<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
+		ArrayList<DTOfertaLaboral> listaOfertas = new ArrayList<>();
+		HashMap<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
 		
 		if (isKeyword(filter)) {
 			for (OfertaLaboral oferta: ofertas.values()) {
@@ -308,9 +309,9 @@ public class ControladorOferta implements IControladorOferta{
 
 	}
 
-	public List<DTOfertaLaboral> listarOfertasAceptadas() {
-	    Map<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
-	    List<DTOfertaLaboral> ofertasConfirmadas = new ArrayList<DTOfertaLaboral>();
+	public ArrayList<DTOfertaLaboral> listarOfertasAceptadas() {
+	    HashMap<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
+	    ArrayList<DTOfertaLaboral> ofertasConfirmadas = new ArrayList<DTOfertaLaboral>();
 	    for(OfertaLaboral offer : ofertas.values()) {
 		if(offer.getEstado().equals(EstadoOferta.CONFIRMADA)) {
 		    ofertasConfirmadas.add(offer.getDataType());
@@ -318,4 +319,5 @@ public class ControladorOferta implements IControladorOferta{
 	    }
 	    return ofertasConfirmadas;
 	}
+
 }

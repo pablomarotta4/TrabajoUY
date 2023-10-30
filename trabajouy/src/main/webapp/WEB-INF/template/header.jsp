@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="com.trabajouy.controllers.Login"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataUsuario"%>
+<%@page import="server.DataUsuario"%>
 <header class="header">
 	<div class="home">
 	    <a href="home"><img src="media/images/trabajoUy.png" alt=""></a>

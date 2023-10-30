@@ -3,10 +3,8 @@ package com.trabajouy.controllers;
 import java.io.IOException;
 
 import com.trabajouy.model.enums.EstadoSesion;
-import com.trabajouy.model.excepciones.ElementoInexistenteException;
-import com.trabajouy.model.logica.datatypes.DataUsuario;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorUsuario;
+import server.ElementoInexistenteException_Exception;
+import server.DataUsuario;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -41,21 +39,21 @@ public class Login extends HttpServlet {
 		String nickname = req.getParameter("username");
 		String password = req.getParameter("password");
 		try {
-			Factory factory = Factory.getInstance();
-			IControladorUsuario ctrlUsuario = factory.getControladorUsuario();
-			boolean credencialesValidas = ctrlUsuario.evaluarCredenciales(nickname, password);
+			server.WebServerService servicio = new server.WebServerService();
+			server.WebServer port = servicio.getWebServerPort();
+			boolean credencialesValidas = port.evaluarCredenciales(nickname, password);
 			if (credencialesValidas) {
-				 DataUsuario user = ctrlUsuario.consultarDatosUsuario(nickname);
+				 DataUsuario user = port.consultarDatosUsuario(nickname);
 				 req.setAttribute("estado_sesion", EstadoSesion.LOGIN_CORRECTO);
 				 req.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_CORRECTO);
 				 req.getSession().setAttribute("usuario_logeado", user);
 				 req.getSession().setAttribute("nickname", nickname);
-				response.sendRedirect("/trabajouy/ofertas");
+				response.sendRedirect("/trabajouy/home");
 			} else {
 				req.setAttribute("estado_sesion", EstadoSesion.LOGIN_INCORRECTO);
 				req.getRequestDispatcher("/WEB-INF/usuarios/login.jsp").forward(req, response);
 			}
-		} catch (ElementoInexistenteException ex) {
+		} catch (ElementoInexistenteException_Exception ex) {
 			req.setAttribute("estado_sesion", EstadoSesion.LOGIN_INCORRECTO);
 			req.getRequestDispatcher("/WEB-INF/usuarios/login.jsp").forward(req, response);
 		}

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DTOfertaLaboral"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataUsuario"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataEmpresa"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataPostulante"%>
-<%@page import="com.trabajouy.model.logica.interfaces.Factory" %>
-<%@page import="com.trabajouy.model.logica.interfaces.IControladorOferta" %>
-<%@page import="java.util.List"%>
+<%@page import="server.DtOfertaLaboral"%>
+<%@page import="server.DataUsuario"%>
+<%@page import="server.DataEmpresa"%>
+<%@page import="server.DataPostulante"%>
+
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +29,9 @@
         <%	
     			}
    			}
-        	List<DTOfertaLaboral> ofertas = (List<DTOfertaLaboral>) request.getAttribute("lista_ofertas");
+        	ArrayList<DtOfertaLaboral> ofertas = (ArrayList<DtOfertaLaboral>) request.getAttribute("lista_ofertas");
        		if(ofertas != null){
-        		for(DTOfertaLaboral oferta : ofertas){	
+        		for(DtOfertaLaboral oferta : ofertas){	
         %>
         	<div id="ContenedorCajas">
 	         <div class="caja">
