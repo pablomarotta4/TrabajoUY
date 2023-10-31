@@ -19,6 +19,7 @@ import jakarta.jws.soap.SOAPBinding.Style;
 import jakarta.xml.ws.Endpoint;
 import logica.datatypes.DTOfertaLaboral;
 import logica.datatypes.DTPostulacion;
+import logica.datatypes.DataPostulante;
 import logica.datatypes.DataTipoPublicacion;
 import logica.datatypes.DataUsuario;
 import logica.entidades.Empresa;
@@ -88,10 +89,17 @@ public class WebServer {
 		
 	}
     
-//    @WebMethod
-//    public List<String> listarNickEmpresas(){
-//    	return ctrlUsuario.listarNickEmpresas();
-//    }
+    @WebMethod
+    public ArrayList<String> listarNickEmpresas(){
+    	return (ArrayList<String>) ctrlUsuario.listarNickEmpresas();
+    }
+    
+    
+    
+    
+    
+    
+    
 //    @WebMethod
 //	public List<String> listarNickPostulantes(){
 //		return ctrlUsuario.listarNickPostulantes();
