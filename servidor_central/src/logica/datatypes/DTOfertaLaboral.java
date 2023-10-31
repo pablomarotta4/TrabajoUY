@@ -1,8 +1,13 @@
 package logica.datatypes;
 
+
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DTOfertaLaboral {
 	private String nombre;
 	private String descripcion;
@@ -163,6 +168,59 @@ public class DTOfertaLaboral {
 		}
 		return postulacion;
 	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+	
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+	
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+	
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+	public void setNombreEmpresa(String nombreEmpresa) {
+		this.nombreEmpresa = nombreEmpresa;
+	}
+	
+	public void setRemuneracion(Float remuneracion) {
+		this.remuneracion = remuneracion;
+	}
+	
+	public void setCosto(Float costo) {
+		this.costo = costo;
+	}
+	
+	public void setFecha(LocalDate fecha) {
+		this.fechaAlta = fecha;
+	}
+	
+	public void setPostulaciones(List<DTPostulacion> postulaciones) {
+		this.postulaciones = postulaciones;
+	}
+	
+	public void setKeywords(List<String> keywords) {
+		this.keywords = keywords;
+	}
+	
+	public void setEstado(EstadoOferta estado) {
+		this.estado = estado;
+	}
+	
 //	@Override
 //	public String toString() {
 //	    return "DTOfertaLaboral{" +

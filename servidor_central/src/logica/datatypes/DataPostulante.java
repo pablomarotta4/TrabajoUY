@@ -7,11 +7,20 @@ import java.util.List;
 
 import java.time.LocalDate;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DataPostulante extends DataUsuario {
 
 	private String nacionalidad;
 	private LocalDate nacimiento;
 	private List<DTPostulacion> postulaciones;
+	
+	
+	public DataPostulante() {
+		
+	}
 	
 	public  DataPostulante(String nick, 
 			String nombre, 
@@ -28,6 +37,14 @@ public class DataPostulante extends DataUsuario {
 	
 	public void setPostulaciones(List<DTPostulacion> postulaciones) {
 		this.postulaciones = postulaciones;
+	}
+	
+	public void setNacimiento(LocalDate nacimiento) {
+		this.nacimiento = nacimiento;
+	}
+	
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
 	}
 	
 	public String getNacionalidad() {

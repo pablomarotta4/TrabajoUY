@@ -2,6 +2,10 @@ package logica.datatypes;
 
 import java.time.LocalDate;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DataTipoPublicacion {
 	private String nombre;
 	private String descripcion;
@@ -9,6 +13,10 @@ public class DataTipoPublicacion {
 	private int duracion;
 	private float costo;
 	private LocalDate fecha;
+	
+	public DataTipoPublicacion() {
+		
+	}
 	
 	public DataTipoPublicacion(String nombre, String descripcion, int exposicion, int duracion, float costo, LocalDate fecha) {
 		this.nombre = nombre;
@@ -41,5 +49,29 @@ public class DataTipoPublicacion {
 
 	public LocalDate getFecha() {
 		return fecha;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	public void setExposicion(int exposicion) {
+		this.exposicion = exposicion;
+	}
+	
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+	
+	public void setCosto(float costo) {
+		this.costo = costo;
+	}
+	
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 }

@@ -2,13 +2,20 @@ package logica.datatypes;
 
 import java.util.List;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class DataEmpresa extends DataUsuario{
 	
 	private String descripcion;
 	private String link;
 	private List<DTOfertaLaboral> ofertas;
 
+	public DataEmpresa() {
+		
+	}
+	
 	public DataEmpresa(String nick, 
 			String nombre, 
 			String apellido, 
@@ -27,11 +34,20 @@ public class DataEmpresa extends DataUsuario{
 	public String getLink() {
 		return link;
 	}
+	
+	public List<DTOfertaLaboral> getOfertasLaborales() {
+		return this.ofertas;
+	}
+	
 	public void setOfertas(List<DTOfertaLaboral> ofertas) {
 		this.ofertas = ofertas;
 	}
 	
-	public List<DTOfertaLaboral> getOfertasLaborales() {
-		return this.ofertas;
+	public void setDescripcion(String desc) {
+		this.descripcion = desc;
+	}
+	
+	public void setLink(String link) {
+		this.link = link;
 	}
 }
