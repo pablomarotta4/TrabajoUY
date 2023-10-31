@@ -48,6 +48,20 @@ public class WebServer {
             return endpoint;
     }
     
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @WebMethod
     public void crearPostulante(
     		String nick, 
@@ -93,13 +107,7 @@ public class WebServer {
     public ArrayList<String> listarNickEmpresas(){
     	return (ArrayList<String>) ctrlUsuario.listarNickEmpresas();
     }
-    
-    
-    
-    
-    
-    
-    
+
 //    @WebMethod
 //	public List<String> listarNickPostulantes(){
 //		return ctrlUsuario.listarNickPostulantes();
