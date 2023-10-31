@@ -7,9 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import com.trabajouy.model.enums.EstadoSesion;
-import com.trabajouy.model.logica.datatypes.DataUsuario;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorUsuario;
+import server.DataUsuario;
+
 
 /**
  * Servlet implementation class ConsultaUsuario
@@ -30,8 +29,9 @@ public class ConsultaUsuario extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	DataUsuario usrL = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
     	String nombreUsuarioConsulta = request.getParameter("usuario_consulta");
-    	IControladorUsuario icu = Factory.getInstance().getControladorUsuario();
-    	DataUsuario usuarioC = icu.consultarDatosUsuario(nombreUsuarioConsulta);
+    	server.WebServerService servicio = new server.WebServerService();
+		server.WebServer port = servicio.getWebServerPort();
+    	DataUsuario usuarioC = port.consultarDatosUsuario(nombreUsuarioConsulta);
     	request.setAttribute("usuario_consulta", usuarioC);
 		if (usrL == null) {
 			// no existe el usuario, se trata como deslogueado

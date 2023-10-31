@@ -1,9 +1,9 @@
-<%@page import="com.trabajouy.model.logica.datatypes.DataUsuario" %>
-<%@page import="com.trabajouy.model.logica.datatypes.DataEmpresa" %>
-<%@page import="com.trabajouy.model.logica.datatypes.DataPostulante" %>
-<%@page import="com.trabajouy.model.logica.datatypes.DTPostulacion" %>
-<%@page import="com.trabajouy.model.logica.datatypes.DTOfertaLaboral" %>
-<%@page import="java.util.List"%>
+<%@page import="server.DataUsuario" %>
+<%@page import="server.DataEmpresa" %>
+<%@page import="server.DataPostulante" %>
+<%@page import="server.DtPostulacion" %>
+<%@page import="server.DtOfertaLaboral" %>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,7 +26,7 @@
 	 	<div class="main-container">
 	        <div class="datosPresentacion">
 	            <div class="cajaImagen">
-	                <img src=<%= usuarioC.getImage() %> alt="imagen">
+	                <img src=<%= usuarioC.getImageUrl() %> alt="imagen">
 	            </div>
 	            <div class="datosBasicos">
 	                <h2><%= usuarioC.getNickname() %></h2>
@@ -57,11 +57,11 @@
 
             	<% if (mismo && usuarioC instanceof DataPostulante) {
 	            		DataPostulante postulante = (DataPostulante) usuarioC;
-	            		List<DTPostulacion> postulaciones = postulante.getPostulaciones();
+	            		ArrayList<DtPostulacion> postulaciones = (ArrayList) postulante.getPostulaciones();
 	            		if (postulaciones != null) {
 	            		%>
 	                    	
-		            	<% for(DTPostulacion pos: postulaciones) { %>
+		            	<% for(DtPostulacion pos: postulaciones) { %>
 		            		<div class="boxPerfil">
 		                        <h2>Postulacion a Oferta: <a href="/trabajouy/consultarOferta?oferta=<%=pos.getNombreOferta()%>"> <%= pos.getNombreOferta() %></a></h2>
 		                        <h3><a href="/trabajouy/postulacion?nombreOferta=<%= java.net.URLEncoder.encode(pos.getNombreOferta(), "UTF-8")%>"> Ver detalles </a></h3>
@@ -71,12 +71,12 @@
                		}
             		if (usuarioC instanceof DataEmpresa) {
 	            		DataEmpresa empresa = (DataEmpresa) usuarioC;
-	            		List<DTOfertaLaboral> ofertas = empresa.getOfertasLaborales();
+	            		ArrayList<DtOfertaLaboral> ofertas = empresa.getOfertas();
 	            		
 	            		if (ofertas != null) {
 		            		%>
 <!----------------  listar todas las ofertas aunque no deberia luego en la tarea3 --------------------------------------->		                    	
-			            	<% for(DTOfertaLaboral ofer: ofertas) { %>
+			            	<% for(DtOfertaLaboral ofer: ofertas) { %>
 			            		<div class="boxPerfil">
 			                        <h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
 			                    </div>

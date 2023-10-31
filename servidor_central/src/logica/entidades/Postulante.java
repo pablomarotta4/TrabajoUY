@@ -12,7 +12,7 @@ public class Postulante extends Usuario{
 
 	private LocalDate fechaNacimiento;
 	private String nacionalidad;
-	private List<Postulacion> postulaciones;
+	private ArrayList<Postulacion> postulaciones;
 	
 	public Postulante(String nick, 
 			String nombre, 
@@ -35,7 +35,7 @@ public class Postulante extends Usuario{
 		return nacionalidad;
 	}
 
-	public List<Postulacion> getPostulaciones() {
+	public ArrayList<Postulacion> getPostulaciones() {
 		return postulaciones;
 	}
 	
@@ -51,8 +51,8 @@ public class Postulante extends Usuario{
 		this.nacionalidad = nacionalidad;
 	}
 	
-	public List<DTPostulacion> getDTPostulaciones() {
-		List<DTPostulacion> lista = new ArrayList<>();
+	public ArrayList<DTPostulacion> getDTPostulaciones() {
+		ArrayList<DTPostulacion> lista = new ArrayList<>();
 		for (Postulacion post: this.postulaciones) {
 			lista.add(post.getDatatype());
 		}

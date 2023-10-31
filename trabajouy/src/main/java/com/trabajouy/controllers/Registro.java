@@ -12,13 +12,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import com.trabajouy.model.excepciones.CamposVaciosExcepcion;
-import com.trabajouy.model.excepciones.UsuarioRepetidoException;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorUsuario;
+import server.CamposVaciosExcepcion_Exception;
+import server.ElementoInexistenteException_Exception;
+import server.ElementoRepetidoException_Exception;
+import server.UsuarioRepetidoException_Exception;
 
 
 @MultipartConfig
@@ -46,16 +45,17 @@ public class Registro extends HttpServlet {
 		
 		try {
 			if (password.equals(confirmPassword)) {
-				Factory factory = Factory.getInstance();
-				IControladorUsuario ctrlUser = factory.getControladorUsuario();
+				server.WebServerService servicio = new server.WebServerService();
+				server.WebServer port = servicio.getWebServerPort();
 				if (request.getParameter("user-type").equals("empresa")) {
 					String descripcion = request.getParameter("descripcion");
 					String link = request.getParameter("link");
-					ctrlUser.crearEmpresa(nickname, nombre, apellido, email, password, File.separator +  "images"  + File.separator + nickname + ".jpg", descripcion, link);
-					Part image = request.getPart("imageFile");		
-					String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
-					File targetFile = new File(path + nickname + ".jpg");
-					Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					port.crearEmpresa(nickname, nombre, apellido, email, password, File.separator +  "images"  + File.separator + nickname + ".jpg", descripcion, link);
+//					Part image = request.getPart("imageFile");		
+//					String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
+//					File targetFile = new File(path + nickname + ".jpg");
+//					Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					System.out.println(port.getEmpresa(nickname).getNickname());
 					request.getRequestDispatcher("/WEB-INF/usuarios/login.jsp").forward(request, response);
 				}
 				else if (request.getParameter("user-type").equals("postulante")) {
@@ -63,14 +63,13 @@ public class Registro extends HttpServlet {
 					
 					String fechaString =  request.getParameter("fechaNac");
 					if (!fechaString.equals("")) {
-						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-						LocalDate fechaNac = LocalDate.parse(fechaString, formatter);
-						ctrlUser.crearPostulante(nickname, nombre, apellido, email, password, File.separator +  "images"  + File.separator + nickname + ".jpg", nacionalidadString, fechaNac);
-						Part image = request.getPart("imageFile");		
-						String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
-						File targetFile = new File(path + nickname + ".jpg");
-						Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+						port.crearPostulante(nickname, nombre, apellido, email, password, File.separator +  "images"  + File.separator + nickname + ".jpg", nacionalidadString, fechaString);
+//						Part image = request.getPart("imageFile");		
+//						String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
+//						File targetFile = new File(path + nickname + ".jpg");
+//						Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 						request.getRequestDispatcher("/WEB-INF/usuarios/login.jsp").forward(request, response);
+
 					}
 					else {
 						request.setAttribute("campos-vacios", true);
@@ -82,11 +81,11 @@ public class Registro extends HttpServlet {
 			
 			
 		}
-		catch (CamposVaciosExcepcion ex) {
+		catch (CamposVaciosExcepcion_Exception ex) {
 			request.setAttribute("campos-vacios", true);
 			request.getRequestDispatcher("/WEB-INF/usuarios/registro.jsp").forward(request, response);
 		}
-		catch (UsuarioRepetidoException ex) {
+		catch (UsuarioRepetidoException_Exception ex) {
 			request.setAttribute("user-repetido", true);
 			request.getRequestDispatcher("/WEB-INF/usuarios/registro.jsp").forward(request, response);
 		}

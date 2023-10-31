@@ -11,7 +11,7 @@ public class Empresa extends Usuario{
 
 	private String descripcion;
 	private String linkWeb;
-	private List<OfertaLaboral> ofertas;
+	private ArrayList<OfertaLaboral> ofertas;
 
 	public Empresa(String nick, 
 			String nombre, 
@@ -35,7 +35,7 @@ public class Empresa extends Usuario{
 		return linkWeb;
 	}
 
-	public List<OfertaLaboral> getOfertas() {
+	public ArrayList<OfertaLaboral> getOfertas() {
 		return ofertas;
 	}
 	
@@ -51,8 +51,8 @@ public class Empresa extends Usuario{
 		this.linkWeb = link;
 	}
 	
-	public List<DTOfertaLaboral> getDTOfertasLaborales(){
-		List<DTOfertaLaboral> lista = new ArrayList<>();
+	public ArrayList<DTOfertaLaboral> getDTOfertasLaborales(){
+		ArrayList<DTOfertaLaboral> lista = new ArrayList<>();
 		for (OfertaLaboral ofer: this.ofertas) {
 			lista.add(ofer.getDataType());
 		}

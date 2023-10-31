@@ -571,7 +571,7 @@ public class MainFrame {
 					"Montevideo",
 					LocalDate.of(2023, 9, 30),
 					imagePath + "desarrollador_frontend.jpg",
-					List.of(
+					(ArrayList<String>) List.of(
 							"Tiempo completo",
 							"Medio tiempo",
 							"Remoto",
@@ -595,7 +595,7 @@ public class MainFrame {
 					"Maldonado", 
 					LocalDate.of(2023, 9, 29),
 					imagePath + "estratega_de_negocios.jpg",
-					List.of("Temporal")
+					(ArrayList<String>) List.of("Temporal")
 			);
 			this.ico.confirmarOferta("Estratega de Negocios");
 			desc = 
@@ -612,7 +612,7 @@ public class MainFrame {
 					"Colonia", 
 					LocalDate.of(2023, 9, 29),
 					imagePath + "diseñador_ux_ui.jpg",
-					List.of("Medio tiempo", "Remoto", "Permanente")
+					(ArrayList<String>) List.of("Medio tiempo", "Remoto", "Permanente")
 			);
 			this.ico.confirmarOferta("Diseñador UX/UI");
 			
@@ -630,7 +630,7 @@ public class MainFrame {
 					"Maldonado", 
 					LocalDate.of(2023, 9, 19),
 					imagePath + "analista_de_datos.jpg",
-					List.of("Medio tiempo")
+					(ArrayList<String>) List.of("Medio tiempo")
 			);
 			
 			desc = 
@@ -649,7 +649,7 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 2),
 					imagePath + "content_manager.jpg",
-					List.of("Freelance")
+					(ArrayList<String>) List.of("Freelance")
 			);
 			
 			desc = 
@@ -667,7 +667,7 @@ public class MainFrame {
 					"Lavalleja",
 					LocalDate.of(2023, 9, 10),
 					imagePath + "soporte_tecnico.jpg",
-					List.of("Tiempo completo")
+					(ArrayList<String>) List.of("Tiempo completo")
 			);
 			this.ico.confirmarOferta("Soporte Técnico");
 			desc = 
@@ -723,7 +723,7 @@ public class MainFrame {
 					"Paysandú", 
 					LocalDate.of(2023, 9, 29),
 					imagePath + "tecnico_de_red.jpg",
-					List.of("Temporal")
+					(ArrayList<String>) List.of("Temporal")
 			);
 			this.ico.confirmarOferta("Técnico/a Básico Red");
 				
@@ -742,7 +742,7 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 2),
 					imagePath + "desarrollador_de_software_senior.jpg",
-					List.of("Tiempo completo", "Permanente", "Logística")
+					(ArrayList<String>) List.of("Tiempo completo", "Permanente", "Logística")
 			);
 					
 			desc = 
@@ -760,7 +760,7 @@ public class MainFrame {
 					"Fray Bentos", 
 					LocalDate.of(2023, 9, 25),
 					imagePath + "desarrollador_de_software_full_stack.jpg",
-					List.of("Remoto")
+					(ArrayList<String>) List.of("Remoto")
 			);
 			
 			desc = 
@@ -779,7 +779,7 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 2),
 					imagePath + "gerente_de_proyectos.jpg",
-					List.of("Remoto", "Permanente")
+					(ArrayList<String>) List.of("Remoto", "Permanente")
 			);
 			this.ico.confirmarOferta("Gerente de Proyecto");
 			desc = 
@@ -797,7 +797,7 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 1),
 					imagePath + "ingeniero_de_calidad_de_software.jpg",
-					List.of("Tiempo completo", "Contabilidad")
+					(ArrayList<String>) List.of("Tiempo completo", "Contabilidad")
 			);
 		} catch (ElementoRepetidoException e) {
 			System.out.println(e.getMessage());

@@ -1,21 +1,23 @@
 package logica.datatypes;
 
 import java.util.ArrayList;
-import java.util.List;
-
-
-
-import java.time.LocalDate;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+
+import java.time.LocalDate;
+
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DataPostulante extends DataUsuario {
 
 	private String nacionalidad;
 	private LocalDate nacimiento;
-	private List<DTPostulacion> postulaciones;
+	private ArrayList<DTPostulacion> postulaciones;
 	
 	
 	public DataPostulante() {
@@ -35,7 +37,7 @@ public class DataPostulante extends DataUsuario {
 		this.postulaciones = new ArrayList<>();
 	}
 	
-	public void setPostulaciones(List<DTPostulacion> postulaciones) {
+	public void setPostulaciones(ArrayList<DTPostulacion> postulaciones) {
 		this.postulaciones = postulaciones;
 	}
 	
@@ -65,7 +67,7 @@ public class DataPostulante extends DataUsuario {
 		return nacimiento.getYear();
 	}
 	
-	public List<DTPostulacion> getPostulaciones() {
+	public ArrayList<DTPostulacion> getPostulaciones() {
 		return this.postulaciones;
 	}
 	

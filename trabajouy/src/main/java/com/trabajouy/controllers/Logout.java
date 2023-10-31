@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import com.trabajouy.model.enums.EstadoSesion;
-import com.trabajouy.model.logica.datatypes.DataUsuario;
+import server.DataUsuario;
 
 
 @WebServlet("/logout")

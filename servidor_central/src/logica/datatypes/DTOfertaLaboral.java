@@ -2,7 +2,7 @@ package logica.datatypes;
 
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.ArrayList;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -18,8 +18,8 @@ public class DTOfertaLaboral {
 	private LocalDate fechaAlta;
 	private String imageUrl;
 	private float costo;
-	private List<DTPostulacion> postulaciones;
-	private List<String> keywords;
+	private ArrayList<DTPostulacion> postulaciones;
+	private ArrayList<String> keywords;
 	private String nombreEmpresa;
 	private int duracion;
 	private EstadoOferta estado;
@@ -37,8 +37,8 @@ public class DTOfertaLaboral {
 			float remuneracion,
 			LocalDate fechaAlta,
 			String imageUrl,
-			List<DTPostulacion> postulaciones,
-			List<String> keywords,
+			ArrayList<DTPostulacion> postulaciones,
+			ArrayList<String> keywords,
 			String nombreEmpresa,
 			String tipoPublicacion,
 			float costo
@@ -67,8 +67,8 @@ public class DTOfertaLaboral {
 			float remuneracion,
 			LocalDate fechaAlta,
 			String imageUrl,
-			List<DTPostulacion> postulaciones,
-			List<String> keywords,
+			ArrayList<DTPostulacion> postulaciones,
+			ArrayList<String> keywords,
 			String nombreEmpresa,
 			String tipoPublicacion,
 			float costo,
@@ -117,13 +117,13 @@ public class DTOfertaLaboral {
 		return this.imageUrl;
 	}
 	
-	public List<DTPostulacion> getPostulaciones() {
+	public ArrayList<DTPostulacion> getPostulaciones() {
 		return this.postulaciones;
 	}
 	public String getNombreEmpresa() {
 		return this.nombreEmpresa;
 	}
-	public List<String> getKeywords() {
+	public ArrayList<String> getKeywords() {
 		return this.keywords;
 	}
 		
@@ -209,11 +209,11 @@ public class DTOfertaLaboral {
 		this.fechaAlta = fecha;
 	}
 	
-	public void setPostulaciones(List<DTPostulacion> postulaciones) {
+	public void setPostulaciones(ArrayList<DTPostulacion> postulaciones) {
 		this.postulaciones = postulaciones;
 	}
 	
-	public void setKeywords(List<String> keywords) {
+	public void setKeywords(ArrayList<String> keywords) {
 		this.keywords = keywords;
 	}
 	

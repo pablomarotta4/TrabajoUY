@@ -1,6 +1,7 @@
 package logica.interfaces;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import excepciones.ElementoInexistenteException;
@@ -22,7 +23,7 @@ public interface IControladorOferta {
 			String departamento,
 			LocalDate fechaAlta,
 			String imageUrl,
-			List<String> keywords
+			ArrayList<String> keywords
 		) throws ElementoRepetidoException, ElementoInexistenteException;
 	
 	public void altaKeyword(String nombreKeyword) throws ElementoRepetidoException;
@@ -42,9 +43,9 @@ public interface IControladorOferta {
 	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta);
 	public void confirmarOferta(String nombreOferta);
 	public void rechazarOferta(String nombreOferta);
-	public List<DTOfertaLaboral> listarDtOfertas();
-	public List<DTOfertaLaboral> listarDtOfertasByFilter(String filter);
+	public ArrayList<DTOfertaLaboral> listarDtOfertas();
+	public ArrayList<DTOfertaLaboral> listarDtOfertasByFilter(String filter);
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta);
 	public boolean estaPostulado(String nick, String nombreOferta);
-	public List<DTOfertaLaboral> listarOfertasAceptadas();
+	public ArrayList<DTOfertaLaboral> listarOfertasAceptadas();
 }

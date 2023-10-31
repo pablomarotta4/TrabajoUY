@@ -9,7 +9,7 @@ import logica.interfaces.IManejadorOferta;
 public class ManejadorOferta implements IManejadorOferta{
 	
 	private static ManejadorOferta instance = null;
-	private Map<String, OfertaLaboral> ofertasLaborales;
+	private HashMap<String, OfertaLaboral> ofertasLaborales;
 	
 	
 	private ManejadorOferta() {
@@ -31,7 +31,7 @@ public class ManejadorOferta implements IManejadorOferta{
 		return this.ofertasLaborales.containsKey(nombreOferta);
 	}
 	
-	public Map<String, OfertaLaboral> getOfertas(){
+	public HashMap<String, OfertaLaboral> getOfertas(){
 		return this.ofertasLaborales;
 	}
 

@@ -1,6 +1,7 @@
 package logica.interfaces;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,12 +20,12 @@ public interface IManejadorUsuario {
 	public Boolean existeUsuarioEmail(String email);
 	public Usuario buscarUsuario(String nick);
 	public void agregarUsuario(Usuario usr);
-	public List<String> listarNickUsuarios();
+	public ArrayList<String> listarNickUsuarios();
 	public Map<String, Usuario> getUsuarios();
-	public List<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick);
+	public ArrayList<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick);
 	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException;
 	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad);
-	public List<DataUsuario> listarDTUsuarios();
+	public ArrayList<DataUsuario> listarDTUsuarios();
 
 }
 		
