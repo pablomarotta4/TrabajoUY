@@ -21,6 +21,8 @@ public class Home extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
+    // cambiar las factory por esto:
+    // server.WebServer port = new server.WebServerService().getWebServerPort();
     
 	public static void initSession(HttpServletRequest request) {
 		HttpSession session = request.getSession();

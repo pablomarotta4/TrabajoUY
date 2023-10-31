@@ -8,9 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import com.trabajouy.model.logica.datatypes.DataUsuario;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorUsuario;
+import server.DataUsuario;
+
 
 /**
  * Servlet implementation class Usuarios
@@ -27,9 +26,8 @@ public class Usuarios extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		
-		
-		IControladorUsuario ctrlUsr= Factory.getInstance().getControladorUsuario();
-		List<DataUsuario> listaUsuarios= ctrlUsr.listarDTUsuarios();
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+		List<DataUsuario> listaUsuarios= port.listarDTUsuarios();
 		
 		request.setAttribute("lista_usuarios", listaUsuarios);
 		request.getRequestDispatcher("/WEB-INF/usuarios/listaUsuarios.jsp").forward(request, response);

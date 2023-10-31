@@ -12,15 +12,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trabajouy.model.excepciones.CamposVaciosExcepcion;
-import com.trabajouy.model.excepciones.ElementoInexistenteException;
-import com.trabajouy.model.excepciones.ElementoRepetidoException;
-import com.trabajouy.model.excepciones.NoExisteInstancia;
-import com.trabajouy.model.excepciones.UsuarioRepetidoException;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorCompraTipo;
-import com.trabajouy.model.logica.interfaces.IControladorOferta;
-import com.trabajouy.model.logica.interfaces.IControladorUsuario;
+import server.CamposVaciosExcepcion;
+import server.ElementoInexistenteException;
+import server.UsuarioRepetidoException;
+
 
 /**
  * Servlet implementation class Datos
@@ -28,16 +23,13 @@ import com.trabajouy.model.logica.interfaces.IControladorUsuario;
 @WebServlet("/datosDePrueba")
 public class Datos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private IControladorUsuario ctrlUsuario; 
-    private IControladorOferta ctrlOferta; 
-	private IControladorCompraTipo ctrlTipo;
+    private server.WebServer port;
     
     public Datos() {    	
         super();
-        Factory factory = Factory.getInstance();
-        this.ctrlUsuario = factory.getControladorUsuario();
-        this.ctrlOferta = factory.getControladorOferta();
-        this.ctrlTipo = factory.getControladorCompraTipo();
+        
+        this.port = new server.WebServerService().getWebServerPort();
+
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +56,7 @@ public class Datos extends HttpServlet {
 					File.separator + 
 					"images" + File.separator;
 			
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "lgarcia",
 			    "Lucía",
 			    "García",
@@ -74,7 +66,7 @@ public class Datos extends HttpServlet {
 			    "Uruguaya",
 			    LocalDate.of(1985, 3, 15)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "matilo",
 			    "Matías",
 			    "López",
@@ -84,7 +76,7 @@ public class Datos extends HttpServlet {
 			    "Argentina",
 			    LocalDate.of(1990, 8, 21)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "maro",
 			    "María",
 			    "Rodríguez",
@@ -95,7 +87,7 @@ public class Datos extends HttpServlet {
 			    LocalDate.of(1988, 11, 10)
 			);
 	
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "javierf",
 			    "Javier",
 			    "Fernández",
@@ -105,7 +97,7 @@ public class Datos extends HttpServlet {
 			    "Mexicana",
 			    LocalDate.of(1993, 6, 5)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "valen25",
 			    "Valentina",
 			    "Martínez",
@@ -115,7 +107,7 @@ public class Datos extends HttpServlet {
 			    "Uruguaya",
 			    LocalDate.of(1987, 2, 25)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "andpe12",
 			    "Andrés",
 			    "Pérez",
@@ -125,7 +117,7 @@ public class Datos extends HttpServlet {
 			    "Chilena",
 			    LocalDate.of(1992, 4, 12)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "sicam",
 			    "Camila",
 			    "Silva",
@@ -135,7 +127,7 @@ public class Datos extends HttpServlet {
 			    "Uruguaya",
 			    LocalDate.of(1989, 9, 30)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "sebgon",
 			    "Sebastián",
 			    "González",
@@ -145,7 +137,7 @@ public class Datos extends HttpServlet {
 			    "Colombiana",
 			    LocalDate.of(1995, 1, 18)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "isabel",
 			    "Isabella",
 			    "López",
@@ -155,7 +147,7 @@ public class Datos extends HttpServlet {
 			    "Uruguaya",
 			    LocalDate.of(1991, 7, 7)
 			);
-			this.ctrlUsuario.crearPostulante(
+			this.port.crearPostulante(
 			    "marram02",
 			    "Martín",
 			    "Ramírez",
@@ -176,7 +168,7 @@ public class Datos extends HttpServlet {
 			        + "que permitan a las empresas y comunidades adoptar prácticas más ecológicas sin comprometer la eficiencia.\n"
 			        + "Creemos en la convergencia armoniosa entre la tecnología y la naturaleza, y trabajamos "
 			        + "incansablemente para impulsar un futuro más limpio y sostenible.";
-			this.ctrlUsuario.crearEmpresa(
+			this.port.crearEmpresa(
 			        "EcoTech", 
 			        "Sophia", 
 			        "Johnson", 
@@ -190,14 +182,14 @@ public class Datos extends HttpServlet {
 			desc = 
 			    "FusionTech Dynamics es una empresa pionera en el ámbito de la inteligencia artificial y la "
 			    + "automatización avanzada.\n"
-			    + "Nuestro equipo multidisciplinario de ingenieros, científctrlOfertas de datos y desarrolladores crea "
+			    + "Nuestro equipo multidisciplinario de ingenieros, científports de datos y desarrolladores crea "
 			    + "soluciones innovadoras que aprovechan la potencia de la IA para transformar industrias. "
 			    + "Desde la optimización de procesos industriales hasta la creación de asistentes virtuales "
 			    + "altamente personalizados, nuestro objetivo es revolucionar la forma en que las empresas operan y "
 			    + "se conectan con sus clientes.\n"
 			    + "Creemos en la sinergia entre la mente humana y las capacidades de la IA, y trabajamos para "
 			    + "construir un mundo donde la tecnología mejore y amplíe nuestras capacidades innatas.";
-			this.ctrlUsuario.crearEmpresa(
+			this.port.crearEmpresa(
 			        "FusionTech", 
 			        "William", 
 			        "Smith", 
@@ -210,12 +202,12 @@ public class Datos extends HttpServlet {
 			desc = 
 			    "GlobalHealth Dynamics es una empresa comprometida con el avance de la atención médica a nivel mundial. "
 			    + "Como líderes en el campo de la salud digital, desarrollamos plataformas y herramientas que permiten a los "
-			    + "profesionales de la salud ofrecer diagnóstctrlOfertas más precisos, tratamientos personalizados y seguimiento continuo de los pacientes.\n"
-			    + "Nuestra visión es crear un ecosistema de salud conectado en el que los datos médctrlOfertas se utilicen de "
+			    + "profesionales de la salud ofrecer diagnóstports más precisos, tratamientos personalizados y seguimiento continuo de los pacientes.\n"
+			    + "Nuestra visión es crear un ecosistema de salud conectado en el que los datos médports se utilicen de "
 			    + "manera ética y segura para mejorar la calidad de vida de las personas. A través de la innovación constante "
-			    + "y la colaboración con expertos médctrlOfertas, estamos dando forma al futuro de la atención médica, donde la tecnología "
+			    + "y la colaboración con expertos médports, estamos dando forma al futuro de la atención médica, donde la tecnología "
 			    + "y la compasión se unen para salvar vidas y mejorar el bienestar en todo el mundo.";
-			this.ctrlUsuario.crearEmpresa(
+			this.port.crearEmpresa(
 			        "GlobalHealth", 
 			        "Isabella", 
 			        "Brown", 
@@ -227,7 +219,7 @@ public class Datos extends HttpServlet {
 			);
 			desc = 
 			    "En Antel te brindamos servicios de vanguardia en tecnología de comunicación en Telefonía Móvil, Fija, Banda Ancha y Datos.";
-			this.ctrlUsuario.crearEmpresa(
+			this.port.crearEmpresa(
 			        "ANTEL", 
 			        "Washington", 
 			        "Rocha", 
@@ -238,9 +230,9 @@ public class Datos extends HttpServlet {
 			        "ANTEL.com.uy"
 			);
 			desc = 
-			    "Balance EnergétctrlOferta Nacional (BEN). La Dirección Nacional de Energía (DNE) del Ministerio de Industria, Energía y Minería (MIEM) "
+			    "Balance Energétport Nacional (BEN). La Dirección Nacional de Energía (DNE) del Ministerio de Industria, Energía y Minería (MIEM) "
 			    + "presenta anualmente el BEN.";
-			this.ctrlUsuario.crearEmpresa(
+			this.port.crearEmpresa(
 			        "MIEM", 
 			        "Pablo", 
 			        "Bengoechea", 
@@ -255,7 +247,7 @@ public class Datos extends HttpServlet {
 			    + " Se especializa en el desarrollo de soluciones de software personalizadas para empresas de diversos tamaños y sectores. "
 			    + "Su enfoque se centra en la creación de aplicaciones empresariales innovadoras que optimizan procesos, mejoran la eficiencia "
 			    + "y brindan una ventaja competitiva a sus clientes.";
-			this.ctrlUsuario.crearEmpresa(
+			this.port.crearEmpresa(
 			        "TechSolutions", 
 			        "Mercedes", 
 			        "Venn", 
@@ -275,7 +267,7 @@ public class Datos extends HttpServlet {
 	private void cargarTiposPublicacion() {
 		try {
 			// TIPOS DE PUBLICACION
-			this.ctrlTipo.crearTipoPublicacion(
+			this.port.crearTipoPublicacion(
 					"Premium",
 					"Obtén máxima visibilidad", 
 					1, 
@@ -284,7 +276,7 @@ public class Datos extends HttpServlet {
 					LocalDate.of(2023, 8, 10)
 			);
 			
-			this.ctrlTipo.crearTipoPublicacion(
+			this.port.crearTipoPublicacion(
 					"Destacada",
 					"Destaca tu anuncio", 
 					2, 
@@ -293,7 +285,7 @@ public class Datos extends HttpServlet {
 					LocalDate.of(2023, 8, 5)
 			);
 			
-			this.ctrlTipo.crearTipoPublicacion(
+			this.port.crearTipoPublicacion(
 					"Estándar",
 					"Mejora la posición de tu anuncio", 
 					3, 
@@ -302,7 +294,7 @@ public class Datos extends HttpServlet {
 					LocalDate.of(2023, 8, 15)
 			);
 			
-			this.ctrlTipo.crearTipoPublicacion(
+			this.port.crearTipoPublicacion(
 					"Básica",
 					"Publica de forma sencilla en la lista de ofertas", 
 					4, 
@@ -317,16 +309,16 @@ public class Datos extends HttpServlet {
 	
 	private void cargarKeywords() {
 		try {
-			this.ctrlOferta.altaKeyword("Tiempo completo");
-			this.ctrlOferta.altaKeyword("Medio tiempo");
-			this.ctrlOferta.altaKeyword("Remoto");
-			this.ctrlOferta.altaKeyword("Freelance");
-			this.ctrlOferta.altaKeyword("Temporal");
-			this.ctrlOferta.altaKeyword("Permanente");
-			this.ctrlOferta.altaKeyword("Computación");
-			this.ctrlOferta.altaKeyword("Administración");
-			this.ctrlOferta.altaKeyword("Logística");
-			this.ctrlOferta.altaKeyword("Contabilidad");
+			this.port.altaKeyword("Tiempo completo");
+			this.port.altaKeyword("Medio tiempo");
+			this.port.altaKeyword("Remoto");
+			this.port.altaKeyword("Freelance");
+			this.port.altaKeyword("Temporal");
+			this.port.altaKeyword("Permanente");
+			this.port.altaKeyword("Computación");
+			this.port.altaKeyword("Administración");
+			this.port.altaKeyword("Logística");
+			this.port.altaKeyword("Contabilidad");
 		} catch (ElementoRepetidoException e) {
 			System.out.println(e.getMessage());
 		}
@@ -340,7 +332,7 @@ public class Datos extends HttpServlet {
 			String imagePath = 
 					File.separator + 
 					"images" + File.separator;
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"EcoTech", 
 					"Premium", 
 					"Desarrollador Frontend", 
@@ -363,7 +355,7 @@ public class Datos extends HttpServlet {
 			desc = 
 				"Forma parte de nuestro equipo de estrategia y "
 				+ "contribuye al crecimiento de las empresas cliente";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"GlobalHealth", 
 					"Estándar", 
 					"Estratega de Negocios", 
@@ -379,7 +371,7 @@ public class Datos extends HttpServlet {
 			desc = 
 				"Trabaja en colaboraci´on con nuestro talentoso\r\n"
 				+ "equipo de dise˜no para crear soluciones impactantes.";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"FusionTech", 
 					"Estándar", 
 					"Diseñador UX/UI", 
@@ -396,7 +388,7 @@ public class Datos extends HttpServlet {
 			desc = 
 				"Ayuda a nuestros clientes a tomar decisiones "
 				+ "informadas basadas en an´alisis y visualizaciones de dat";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"ANTEL", 
 					"Premium", 
 					"Analista de Datos", 
@@ -415,7 +407,7 @@ public class Datos extends HttpServlet {
 				+ "para impulsar la presencia en l´ınea de nuestros\r\n"
 				+ "clientes.\r\n"
 				+ "";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"MIEM", 
 					"Destacada", 
 					"Content Manager", 
@@ -430,10 +422,10 @@ public class Datos extends HttpServlet {
 			);
 			
 			desc = 
-				"Ofrece un excelente servicio de soporte t´ecnctrlOferta a\r\n"
+				"Ofrece un excelente servicio de soporte t´ecnport a\r\n"
 				+ "nuestros clientes, resolviendo problemas y brindando\r\n"
 				+ "soluciones.";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"TechSolutions", 
 					"Básica", 
 					"Soporte Técnico", 
@@ -449,7 +441,7 @@ public class Datos extends HttpServlet {
 			desc = 
 				"Unete a nuestro equipo de marketing y trabaja en ´\r\n"
 				+ "estrategias digitales innovadoras.";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"EcoTech", 
 					"Premium", 
 					"A. de Marketing Digital", 
@@ -465,7 +457,7 @@ public class Datos extends HttpServlet {
 			desc = 
 				"Únete a nuestro equipo contable y ayuda en la ´\r\n"
 				+ "gestión financiera de la empresa";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"GlobalHealth", 
 					"Destacada", 
 					"Contador Senior", 
@@ -487,7 +479,7 @@ public class Datos extends HttpServlet {
 					+ "CON LA MODIFICACI ´ON INTRODUCIDA POR\r\n"
 					+ "EL ART. 11 DE LA LEY 17.930 DE 19 DE DICIEM-\r\n"
 					+ "BRE DE 2005).";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"ANTEL", 
 					"Premium", 
 					"Técnico/a Básico Red", 
@@ -505,7 +497,7 @@ public class Datos extends HttpServlet {
 					"Unete a nuestro equipo y lidera proyectos de desar-\r\n"
 					+ "rollo de software sostenible y ecol´ogico. Impulsa la\r\n"
 					+ "innovación y contribuye a un futuro m´as verde.";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"EcoTech", 
 					"Destacada", 
 					"Desarrollador de Software Senior", 
@@ -523,7 +515,7 @@ public class Datos extends HttpServlet {
 					"Unete a nuestro equipo para crear soluciones de soft-\r\n"
 					+ "ware personalizadas de extremo a extremo. Colabora\r\n"
 					+ "en proyectos emocionantes y desafiantes.";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"TechSolutions", 
 					"Premium", 
 					"Desarrollador de Software Full Stack", 
@@ -542,7 +534,7 @@ public class Datos extends HttpServlet {
 					+ "era la entrega exitosa de soluciones de software per-\r\n"
 					+ "sonalizadas. Colabora con equipos multidisciplinar-\r\n"
 					+ "ios y clientes exigentes.";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"TechSolutions", 
 					"Destacada", 
 					"Gerente de Proyecto", 
@@ -560,7 +552,7 @@ public class Datos extends HttpServlet {
 					"Asegura la calidad de nuestros productos de software\r\n"
 					+ "sostenibles. ´Unete a nosotros para garantizar un im-\r\n"
 					+ "pacto positivo en el medio ambiente.";
-			this.ctrlOferta.altaOfertaLaboral(
+			this.port.altaOfertaLaboral(
 					"EcoTech", 
 					"Premium", 
 					"Ingeniero de Calidad de Software", 
@@ -589,10 +581,10 @@ public class Datos extends HttpServlet {
 			+ "Microsoft Office";
 			String motivacion = 
 			"Estoy emocionada por la oportunidad de formar parte de un \n"
-			+ "equipo dinámctrlOferta y contribuir con \n"
+			+ "equipo dinámport y contribuir con \n"
 			+ "mis habilidades de liderazgo.\r\n"
 			+ "";
-			this.ctrlOferta.altaPostulacion(
+			this.port.altaPostulacion(
 					"lgarcia", 
 					"Desarrollador Frontend", 
 					cvv, 
@@ -609,7 +601,7 @@ public class Datos extends HttpServlet {
 			"Me encantaría formar parte de \n"
 			+ "un equipo que me permita desarorollar mis habilidades en comunicación "
 			+ "y marketing.";
-			this.ctrlOferta.altaPostulacion(
+			this.port.altaPostulacion(
 					"matilo", 
 					"Estratega de Negocios", 
 					cvv, 
@@ -627,7 +619,7 @@ public class Datos extends HttpServlet {
 			+ "trabajar en proyectos desafiantes\r\n"
 			+ "y seguir creciendo "
 			+ "como profesional en el campo de la tecnología.";
-			this.ctrlOferta.altaPostulacion(
+			this.port.altaPostulacion(
 					"maro", 
 					"Desarrollador Frontend", 
 					cvv, 
@@ -638,14 +630,14 @@ public class Datos extends HttpServlet {
 			cvv = 
 			"Técnico en Electricidad, "
 			+ "experiencia en mantenimiento industrial. Conocimientos en lectura\r\n"
-			+ "de planos eléctrctrlOfertas.";
+			+ "de planos eléctrports.";
 					
 			motivacion = 
 			"Estoy interesado en formar parte \n"
 			+ "de un equipo que me permita \n"
 			+ "aplicar mis habilidades t´ecnicas y \n"
 			+ "contribuir al mantenimiento eficiente";
-			this.ctrlOferta.altaPostulacion(
+			this.port.altaPostulacion(
 					"javierf", 
 					"Diseñador UX/UI", 
 					cvv, 
@@ -654,7 +646,7 @@ public class Datos extends HttpServlet {
 			);
 			
 			cvv = 
-			"MúsctrlOferta profesional, experiencia\r\n"
+			"Músport profesional, experiencia\r\n"
 			+ "en espectáculos en vivo. Habilidades en canto y guitarra. \n"
 			+ "";
 					
@@ -663,7 +655,7 @@ public class Datos extends HttpServlet {
 			+ "por la música con una oportunidad laboral que me permita \n"
 			+ "seguir creciendo como artista.\r\n"
 			+ "";
-			this.ctrlOferta.altaPostulacion(
+			this.port.altaPostulacion(
 					"valen25", 
 					"Estratega de Negocios", 
 					cvv, 
@@ -679,11 +671,11 @@ public class Datos extends HttpServlet {
 					
 			motivacion = 
 			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
-			+ "equipo dinámctrlOferta y contribuir con\r\n"
+			+ "equipo dinámport y contribuir con\r\n"
 			+ "mis habilidades de liderazgo.\r\n"
 			+ ""
 			+ "";
-			this.ctrlOferta.altaPostulacion(
+			this.port.altaPostulacion(
 					"lgarcia", 
 					"Estratega de Negocios", 
 					cvv, 

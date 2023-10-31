@@ -2,7 +2,7 @@ package com.trabajouy.controllers;
 
 import java.io.IOException;
 
-import com.trabajouy.model.enums.EstadoSesion;
+import com.trabajouy.enums.EstadoSesion;
 import server.ElementoInexistenteException_Exception;
 import server.DataUsuario;
 

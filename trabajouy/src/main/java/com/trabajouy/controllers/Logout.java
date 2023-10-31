@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.trabajouy.model.enums.EstadoSesion;
+import com.trabajouy.enums.EstadoSesion;
 import server.DataUsuario;
 
 

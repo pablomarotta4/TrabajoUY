@@ -4,15 +4,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import com.trabajouy.model.enums.EstadoSesion;
-import com.trabajouy.model.excepciones.ElementoInexistenteException;
-import com.trabajouy.model.excepciones.ElementoRepetidoException;
-import com.trabajouy.model.excepciones.NoExisteInstancia;
-import com.trabajouy.model.logica.datatypes.DataEmpresa;
-import com.trabajouy.model.logica.datatypes.DataPostulante;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorOferta;
-import com.trabajouy.model.logica.interfaces.IControladorUsuario;
+import com.trabajouy.enums.EstadoSesion;
+import server.ElementoInexistenteException;
+import server.DataEmpresa;
+import server.DataPostulante;
+
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -34,13 +30,12 @@ public class Postulacion extends HttpServlet {
 		HttpSession sesion = request.getSession();
 		EstadoSesion estadoSesion = (EstadoSesion) sesion.getAttribute("estado_sesion");
 		if (estadoSesion.equals(EstadoSesion.LOGIN_CORRECTO)) {
-		    	IControladorUsuario userController = Factory.getInstance().getControladorUsuario();
-		    	if (userController.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataPostulante) {
+				server.WebServer port = new server.WebServerService().getWebServerPort();
+		    	if (port.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataPostulante) {
         			String nomOferta = request.getParameter("nombreOferta");
         			nomOferta = java.net.URLDecoder.decode(nomOferta, "UTF-8");
         			request.getSession().setAttribute("nombreOferta", nomOferta);
-        			IControladorOferta ofertaController = Factory.getInstance().getControladorOferta();
-        			if (ofertaController.listarDatosPostulacion((String) request.getSession().getAttribute("nickname"), nomOferta) != null) {
+        			if (port.listarDatosPostulacion((String) request.getSession().getAttribute("nickname"), nomOferta) != null) {
         				response.sendRedirect("/trabajouy/consultaPostulacion");
         			}
         			else {
@@ -52,7 +47,7 @@ public class Postulacion extends HttpServlet {
                 			request.getRequestDispatcher("WEB-INF/ofertas/postularse.jsp").forward(request, response);
         			}
         		  }
-		    	else if (userController.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataEmpresa){
+		    	else if (port.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataEmpresa){
 		    	    response.sendRedirect("/trabajouy/home");
 		    	}
 		}
@@ -68,8 +63,8 @@ public class Postulacion extends HttpServlet {
 		String cvReducido = (String) request.getParameter("cvReducido");
 		String motivacion = (String) request.getParameter("motivacion");
 		String nombreOferta = (String) request.getSession().getAttribute("nombreOferta");
-		IControladorOferta ofertaController = Factory.getInstance().getControladorOferta();
-			ofertaController.altaPostulacion(nickname, nombreOferta, cvReducido, motivacion, LocalDate.now());
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+			port.altaPostulacion(nickname, nombreOferta, cvReducido, motivacion, LocalDate.now());
 		} catch (ElementoRepetidoException e) {
 		    	response.sendRedirect("/trabajouy/consultaPostulacion");
 			e.printStackTrace();

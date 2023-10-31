@@ -16,12 +16,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trabajouy.model.excepciones.ElementoInexistenteException;
-import com.trabajouy.model.excepciones.ElementoRepetidoException;
-import com.trabajouy.model.logica.datatypes.DataUsuario;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorCompraTipo;
-import com.trabajouy.model.logica.interfaces.IControladorOferta;
+import server.ElementoInexistenteException;
+import server.DataUsuario;
+
 
 @MultipartConfig
 @WebServlet("/crearOferta")
@@ -33,10 +30,9 @@ public class CrearOferta extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		IControladorCompraTipo ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
-		IControladorOferta ctrlOferta = Factory.getInstance().getControladorOferta();
-		List<String> listaTipos = ctrlCompraTipo.listarTiposPublicacion();		
-		List<String> listaKeywords = ctrlOferta.listarKeywords();
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+		List<String> listaTipos = port.listarTiposPublicacion();		
+		List<String> listaKeywords = port.listarKeywords();
 		if (listaTipos.isEmpty()) {
 			request.setAttribute("error_mesage", "No existen tipos de publicacion validos.");
 			request.getRequestDispatcher("/WEB-INF/ofertas/crearOferta.jsp").forward(request, response);
@@ -48,10 +44,9 @@ public class CrearOferta extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		IControladorCompraTipo ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
-		IControladorOferta ctrlOferta = Factory.getInstance().getControladorOferta();
-		List<String> listaTipos = ctrlCompraTipo.listarTiposPublicacion();		
-		List<String> keywordsEnSistema = ctrlOferta.listarKeywords();
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+		List<String> listaTipos = port.listarTiposPublicacion();		
+		List<String> keywordsEnSistema = port.listarKeywords();
 		
 		String nombreOferta = (String) request.getParameter("nombre-oferta");
 		String descripcion = (String) request.getParameter("descripcion");
@@ -90,7 +85,7 @@ public class CrearOferta extends HttpServlet {
 		try {
 			DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 			if (usuario != null) {
-				ctrlOferta.altaOfertaLaboral(
+				port.altaOfertaLaboral(
 						usuario.getNickname(),
 						tipoPublicacion, 
 						nombreOferta, 

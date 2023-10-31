@@ -7,10 +7,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.trabajouy.model.excepciones.ElementoInexistenteException;
-import com.trabajouy.model.logica.datatypes.DTOfertaLaboral;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorOferta;
+import server.ElementoInexistenteException;
+import server.DtOfertaLaboral;
+
 
 
 @WebServlet("/consultarOferta")
@@ -23,9 +22,9 @@ public class ConsultarOferta extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombreOferta = request.getParameter("oferta");
-		IControladorOferta ctrlOferta = Factory.getInstance().getControladorOferta();
+		server.WebServer port = new server.WebServerService().getWebServerPort();
 		try {
-			DTOfertaLaboral ofertaSeleccionada = ctrlOferta.listarDatosOferta(nombreOferta);
+			DtOfertaLaboral ofertaSeleccionada = port.listarDatosOferta(nombreOferta);
 			request.setAttribute("oferta-seleccionada", ofertaSeleccionada);				
 			request.getRequestDispatcher("/WEB-INF/ofertas/consultaOferta.jsp").include(request, response);
 		} catch (ElementoInexistenteException e) {

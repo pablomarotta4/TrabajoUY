@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trabajouy.model.logica.datatypes.DTOfertaLaboral;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorOferta;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

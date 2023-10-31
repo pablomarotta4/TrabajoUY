@@ -1,13 +1,10 @@
 package com.trabajouy.controllers;
 
 import java.io.IOException;
-import com.trabajouy.model.enums.EstadoSesion;
-import com.trabajouy.model.logica.datatypes.DTPostulacion;
-import com.trabajouy.model.logica.datatypes.DataEmpresa;
-import com.trabajouy.model.logica.datatypes.DataPostulante;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorOferta;
-import com.trabajouy.model.logica.interfaces.IControladorUsuario;
+import com.trabajouy.enums.EstadoSesion;
+import server.DtPostulacion;
+import server.DataEmpresa;
+import server.DataPostulante;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,20 +25,19 @@ public class ConsultaPostulacion extends HttpServlet {
 	HttpSession sesion = request.getSession();
 	EstadoSesion estadoSesion = (EstadoSesion) sesion.getAttribute("estado_sesion");
 	if (estadoSesion.equals(EstadoSesion.LOGIN_CORRECTO)) {
-	    IControladorOferta oferController = Factory.getInstance().getControladorOferta();
-	    IControladorUsuario userController = Factory.getInstance().getControladorUsuario();
-	    if (userController.consultarDatosUsuario(
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+	    if (port.consultarDatosUsuario(
 		    (String) request.getSession().getAttribute("nickname")) instanceof DataEmpresa) {
-		DTPostulacion postulacionInfo = oferController.listarDatosPostulacion(
+		DtPostulacion postulacionInfo = port.listarDatosPostulacion(
 			(String) request.getParameter("nickname"), (String) request.getParameter("nombreOferta"));
-		request.getSession().setAttribute("datosPostulacion", (DTPostulacion) postulacionInfo);
+		request.getSession().setAttribute("datosPostulacion", (DtPostulacion) postulacionInfo);
 		request.getRequestDispatcher("WEB-INF/ofertas/consultarPostulacion.jsp").forward(request, response);
-	    } else if (userController.consultarDatosUsuario(
+	    } else if (port.consultarDatosUsuario(
 		    (String) request.getSession().getAttribute("nickname")) instanceof DataPostulante) {
-		DTPostulacion postulacionInfo = oferController.listarDatosPostulacion(
+		DtPostulacion postulacionInfo = port.listarDatosPostulacion(
 			(String) request.getSession().getAttribute("nickname"),
 			(String) request.getSession().getAttribute("nombreOferta"));
-		request.getSession().setAttribute("datosPostulacion", (DTPostulacion) postulacionInfo);
+		request.getSession().setAttribute("datosPostulacion", (DtPostulacion) postulacionInfo);
 		request.getRequestDispatcher("WEB-INF/ofertas/consultarPostulacion.jsp").forward(request, response);
 	    }
 	} else {

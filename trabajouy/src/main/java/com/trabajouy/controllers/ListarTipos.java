@@ -8,9 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-import com.trabajouy.model.logica.datatypes.DataTipoPublicacion;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorCompraTipo;
+import server.DataTipoPublicacion;
+
 
 /**
  * Servlet implementation class ListaTipos
@@ -27,8 +26,8 @@ public class ListarTipos extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		IControladorCompraTipo ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
-		Map<String, DataTipoPublicacion> mapTipos = ctrlCompraTipo.getDataTiposPublicacion();
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+		Map<String, DataTipoPublicacion> mapTipos = port.getDataTiposPublicacion();
 		request.setAttribute("map_tipos", mapTipos);
 		request.getRequestDispatcher("/WEB-INF/tipos/listadoTipos.jsp").forward(request, response);
 	}

@@ -6,9 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import com.trabajouy.model.logica.datatypes.DataTipoPublicacion;
-import com.trabajouy.model.logica.interfaces.Factory;
-import com.trabajouy.model.logica.interfaces.IControladorCompraTipo;
+import server.DataTipoPublicacion;
+
 
 
 
@@ -24,9 +23,9 @@ public class ConsultarTipo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String tipo = request.getParameter("tipo");
-		IControladorCompraTipo ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
+		server.WebServer port = new server.WebServerService().getWebServerPort();
 		
-		DataTipoPublicacion tipoSeleccionado = ctrlCompraTipo.listarDatosTipoPubliacion(tipo);
+		DataTipoPublicacion tipoSeleccionado = port.listarDatosTipoPubliacion(tipo);
 		request.setAttribute("tipo-seleccionado", tipoSeleccionado);
 		request.getRequestDispatcher("/WEB-INF/tipos/consultaTipo.jsp").include(request, response);
 	}
