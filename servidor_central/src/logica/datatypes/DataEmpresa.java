@@ -52,8 +52,11 @@ public class DataEmpresa extends DataUsuario{
 	public void setDescripcion(String desc) {
 		this.descripcion = desc;
 	}
-	
+
 	public void setLink(String link) {
 		this.link = link;
 	}
+	
+
+	
 }

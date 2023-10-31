@@ -30,7 +30,7 @@ public class DTPostulacion {
 		this.nombreOferta = nombreOferta;
 	}
 	
-	public String getNickPostulante() {
+	public String getNickpostulante() {
 		return this.nickpostulante;
 	}
 	
@@ -50,7 +50,7 @@ public class DTPostulacion {
 	public String getMotivacion() {
 		return this.motivacion;
 	}
-	public LocalDate getFecha() {
+	public LocalDate getFechaPostulacion() {
 		return this.fechaPostulacion;
 	}
 	public String getNombreOferta() {
@@ -62,28 +62,28 @@ public class DTPostulacion {
 		return
 			cvReducido.equals(pos.getCvReducido()) &&
 			motivacion.equals(pos.getMotivacion()) &&
-			fechaPostulacion.equals(pos.getFecha()) &&
-			nickpostulante.equals(pos. getNickPostulante()) &&
+			fechaPostulacion.equals(pos.getFechaPostulacion()) &&
+			nickpostulante.equals(pos. getNickpostulante()) &&
 			nombreOferta.equals(pos.getNombreOferta());
 	}
 	
-	public void setCv(String cv) {
-		this.cvReducido = cv;
+	public void setCvReducido(String cvReducido) {
+		this.cvReducido = cvReducido;
 	}
 	
 	public void setMotivacion(String motivacion) {
 		this.motivacion = motivacion;
 	}
 	
-	public void setFecha(LocalDate fecha) {
-		this.fechaPostulacion = fecha;
+	public void setFechaPostulacion(LocalDate fechaPostulacion) {
+		this.fechaPostulacion = fechaPostulacion;
 	}
 	
 	public void setNombreOferta(String nombreOferta) {
 		this.nombreOferta = nombreOferta;
 	}
 	
-	public void setNickPostulante(String nickpostulante) {
+	public void setNickpostulante(String nickpostulante) {
 		this.nickpostulante = nickpostulante;
 	}
 	

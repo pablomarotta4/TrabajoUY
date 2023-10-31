@@ -1,4 +1,4 @@
-//hola
+
 package server;
 
 import java.net.MalformedURLException;

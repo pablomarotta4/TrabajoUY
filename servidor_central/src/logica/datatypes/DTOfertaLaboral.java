@@ -163,7 +163,7 @@ public class DTOfertaLaboral {
 		boolean postulacionDeNick = false;
 		int icont = 0;
 		while (icont < postulaciones.size() && !postulacionDeNick) {
-			postulacionDeNick = postulaciones.get(icont).getNickPostulante().equals(nickname);
+			postulacionDeNick = postulaciones.get(icont).getNickpostulante().equals(nickname);
 			icont++;
 		}
 		return postulacion;
@@ -205,8 +205,8 @@ public class DTOfertaLaboral {
 		this.costo = costo;
 	}
 	
-	public void setFecha(LocalDate fecha) {
-		this.fechaAlta = fecha;
+	public void setFechaAlta(LocalDate fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 	
 	public void setPostulaciones(ArrayList<DTPostulacion> postulaciones) {

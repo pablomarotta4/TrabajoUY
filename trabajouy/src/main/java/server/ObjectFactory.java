@@ -116,13 +116,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataEmpresa }
+     * Create an instance of {@link DataPostulante }
      * 
      * @return
-     *     the new instance of {@link DataEmpresa }
+     *     the new instance of {@link DataPostulante }
      */
-    public DataEmpresa createDataEmpresa() {
-        return new DataEmpresa();
+    public DataPostulante createDataPostulante() {
+        return new DataPostulante();
     }
 
     /**
@@ -136,13 +136,13 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataPostulante }
+     * Create an instance of {@link DataEmpresa }
      * 
      * @return
-     *     the new instance of {@link DataPostulante }
+     *     the new instance of {@link DataEmpresa }
      */
-    public DataPostulante createDataPostulante() {
-        return new DataPostulante();
+    public DataEmpresa createDataEmpresa() {
+        return new DataEmpresa();
     }
 
     /**

@@ -39,7 +39,7 @@ public class DataUsuario {
 		return email;
 	}
 	
-	public String getImage() {
+	public String getImageUrl() {
 		return imageUrl;
 	}
 	
@@ -59,7 +59,7 @@ public class DataUsuario {
 		this.email = email;
 	}
 	
-	public void setImage(String imageUrl) {
+	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
 }
