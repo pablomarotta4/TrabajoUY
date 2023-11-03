@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import server.CamposVaciosExcepcion;
+import server.DataPostulante;
 import server.ElementoInexistenteException;
 import server.UsuarioRepetidoException;
 
@@ -42,6 +43,14 @@ public class Datos extends HttpServlet {
 	}
 	
 	private void cargarDatos() {
+		/////////////////////////////////////////////////////////////////
+		// prueba collections
+		ArrayList<String> list;
+		this.port.pruebaCollection(list);
+		
+		
+		
+		/////////////////////////////////////////////////////////////////
 		cargarUsuarios();
 		cargarTiposPublicacion();
 		cargarKeywords();

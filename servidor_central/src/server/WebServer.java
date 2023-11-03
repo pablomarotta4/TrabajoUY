@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.List;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
@@ -54,6 +54,17 @@ public class WebServer {
     public Endpoint getEndpoint() {
             return endpoint;
     }
+    
+    ////////////////////////////////////////////////////////////////
+    // prueba de collections
+    // comentario ArrayList<String> me aparece en el WebServer como ArrayList
+    
+    @WebMethod 
+    public void pruebaCollection(ArrayList<String> list) {
+    	System.out.println("hola");
+    }
+    
+    ////////////////////////////////////////////////////////////////
     
     @WebMethod
     public void crearPostulante(
