@@ -33,6 +33,36 @@ public interface WebServer {
      * @param arg3
      * @param arg4
      * @param arg5
+     * @throws UsuarioRepetidoException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://server/WebServer/crearTipoPublicacionRequest", output = "http://server/WebServer/crearTipoPublicacionResponse", fault = {
+        @FaultAction(className = UsuarioRepetidoException_Exception.class, value = "http://server/WebServer/crearTipoPublicacion/Fault/UsuarioRepetidoException")
+    })
+    public void crearTipoPublicacion(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        int arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        int arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        float arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        String arg5)
+        throws UsuarioRepetidoException_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     * @param arg5
      * @param arg6
      * @param arg7
      * @throws CamposVaciosExcepcion_Exception
@@ -104,41 +134,124 @@ public interface WebServer {
     /**
      * 
      * @param arg0
+     * @throws ElementoRepetidoException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://server/WebServer/altaKeywordRequest", output = "http://server/WebServer/altaKeywordResponse", fault = {
+        @FaultAction(className = ElementoRepetidoException_Exception.class, value = "http://server/WebServer/altaKeyword/Fault/ElementoRepetidoException")
+    })
+    public void altaKeyword(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0)
+        throws ElementoRepetidoException_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @param arg10
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     * @param arg5
+     * @param arg6
+     * @param arg7
+     * @param arg8
+     * @param arg9
+     * @throws ElementoInexistenteException_Exception
+     * @throws ElementoRepetidoException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://server/WebServer/altaOfertaLaboralRequest", output = "http://server/WebServer/altaOfertaLaboralResponse", fault = {
+        @FaultAction(className = ElementoRepetidoException_Exception.class, value = "http://server/WebServer/altaOfertaLaboral/Fault/ElementoRepetidoException"),
+        @FaultAction(className = ElementoInexistenteException_Exception.class, value = "http://server/WebServer/altaOfertaLaboral/Fault/ElementoInexistenteException")
+    })
+    public void altaOfertaLaboral(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        String arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        String arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        float arg5,
+        @WebParam(name = "arg6", partName = "arg6")
+        String arg6,
+        @WebParam(name = "arg7", partName = "arg7")
+        String arg7,
+        @WebParam(name = "arg8", partName = "arg8")
+        String arg8,
+        @WebParam(name = "arg9", partName = "arg9")
+        String arg9,
+        @WebParam(name = "arg10", partName = "arg10")
+        ArrayList arg10)
+        throws ElementoInexistenteException_Exception, ElementoRepetidoException_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     * @throws ElementoInexistenteException_Exception
+     * @throws ElementoRepetidoException_Exception
+     * @throws NoExisteInstancia_Exception
+     */
+    @WebMethod
+    @Action(input = "http://server/WebServer/altaPostulacionRequest", output = "http://server/WebServer/altaPostulacionResponse", fault = {
+        @FaultAction(className = NoExisteInstancia_Exception.class, value = "http://server/WebServer/altaPostulacion/Fault/NoExisteInstancia"),
+        @FaultAction(className = ElementoRepetidoException_Exception.class, value = "http://server/WebServer/altaPostulacion/Fault/ElementoRepetidoException"),
+        @FaultAction(className = ElementoInexistenteException_Exception.class, value = "http://server/WebServer/altaPostulacion/Fault/ElementoInexistenteException")
+    })
+    public void altaPostulacion(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        String arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        String arg4)
+        throws ElementoInexistenteException_Exception, ElementoRepetidoException_Exception, NoExisteInstancia_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
      * @return
-     *     returns server.DataPostulante
+     *     returns server.DataUsuario
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/getDTPostulanteRequest", output = "http://server/WebServer/getDTPostulanteResponse")
-    public DataPostulante getDTPostulante(
+    @Action(input = "http://server/WebServer/consultarDatosUsuarioRequest", output = "http://server/WebServer/consultarDatosUsuarioResponse")
+    public DataUsuario consultarDatosUsuario(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
     /**
      * 
      * @param arg0
+     * @param arg1
      * @return
-     *     returns server.DataEmpresa
+     *     returns server.DtPostulacion
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/getDTEmpresaRequest", output = "http://server/WebServer/getDTEmpresaResponse")
-    public DataEmpresa getDTEmpresa(
+    @Action(input = "http://server/WebServer/listarDatosPostulacionRequest", output = "http://server/WebServer/listarDatosPostulacionResponse")
+    public DtPostulacion listarDatosPostulacion(
         @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns server.DtOfertaLaboral
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/obtenerEmpresaDeOfertaRequest", output = "http://server/WebServer/obtenerEmpresaDeOfertaResponse")
-    public DtOfertaLaboral obtenerEmpresaDeOferta(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
 
     /**
      * 
@@ -191,6 +304,19 @@ public interface WebServer {
      * 
      * @param arg0
      * @return
+     *     returns server.DtOfertaLaboral
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://server/WebServer/obtenerEmpresaDeOfertaRequest", output = "http://server/WebServer/obtenerEmpresaDeOfertaResponse")
+    public DtOfertaLaboral obtenerEmpresaDeOferta(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
      *     returns server.ArrayList
      */
     @WebMethod
@@ -218,19 +344,6 @@ public interface WebServer {
 
     /**
      * 
-     * @param arg0
-     * @return
-     *     returns server.DataUsuario
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/consultarDatosUsuarioRequest", output = "http://server/WebServer/consultarDatosUsuarioResponse")
-    public DataUsuario consultarDatosUsuario(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
      * @return
      *     returns server.ArrayList
      */
@@ -241,15 +354,25 @@ public interface WebServer {
 
     /**
      * 
-     * @param arg0
-     * @param arg1
      * @return
-     *     returns server.DtPostulacion
+     *     returns server.ArrayList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/listarDatosPostulacionRequest", output = "http://server/WebServer/listarDatosPostulacionResponse")
-    public DtPostulacion listarDatosPostulacion(
+    @Action(input = "http://server/WebServer/listarDTUsuariosRequest", output = "http://server/WebServer/listarDTUsuariosResponse")
+    public ArrayList listarDTUsuarios();
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://server/WebServer/estaPostuladoRequest", output = "http://server/WebServer/estaPostuladoResponse")
+    public boolean estaPostulado(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
@@ -262,8 +385,21 @@ public interface WebServer {
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/listarUsuariosRequest", output = "http://server/WebServer/listarUsuariosResponse")
-    public ArrayList listarUsuarios();
+    @Action(input = "http://server/WebServer/listarNickEmpresasRequest", output = "http://server/WebServer/listarNickEmpresasResponse")
+    public ArrayList listarNickEmpresas();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns server.ArrayList
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://server/WebServer/consultarOfertasRequest", output = "http://server/WebServer/consultarOfertasResponse")
+    public ArrayList consultarOfertas(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
 
     /**
      * 
@@ -298,16 +434,13 @@ public interface WebServer {
 
     /**
      * 
-     * @param arg0
      * @return
      *     returns server.ArrayList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/consultarOfertasRequest", output = "http://server/WebServer/consultarOfertasResponse")
-    public ArrayList consultarOfertas(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+    @Action(input = "http://server/WebServer/listarUsuariosRequest", output = "http://server/WebServer/listarUsuariosResponse")
+    public ArrayList listarUsuarios();
 
     /**
      * 
@@ -324,32 +457,6 @@ public interface WebServer {
 
     /**
      * 
-     * @return
-     *     returns server.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/listarDTUsuariosRequest", output = "http://server/WebServer/listarDTUsuariosResponse")
-    public ArrayList listarDTUsuarios();
-
-    /**
-     * 
-     * @param arg0
-     * @param arg1
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/estaPostuladoRequest", output = "http://server/WebServer/estaPostuladoResponse")
-    public boolean estaPostulado(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
      * @param arg0
      * @return
      *     returns server.Empresa
@@ -363,13 +470,29 @@ public interface WebServer {
 
     /**
      * 
+     * @param arg0
      * @return
-     *     returns server.ArrayList
+     *     returns server.DataPostulante
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/listarDtOfertasRequest", output = "http://server/WebServer/listarDtOfertasResponse")
-    public ArrayList listarDtOfertas();
+    @Action(input = "http://server/WebServer/getDTPostulanteRequest", output = "http://server/WebServer/getDTPostulanteResponse")
+    public DataPostulante getDTPostulante(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns server.DataEmpresa
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://server/WebServer/getDTEmpresaRequest", output = "http://server/WebServer/getDTEmpresaResponse")
+    public DataEmpresa getDTEmpresa(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
 
     /**
      * 
@@ -378,7 +501,7 @@ public interface WebServer {
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://server/WebServer/listarNickEmpresasRequest", output = "http://server/WebServer/listarNickEmpresasResponse")
-    public ArrayList listarNickEmpresas();
+    @Action(input = "http://server/WebServer/listarDtOfertasRequest", output = "http://server/WebServer/listarDtOfertasResponse")
+    public ArrayList listarDtOfertas();
 
 }

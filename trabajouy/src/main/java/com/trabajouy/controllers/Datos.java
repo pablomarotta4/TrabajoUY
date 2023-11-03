@@ -64,8 +64,7 @@ public class Datos extends HttpServlet {
 			    "awdrg543",
 			    imagePath + "lgarcia.jpg",
 			    "Uruguaya",
-			    LocalDate.of(1985, 3, 15)
-			);
+			    "1985-03-15");
 			this.port.crearPostulante(
 			    "matilo",
 			    "Matías",
@@ -74,8 +73,7 @@ public class Datos extends HttpServlet {
 			    "edrft543",
 			    imagePath + "matilo.jpg",
 			    "Argentina",
-			    LocalDate.of(1990, 8, 21)
-			);
+			    "1990-08-21");
 			this.port.crearPostulante(
 			    "maro",
 			    "María",
@@ -84,8 +82,7 @@ public class Datos extends HttpServlet {
 			    "r5t6y7u8",
 			    imagePath + "maro.jpg",
 			    "Uruguaya",
-			    LocalDate.of(1988, 11, 10)
-			);
+			    "1988-11-10");
 	
 			this.port.crearPostulante(
 			    "javierf",
@@ -95,8 +92,7 @@ public class Datos extends HttpServlet {
 			    "45idgaf67",
 			    imagePath + "javierf.jpg",
 			    "Mexicana",
-			    LocalDate.of(1993, 6, 5)
-			);
+			    "1993-06-05");
 			this.port.crearPostulante(
 			    "valen25",
 			    "Valentina",
@@ -105,8 +101,7 @@ public class Datos extends HttpServlet {
 			    "poiuy987",
 			    imagePath + "valen25.jpg",
 			    "Uruguaya",
-			    LocalDate.of(1987, 2, 25)
-			);
+			    "1987-02-25");
 			this.port.crearPostulante(
 			    "andpe12",
 			    "Andrés",
@@ -115,8 +110,7 @@ public class Datos extends HttpServlet {
 			    "xdrgb657",
 			    imagePath + "andpe12.jpg",
 			    "Chilena",
-			    LocalDate.of(1992, 4, 12)
-			);
+			    "1992-04-12");
 			this.port.crearPostulante(
 			    "sicam",
 			    "Camila",
@@ -125,8 +119,7 @@ public class Datos extends HttpServlet {
 			    "mnjkiu89",
 			    imagePath + "sicam.jpg",
 			    "Uruguaya",
-			    LocalDate.of(1989, 9, 30)
-			);
+			    "1989-09-30");
 			this.port.crearPostulante(
 			    "sebgon",
 			    "Sebastián",
@@ -135,8 +128,7 @@ public class Datos extends HttpServlet {
 			    "ytrewq10",
 			    imagePath + "sebgon.jpg",
 			    "Colombiana",
-			    LocalDate.of(1995, 1, 18)
-			);
+			    "1995-01-18");
 			this.port.crearPostulante(
 			    "isabel",
 			    "Isabella",
@@ -145,8 +137,7 @@ public class Datos extends HttpServlet {
 			    "sbsplol1",
 			    imagePath + "isabel.jpg",
 			    "Uruguaya",
-			    LocalDate.of(1991, 7, 7)
-			);
+			    "1991-07-07");
 			this.port.crearPostulante(
 			    "marram02",
 			    "Martín",
@@ -155,8 +146,7 @@ public class Datos extends HttpServlet {
 			    "okmnji98",
 			    imagePath + "marram02.jpg",
 			    "Argentina",
-			    LocalDate.of(1986, 12, 2)
-			);
+			    "1986-12-02)");
 	
 			// CARGA DE EMPRESAS
 			String desc = 
@@ -273,8 +263,7 @@ public class Datos extends HttpServlet {
 					1, 
 					30, 
 					4000, 
-					LocalDate.of(2023, 8, 10)
-			);
+					"2023-08-10");
 			
 			this.port.crearTipoPublicacion(
 					"Destacada",
@@ -282,8 +271,7 @@ public class Datos extends HttpServlet {
 					2, 
 					15, 
 					500, 
-					LocalDate.of(2023, 8, 5)
-			);
+					"2023-08-05");
 			
 			this.port.crearTipoPublicacion(
 					"Estándar",
@@ -291,8 +279,7 @@ public class Datos extends HttpServlet {
 					3, 
 					20, 
 					150, 
-					LocalDate.of(2023, 8, 15)
-			);
+					"2023-08-15");
 			
 			this.port.crearTipoPublicacion(
 					"Básica",
@@ -300,8 +287,7 @@ public class Datos extends HttpServlet {
 					4, 
 					7, 
 					50, 
-					LocalDate.of(2023, 8, 7)
-			);
+					"2023-08-07");
 		} catch (UsuarioRepetidoException e) {
 			System.out.println(e.getMessage());
 		}
@@ -332,6 +318,13 @@ public class Datos extends HttpServlet {
 			String imagePath = 
 					File.separator + 
 					"images" + File.separator;
+			ArrayList<String> keywords;
+			keywords.add("Tiempo completo");
+			keywords.add("Medio tiempo");
+			keywords.add("Remoto");
+			keywords.add("Freelance");
+			keywords.add("Temporal");
+			keywords.add("Permanente");
 			this.port.altaOfertaLaboral(
 					"EcoTech", 
 					"Premium", 
@@ -341,16 +334,9 @@ public class Datos extends HttpServlet {
 					90000, 
 					"Montevideo", 
 					"Montevideo",
-					LocalDate.of(2023, 9, 30),
+					"2023-09-30",
 					imagePath + "desarrollador_frontend.jpg",
-					List.of(
-							"Tiempo completo",
-							"Medio tiempo",
-							"Remoto",
-							"Freelance",
-							"Temporal",
-							"Permanente"
-					)
+					keywords
 			);
 			desc = 
 				"Forma parte de nuestro equipo de estrategia y "
@@ -364,7 +350,7 @@ public class Datos extends HttpServlet {
 					80000, 
 					"Punta del Este", 
 					"Maldonado", 
-					LocalDate.of(2023, 9, 29),
+					"2023-09-29",
 					imagePath + "estratega_de_negocios.jpg",
 					List.of("Temporal")
 			);
@@ -380,7 +366,7 @@ public class Datos extends HttpServlet {
 					65000, 
 					"Rosario", 
 					"Colonia", 
-					LocalDate.of(2023, 9, 29),
+					"2023-09-29",
 					imagePath + "diseñador_ux_ui.jpg",
 					List.of("Medio tiempo", "Remoto", "Permanente")
 			);
@@ -397,7 +383,7 @@ public class Datos extends HttpServlet {
 					40000, 
 					"Maldonado", 
 					"Maldonado", 
-					LocalDate.of(2023, 9, 19),
+					"2023-09-19",
 					imagePath + "analista_de_datos.jpg",
 					List.of("Medio tiempo")
 			);
@@ -416,7 +402,7 @@ public class Datos extends HttpServlet {
 					10000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 2),
+					"2023-10-02",
 					imagePath + "content_manager.jpg",
 					List.of("Freelance")
 			);
@@ -434,7 +420,7 @@ public class Datos extends HttpServlet {
 					30000, 
 					"Minas", 
 					"Lavalleja",
-					LocalDate.of(2023, 9, 10),
+					"2023-09-10",
 					imagePath + "soporte_tecnico.jpg",
 					List.of("Tiempo completo")
 			);
@@ -450,7 +436,7 @@ public class Datos extends HttpServlet {
 					80000, 
 					"Flores", 
 					"Flores", 
-					LocalDate.of(2023, 9, 21),
+					"2023-09-21",
 					imagePath + "analista_de_marketing_digital.jpg",
 					new ArrayList<String>()
 			);
@@ -466,7 +452,7 @@ public class Datos extends HttpServlet {
 					100000, 
 					"Colonia Suiza", 
 					"Colonia", 
-					LocalDate.of(2023, 10, 2),
+					"2023-10-02",
 					imagePath + "contador_senior.jpg",
 					new ArrayList<String>()
 			);
@@ -488,7 +474,7 @@ public class Datos extends HttpServlet {
 					40000, 
 					"Paysandú", 
 					"Paysandú", 
-					LocalDate.of(2023, 9, 29),
+					"2023-09-29",
 					imagePath + "tecnico_de_red.jpg",
 					List.of("Temporal")
 			);
@@ -506,7 +492,7 @@ public class Datos extends HttpServlet {
 					123000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 2),
+					"2023-10-02",
 					imagePath + "desarrollador_de_software_senior.jpg",
 					List.of("Tiempo completo", "Permanente", "Logística")
 			);
@@ -524,7 +510,7 @@ public class Datos extends HttpServlet {
 					135000, 
 					"Río Negro", 
 					"Fray Bentos", 
-					LocalDate.of(2023, 9, 25),
+					"2023-09-25",
 					imagePath + "desarrollador_de_software_full_stack.jpg",
 					List.of("Remoto")
 			);
@@ -543,7 +529,7 @@ public class Datos extends HttpServlet {
 					230000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 2),
+					"2023-10-02",
 					imagePath + "gerente_de_proyectos.jpg",
 					List.of("Remoto", "Permanente")
 			);
@@ -561,7 +547,7 @@ public class Datos extends HttpServlet {
 					60000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 1),
+					"2023-10-01",
 					imagePath + "ingeniero_de_calidad_de_software.jpg",
 					List.of("Tiempo completo", "Contabilidad")
 			);
@@ -589,8 +575,7 @@ public class Datos extends HttpServlet {
 					"Desarrollador Frontend", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 10, 1)
-			);
+					"2023-10-01");
 						
 			cvv = 
 			"Estudiante de Comunicación, habilidades en redacción y manejo \n"
@@ -606,8 +591,7 @@ public class Datos extends HttpServlet {
 					"Estratega de Negocios", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 9, 30)
-			);
+					"2023-09-30");
 			
 			cvv = 
 			"Ingeniero en Sistemas, experiencia en desarrollo web "
@@ -624,8 +608,7 @@ public class Datos extends HttpServlet {
 					"Desarrollador Frontend", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 10, 2)
-			);
+					"2023-10-02");
 			
 			cvv = 
 			"Técnico en Electricidad, "
@@ -642,8 +625,7 @@ public class Datos extends HttpServlet {
 					"Diseñador UX/UI", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 9, 30)
-			);
+					"2023-09-30");
 			
 			cvv = 
 			"Músport profesional, experiencia\r\n"
@@ -660,8 +642,7 @@ public class Datos extends HttpServlet {
 					"Estratega de Negocios", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 9, 30)
-			);
+					"2023-09-30");
 			
 			cvv = 
 			"Licenciada en Administración,\r\n"
@@ -680,8 +661,7 @@ public class Datos extends HttpServlet {
 					"Estratega de Negocios", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 10, 2)
-			);
+					"2023-10-02");
 		} catch (ElementoRepetidoException e) {
 			System.out.println(e.getMessage());
 		} catch (NoExisteInstancia e) {
