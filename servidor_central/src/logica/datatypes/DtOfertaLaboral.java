@@ -8,7 +8,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DTOfertaLaboral {
+public class DtOfertaLaboral {
 	private String nombre;
 	private String descripcion;
 	private String ciudad;
@@ -24,11 +24,11 @@ public class DTOfertaLaboral {
 	private int duracion;
 	private EstadoOferta estado;
 	
-	public DTOfertaLaboral() {
+	public DtOfertaLaboral() {
 		
 	}
 	
-	public DTOfertaLaboral(
+	public DtOfertaLaboral(
 			String nombre,
 			String descripcion,
 			String ciudad,
@@ -58,7 +58,7 @@ public class DTOfertaLaboral {
 		this.imageUrl = imageUrl;
 	}	
 	
-	public DTOfertaLaboral(
+	public DtOfertaLaboral(
 			String nombre,
 			String descripcion,
 			String ciudad,
@@ -143,7 +143,7 @@ public class DTOfertaLaboral {
 		return this.estado;
 	}
 	
-	public boolean equals(DTOfertaLaboral ofer) {
+	public boolean equals(DtOfertaLaboral ofer) {
 		Float rem = this.remuneracion;
 		return 
 				this.nombre.equals(ofer.getNombre()) &&

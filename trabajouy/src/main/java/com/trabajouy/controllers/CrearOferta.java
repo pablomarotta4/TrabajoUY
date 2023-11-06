@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import server.ElementoInexistenteException;
+import server.CollectionBean;
 import server.DataUsuario;
 
 
@@ -31,8 +32,10 @@ public class CrearOferta extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		server.WebServer port = new server.WebServerService().getWebServerPort();
-		List<String> listaTipos = port.listarTiposPublicacion();		
-		List<String> listaKeywords = port.listarKeywords();
+		CollectionBean collection = port.listarTiposPublicacion();
+		List<String> listaTipos = collection.getListaStrings();
+		collection = port.listarKeywords();
+		List<String> listaKeywords = collection.getListaStrings();
 		if (listaTipos.isEmpty()) {
 			request.setAttribute("error_mesage", "No existen tipos de publicacion validos.");
 			request.getRequestDispatcher("/WEB-INF/ofertas/crearOferta.jsp").forward(request, response);
@@ -45,8 +48,10 @@ public class CrearOferta extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		server.WebServer port = new server.WebServerService().getWebServerPort();
-		List<String> listaTipos = port.listarTiposPublicacion();		
-		List<String> keywordsEnSistema = port.listarKeywords();
+		CollectionBean collection = port.listarTiposPublicacion();
+		List<String> listaTipos = collection.getListaStrings();
+		collection = port.listarKeywords();
+		List<String> keywordsEnSistema = collection.getListaStrings();		
 		
 		String nombreOferta = (String) request.getParameter("nombre-oferta");
 		String descripcion = (String) request.getParameter("descripcion");
@@ -74,12 +79,17 @@ public class CrearOferta extends HttpServlet {
 		File targetFile = new File(path + nombreOferta + ".jpg");
 		Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-		List<String> keywordsSeleccionadas = new ArrayList<>();
+		ArrayList<String> listaKeywords = new ArrayList<>();
+		
 		for (String keyword : keywordsEnSistema) {
 			String keySeleccionada = (String) request.getParameter(keyword.replaceAll("\\s", ""));
 			if (keySeleccionada != null) {
-				keywordsSeleccionadas.add(keyword);
+				listaKeywords.add(keyword);
 			}
+		}
+		
+		for(String keyword : listaKeywords) {
+			collection.getListaStrings().add(keyword);
 		}
 		
 		try {
@@ -94,13 +104,13 @@ public class CrearOferta extends HttpServlet {
 						Float.parseFloat(remuneracion),
 						ciudad, 
 						departamento, 
-						LocalDate.now(), 
+						"", 
 						File.separator +  "images"  + File.separator + nombreOferta + ".jpg", 
-						keywordsSeleccionadas
+						collection
 					);
 			}
 			response.sendRedirect("/trabajouy/ofertas");
-		} catch (ElementoRepetidoException | ElementoInexistenteException ex) {
+		} catch (server.ElementoInexistenteException_Exception | server.ElementoRepetidoException_Exception ex) {
     		request.setAttribute("lista_tipos_publicacion", listaTipos);
     		request.setAttribute("lista_keywords", keywordsEnSistema);
 			request.setAttribute("error_mesage", ex.getMessage());

@@ -8,7 +8,7 @@ import java.util.Map;
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
 import excepciones.UsuarioRepetidoException;
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.datatypes.DataEmpresa;
 import logica.datatypes.DataPostulante;
 import logica.datatypes.DataUsuario;
@@ -84,11 +84,11 @@ public class ControladorUsuario implements IControladorUsuario{
 		return (Postulante) manejadorUsuario.buscarUsuario(nickPostulante);
 	}
 
-	public ArrayList<DTOfertaLaboral> consultarPostulaciones(String nick) {
+	public ArrayList<DtOfertaLaboral> consultarPostulaciones(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 
-	public ArrayList<DTOfertaLaboral> consultarOfertas(String nick) {
+	public ArrayList<DtOfertaLaboral> consultarOfertas(String nick) {
 		return manejadorUsuario.obtenerOfertasPostulaciones(nick);
 	}
 	

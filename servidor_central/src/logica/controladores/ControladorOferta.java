@@ -9,7 +9,8 @@ import java.util.Map;
 import excepciones.ElementoInexistenteException;
 import excepciones.ElementoRepetidoException;
 import excepciones.NoExisteInstancia;
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
+import logica.beans.CollectionBean;
 import logica.datatypes.DTPostulacion;
 import logica.datatypes.EstadoOferta;
 import logica.entidades.Empresa;
@@ -180,12 +181,12 @@ public class ControladorOferta implements IControladorOferta{
 		return listaOfertas;
 	}
 	
-	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException{
+	public DtOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException{
 		Map<String, OfertaLaboral> ofertas = this.manejadorOferta.getOfertas();
 		if (!ofertas.containsKey(nombreOferta)) {
 			throw new ElementoInexistenteException("No existe esa oferta" + nombreOferta);
 		}
-		DTOfertaLaboral ofer = ofertas.get(nombreOferta).getDataType();
+		DtOfertaLaboral ofer = ofertas.get(nombreOferta).getDataType();
 		ofer.setDuracion(ofertas.get(nombreOferta).getDuracion());
 		return ofer;
 	}
@@ -215,7 +216,7 @@ public class ControladorOferta implements IControladorOferta{
 		}
 	}
 	
-	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
+	public DtOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
 		
 		return this.manejadorOferta.getOfertaDeNombre(nombreOferta).getDataType();
 	}
@@ -237,13 +238,15 @@ public class ControladorOferta implements IControladorOferta{
 		return listaOfertas;
 	}
 	
-	public ArrayList<DTOfertaLaboral> listarDtOfertas(){
-		ArrayList<DTOfertaLaboral> listaOfertas = new ArrayList<>();
+	public CollectionBean listarDtOfertas(){
+		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
 		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
 		for (OfertaLaboral oferta : ofertasExistentes.values()) {
 			listaOfertas.add(oferta.getDataType());
 		}
-		return listaOfertas;
+		CollectionBean ret = new CollectionBean();
+		ret.setListaDtOfertas(listaOfertas);
+		return ret;
 	}
 	
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta) {
@@ -263,8 +266,8 @@ public class ControladorOferta implements IControladorOferta{
 	    return manejadorPostulacion.existePostulacion(nick, nombreOferta);
 	}
 
-	public ArrayList<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
-		ArrayList<DTOfertaLaboral> listaOfertas = new ArrayList<>();
+	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter){
+		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
 		HashMap<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
 		
 		if (isKeyword(filter)) {
@@ -309,9 +312,9 @@ public class ControladorOferta implements IControladorOferta{
 
 	}
 
-	public ArrayList<DTOfertaLaboral> listarOfertasAceptadas() {
+	public ArrayList<DtOfertaLaboral> listarOfertasAceptadas() {
 	    HashMap<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
-	    ArrayList<DTOfertaLaboral> ofertasConfirmadas = new ArrayList<DTOfertaLaboral>();
+	    ArrayList<DtOfertaLaboral> ofertasConfirmadas = new ArrayList<DtOfertaLaboral>();
 	    for(OfertaLaboral offer : ofertas.values()) {
 		if(offer.getEstado().equals(EstadoOferta.CONFIRMADA)) {
 		    ofertasConfirmadas.add(offer.getDataType());

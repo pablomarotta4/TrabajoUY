@@ -43,8 +43,10 @@
 	                <h3 style="font-family:monospace" ><%= oferta.getNombreEmpresa() %></h3>
 	                <p><%= oferta.getDescripcion() %></p>
 	                <% if (usuario instanceof DataPostulante){ 
-	                	IControladorOferta oferController = Factory.getInstance().getControladorOferta();
-	                	if (!oferController.estaPostulado(usuario.getNickname(),oferta.getNombre())){
+	            		server.WebServerService servicio = new server.WebServerService();
+	            		server.WebServer port = servicio.getWebServerPort();
+	                	
+	                	if (!port.estaPostulado(usuario.getNickname(),oferta.getNombre())){
 	                	    %>
 					<a href="/trabajouy/postulacion?nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>">Postularme</a>
 						<% } 

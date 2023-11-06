@@ -25,11 +25,13 @@ public class ListarOfertas extends HttpServlet {
 		String filter = (String) request.getParameter("filter");
 		server.WebServerService servicio = new server.WebServerService();
 		server.WebServer port = servicio.getWebServerPort();
-		ArrayList<DtOfertaLaboral> listaOfertas = null;
+		server.CollectionBean collection = port.listarDtOfertas();
+		List<DtOfertaLaboral> listaOfertas = collection.getListaDtOfertas();
+		
 		if (filter != null && !filter.equals("")) {
-			listaOfertas = port.listarDtOfertasByFilter(filter);
+			//listaOfertas = port.listarDtOfertasByFilter(filter);
 		} else {
-			listaOfertas = port.listarDtOfertas();
+			//listaOfertas = (ArrayList<DtOfertaLaboral>) collection.getListaDtOfertas();
 		}
 		
 		request.setAttribute("lista_ofertas", listaOfertas);

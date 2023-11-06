@@ -9,7 +9,7 @@ import java.util.Map;
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
 import excepciones.UsuarioRepetidoException;
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.datatypes.DataUsuario;
 import logica.entidades.Empresa;
 import logica.entidades.OfertaLaboral;
@@ -115,9 +115,9 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		return listaNick;
 	}
 
-	public ArrayList<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick) {
+	public ArrayList<DtOfertaLaboral> obtenerOfertasPostulaciones(String nick) {
 		Usuario user = buscarUsuario(nick);
-		ArrayList<DTOfertaLaboral> dtofertas= new ArrayList<>();
+		ArrayList<DtOfertaLaboral> dtofertas= new ArrayList<>();
 		if (user instanceof Empresa) {
 			Empresa emp = (Empresa) user;
 			ArrayList<OfertaLaboral> ofertas = emp.getOfertas();

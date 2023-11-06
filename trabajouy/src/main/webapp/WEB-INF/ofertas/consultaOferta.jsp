@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DTOfertaLaboral"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataUsuario"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataPostulante"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DTPostulacion" %>
-<%@page import="com.trabajouy.model.logica.interfaces.Factory" %>
-<%@page import="com.trabajouy.model.logica.interfaces.IControladorUsuario" %>
+<%@page import="server.DtOfertaLaboral"%>
+<%@page import="server.DataUsuario"%>
+<%@page import="server.DataPostulante"%>
+<%@page import="server.DtPostulacion" %>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +16,8 @@
 <body>
    	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<%
-		DTOfertaLaboral oferta = (DTOfertaLaboral) request.getAttribute("oferta-seleccionada");
-	 	DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
+	DtOfertaLaboral oferta = (DtOfertaLaboral) request.getAttribute("oferta-seleccionada");
+		 	DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 	%>
     <!--MAIN CONTAINER-->
     <section class="main">
@@ -35,7 +33,7 @@
 
             <div class="descripcion">
                 <p><strong>Descripción:</strong><%= oferta.getDescripcion() %></p>
-                <p><strong>Remuneración: </strong>$<%=oferta.getRemuneracion().toString()%></p>
+                <p><strong>Remuneración: </strong>$<%=oferta.getRemuneracion() %></p>
                 <p><strong>Horarios: </strong><%= oferta.getHorario()%></p>
                 <p><strong>Fecha de alta: </strong><%=oferta.getFechaAlta()%></p>
                 <p><strong>Keywords: </strong><%=oferta.getKeywords().toString() %></p>
@@ -54,11 +52,13 @@
         <div class="postulacionesYpaquetes">
 
             <% 
-           
+    		server.WebServerService servicio = new server.WebServerService();
+    		server.WebServer port = servicio.getWebServerPort();
+    		
             if(usuario != null){
-            	IControladorUsuario ctrlUsuario = Factory.getInstance().getControladorUsuario();
+            	
             	if(usuario.getNickname().equals(oferta.getNombreEmpresa())){
-            		List<DTPostulacion> postulaciones = oferta.getPostulaciones();
+            		List<DtPostulacion> postulaciones = oferta.getPostulaciones();
             		if(postulaciones != null){
             %>
             <div class="postulaciones">
@@ -67,13 +67,13 @@
                     <h1>POSTULACIONES</h1>
                 </div>
                 	<%	
-                		for(DTPostulacion postulacion: postulaciones){
+                		for(DtPostulacion postulacion: postulaciones){
                 	%>
 	                <div class="postulante">
 	                    <!--FOTO-->
-	                    <div class="foto-postulante"><img src=<%= ctrlUsuario.getFotoUsuario(postulacion.getNickPostulante()) %> alt="foto-usuario"></div>
+	                    <div class="foto-postulante"><img src=<%= port.getFotoUsuario(postulacion.getNickpostulante()) %> alt="foto-usuario"></div>
 	                    <!--NOMBRE-->
-	                    <div class="nombre-postulante"><a href="/trabajouy/consultaPostulacion?nombreOferta=<%=java.net.URLEncoder.encode(postulacion.getNombreOferta(), "UTF-8")%>&nickname=<%=postulacion.getNickPostulante()%>"><%= postulacion.getNickPostulante() %></a></div>
+	                    <div class="nombre-postulante"><a href="/trabajouy/consultaPostulacion?nombreOferta=<%=java.net.URLEncoder.encode(postulacion.getNombreOferta(), "UTF-8")%>&nickname=<%=postulacion.getNickpostulante() %>"><%= postulacion.getNickpostulante()%></a></div>
 	                </div>
                 	<%
                 		}
@@ -81,7 +81,7 @@
             </div>
             <%
             		}
-           		} else if(ctrlUsuario.estaPostulado(usuario.getNickname(), oferta.getNombre())){
+           		} else if(port.estaPostulado(usuario.getNickname(), oferta.getNombre())){
    			%>
 	   		  <div class="postulaciones">
                 <!--TITULO-->
@@ -90,7 +90,7 @@
                 </div>
                 <div class="postulante">
                     <!--FOTO-->
-                    <div class="foto-postulante"><img src=<%= ctrlUsuario.getFotoUsuario(usuario.getNickname()) %> alt="foto-usuario"></div>
+                    <div class="foto-postulante"><img src=<%= port.getFotoUsuario(usuario.getNickname()) %> alt="foto-usuario"></div>
                     <!--NOMBRE-->
                     <div class="nombre-postulante"><a href="/trabajouy/postulacion?nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>&nickname=<%=usuario.getNickname()%>"><%=usuario.getNickname() %></a></div>
                 </div>

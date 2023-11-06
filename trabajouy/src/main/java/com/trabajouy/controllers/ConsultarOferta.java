@@ -27,7 +27,7 @@ public class ConsultarOferta extends HttpServlet {
 			DtOfertaLaboral ofertaSeleccionada = port.listarDatosOferta(nombreOferta);
 			request.setAttribute("oferta-seleccionada", ofertaSeleccionada);				
 			request.getRequestDispatcher("/WEB-INF/ofertas/consultaOferta.jsp").include(request, response);
-		} catch (ElementoInexistenteException e) {
+		} catch (server.ElementoInexistenteException_Exception e) {
 			e.printStackTrace();
 		}
 	}

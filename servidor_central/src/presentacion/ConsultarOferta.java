@@ -2,7 +2,7 @@ package presentacion;
 
 import javax.swing.JInternalFrame;
 
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.datatypes.DTPostulacion;
 import logica.datatypes.DataEmpresa;
 import logica.interfaces.IControladorOferta;
@@ -327,7 +327,7 @@ public class ConsultarOferta extends JInternalFrame{
 		
 		if(preSeleccion != null) {
 			try {
-				DTOfertaLaboral dtOf  = ctrlOferta.listarDatosOferta(preSeleccion);
+				DtOfertaLaboral dtOf  = ctrlOferta.listarDatosOferta(preSeleccion);
 				textNombre.setText(dtOf.getNombre());
 				textDescripcion.setText(dtOf.getDescripcion());
 				textCiudad.setText(dtOf.getCiudad());
@@ -357,7 +357,7 @@ public class ConsultarOferta extends JInternalFrame{
 			comboBoxOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					DTOfertaLaboral dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
+					DtOfertaLaboral dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
 					textNombre.setText(dtOf.getNombre());
 					textDescripcion.setText(dtOf.getDescripcion());
 					textCiudad.setText(dtOf.getCiudad());

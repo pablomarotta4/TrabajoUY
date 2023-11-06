@@ -21,7 +21,8 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.ws.Endpoint;
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
+import logica.beans.CollectionBean;
 import logica.datatypes.DTPostulacion;
 
 import logica.datatypes.DataEmpresa;
@@ -47,6 +48,10 @@ public class WebServer {
 	
 	@WebMethod(exclude = true)
 	public void publicar() {
+		this.ctrlUsuario = Factory.getInstance().getControladorUsuario();
+		this.ctrlOferta = Factory.getInstance().getControladorOferta();
+		this.ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
+
 		endpoint = Endpoint.publish("http://localhost:8085/webService", this);
 	}
 	
@@ -152,11 +157,12 @@ public class WebServer {
     							  String departamento,
     							  String fechaAlta,
     							  String imageUrl,
-    							  ArrayList<String> keywords) throws ElementoRepetidoException, ElementoInexistenteException {
+    							  CollectionBean keywords) throws ElementoRepetidoException, ElementoInexistenteException {
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate fechaLD = LocalDate.parse(fechaAlta, formatter);
+		ArrayList<String> listaKeywords = keywords.getListaStrings();
 		try {
-			ctrlOferta.altaOfertaLaboral(empresa, tipoPublicacion, nombre, descripcion, horario, remuneracion, ciudad, departamento, fechaLD, imageUrl, keywords);
+			ctrlOferta.altaOfertaLaboral(empresa, tipoPublicacion, nombre, descripcion, horario, remuneracion, ciudad, departamento, fechaLD, imageUrl, listaKeywords);
 		} catch (ElementoRepetidoException | ElementoInexistenteException exep) {
 			throw exep;
 		}
@@ -206,13 +212,13 @@ public class WebServer {
 		return ctrlUsuario.estaPostulado(nickname, nombreOferta);
 	}
     @WebMethod
-	public ArrayList<DTOfertaLaboral> consultarPostulaciones(String nick){
-		ArrayList<DTOfertaLaboral> listaOfertas = ctrlUsuario.consultarPostulaciones(nick);
+	public ArrayList<DtOfertaLaboral> consultarPostulaciones(String nick){
+		ArrayList<DtOfertaLaboral> listaOfertas = ctrlUsuario.consultarPostulaciones(nick);
 		return listaOfertas;
 	}
     @WebMethod
-	public ArrayList<DTOfertaLaboral> consultarOfertas(String nick){
-		ArrayList<DTOfertaLaboral> listaOfertas = ctrlUsuario.consultarOfertas(nick);
+	public ArrayList<DtOfertaLaboral> consultarOfertas(String nick){
+		ArrayList<DtOfertaLaboral> listaOfertas = ctrlUsuario.consultarOfertas(nick);
 		return listaOfertas;
 	}
     @WebMethod
@@ -224,9 +230,10 @@ public class WebServer {
 		return "";
 	}
     @WebMethod
-	public ArrayList<DataUsuario> listarDTUsuarios(){
-		ArrayList<DataUsuario> listaUsuarios = ctrlUsuario.listarDTUsuarios();
-		return listaUsuarios;
+	public CollectionBean listarDTUsuarios(){
+		CollectionBean collection = new CollectionBean();
+		collection.setListaDataUsuarios(ctrlUsuario.listarDTUsuarios());
+		return collection;
 	}
     @WebMethod
 	public Empresa getEmpresa(String nickEmpresa) {
@@ -234,16 +241,16 @@ public class WebServer {
 	}
 
     @WebMethod
-	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
+	public DtOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
 		return ctrlOferta.obtenerEmpresaDeOferta(nombreOferta);
     }
 
     @WebMethod
-	public ArrayList<DTOfertaLaboral> listarDtOfertas(){
+	public CollectionBean listarDtOfertas(){
 		return ctrlOferta.listarDtOfertas();
 	}
     @WebMethod
-	public ArrayList<DTOfertaLaboral> listarDtOfertasByFilter(String filter){
+	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter){
 		return ctrlOferta.listarDtOfertasByFilter(filter);
 	}
     @WebMethod
@@ -267,5 +274,26 @@ public class WebServer {
 	public DataPostulante getDTPostulante(String nick) {
 		return ctrlUsuario.getDTPostulante(nick);
 	}
-
+	@WebMethod
+	public DtOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException {
+		return ctrlOferta.listarDatosOferta(nombreOferta);
+	}
+	@WebMethod
+	public CollectionBean listarTiposPublicacion(){
+		CollectionBean collection = new CollectionBean();
+		collection.setListaStrings((ArrayList<String>) ctrlCompraTipo.listarTiposPublicacion());
+		return collection;
+	}
+	@WebMethod
+	public CollectionBean listarKeywords(){
+		CollectionBean collection = new CollectionBean();
+		collection.setListaStrings((ArrayList<String>) ctrlOferta.listarKeywords());
+		return collection;
+	}
+	@WebMethod
+	public CollectionBean getDataTiposPublicacion(){
+		CollectionBean collection = new CollectionBean();
+		collection.setListaDataTipoPublicacion((HashMap<String, DataTipoPublicacion>) ctrlCompraTipo.getDataTiposPublicacion());
+		return collection;
+	}
 }

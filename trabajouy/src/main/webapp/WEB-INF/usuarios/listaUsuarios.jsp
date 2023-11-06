@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataUsuario"%>
+<%@page import="server.DataUsuario"%>
 <%@page import="java.util.List"%>
 
 
@@ -29,7 +29,7 @@
   
     	<div class="caja">
 			  <div class="cajaImagen">
-			  		<img src= <%= usuario.getImage()%> title ="imagen-usuario" alt="img-usuario">
+			  		<img src= <%= usuario.getImageUrl() %> title ="imagen-usuario" alt="img-usuario">
 			  </div>
 			  <div class="contenido"> 
 			  		<h3><a href="consultausuario?usuario_consulta=<%= usuario.getNickname()%>"><%=nombreUsuario%></a></h3>

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.datatypes.DTPostulacion;
 import logica.datatypes.EstadoOferta;
 
@@ -69,7 +69,7 @@ public class OfertaLaboral {
 		return this.empresa.getNickname();
 	}
 	
-	public DTOfertaLaboral getDataType(){
+	public DtOfertaLaboral getDataType(){
 		ArrayList<DTPostulacion> listaDtPostulacion = new ArrayList<DTPostulacion>();
 		ArrayList<String> listaKeywords = new ArrayList<String>();
 		
@@ -83,7 +83,7 @@ public class OfertaLaboral {
 				listaKeywords.add(this.keywords.get(i).getKeyword());
 			}
 		}
-		return new DTOfertaLaboral(
+		return new DtOfertaLaboral(
 			this.nombre,
 			this.descripcion,
 			this.ciudad,

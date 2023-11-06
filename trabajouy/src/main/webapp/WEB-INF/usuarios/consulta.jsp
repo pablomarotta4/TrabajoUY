@@ -71,7 +71,7 @@
                		}
             		if (usuarioC instanceof DataEmpresa) {
 	            		DataEmpresa empresa = (DataEmpresa) usuarioC;
-	            		ArrayList<DtOfertaLaboral> ofertas = empresa.getOfertas();
+	            		ArrayList<DtOfertaLaboral> ofertas =(ArrayList<DtOfertaLaboral>) empresa.getOfertas();
 	            		
 	            		if (ofertas != null) {
 		            		%>

@@ -4,7 +4,7 @@ import javax.swing.JInternalFrame;
 
 import logica.datatypes.DataUsuario;
 import logica.datatypes.DataPostulante;
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.datatypes.DataEmpresa;
 import logica.interfaces.IControladorOferta;
 import logica.interfaces.IControladorUsuario;
@@ -40,7 +40,7 @@ public class ConsultarUsuario  extends JInternalFrame{
 	private IControladorUsuario icu;
 	private IControladorOferta ico;
 	private JInternalFrame frame;
-	private List<DTOfertaLaboral> dtofertas2= new ArrayList<>();
+	private List<DtOfertaLaboral> dtofertas2= new ArrayList<>();
 	private JDesktopPane desktopPane;
 	private String comboSeleccion = null;
 	
@@ -460,7 +460,7 @@ public class ConsultarUsuario  extends JInternalFrame{
 				
         		if(!seleccionado.isEmpty()) {
         			ConsultarOfertaButton.setVisible(false);
-        			List<DTOfertaLaboral> dtofertas = null;
+        			List<DtOfertaLaboral> dtofertas = null;
         			DataUsuario us = icu.consultarDatosUsuario(seleccionado);
         			
         			// NOMBRE
@@ -511,7 +511,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                         comboOfertas.removeAllItems();
                         comboPostulaciones.removeAllItems();
                         dtofertas = icu.consultarPostulaciones(us.getNickname());
-                    	for(DTOfertaLaboral dtof: dtofertas) {
+                    	for(DtOfertaLaboral dtof: dtofertas) {
                     		comboOfertas.addItem(dtof.getNombre());
                     	}
                     }
@@ -541,7 +541,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                         labelPostulaciones.setVisible(true);
                         comboPostulaciones.setVisible(true);
                     	dtofertas = icu.consultarPostulaciones(us.getNickname());
-                    	for(DTOfertaLaboral dtof: dtofertas) {
+                    	for(DtOfertaLaboral dtof: dtofertas) {
                     		comboPostulaciones.addItem(dtof.getNombre());
                     	}              	
                     }
@@ -549,7 +549,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	dtofertas2 = dtofertas;
                     	comboPostulaciones.addActionListener(new ActionListener() {
                     	public void actionPerformed(ActionEvent e) {
-                    		for(DTOfertaLaboral oferta : dtofertas2) {
+                    		for(DtOfertaLaboral oferta : dtofertas2) {
                     			if(!dtofertas2.isEmpty()) {
                     			if(oferta.getNombre().equals((String) comboPostulaciones.getSelectedItem())) {
                     				ConsultarOfertaButton.setVisible(true);
@@ -576,7 +576,7 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	dtofertas2 = dtofertas;
                         comboOfertas.addActionListener(new ActionListener() {
                         	public void actionPerformed(ActionEvent e) {  
-                        		for(DTOfertaLaboral oferta : dtofertas2) {
+                        		for(DtOfertaLaboral oferta : dtofertas2) {
                         			if(!dtofertas2.isEmpty()) {
                         				if(oferta.getNombre().equals((String) comboOfertas.getSelectedItem())) {
                         					ConsultarOfertaButton.setVisible(true);                    		        

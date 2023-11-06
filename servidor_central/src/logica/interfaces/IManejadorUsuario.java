@@ -8,7 +8,7 @@ import java.util.Map;
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
 import excepciones.UsuarioRepetidoException;
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.datatypes.DataUsuario;
 import logica.entidades.Usuario;
 
@@ -22,7 +22,7 @@ public interface IManejadorUsuario {
 	public void agregarUsuario(Usuario usr);
 	public ArrayList<String> listarNickUsuarios();
 	public Map<String, Usuario> getUsuarios();
-	public ArrayList<DTOfertaLaboral> obtenerOfertasPostulaciones(String nick);
+	public ArrayList<DtOfertaLaboral> obtenerOfertasPostulaciones(String nick);
 	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException;
 	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad);
 	public ArrayList<DataUsuario> listarDTUsuarios();

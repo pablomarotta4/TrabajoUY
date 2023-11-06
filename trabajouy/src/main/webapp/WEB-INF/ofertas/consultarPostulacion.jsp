@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="media/styles/consultarPostulacion.css">
     <link rel="stylesheet" href="media/styles/basic.css">
-    <%@page import="com.trabajouy.model.logica.datatypes.DTPostulacion"%>
-    <%@page import="com.trabajouy.model.logica.datatypes.DataUsuario"%>
-     <%@page import="com.trabajouy.model.logica.datatypes.DTOfertaLaboral"%>
+    <%@page import="server.DtPostulacion"%>
+    <%@page import="server.DataUsuario"%>
+     <%@page import="server.DtOfertaLaboral"%>
     <%@page import="com.trabajouy.controllers.Postulacion"%>
-    <%@page import="com.trabajouy.model.logica.interfaces.Factory" %>
-	<%@page import="com.trabajouy.model.logica.interfaces.IControladorUsuario" %>
-	<%@page import="com.trabajouy.model.logica.interfaces.IControladorOferta" %>
-    	<jsp:include page="/WEB-INF/template/head.jsp"/>
+   	<jsp:include page="/WEB-INF/template/head.jsp"/>
     
 </head>
 <body>
@@ -25,12 +22,13 @@
         <div id="cardContainer">
         <div class="card">
             <div id="datosContainer">
-            <%	DTPostulacion datosPostulacion = (DTPostulacion) request.getSession().getAttribute("datosPostulacion");
-				IControladorUsuario userController = Factory.getInstance().getControladorUsuario();
-				IControladorOferta oferController = Factory.getInstance().getControladorOferta();
-				DTOfertaLaboral oferta = oferController.listarDatosOferta(datosPostulacion.getNombreOferta());
-				DataUsuario datosPostulante = userController.consultarDatosUsuario(datosPostulacion.getNickPostulante());
-			 %>
+            <%
+            DtPostulacion datosPostulacion = (DtPostulacion) request.getSession().getAttribute("datosPostulacion");
+	    			server.WebServerService servicio = new server.WebServerService();
+    				server.WebServer port = servicio.getWebServerPort();
+            		DtOfertaLaboral oferta = port.listarDatosOferta(datosPostulacion.getNombreOferta());
+            		DataUsuario datosPostulante = port.consultarDatosUsuario(datosPostulacion.getNickpostulante());
+            %>
                 <div id="nombreContainer">
                     <label id="nombreLabel" for="nombre">Nombre: </label>
                     <p id="nombre"><%= datosPostulante.getNombre() %> <%= datosPostulante.getApellido() %> </p>
@@ -45,7 +43,7 @@
                 </div>
                 <div id="fechaContainer">
                     <label id="fechaLabel" for="fecha">Fecha de postulacion: </label>
-                    <div id="fecha"><%= datosPostulacion.getFecha().toString() %>		 </div>
+                    <div id="fecha"><%= datosPostulacion.getFechaPostulacion().toString() %>		 </div>
                 </div>
             </div>
         </div>

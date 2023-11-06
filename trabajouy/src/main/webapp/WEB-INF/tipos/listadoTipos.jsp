@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.trabajouy.model.logica.datatypes.DataTipoPublicacion"%>	
+<%@page import="server.DataTipoPublicacion"%>	
 <%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html>

@@ -7,7 +7,8 @@ import java.util.List;
 import excepciones.ElementoInexistenteException;
 import excepciones.ElementoRepetidoException;
 import excepciones.NoExisteInstancia;
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
+import logica.beans.CollectionBean;
 import logica.datatypes.DTPostulacion;
 
 public interface IControladorOferta {
@@ -32,7 +33,7 @@ public interface IControladorOferta {
 	public List<String> listarOfertasAceptadasByEmpresa(String nombreEmpresa);
 	public List<String> listarOfertasIngresadasByEmpresa(String nombreEmpresa);
 	public List<String> listarNombreOfertas();
-	public DTOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException;
+	public DtOfertaLaboral listarDatosOferta(String nombreOferta) throws ElementoInexistenteException;
 	public void altaPostulacion(
 			String nickname,
 			String oferta,
@@ -40,12 +41,12 @@ public interface IControladorOferta {
 			String motivacion,
 			LocalDate fecha
 	) throws ElementoRepetidoException, NoExisteInstancia, ElementoInexistenteException;
-	public DTOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta);
+	public DtOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta);
 	public void confirmarOferta(String nombreOferta);
 	public void rechazarOferta(String nombreOferta);
-	public ArrayList<DTOfertaLaboral> listarDtOfertas();
-	public ArrayList<DTOfertaLaboral> listarDtOfertasByFilter(String filter);
+	public CollectionBean listarDtOfertas();
+	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter);
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta);
 	public boolean estaPostulado(String nick, String nombreOferta);
-	public ArrayList<DTOfertaLaboral> listarOfertasAceptadas();
+	public ArrayList<DtOfertaLaboral> listarOfertasAceptadas();
 }

@@ -5,7 +5,7 @@ import excepciones.*;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.entidades.OfertaLaboral;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
@@ -202,7 +202,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         		} else {
         			try {
         				String ofertaName = (String) comboBox_1.getSelectedItem();
-        				DTOfertaLaboral datosOferta = ico.listarDatosOferta(ofertaName);
+        				DtOfertaLaboral datosOferta = ico.listarDatosOferta(ofertaName);
         				
         				List<String> keys = datosOferta.getKeywords();
         				

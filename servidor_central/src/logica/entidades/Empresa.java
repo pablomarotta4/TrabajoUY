@@ -3,7 +3,7 @@ package logica.entidades;
 import java.util.ArrayList;
 import java.util.List;
 
-import logica.datatypes.DTOfertaLaboral;
+import logica.datatypes.DtOfertaLaboral;
 import logica.datatypes.DataEmpresa;
 
 
@@ -51,8 +51,8 @@ public class Empresa extends Usuario{
 		this.linkWeb = link;
 	}
 	
-	public ArrayList<DTOfertaLaboral> getDTOfertasLaborales(){
-		ArrayList<DTOfertaLaboral> lista = new ArrayList<>();
+	public ArrayList<DtOfertaLaboral> getDTOfertasLaborales(){
+		ArrayList<DtOfertaLaboral> lista = new ArrayList<>();
 		for (OfertaLaboral ofer: this.ofertas) {
 			lista.add(ofer.getDataType());
 		}

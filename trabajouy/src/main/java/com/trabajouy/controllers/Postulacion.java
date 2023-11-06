@@ -64,14 +64,14 @@ public class Postulacion extends HttpServlet {
 		String motivacion = (String) request.getParameter("motivacion");
 		String nombreOferta = (String) request.getSession().getAttribute("nombreOferta");
 		server.WebServer port = new server.WebServerService().getWebServerPort();
-			port.altaPostulacion(nickname, nombreOferta, cvReducido, motivacion, LocalDate.now());
-		} catch (ElementoRepetidoException e) {
+			port.altaPostulacion(nickname, nombreOferta, cvReducido, motivacion, "");
+		} catch (server.ElementoRepetidoException_Exception e) {
 		    	response.sendRedirect("/trabajouy/consultaPostulacion");
 			e.printStackTrace();
-		} catch (NoExisteInstancia e) {
+		} catch (server.NoExisteInstancia_Exception e) {
 		    	response.sendRedirect("login");
 			e.printStackTrace();
-		} catch (ElementoInexistenteException e) {
+		} catch (server.ElementoInexistenteException_Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("home");
 		}

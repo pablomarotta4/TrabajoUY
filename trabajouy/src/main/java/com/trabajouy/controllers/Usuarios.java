@@ -27,7 +27,8 @@ public class Usuarios extends HttpServlet {
 	
 		
 		server.WebServer port = new server.WebServerService().getWebServerPort();
-		List<DataUsuario> listaUsuarios= port.listarDTUsuarios();
+		
+		List<DataUsuario> listaUsuarios= port.listarDTUsuarios().getListaDataUsuarios();
 		
 		request.setAttribute("lista_usuarios", listaUsuarios);
 		request.getRequestDispatcher("/WEB-INF/usuarios/listaUsuarios.jsp").forward(request, response);
