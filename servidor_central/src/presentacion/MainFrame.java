@@ -563,6 +563,13 @@ public class MainFrame {
 			String imagePath = 
 					File.separator + 
 					"images" + File.separator;
+			ArrayList<String> keywords = new ArrayList<>();
+			keywords.add("Tiempo completo");
+			keywords.add("Medio tiempo");
+			keywords.add("Remoto");
+			keywords.add("Freelance");
+			keywords.add("Temporal");
+			keywords.add("Permanente");
 			this.ico.altaOfertaLaboral(
 					"EcoTech", 
 					"Premium", 
@@ -574,19 +581,14 @@ public class MainFrame {
 					"Montevideo",
 					LocalDate.of(2023, 9, 30),
 					imagePath + "desarrollador_frontend.jpg",
-					(ArrayList<String>) List.of(
-							"Tiempo completo",
-							"Medio tiempo",
-							"Remoto",
-							"Freelance",
-							"Temporal",
-							"Permanente"
-					)
+					keywords
 			);
 			this.ico.confirmarOferta("Desarrollador Frontend");
 			desc = 
 				"Forma parte de nuestro equipo de estrategia y "
 				+ "contribuye al crecimiento de las empresas cliente";
+			keywords.clear();
+			keywords.add("Temporal");
 			this.ico.altaOfertaLaboral(
 					"GlobalHealth", 
 					"Estándar", 
@@ -598,16 +600,20 @@ public class MainFrame {
 					"Maldonado", 
 					LocalDate.of(2023, 9, 29),
 					imagePath + "estratega_de_negocios.jpg",
-					(ArrayList<String>) List.of("Temporal")
+					keywords
 			);
 			this.ico.confirmarOferta("Estratega de Negocios");
 			desc = 
-				"Trabaja en colaboraci´on con nuestro talentoso\r\n"
-				+ "equipo de dise˜no para crear soluciones impactantes.";
+				"Trabaja en colaboración con nuestro talentoso  "
+				+ "equipo de diseno para crear soluciones impactantes.";
+			keywords.clear();
+			keywords.add("Medio tiempo");
+			keywords.add("Remoto");
+			keywords.add("Permanente");
 			this.ico.altaOfertaLaboral(
 					"FusionTech", 
 					"Estándar", 
-					"Diseñador UX/UI", 
+					"Disenador UX/UI", 
 					desc, 
 					"14:00 - 18:00", 
 					65000, 
@@ -615,13 +621,15 @@ public class MainFrame {
 					"Colonia", 
 					LocalDate.of(2023, 9, 29),
 					imagePath + "diseñador_ux_ui.jpg",
-					(ArrayList<String>) List.of("Medio tiempo", "Remoto", "Permanente")
+					keywords
 			);
-			this.ico.confirmarOferta("Diseñador UX/UI");
+			this.ico.confirmarOferta("Disenador UX/UI");
 			
 			desc = 
 				"Ayuda a nuestros clientes a tomar decisiones "
-				+ "informadas basadas en an´alisis y visualizaciones de dat";
+				+ "informadas basadas en an´alisis y visualizaciones de dat";
+			keywords.clear();
+			keywords.add("Medio tiempo");
 			this.ico.altaOfertaLaboral(
 					"ANTEL", 
 					"Premium", 
@@ -633,7 +641,7 @@ public class MainFrame {
 					"Maldonado", 
 					LocalDate.of(2023, 9, 19),
 					imagePath + "analista_de_datos.jpg",
-					(ArrayList<String>) List.of("Medio tiempo")
+					keywords
 			);
 			
 			desc = 
@@ -641,6 +649,8 @@ public class MainFrame {
 				+ "para impulsar la presencia en l´ınea de nuestros\r\n"
 				+ "clientes.\r\n"
 				+ "";
+			keywords.clear();
+			keywords.add("Freelance");
 			this.ico.altaOfertaLaboral(
 					"MIEM", 
 					"Destacada", 
@@ -652,13 +662,15 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 2),
 					imagePath + "content_manager.jpg",
-					(ArrayList<String>) List.of("Freelance")
+					keywords
 			);
 			
 			desc = 
 				"Ofrece un excelente servicio de soporte t´ecnico a\r\n"
 				+ "nuestros clientes, resolviendo problemas y brindando\r\n"
 				+ "soluciones.";
+			keywords.clear();
+			keywords.add("Tiempo completo");
 			this.ico.altaOfertaLaboral(
 					"TechSolutions", 
 					"Básica", 
@@ -670,7 +682,7 @@ public class MainFrame {
 					"Lavalleja",
 					LocalDate.of(2023, 9, 10),
 					imagePath + "soporte_tecnico.jpg",
-					(ArrayList<String>) List.of("Tiempo completo")
+					keywords
 			);
 			this.ico.confirmarOferta("Soporte Técnico");
 			desc = 
@@ -715,6 +727,8 @@ public class MainFrame {
 					+ "CON LA MODIFICACI ´ON INTRODUCIDA POR\r\n"
 					+ "EL ART. 11 DE LA LEY 17.930 DE 19 DE DICIEM-\r\n"
 					+ "BRE DE 2005).";
+			keywords.clear();
+			keywords.add("Temporal");
 			this.ico.altaOfertaLaboral(
 					"ANTEL", 
 					"Premium", 
@@ -726,7 +740,7 @@ public class MainFrame {
 					"Paysandú", 
 					LocalDate.of(2023, 9, 29),
 					imagePath + "tecnico_de_red.jpg",
-					(ArrayList<String>) List.of("Temporal")
+					keywords
 			);
 			this.ico.confirmarOferta("Técnico/a Básico Red");
 				
@@ -734,6 +748,10 @@ public class MainFrame {
 					"Unete a nuestro equipo y lidera proyectos de desar-\r\n"
 					+ "rollo de software sostenible y ecol´ogico. Impulsa la\r\n"
 					+ "innovación y contribuye a un futuro m´as verde.";
+			keywords.clear();
+			keywords.add("Tiempo completo");
+			keywords.add("Permanente");
+			keywords.add("Logística");
 			this.ico.altaOfertaLaboral(
 					"EcoTech", 
 					"Destacada", 
@@ -745,13 +763,15 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 2),
 					imagePath + "desarrollador_de_software_senior.jpg",
-					(ArrayList<String>) List.of("Tiempo completo", "Permanente", "Logística")
+					keywords
 			);
 					
 			desc = 
 					"Unete a nuestro equipo para crear soluciones de soft-\r\n"
 					+ "ware personalizadas de extremo a extremo. Colabora\r\n"
 					+ "en proyectos emocionantes y desafiantes.";
+			keywords.clear();
+			keywords.add("Remoto");
 			this.ico.altaOfertaLaboral(
 					"TechSolutions", 
 					"Premium", 
@@ -763,7 +783,7 @@ public class MainFrame {
 					"Fray Bentos", 
 					LocalDate.of(2023, 9, 25),
 					imagePath + "desarrollador_de_software_full_stack.jpg",
-					(ArrayList<String>) List.of("Remoto")
+					keywords
 			);
 			
 			desc = 
@@ -771,6 +791,9 @@ public class MainFrame {
 					+ "era la entrega exitosa de soluciones de software per-\r\n"
 					+ "sonalizadas. Colabora con equipos multidisciplinar-\r\n"
 					+ "ios y clientes exigentes.";
+			keywords.clear();
+			keywords.add("Remoto");
+			keywords.add("Permanente");
 			this.ico.altaOfertaLaboral(
 					"TechSolutions", 
 					"Destacada", 
@@ -782,13 +805,16 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 2),
 					imagePath + "gerente_de_proyectos.jpg",
-					(ArrayList<String>) List.of("Remoto", "Permanente")
+					keywords
 			);
 			this.ico.confirmarOferta("Gerente de Proyecto");
 			desc = 
 					"Asegura la calidad de nuestros productos de software\r\n"
 					+ "sostenibles. ´Unete a nosotros para garantizar un im-\r\n"
 					+ "pacto positivo en el medio ambiente.";
+			keywords.clear();
+			keywords.add("Tiempo completo");
+			keywords.add("Contabilidad");
 			this.ico.altaOfertaLaboral(
 					"EcoTech", 
 					"Premium", 
@@ -800,7 +826,7 @@ public class MainFrame {
 					"Montevideo", 
 					LocalDate.of(2023, 10, 1),
 					imagePath + "ingeniero_de_calidad_de_software.jpg",
-					(ArrayList<String>) List.of("Tiempo completo", "Contabilidad")
+					keywords
 			);
 		} catch (ElementoRepetidoException e) {
 			System.out.println(e.getMessage());

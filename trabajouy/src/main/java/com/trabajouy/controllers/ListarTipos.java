@@ -27,11 +27,11 @@ public class ListarTipos extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		server.WebServer port = new server.WebServerService().getWebServerPort();
-		
-		Map<String, DataTipoPublicacion> mapTipos = (Map<String, DataTipoPublicacion>) port.getDataTiposPublicacion().getListaDataTipoPublicacion();
+		Map<String, DataTipoPublicacion> mapTipos = port.getDataTiposPublicacion().get;
 		request.setAttribute("map_tipos", mapTipos);
 		request.getRequestDispatcher("/WEB-INF/tipos/listadoTipos.jsp").forward(request, response);
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

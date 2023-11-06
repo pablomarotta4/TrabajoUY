@@ -25,18 +25,17 @@ public class ListarOfertas extends HttpServlet {
 		String filter = (String) request.getParameter("filter");
 		server.WebServerService servicio = new server.WebServerService();
 		server.WebServer port = servicio.getWebServerPort();
-		server.CollectionBean collection = port.listarDtOfertas();
-		List<DtOfertaLaboral> listaOfertas = collection.getListaDtOfertas();
-		
+		ArrayList<DtOfertaLaboral> listaOfertas = null;
 		if (filter != null && !filter.equals("")) {
 			//listaOfertas = port.listarDtOfertasByFilter(filter);
 		} else {
-			//listaOfertas = (ArrayList<DtOfertaLaboral>) collection.getListaDtOfertas();
+			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertas().getListaDtOfertas();
 		}
 		
 		request.setAttribute("lista_ofertas", listaOfertas);
 		request.getRequestDispatcher("/WEB-INF/ofertas/listadoOfertas.jsp").forward(request, response);
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
