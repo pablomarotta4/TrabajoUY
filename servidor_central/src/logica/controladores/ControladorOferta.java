@@ -244,10 +244,6 @@ public class ControladorOferta implements IControladorOferta{
 		for (OfertaLaboral oferta : ofertasExistentes.values()) {
 			LocalDate fechaOferta = oferta.getFecha();
 			int duracion = oferta.getTipo().getDuracion();
-			System.out.println("oferta: " + oferta.getNombre());
-			System.out.println("fecha: " + fechaOferta.toString());
-			System.out.println("duracion: " + duracion);
-			System.out.println("hoy: " + LocalDate.now().toString());
 			if(fechaOferta.plusDays(duracion).isAfter(LocalDate.now()) && oferta.getEstado().equals(EstadoOferta.CONFIRMADA)) {
 				System.out.println("entro");
 				listaOfertas.add(oferta.getDataType());							
