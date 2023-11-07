@@ -242,10 +242,7 @@ public class ControladorOferta implements IControladorOferta{
 		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
 		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
 		for (OfertaLaboral oferta : ofertasExistentes.values()) {
-			LocalDate fechaOferta = oferta.getFecha();
-			int duracion = oferta.getTipo().getDuracion();
-			if(fechaOferta.plusDays(duracion).isAfter(LocalDate.now()) && oferta.getEstado().equals(EstadoOferta.CONFIRMADA)) {
-				System.out.println("entro");
+			if(oferta.estaVigente() && oferta.getEstado().equals(EstadoOferta.CONFIRMADA)) {
 				listaOfertas.add(oferta.getDataType());							
 			}	
 		}
@@ -295,23 +292,24 @@ public class ControladorOferta implements IControladorOferta{
 					ofertaHasKeyword = keywordsOferta.get(icont).getKeyword().equals(filter);
 					icont++;
 				}
-				if (ofertaHasKeyword) {
+				if (ofertaHasKeyword && oferta.estaConfirmada() && oferta.estaVigente()) {
 					listaOfertas.add(oferta.getDataType());
 				}
 			}
 		} else if (isNickEmpresa(filter)) {
 			for (OfertaLaboral oferta: ofertas.values()) {
-				if (oferta.getNickEmpresa().equals(filter)) {
+				if (oferta.getNickEmpresa().equals(filter) && oferta.estaConfirmada() && oferta.estaVigente()) {
 					listaOfertas.add(oferta.getDataType());
 				}
 			}	
 		} else if (isNombreOferta(filter)) {
 			for (OfertaLaboral oferta: ofertas.values()) {
-				if (oferta.getNombre().equals(filter)) {
+				if (oferta.getNombre().equals(filter) && oferta.estaConfirmada() && oferta.estaVigente()) {
 					listaOfertas.add(oferta.getDataType());
 				}
 			}
 		}
+		System.out.println("size: " + listaOfertas.size());
 		return listaOfertas;
 	}
 	

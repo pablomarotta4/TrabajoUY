@@ -149,6 +149,13 @@ public class OfertaLaboral {
 	public TipoPublicacion getTipo() {
 		return this.tipo;
 	}
+	
+	public boolean estaVigente() {
+		return this.fechaAlta.plusDays(this.tipo.getDuracion()).isAfter(LocalDate.now());
+	}
+	public boolean estaConfirmada() {
+		return this.estado.equals(EstadoOferta.CONFIRMADA);
+	}
 }
 
 

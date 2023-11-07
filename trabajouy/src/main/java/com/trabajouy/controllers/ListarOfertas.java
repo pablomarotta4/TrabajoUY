@@ -34,7 +34,7 @@ public class ListarOfertas extends HttpServlet {
 			
 		} else {
 			if (filter != null && !filter.equals("")) {
-				//listaOfertas = port.listarDtOfertasByFilter(filter);
+				listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasByFilter(filter).getListaDtOfertas();
 			} else {
 				listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasConfirmadasNoExpiradas().getListaDtOfertas();
 			}

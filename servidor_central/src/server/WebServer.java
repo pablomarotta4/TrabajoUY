@@ -254,8 +254,10 @@ public class WebServer {
     	return ctrlOferta.listarDtOfertasConfirmadasNoExpiradas();
     }
     @WebMethod
-	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter){
-		return ctrlOferta.listarDtOfertasByFilter(filter);
+	public CollectionBean listarDtOfertasByFilter(String filter){
+    	CollectionBean collection = new CollectionBean();
+    	collection.setListaDtOfertas(ctrlOferta.listarDtOfertasByFilter(filter));
+		return collection;
 	}
     @WebMethod
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta) {
