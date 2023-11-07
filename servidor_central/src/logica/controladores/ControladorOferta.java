@@ -118,8 +118,6 @@ public class ControladorOferta implements IControladorOferta{
 				empresa,
 				tipo
 		);
-		System.out.println(nuevaOferta.getNombre());
-		System.out.println("hola");
 		
 		this.manejadorOferta.agregarOferta(nuevaOferta);
 		empresa.agregarOferta(nuevaOferta);
@@ -194,7 +192,6 @@ public class ControladorOferta implements IControladorOferta{
 	}
 	
 	public void altaPostulacion(String nickname, String oferta, String cvReducido, String motivacion, LocalDate fecha) throws NoExisteInstancia, ElementoInexistenteException, ElementoRepetidoException {
-		System.out.println("Me quiero postular a " + oferta);
 		Map<String, OfertaLaboral> lista = manejadorOferta.getOfertas();
 		Postulacion publi;
 		OfertaLaboral ofer = lista.get(oferta);
@@ -243,18 +240,11 @@ public class ControladorOferta implements IControladorOferta{
 	public CollectionBean listarDtOfertas(){
 		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
 		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
-		System.out.println("1");
-		System.out.println(listaOfertas);
-		System.out.println(ofertasExistentes.size());
 		for (OfertaLaboral oferta : ofertasExistentes.values()) {
 			listaOfertas.add(oferta.getDataType());
-			System.out.println("2");
-			System.out.println(listaOfertas);
 		}
 		CollectionBean ret = new CollectionBean();
 		ret.setListaDtOfertas(listaOfertas);
-		System.out.println("3");
-		System.out.println(ret.getListaDtOfertas());
 		return ret;
 	}
 	

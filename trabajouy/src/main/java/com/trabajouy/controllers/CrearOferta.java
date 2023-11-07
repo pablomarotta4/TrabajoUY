@@ -73,6 +73,13 @@ public class CrearOferta extends HttpServlet {
 			request.setAttribute("error_mesage", "Complete todos los campos marcados con *");
 			request.getRequestDispatcher("/WEB-INF/ofertas/crearOferta.jsp").forward(request, response);
         }
+
+        if(Float.parseFloat(remuneracion) < 0) {
+    		request.setAttribute("lista_tipos_publicacion", listaTipos);
+    		request.setAttribute("lista_keywords", keywordsEnSistema);
+			request.setAttribute("error_mesage", "La remuneracion no puede ser negativa.");
+			request.getRequestDispatcher("/WEB-INF/ofertas/crearOferta.jsp").forward(request, response);
+        }
         
 		Part image = request.getPart("imageFile");		
 		String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;

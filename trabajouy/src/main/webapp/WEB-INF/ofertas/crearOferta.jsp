@@ -56,7 +56,7 @@
 				</div>
 				<div class="form-element">
 					<label for="remuneracion">Remuneracion*</label> 
-					<input type="text" name="remuneracion" id="remuneracion">
+					<input type="text" name="remuneracion" id="remuneracion" pattern="^\d+$">
 				</div>
 				<div class="form-element">
 					<label for="departamento">Departamento*</label> 
