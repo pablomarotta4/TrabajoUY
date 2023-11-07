@@ -966,6 +966,5 @@ public class MainFrame {
 		} catch (ElementoInexistenteException e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
 }
