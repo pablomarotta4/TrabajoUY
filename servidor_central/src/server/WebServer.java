@@ -250,13 +250,13 @@ public class WebServer {
 		return ctrlOferta.listarDtOfertas();
 	}
     @WebMethod
-    public CollectionBean listarDtOfertasConfirmadasNoExpiradas() {
-    	return ctrlOferta.listarDtOfertasConfirmadasNoExpiradas();
+    public CollectionBean listarDtOfertasConfirmadasNoExpiradas(String nickUsuario) {
+    	return ctrlOferta.listarDtOfertasConfirmadasNoExpiradas(nickUsuario);
     }
     @WebMethod
-	public CollectionBean listarDtOfertasByFilter(String filter){
+	public CollectionBean listarDtOfertasByFilter(String filter, String nickUsuario){
     	CollectionBean collection = new CollectionBean();
-    	collection.setListaDtOfertas(ctrlOferta.listarDtOfertasByFilter(filter));
+    	collection.setListaDtOfertas(ctrlOferta.listarDtOfertasByFilter(filter, nickUsuario));
 		return collection;
 	}
     @WebMethod

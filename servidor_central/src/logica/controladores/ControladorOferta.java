@@ -238,15 +238,32 @@ public class ControladorOferta implements IControladorOferta{
 	}
 	
 	// Trae los DtOfertas que no hayan expirado y esten confirmadas
-	public CollectionBean listarDtOfertasConfirmadasNoExpiradas() {
+	public CollectionBean listarDtOfertasConfirmadasNoExpiradas(String nickUsuario) {
 		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
 		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
 		for (OfertaLaboral oferta : ofertasExistentes.values()) {
-			if(oferta.estaVigente() && oferta.getEstado().equals(EstadoOferta.CONFIRMADA)) {
+			if(nickUsuario != null && oferta.getNickEmpresa().equals(nickUsuario)) {
+				listaOfertas.add(oferta.getDataType());
+			} else if(oferta.estaVigente() && oferta.getEstado().equals(EstadoOferta.CONFIRMADA)) {
 				listaOfertas.add(oferta.getDataType());							
 			}	
 		}
 		CollectionBean ret = new CollectionBean();
+		ret.setListaDtOfertas(listaOfertas);
+		return ret;
+	}
+	
+	public CollectionBean listarDtOfertasForEmpresa(String nickEmpresa) {
+		CollectionBean ret = new CollectionBean();
+		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
+		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
+		for (OfertaLaboral oferta : ofertasExistentes.values()) {
+			if(oferta.getNickEmpresa().equals(nickEmpresa)) {
+				listaOfertas.add(oferta.getDataType());
+			} else if(oferta.estaVigente() && oferta.getEstado().equals(EstadoOferta.CONFIRMADA)) {
+				listaOfertas.add(oferta.getDataType());							
+			}	
+		}
 		ret.setListaDtOfertas(listaOfertas);
 		return ret;
 	}
@@ -279,7 +296,7 @@ public class ControladorOferta implements IControladorOferta{
 	    return manejadorPostulacion.existePostulacion(nick, nombreOferta);
 	}
 
-	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter){
+	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter, String nickUsuario){
 		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
 		HashMap<String, OfertaLaboral> ofertas = manejadorOferta.getOfertas();
 		
@@ -292,19 +309,25 @@ public class ControladorOferta implements IControladorOferta{
 					ofertaHasKeyword = keywordsOferta.get(icont).getKeyword().equals(filter);
 					icont++;
 				}
-				if (ofertaHasKeyword && oferta.estaConfirmada() && oferta.estaVigente()) {
+				if(nickUsuario != null && oferta.getNickEmpresa().equals(nickUsuario)) {
+					listaOfertas.add(oferta.getDataType());
+				} else if (ofertaHasKeyword && oferta.estaConfirmada() && oferta.estaVigente()) {
 					listaOfertas.add(oferta.getDataType());
 				}
 			}
 		} else if (isNickEmpresa(filter)) {
 			for (OfertaLaboral oferta: ofertas.values()) {
-				if (oferta.getNickEmpresa().equals(filter) && oferta.estaConfirmada() && oferta.estaVigente()) {
+				if(nickUsuario != null && oferta.getNickEmpresa().equals(nickUsuario)) {
+					listaOfertas.add(oferta.getDataType());
+				} else if (oferta.getNickEmpresa().equals(filter) && oferta.estaConfirmada() && oferta.estaVigente()) {
 					listaOfertas.add(oferta.getDataType());
 				}
 			}	
 		} else if (isNombreOferta(filter)) {
 			for (OfertaLaboral oferta: ofertas.values()) {
-				if (oferta.getNombre().equals(filter) && oferta.estaConfirmada() && oferta.estaVigente()) {
+				if(nickUsuario != null && oferta.getNickEmpresa().equals(nickUsuario)) {
+					listaOfertas.add(oferta.getDataType());
+				} else if (oferta.getNombre().equals(filter) && oferta.estaConfirmada() && oferta.estaVigente()) {
 					listaOfertas.add(oferta.getDataType());
 				}
 			}

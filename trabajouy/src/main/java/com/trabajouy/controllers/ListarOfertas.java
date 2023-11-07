@@ -31,15 +31,16 @@ public class ListarOfertas extends HttpServlet {
 		
 		DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 		
-		if(usuario != null && usuario instanceof DataEmpresa) {
-			
+		String nicknameFilter = "";
+		if(usuario != null) {
+			nicknameFilter = usuario.getNickname();
+		}
+		if (filter != null && !filter.equals("")) {
+			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasByFilter(filter, nicknameFilter).getListaDtOfertas();
 		} else {
-			if (filter != null && !filter.equals("")) {
-				listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasByFilter(filter).getListaDtOfertas();
-			} else {
-				listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasConfirmadasNoExpiradas().getListaDtOfertas();
-			}
-		}	
+			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasConfirmadasNoExpiradas(nicknameFilter).getListaDtOfertas();
+		}
+
 		request.setAttribute("lista_ofertas", listaOfertas);
 		request.getRequestDispatcher("/WEB-INF/ofertas/listadoOfertas.jsp").forward(request, response);
 	}
