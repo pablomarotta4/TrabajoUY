@@ -144,6 +144,10 @@ public class OfertaLaboral {
 	
 	public List<Keyword> getKeywords(){
 		return this.keywords;
+	} 
+	
+	public TipoPublicacion getTipo() {
+		return this.tipo;
 	}
 }
 

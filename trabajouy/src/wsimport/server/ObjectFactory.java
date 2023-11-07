@@ -128,16 +128,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayList }
-     * 
-     * @return
-     *     the new instance of {@link ArrayList }
-     */
-    public ArrayList createArrayList() {
-        return new ArrayList();
-    }
-
-    /**
      * Create an instance of {@link DtOfertaLaboral }
      * 
      * @return
@@ -165,6 +155,16 @@ public class ObjectFactory {
      */
     public DataUsuario createDataUsuario() {
         return new DataUsuario();
+    }
+
+    /**
+     * Create an instance of {@link ArrayList }
+     * 
+     * @return
+     *     the new instance of {@link ArrayList }
+     */
+    public ArrayList createArrayList() {
+        return new ArrayList();
     }
 
     /**

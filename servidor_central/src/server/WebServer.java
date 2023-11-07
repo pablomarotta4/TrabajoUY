@@ -250,6 +250,10 @@ public class WebServer {
 		return ctrlOferta.listarDtOfertas();
 	}
     @WebMethod
+    public CollectionBean listarDtOfertasConfirmadasNoExpiradas() {
+    	return ctrlOferta.listarDtOfertasConfirmadasNoExpiradas();
+    }
+    @WebMethod
 	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter){
 		return ctrlOferta.listarDtOfertasByFilter(filter);
 	}

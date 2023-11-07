@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import server.DataUsuario;
 import server.DtOfertaLaboral;
 
 
@@ -26,12 +27,18 @@ public class ListarOfertas extends HttpServlet {
 		server.WebServerService servicio = new server.WebServerService();
 		server.WebServer port = servicio.getWebServerPort();
 		ArrayList<DtOfertaLaboral> listaOfertas = null;
-		if (filter != null && !filter.equals("")) {
-			//listaOfertas = port.listarDtOfertasByFilter(filter);
-		} else {
-			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertas().getListaDtOfertas();
-		}
 		
+		DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
+		
+		if(usuario != null) {
+			
+		} else {
+			if (filter != null && !filter.equals("")) {
+				//listaOfertas = port.listarDtOfertasByFilter(filter);
+			} else {
+				listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasConfirmadasNoExpiradas().getListaDtOfertas();
+			}
+		}	
 		request.setAttribute("lista_ofertas", listaOfertas);
 		request.getRequestDispatcher("/WEB-INF/ofertas/listadoOfertas.jsp").forward(request, response);
 	}

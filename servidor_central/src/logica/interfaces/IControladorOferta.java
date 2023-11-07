@@ -45,6 +45,7 @@ public interface IControladorOferta {
 	public void confirmarOferta(String nombreOferta);
 	public void rechazarOferta(String nombreOferta);
 	public CollectionBean listarDtOfertas();
+	public CollectionBean listarDtOfertasConfirmadasNoExpiradas();
 	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter);
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta);
 	public boolean estaPostulado(String nick, String nombreOferta);

@@ -619,7 +619,7 @@ public class MainFrame {
 					65000, 
 					"Rosario", 
 					"Colonia", 
-					LocalDate.of(2023, 9, 29),
+					LocalDate.of(2023, 10, 29),
 					imagePath + "diseñador_ux_ui.jpg",
 					keywords
 			);
@@ -639,7 +639,7 @@ public class MainFrame {
 					40000, 
 					"Maldonado", 
 					"Maldonado", 
-					LocalDate.of(2023, 9, 19),
+					LocalDate.of(2023, 10, 19),
 					imagePath + "analista_de_datos.jpg",
 					keywords
 			);
@@ -660,7 +660,7 @@ public class MainFrame {
 					10000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 2),
+					LocalDate.of(2023, 10, 20),
 					imagePath + "content_manager.jpg",
 					keywords
 			);
@@ -680,7 +680,7 @@ public class MainFrame {
 					30000, 
 					"Minas", 
 					"Lavalleja",
-					LocalDate.of(2023, 9, 10),
+					LocalDate.of(2023, 11, 2),
 					imagePath + "soporte_tecnico.jpg",
 					keywords
 			);
@@ -697,7 +697,7 @@ public class MainFrame {
 					80000, 
 					"Flores", 
 					"Flores", 
-					LocalDate.of(2023, 9, 21),
+					LocalDate.of(2023, 11, 2),
 					imagePath + "analista_de_marketing_digital.jpg",
 					new ArrayList<String>()
 			);
@@ -714,7 +714,7 @@ public class MainFrame {
 					100000, 
 					"Colonia Suiza", 
 					"Colonia", 
-					LocalDate.of(2023, 10, 2),
+					LocalDate.of(2023, 11, 4),
 					imagePath + "contador_senior.jpg",
 					new ArrayList<String>()
 			);
@@ -738,7 +738,7 @@ public class MainFrame {
 					40000, 
 					"Paysandú", 
 					"Paysandú", 
-					LocalDate.of(2023, 9, 29),
+					LocalDate.of(2023, 10, 29),
 					imagePath + "tecnico_de_red.jpg",
 					keywords
 			);
@@ -761,7 +761,7 @@ public class MainFrame {
 					123000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 2),
+					LocalDate.of(2023, 11, 4),
 					imagePath + "desarrollador_de_software_senior.jpg",
 					keywords
 			);
@@ -781,7 +781,7 @@ public class MainFrame {
 					135000, 
 					"Río Negro", 
 					"Fray Bentos", 
-					LocalDate.of(2023, 9, 25),
+					LocalDate.of(2023, 10, 25),
 					imagePath + "desarrollador_de_software_full_stack.jpg",
 					keywords
 			);
@@ -803,7 +803,7 @@ public class MainFrame {
 					230000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 2),
+					LocalDate.of(2023, 11, 5),
 					imagePath + "gerente_de_proyectos.jpg",
 					keywords
 			);
@@ -824,7 +824,7 @@ public class MainFrame {
 					60000, 
 					"Montevideo", 
 					"Montevideo", 
-					LocalDate.of(2023, 10, 1),
+					LocalDate.of(2023, 11, 1),
 					imagePath + "ingeniero_de_calidad_de_software.jpg",
 					keywords
 			);

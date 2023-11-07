@@ -237,6 +237,27 @@ public class ControladorOferta implements IControladorOferta{
 		return listaOfertas;
 	}
 	
+	// Trae los DtOfertas que no hayan expirado y esten confirmadas
+	public CollectionBean listarDtOfertasConfirmadasNoExpiradas() {
+		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
+		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
+		for (OfertaLaboral oferta : ofertasExistentes.values()) {
+			LocalDate fechaOferta = oferta.getFecha();
+			int duracion = oferta.getTipo().getDuracion();
+			System.out.println("oferta: " + oferta.getNombre());
+			System.out.println("fecha: " + fechaOferta.toString());
+			System.out.println("duracion: " + duracion);
+			System.out.println("hoy: " + LocalDate.now().toString());
+			if(fechaOferta.plusDays(duracion).isAfter(LocalDate.now()) && oferta.getEstado().equals(EstadoOferta.CONFIRMADA)) {
+				System.out.println("entro");
+				listaOfertas.add(oferta.getDataType());							
+			}	
+		}
+		CollectionBean ret = new CollectionBean();
+		ret.setListaDtOfertas(listaOfertas);
+		return ret;
+	}
+	
 	public CollectionBean listarDtOfertas(){
 		ArrayList<DtOfertaLaboral> listaOfertas = new ArrayList<>();
 		HashMap<String, OfertaLaboral> ofertasExistentes = this.manejadorOferta.getOfertas();
