@@ -6,8 +6,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import server.CollectionBean;
 import server.DataTipoPublicacion;
 
 
@@ -27,8 +29,9 @@ public class ListarTipos extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		server.WebServer port = new server.WebServerService().getWebServerPort();
-//		Map<String, DataTipoPublicacion> mapTipos = port.getDataTiposPublicacion().get;
-//		request.setAttribute("map_tipos", mapTipos);
+//		CollectionBean collection = port.listarTiposPublicacion();
+//		List<String> listaTipos = collection.getListaStrings();
+//		request.setAttribute("map_tipos", listaTipos);
 //		request.getRequestDispatcher("/WEB-INF/tipos/listadoTipos.jsp").forward(request, response);
 	}
 

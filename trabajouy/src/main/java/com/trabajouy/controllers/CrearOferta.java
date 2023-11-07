@@ -104,7 +104,7 @@ public class CrearOferta extends HttpServlet {
 						Float.parseFloat(remuneracion),
 						ciudad, 
 						departamento, 
-						"", 
+						LocalDate.now().toString(), 
 						File.separator +  "images"  + File.separator + nombreOferta + ".jpg", 
 						collection
 					);

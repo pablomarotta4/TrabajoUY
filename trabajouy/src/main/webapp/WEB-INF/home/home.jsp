@@ -49,7 +49,6 @@
             <div class="menu-item"><a href="ofertas">Ofertas</a></div>
 
             <div class="menu-item"><a href="listadoTipos">Tipos</a></div>
-            <div class="menu-item"><a href="/trabajouy/datosDePrueba">Cargar datos</a></div>
        </div>
         <div class="main">
             <div class="logo-container">
