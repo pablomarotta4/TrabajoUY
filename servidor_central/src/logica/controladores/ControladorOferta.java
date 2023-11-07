@@ -60,7 +60,6 @@ public class ControladorOferta implements IControladorOferta{
 		
 		Empresa empresa = this.ctrlUsuario.getEmpresa(nickEmpresa);
 		
-		
 		if (empresa == null) {
 			throw new ElementoInexistenteException("No existe una empresa con nickname " + nickEmpresa);
 		}

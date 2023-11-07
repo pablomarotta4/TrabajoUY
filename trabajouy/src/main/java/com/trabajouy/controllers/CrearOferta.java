@@ -94,11 +94,11 @@ public class CrearOferta extends HttpServlet {
 				listaKeywords.add(keyword);
 			}
 		}
-		
+		collection.getListaStrings().clear();
 		for(String keyword : listaKeywords) {
 			collection.getListaStrings().add(keyword);
 		}
-		
+
 		try {
 			DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 			if (usuario != null) {
