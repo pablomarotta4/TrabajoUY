@@ -309,7 +309,6 @@ public class ControladorOferta implements IControladorOferta{
 				}
 			}
 		}
-		System.out.println("size: " + listaOfertas.size());
 		return listaOfertas;
 	}
 	

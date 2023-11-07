@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import server.DataEmpresa;
 import server.DataUsuario;
 import server.DtOfertaLaboral;
 
@@ -30,7 +31,7 @@ public class ListarOfertas extends HttpServlet {
 		
 		DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 		
-		if(usuario != null) {
+		if(usuario != null && usuario instanceof DataEmpresa) {
 			
 		} else {
 			if (filter != null && !filter.equals("")) {
