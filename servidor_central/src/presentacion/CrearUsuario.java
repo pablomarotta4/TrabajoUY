@@ -61,43 +61,44 @@ public class CrearUsuario extends JInternalFrame{
         JPanel NorthPanel = new JPanel();
         getContentPane().add(NorthPanel, BorderLayout.NORTH);
         GridBagLayout gbl_NorthPanel = new GridBagLayout();
-        gbl_NorthPanel.columnWidths = new int[] {30, 71, 90, 90, 90, 29, 35, 4};
-        gbl_NorthPanel.rowHeights = new int[]{40, 36, 36, 36, 0};
-        gbl_NorthPanel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-        gbl_NorthPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_NorthPanel.columnWidths = new int[] {30, 150, 250, 90, 90, 29, 35, 4};
+        gbl_NorthPanel.rowHeights = new int[]{0, 40, 36, 36, 0, 0, 36, 0};
+        gbl_NorthPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+        gbl_NorthPanel.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         NorthPanel.setLayout(gbl_NorthPanel);
         
-        JLabel TipoUsuarioText = new JLabel("Seleccione tipo de usuario: ");
+        JLabel TipoUsuarioText = new JLabel("Seleccione el Tipo de Usuario:");
         TipoUsuarioText.setHorizontalAlignment(SwingConstants.LEFT);
         GridBagConstraints gbc_TipoUsuarioText = new GridBagConstraints();
-        gbc_TipoUsuarioText.anchor = GridBagConstraints.WEST;
-        gbc_TipoUsuarioText.gridwidth = 2;
+        gbc_TipoUsuarioText.anchor = GridBagConstraints.EAST;
         gbc_TipoUsuarioText.insets = new Insets(0, 0, 5, 5);
         gbc_TipoUsuarioText.gridx = 1;
-        gbc_TipoUsuarioText.gridy = 0;
+        gbc_TipoUsuarioText.gridy = 1;
         NorthPanel.add(TipoUsuarioText, gbc_TipoUsuarioText);
         
+        JPanel panel = new JPanel();
+        GridBagConstraints gbc_panel = new GridBagConstraints();
+        gbc_panel.insets = new Insets(0, 0, 5, 5);
+        gbc_panel.fill = GridBagConstraints.BOTH;
+        gbc_panel.gridx = 2;
+        gbc_panel.gridy = 1;
+        NorthPanel.add(panel, gbc_panel);
+        
         JRadioButton EmpresaButton = new JRadioButton("Empresa");
-        GridBagConstraints gbc_EmpresaButton = new GridBagConstraints();
-        gbc_EmpresaButton.insets = new Insets(0, 0, 5, 5);
-        gbc_EmpresaButton.gridx = 3;
-        gbc_EmpresaButton.gridy = 0;
-        NorthPanel.add(EmpresaButton, gbc_EmpresaButton);
+        panel.add(EmpresaButton);
         
         JRadioButton PostulanteButton = new JRadioButton("Postulante");
-        GridBagConstraints gbc_PostulanteButton = new GridBagConstraints();
-        gbc_PostulanteButton.insets = new Insets(0, 0, 5, 5);
-        gbc_PostulanteButton.gridx = 4;
-        gbc_PostulanteButton.gridy = 0;
-        NorthPanel.add(PostulanteButton, gbc_PostulanteButton);
+        panel.add(PostulanteButton);
+        
+
         
         JLabel nickText = new JLabel("Nickname:");
         nickText.setHorizontalAlignment(SwingConstants.LEFT);
         GridBagConstraints gbc_nickText = new GridBagConstraints();
-        gbc_nickText.anchor = GridBagConstraints.WEST;
+        gbc_nickText.anchor = GridBagConstraints.EAST;
         gbc_nickText.insets = new Insets(0, 0, 5, 5);
         gbc_nickText.gridx = 1;
-        gbc_nickText.gridy = 1;
+        gbc_nickText.gridy = 2;
         NorthPanel.add(nickText, gbc_nickText);
         
         nicknameField = new JTextField();
@@ -105,15 +106,50 @@ public class CrearUsuario extends JInternalFrame{
         gbc_nicknameField.insets = new Insets(0, 0, 5, 5);
         gbc_nicknameField.fill = GridBagConstraints.HORIZONTAL;
         gbc_nicknameField.gridx = 2;
-        gbc_nicknameField.gridy = 1;
+        gbc_nicknameField.gridy = 2;
         NorthPanel.add(nicknameField, gbc_nicknameField);
         nicknameField.setColumns(10);
         
-        JLabel contraseniaText = new JLabel("Contraseña:");
+        JLabel nombreText = new JLabel("Nombre:");
+        GridBagConstraints gbc_nombreText = new GridBagConstraints();
+        gbc_nombreText.anchor = GridBagConstraints.EAST;
+        gbc_nombreText.insets = new Insets(0, 0, 5, 5);
+        gbc_nombreText.gridx = 1;
+        gbc_nombreText.gridy = 3;
+        NorthPanel.add(nombreText, gbc_nombreText);
+        
+        nombreField = new JTextField();
+        GridBagConstraints gbc_nombreField = new GridBagConstraints();
+        gbc_nombreField.insets = new Insets(0, 0, 5, 5);
+        gbc_nombreField.fill = GridBagConstraints.HORIZONTAL;
+        gbc_nombreField.gridx = 2;
+        gbc_nombreField.gridy = 3;
+        NorthPanel.add(nombreField, gbc_nombreField);
+        nombreField.setColumns(10);
+        
+        JLabel apellidoText = new JLabel("Apellido:");
+        GridBagConstraints gbc_apellidoText = new GridBagConstraints();
+        gbc_apellidoText.anchor = GridBagConstraints.EAST;
+        gbc_apellidoText.insets = new Insets(0, 0, 5, 5);
+        gbc_apellidoText.gridx = 1;
+        gbc_apellidoText.gridy = 4;
+        NorthPanel.add(apellidoText, gbc_apellidoText);
+        
+        apellidoField = new JTextField();
+        GridBagConstraints gbc_apellidoField = new GridBagConstraints();
+        gbc_apellidoField.insets = new Insets(0, 0, 5, 5);
+        gbc_apellidoField.fill = GridBagConstraints.HORIZONTAL;
+        gbc_apellidoField.gridx = 2;
+        gbc_apellidoField.gridy = 4;
+        NorthPanel.add(apellidoField, gbc_apellidoField);
+        apellidoField.setColumns(10);
+        
+        JLabel contraseniaText = new JLabel("Password:");
         GridBagConstraints gbc_contraseniaText = new GridBagConstraints();
+        gbc_contraseniaText.anchor = GridBagConstraints.EAST;
         gbc_contraseniaText.insets = new Insets(0, 0, 5, 5);
-        gbc_contraseniaText.gridx = 3;
-        gbc_contraseniaText.gridy = 1;
+        gbc_contraseniaText.gridx = 1;
+        gbc_contraseniaText.gridy = 5;
         contraseniaText.setVisible(true);
         NorthPanel.add(contraseniaText, gbc_contraseniaText);
         
@@ -122,59 +158,25 @@ public class CrearUsuario extends JInternalFrame{
         GridBagConstraints gbc_contraseñaField = new GridBagConstraints();
         gbc_contraseñaField.insets = new Insets(0, 0, 5, 5);
         gbc_contraseñaField.fill = GridBagConstraints.HORIZONTAL;
-        gbc_contraseñaField.gridx = 4;
-        gbc_contraseñaField.gridy = 1;
+        gbc_contraseñaField.gridx = 2;
+        gbc_contraseñaField.gridy = 5;
         contraseñaField.setVisible(true);
         NorthPanel.add(contraseñaField, gbc_contraseñaField);
         
-        JLabel nombreText = new JLabel("Nombre:");
-        GridBagConstraints gbc_nombreText = new GridBagConstraints();
-        gbc_nombreText.anchor = GridBagConstraints.WEST;
-        gbc_nombreText.insets = new Insets(0, 0, 5, 5);
-        gbc_nombreText.gridx = 1;
-        gbc_nombreText.gridy = 2;
-        NorthPanel.add(nombreText, gbc_nombreText);
-        
-        nombreField = new JTextField();
-        GridBagConstraints gbc_nombreField = new GridBagConstraints();
-        gbc_nombreField.insets = new Insets(0, 0, 5, 5);
-        gbc_nombreField.fill = GridBagConstraints.HORIZONTAL;
-        gbc_nombreField.gridx = 2;
-        gbc_nombreField.gridy = 2;
-        NorthPanel.add(nombreField, gbc_nombreField);
-        nombreField.setColumns(10);
-        
-        JLabel apellidoText = new JLabel("Apellido:");
-        GridBagConstraints gbc_apellidoText = new GridBagConstraints();
-        gbc_apellidoText.insets = new Insets(0, 0, 5, 5);
-        gbc_apellidoText.gridx = 3;
-        gbc_apellidoText.gridy = 2;
-        NorthPanel.add(apellidoText, gbc_apellidoText);
-        
-        apellidoField = new JTextField();
-        GridBagConstraints gbc_apellidoField = new GridBagConstraints();
-        gbc_apellidoField.insets = new Insets(0, 0, 5, 5);
-        gbc_apellidoField.fill = GridBagConstraints.HORIZONTAL;
-        gbc_apellidoField.gridx = 4;
-        gbc_apellidoField.gridy = 2;
-        NorthPanel.add(apellidoField, gbc_apellidoField);
-        apellidoField.setColumns(10);
-        
         JLabel emailText = new JLabel("Email:");
         GridBagConstraints gbc_emailText = new GridBagConstraints();
-        gbc_emailText.anchor = GridBagConstraints.WEST;
+        gbc_emailText.anchor = GridBagConstraints.EAST;
         gbc_emailText.insets = new Insets(0, 0, 0, 5);
         gbc_emailText.gridx = 1;
-        gbc_emailText.gridy = 3;
+        gbc_emailText.gridy = 6;
         NorthPanel.add(emailText, gbc_emailText);
         
         emailField = new JTextField();
         GridBagConstraints gbc_emailField = new GridBagConstraints();
-        gbc_emailField.gridwidth = 2;
         gbc_emailField.insets = new Insets(0, 0, 0, 5);
         gbc_emailField.fill = GridBagConstraints.HORIZONTAL;
         gbc_emailField.gridx = 2;
-        gbc_emailField.gridy = 3;
+        gbc_emailField.gridy = 6;
         NorthPanel.add(emailField, gbc_emailField);
         emailField.setColumns(10);
         
@@ -261,27 +263,29 @@ public class CrearUsuario extends JInternalFrame{
         
         empresaPanel.setVisible(false);
         postulantePanel.setVisible(false);
+
+
+
+                PostulanteButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                    	TipoUsuario = "Postulante";
+                    	postulantePanel.setVisible(true);
+                    	empresaPanel.setVisible(false);
+                        EmpresaButton.setSelected(false);
+                    }
+                });
         
         
         
-        EmpresaButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { 
-            	TipoUsuario = "Empresa";
-                empresaPanel.setVisible(true);
-                postulantePanel.setVisible(false);
-                PostulanteButton.setSelected(false);  
-                empresaPanel.setSize(225,225);
-            }
-        });
-        
-        PostulanteButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	TipoUsuario = "Postulante";
-            	postulantePanel.setVisible(true);
-            	empresaPanel.setVisible(false);
-                EmpresaButton.setSelected(false);
-            }
-        });
+                EmpresaButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) { 
+                    	TipoUsuario = "Empresa";
+                        empresaPanel.setVisible(true);
+                        postulantePanel.setVisible(false);
+                        PostulanteButton.setSelected(false);  
+                        empresaPanel.setSize(225,225);
+                    }
+                });
         
         postulantePanel.setBounds(3, 3, 450, 250);
         empresaPanel.setBounds(3, 3, 450, 250);
