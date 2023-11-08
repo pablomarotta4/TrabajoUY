@@ -81,7 +81,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         setBounds(10, 40, 750, 600);
         
         GridBagLayout gridBagLayout = new GridBagLayout();
-        gridBagLayout.columnWidths = new int[]{50, 170, 200, 50};
+        gridBagLayout.columnWidths = new int[]{10, 170, 200, 100};
         gridBagLayout.rowHeights = new int[]{30, 30, 30, 90, 30, 30, 30, 30, 30, 30, 30, 30, 30};
         gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0};
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
