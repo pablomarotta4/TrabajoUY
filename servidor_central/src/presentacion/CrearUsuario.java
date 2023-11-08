@@ -332,6 +332,9 @@ public class CrearUsuario extends JInternalFrame{
                         icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(),"", nacionalidadField.getText(), fecha );
                     }
                     
+                    if (TipoUsuario.isEmpty()) {
+                    	throw new CamposVaciosExcepcion("Seleccione tipo de usuario");
+                    }
                     JOptionPane.showMessageDialog(CrearUsuario.this, "Usuario creado exitosamente");
                     
                    
