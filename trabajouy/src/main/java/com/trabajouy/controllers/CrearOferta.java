@@ -82,10 +82,13 @@ public class CrearOferta extends HttpServlet {
         }
         
 		Part image = request.getPart("imageFile");		
-		String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
-		File targetFile = new File(path + nombreOferta + ".jpg");
-		Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-
+		if(image != null) {
+			String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
+			File targetFile = new File(path + nombreOferta + ".jpg");
+			if(targetFile.exists()) {
+				Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);	
+			}			
+		}
 		ArrayList<String> listaKeywords = new ArrayList<>();
 		
 		for (String keyword : keywordsEnSistema) {

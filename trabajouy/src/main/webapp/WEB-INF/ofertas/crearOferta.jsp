@@ -108,18 +108,7 @@
 					%>
 					</div>		
 				</div>
-				<div class="form-element">
-					<div>
-						<label>Forma de pago</label>
-					</div>
-					<div>
-						<label for="">General</label> <input type="radio" name="pay"
-							checked="checked">
-					</div>
-					<div>
-						<label for="">Con paquete</label> <input type="radio" name="pay">
-					</div>
-				</div>
+			
 				<div class="pago-paquete"></div>
 				<div class="buttons">
 					<button type="submit">Crear</button>
