@@ -66,23 +66,35 @@ public class CrearTipoPublicacion extends JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setClosable(true);
-        setBounds(10, 40, 500, 354);
-		
-		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.SOUTH);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        setBounds(10, 40, 500, 398);
 
 		
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0};
-		gbl_panel_1.rowHeights = new int[]{0, 0, 122, 0, 0, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWidths = new int[]{50, 0, 100, 0, 50, 0};
+		gbl_panel_1.rowHeights = new int[]{50, 0, 122, 0, 0, 0, 0, 50, 0, 0};
+		gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		JLabel lblNewLabel = new JLabel("Nombre");
+		JPanel panel_4 = new JPanel();
+		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
+		gbc_panel_4.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_4.fill = GridBagConstraints.BOTH;
+		gbc_panel_4.gridx = 0;
+		gbc_panel_4.gridy = 0;
+		panel_1.add(panel_4, gbc_panel_4);
+		
+		JPanel panel_3 = new JPanel();
+		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+		gbc_panel_3.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_3.fill = GridBagConstraints.BOTH;
+		gbc_panel_3.gridx = 4;
+		gbc_panel_3.gridy = 0;
+		panel_1.add(panel_3, gbc_panel_3);
+		
+		JLabel lblNewLabel = new JLabel("Nombre:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -92,14 +104,14 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		
 		textNombre = new JTextField();
 		GridBagConstraints gbc_textNombre = new GridBagConstraints();
-		gbc_textNombre.insets = new Insets(0, 0, 5, 0);
-		gbc_textNombre.anchor = GridBagConstraints.WEST;
-		gbc_textNombre.gridx = 3;
+		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_textNombre.gridx = 2;
 		gbc_textNombre.gridy = 1;
 		panel_1.add(textNombre, gbc_textNombre);
 		textNombre.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Descripcion");
+		JLabel lblNewLabel_1 = new JLabel("Descripcion:");
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHEAST;
@@ -110,17 +122,17 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 3;
+		gbc_scrollPane.gridx = 2;
 		gbc_scrollPane.gridy = 2;
 		panel_1.add(scrollPane, gbc_scrollPane);
 		
-		JTextArea textDescripcion = new JTextArea();
-		textDescripcion.setLineWrap(true);
-		scrollPane.setViewportView(textDescripcion);
+		JTextArea textDescripcion_1 = new JTextArea();
+		scrollPane.setViewportView(textDescripcion_1);
+		textDescripcion_1.setLineWrap(true);
 		
-		JLabel lblNewLabel_2 = new JLabel("Exposicion");
+		JLabel lblNewLabel_2 = new JLabel("Exposicion:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
@@ -130,14 +142,14 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		
 		textExposicion = new JTextField();
 		GridBagConstraints gbc_textExposicion = new GridBagConstraints();
-		gbc_textExposicion.anchor = GridBagConstraints.WEST;
-		gbc_textExposicion.insets = new Insets(0, 0, 5, 0);
-		gbc_textExposicion.gridx = 3;
+		gbc_textExposicion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textExposicion.insets = new Insets(0, 0, 5, 5);
+		gbc_textExposicion.gridx = 2;
 		gbc_textExposicion.gridy = 3;
 		panel_1.add(textExposicion, gbc_textExposicion);
 		textExposicion.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Duracion (dias)");
+		JLabel lblNewLabel_3 = new JLabel("Duracion (dias):");
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
@@ -147,14 +159,14 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		
 		textDuracion = new JTextField();
 		GridBagConstraints gbc_textDuracion = new GridBagConstraints();
-		gbc_textDuracion.anchor = GridBagConstraints.WEST;
-		gbc_textDuracion.insets = new Insets(0, 0, 5, 0);
-		gbc_textDuracion.gridx = 3;
+		gbc_textDuracion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textDuracion.insets = new Insets(0, 0, 5, 5);
+		gbc_textDuracion.gridx = 2;
 		gbc_textDuracion.gridy = 4;
 		panel_1.add(textDuracion, gbc_textDuracion);
 		textDuracion.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Costo");
+		JLabel lblNewLabel_4 = new JLabel("Costo:");
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
@@ -164,9 +176,9 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		
 		textCosto = new JTextField();
 		GridBagConstraints gbc_textCosto = new GridBagConstraints();
-		gbc_textCosto.anchor = GridBagConstraints.WEST;
-		gbc_textCosto.insets = new Insets(0, 0, 5, 0);
-		gbc_textCosto.gridx = 3;
+		gbc_textCosto.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textCosto.insets = new Insets(0, 0, 5, 5);
+		gbc_textCosto.gridx = 2;
 		gbc_textCosto.gridy = 5;
 		panel_1.add(textCosto, gbc_textCosto);
 		textCosto.setColumns(10);
@@ -174,15 +186,16 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		JLabel lblNewLabel_5 = new JLabel("Fecha de Alta:");
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_5.gridx = 1;
 		gbc_lblNewLabel_5.gridy = 6;
 		panel_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
 		
 		JPanel panel_2 = new JPanel();
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_2.anchor = GridBagConstraints.WEST;
-		gbc_panel_2.gridx = 3;
+		gbc_panel_2.gridx = 2;
 		gbc_panel_2.gridy = 6;
 		panel_1.add(panel_2, gbc_panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -208,6 +221,15 @@ public class CrearTipoPublicacion extends JInternalFrame {
 		panel_2.add(textAnio);
 		textAnio.setColumns(5);
 		
+		JPanel panel = new JPanel();
+		GridBagConstraints gbc_panel = new GridBagConstraints();
+		gbc_panel.gridwidth = 2;
+		gbc_panel.insets = new Insets(0, 0, 0, 5);
+		gbc_panel.gridx = 1;
+		gbc_panel.gridy = 8;
+		panel_1.add(panel, gbc_panel);
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
 		
 		JButton botonAceptar = new JButton("Aceptar");
 		
@@ -221,7 +243,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
         			
         			
         			String valorTextNombre = textNombre.getText();
-        			String valorTextDescripcion = textDescripcion.getText();
+        			String valorTextDescripcion = textDescripcion_1.getText();
         			
         			String valorTextExposicion = textExposicion.getText();
         			int numTextExposicion = Integer.parseInt(valorTextExposicion);
