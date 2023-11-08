@@ -31,7 +31,6 @@ public class ListarTipos extends HttpServlet {
 		server.WebServer port = new server.WebServerService().getWebServerPort();
 		CollectionBean collection = port.getDataTiposPublicacion();
 		List<DataTipoPublicacion> listaTipos = collection.getListaDataTipoPublicacion();
-		System.out.println(listaTipos);
 		request.setAttribute("map_tipos", listaTipos);
 		request.getRequestDispatcher("/WEB-INF/tipos/listadoTipos.jsp").forward(request, response);
 	}
