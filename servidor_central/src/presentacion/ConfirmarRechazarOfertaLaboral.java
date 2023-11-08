@@ -38,7 +38,7 @@ public class ConfirmarRechazarOfertaLaboral extends JInternalFrame {
         setTitle("Confirmar/Rechazar Oferta Laboral");
         GridBagLayout gridBagLayout = new GridBagLayout();
         gridBagLayout.columnWidths = new int[]{10, 85, 300, 10, 0};
-        gridBagLayout.rowHeights = new int[]{10, 0, 0, 10, 0, 0};
+        gridBagLayout.rowHeights = new int[]{50, 0, 0, 10, 0, 0};
         gridBagLayout.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         getContentPane().setLayout(gridBagLayout);
