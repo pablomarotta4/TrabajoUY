@@ -25,7 +25,6 @@ public class Postulacion extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("postulacion");
 		HttpSession sesion = request.getSession();
 		EstadoSesion estadoSesion = (EstadoSesion) sesion.getAttribute("estado_sesion");
 		if (estadoSesion.equals(EstadoSesion.LOGIN_CORRECTO)) {
@@ -42,7 +41,6 @@ public class Postulacion extends HttpServlet {
                 			DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 			String fechaFormateada = fechaActual.format(formatoFecha);
                 			request.setAttribute("fechaActual", fechaFormateada);
-                	        System.out.println("here");
                 			request.getRequestDispatcher("WEB-INF/ofertas/postularse.jsp").forward(request, response);
         			}
 		    	} else if (port.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataEmpresa){
