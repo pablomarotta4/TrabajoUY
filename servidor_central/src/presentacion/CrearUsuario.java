@@ -324,6 +324,12 @@ public class CrearUsuario extends JInternalFrame{
         ConfirmarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	try {
+            		if (contraseñaField.getText().isEmpty()) {
+                       	throw new CamposVaciosExcepcion("Ingrese una contraseña");
+            		}
+            		if (TipoUsuario.equals("Postulante") && nacionalidadField.getText().isEmpty()) {
+                       	throw new CamposVaciosExcepcion("Ingrese la nacionalidad");
+            		}
                     if (TipoUsuario.equals("Empresa")) {
                         icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(),"", descripcionArea.getText(), linkField.getText());
                     } else if (TipoUsuario.equals("Postulante")) {
