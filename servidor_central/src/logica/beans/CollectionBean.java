@@ -14,7 +14,7 @@ public class CollectionBean {
 	
 	private ArrayList<DtOfertaLaboral> listaDtOfertas = new ArrayList<>();
 	private ArrayList<String> listaStrings = new ArrayList<>();
-	private HashMap<String, DataTipoPublicacion> listaDataTipoPublicacion = new HashMap<>();
+	private ArrayList<DataTipoPublicacion> listaDataTipoPublicacion = new ArrayList<>();
 	private ArrayList<DataUsuario> listaDataUsuarios = new ArrayList<>();
 	
 	public CollectionBean() {
@@ -39,11 +39,11 @@ public class CollectionBean {
 	}
 	
 	// Lista DataTipoPublicacion
-	public HashMap<String, DataTipoPublicacion> getListaDataTipoPublicacion(){
+	public ArrayList<DataTipoPublicacion> getListaDataTipoPublicacion(){
 		return this.listaDataTipoPublicacion;
 	}
-	public void setListaDataTipoPublicacion(HashMap<String, DataTipoPublicacion> map) {
-		this.listaDataTipoPublicacion = map;
+	public void setListaDataTipoPublicacion(ArrayList<DataTipoPublicacion> list) {
+		this.listaDataTipoPublicacion = list;
 	}
 
 	// Lista DataUsuario

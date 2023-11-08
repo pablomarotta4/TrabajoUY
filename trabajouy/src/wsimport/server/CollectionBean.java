@@ -21,28 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="listaDtOfertas" type="{http://server/}dtOfertaLaboral" maxOccurs="unbounded" minOccurs="0"/>
  *         <element name="listaStrings" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
- *         <element name="listaDataTipoPublicacion">
- *           <complexType>
- *             <complexContent>
- *               <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 <sequence>
- *                   <element name="entry" maxOccurs="unbounded" minOccurs="0">
- *                     <complexType>
- *                       <complexContent>
- *                         <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                           <sequence>
- *                             <element name="key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *                             <element name="value" type="{http://server/}dataTipoPublicacion" minOccurs="0"/>
- *                           </sequence>
- *                         </restriction>
- *                       </complexContent>
- *                     </complexType>
- *                   </element>
- *                 </sequence>
- *               </restriction>
- *             </complexContent>
- *           </complexType>
- *         </element>
+ *         <element name="listaDataTipoPublicacion" type="{http://server/}dataTipoPublicacion" maxOccurs="unbounded" minOccurs="0"/>
  *         <element name="listaDataUsuarios" type="{http://server/}dataUsuario" maxOccurs="unbounded" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
@@ -65,8 +44,8 @@ public class CollectionBean {
     protected List<DtOfertaLaboral> listaDtOfertas;
     @XmlElement(nillable = true)
     protected List<String> listaStrings;
-    @XmlElement(required = true)
-    protected CollectionBean.ListaDataTipoPublicacion listaDataTipoPublicacion;
+    @XmlElement(nillable = true)
+    protected List<DataTipoPublicacion> listaDataTipoPublicacion;
     @XmlElement(nillable = true)
     protected List<DataUsuario> listaDataUsuarios;
 
@@ -133,27 +112,34 @@ public class CollectionBean {
     }
 
     /**
-     * Obtiene el valor de la propiedad listaDataTipoPublicacion.
+     * Gets the value of the listaDataTipoPublicacion property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a {@code set} method for the listaDataTipoPublicacion property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getListaDataTipoPublicacion().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link DataTipoPublicacion }
+     * 
      * 
      * @return
-     *     possible object is
-     *     {@link CollectionBean.ListaDataTipoPublicacion }
-     *     
+     *     The value of the listaDataTipoPublicacion property.
      */
-    public CollectionBean.ListaDataTipoPublicacion getListaDataTipoPublicacion() {
-        return listaDataTipoPublicacion;
-    }
-
-    /**
-     * Define el valor de la propiedad listaDataTipoPublicacion.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link CollectionBean.ListaDataTipoPublicacion }
-     *     
-     */
-    public void setListaDataTipoPublicacion(CollectionBean.ListaDataTipoPublicacion value) {
-        this.listaDataTipoPublicacion = value;
+    public List<DataTipoPublicacion> getListaDataTipoPublicacion() {
+        if (listaDataTipoPublicacion == null) {
+            listaDataTipoPublicacion = new ArrayList<>();
+        }
+        return this.listaDataTipoPublicacion;
     }
 
     /**
@@ -185,159 +171,6 @@ public class CollectionBean {
             listaDataUsuarios = new ArrayList<>();
         }
         return this.listaDataUsuarios;
-    }
-
-
-    /**
-     * <p>Clase Java para anonymous complex type.
-     * 
-     * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
-     * 
-     * <pre>{@code
-     * <complexType>
-     *   <complexContent>
-     *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       <sequence>
-     *         <element name="entry" maxOccurs="unbounded" minOccurs="0">
-     *           <complexType>
-     *             <complexContent>
-     *               <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                 <sequence>
-     *                   <element name="key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-     *                   <element name="value" type="{http://server/}dataTipoPublicacion" minOccurs="0"/>
-     *                 </sequence>
-     *               </restriction>
-     *             </complexContent>
-     *           </complexType>
-     *         </element>
-     *       </sequence>
-     *     </restriction>
-     *   </complexContent>
-     * </complexType>
-     * }</pre>
-     * 
-     * 
-     */
-    @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "entry"
-    })
-    public static class ListaDataTipoPublicacion {
-
-        protected List<CollectionBean.ListaDataTipoPublicacion.Entry> entry;
-
-        /**
-         * Gets the value of the entry property.
-         * 
-         * <p>
-         * This accessor method returns a reference to the live list,
-         * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the Jakarta XML Binding object.
-         * This is why there is not a {@code set} method for the entry property.
-         * 
-         * <p>
-         * For example, to add a new item, do as follows:
-         * <pre>
-         *    getEntry().add(newItem);
-         * </pre>
-         * 
-         * 
-         * <p>
-         * Objects of the following type(s) are allowed in the list
-         * {@link CollectionBean.ListaDataTipoPublicacion.Entry }
-         * 
-         * 
-         * @return
-         *     The value of the entry property.
-         */
-        public List<CollectionBean.ListaDataTipoPublicacion.Entry> getEntry() {
-            if (entry == null) {
-                entry = new ArrayList<>();
-            }
-            return this.entry;
-        }
-
-
-        /**
-         * <p>Clase Java para anonymous complex type.
-         * 
-         * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
-         * 
-         * <pre>{@code
-         * <complexType>
-         *   <complexContent>
-         *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *       <sequence>
-         *         <element name="key" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
-         *         <element name="value" type="{http://server/}dataTipoPublicacion" minOccurs="0"/>
-         *       </sequence>
-         *     </restriction>
-         *   </complexContent>
-         * </complexType>
-         * }</pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "key",
-            "value"
-        })
-        public static class Entry {
-
-            protected String key;
-            protected DataTipoPublicacion value;
-
-            /**
-             * Obtiene el valor de la propiedad key.
-             * 
-             * @return
-             *     possible object is
-             *     {@link String }
-             *     
-             */
-            public String getKey() {
-                return key;
-            }
-
-            /**
-             * Define el valor de la propiedad key.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link String }
-             *     
-             */
-            public void setKey(String value) {
-                this.key = value;
-            }
-
-            /**
-             * Obtiene el valor de la propiedad value.
-             * 
-             * @return
-             *     possible object is
-             *     {@link DataTipoPublicacion }
-             *     
-             */
-            public DataTipoPublicacion getValue() {
-                return value;
-            }
-
-            /**
-             * Define el valor de la propiedad value.
-             * 
-             * @param value
-             *     allowed object is
-             *     {@link DataTipoPublicacion }
-             *     
-             */
-            public void setValue(DataTipoPublicacion value) {
-                this.value = value;
-            }
-
-        }
-
     }
 
 }
