@@ -900,10 +900,10 @@ public class MainFrame {
 			"Estoy interesado en formar parte \n"
 			+ "de un equipo que me permita \n"
 			+ "aplicar mis habilidades t´ecnicas y \n"
-			+ "contribuir al mantenimiento eficiente";
+			+ "contribuir al mantenimiento eficiente";
 			this.ico.altaPostulacion(
 					"javierf", 
-					"Diseñador UX/UI", 
+					"Disenador UX/UI", 
 					cvv, 
 					motivacion, 
 					LocalDate.of(2023, 9, 30)
