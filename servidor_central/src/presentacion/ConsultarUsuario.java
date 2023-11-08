@@ -86,7 +86,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         getContentPane().add(NorthPanel, BorderLayout.NORTH);
         NorthPanel.setLayout(new GridLayout(3, 0, 0, 0));*/
         
-        JLabel SeleccionarText = new JLabel("Usuario:");
+        JLabel SeleccionarText = new JLabel("Seleccione el Usuario:");
         gcon.gridx = 0;
         gcon.gridy = 0;
         gcon.gridheight = 1;
