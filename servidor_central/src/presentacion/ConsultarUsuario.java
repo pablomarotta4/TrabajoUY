@@ -30,6 +30,7 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 public class ConsultarUsuario  extends JInternalFrame{
 	
@@ -72,9 +73,9 @@ public class ConsultarUsuario  extends JInternalFrame{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         GridBagLayout gbl = new GridBagLayout();
-        gbl.columnWidths = new int[]{60, 200, 200, 180};
+        gbl.columnWidths = new int[]{100, 150, 250, 180};
         gbl.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
-        gbl.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 0, 24, 0, 226, 50};
+        gbl.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 29, 0, 24, 0, 80, 50};
         gbl.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0};
         GridBagConstraints gcon = new GridBagConstraints();
         gcon.weightx = 0;
@@ -184,6 +185,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelNombre.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextField mostrarNombre = new JTextField();
+        mostrarNombre.setBackground(new Color(255, 255, 255));
         gbl.setConstraints(mostrarNombre, gcon);
         GridBagConstraints gbc_mostrarNombre = new GridBagConstraints();
         gbc_mostrarNombre.fill = GridBagConstraints.HORIZONTAL;
@@ -203,6 +205,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         getContentPane().add(labelApellido, gbc_labelApellido);
         
         JTextField mostrarApellido = new JTextField();
+        mostrarApellido.setBackground(new Color(255, 255, 255));
         GridBagConstraints gbc_mostrarApellido = new GridBagConstraints();
         gbc_mostrarApellido.fill = GridBagConstraints.HORIZONTAL;
         gbc_mostrarApellido.insets = new Insets(0, 0, 5, 5);
@@ -226,6 +229,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelNickname.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextField mostrarNickname = new JTextField();
+        mostrarNickname.setBackground(new Color(255, 255, 255));
         gbl.setConstraints(mostrarNickname, gcon);
         GridBagConstraints gbc_mostrarNickname = new GridBagConstraints();
         gbc_mostrarNickname.fill = GridBagConstraints.HORIZONTAL;
@@ -249,6 +253,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelPassword.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextField mostrarPassword = new JTextField();
+        mostrarPassword.setBackground(new Color(255, 255, 255));
         gbl.setConstraints(mostrarPassword, gcon);
         GridBagConstraints gbc_mostrarPassword = new GridBagConstraints();
         gbc_mostrarPassword.fill = GridBagConstraints.HORIZONTAL;
@@ -273,6 +278,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelEmail.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextField mostrarEmail = new JTextField();
+        mostrarEmail.setBackground(new Color(255, 255, 255));
         gbl.setConstraints(mostrarEmail, gcon);
         GridBagConstraints gbc_mostrarEmail = new GridBagConstraints();
         gbc_mostrarEmail.fill = GridBagConstraints.HORIZONTAL;
@@ -296,6 +302,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelFechaNac.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextField mostrarFechaNac = new JTextField();
+        mostrarFechaNac.setBackground(new Color(255, 255, 255));
         gbl.setConstraints(mostrarFechaNac, gcon);
         GridBagConstraints gbc_mostrarFechaNac = new GridBagConstraints();
         gbc_mostrarFechaNac.fill = GridBagConstraints.HORIZONTAL;
@@ -321,6 +328,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelNacionalidad.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextField mostrarNacionalidad = new JTextField();
+        mostrarNacionalidad.setBackground(new Color(255, 255, 255));
         gbl.setConstraints(mostrarNacionalidad, gcon);
         GridBagConstraints gbc_mostrarNacionalidad = new GridBagConstraints();
         gbc_mostrarNacionalidad.fill = GridBagConstraints.HORIZONTAL;
@@ -337,7 +345,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         JLabel labelDescripcion = new JLabel("Descripcion:");
         gbl.setConstraints(labelDescripcion, gcon);
         GridBagConstraints gbc_labelDescripcion = new GridBagConstraints();
-        gbc_labelDescripcion.anchor = GridBagConstraints.EAST;
+        gbc_labelDescripcion.anchor = GridBagConstraints.NORTHEAST;
         gbc_labelDescripcion.insets = new Insets(0, 0, 5, 5);
         gbc_labelDescripcion.gridx = 1;
         gbc_labelDescripcion.gridy = 9;
@@ -349,7 +357,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         mostrarDescripcion.setLineWrap(true);
         gbl.setConstraints(mostrarDescripcion, gcon);
         GridBagConstraints gbc_mostrarDescripcion = new GridBagConstraints();
-        gbc_mostrarDescripcion.fill = GridBagConstraints.HORIZONTAL;
+        gbc_mostrarDescripcion.fill = GridBagConstraints.BOTH;
         gbc_mostrarDescripcion.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarDescripcion.gridx = 2;
         gbc_mostrarDescripcion.gridy = 9;
@@ -372,6 +380,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         labelLink.setHorizontalAlignment(SwingConstants.RIGHT);
         
         JTextField mostrarLink = new JTextField();
+        mostrarLink.setBackground(new Color(255, 255, 255));
         gbl.setConstraints(mostrarLink, gcon);
         GridBagConstraints gbc_mostrarLink = new GridBagConstraints();
         gbc_mostrarLink.fill = GridBagConstraints.BOTH;
