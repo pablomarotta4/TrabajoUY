@@ -39,12 +39,47 @@ public class AltaKeyword extends JInternalFrame {
         setBounds(10, 40, 500, 354);
         getContentPane().setLayout(new BorderLayout(0, 0));
         
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.SOUTH);
-        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        JPanel panel_1 = new JPanel();
+        getContentPane().add(panel_1, BorderLayout.CENTER);
+        GridBagLayout gbl_panel_1 = new GridBagLayout();
+        gbl_panel_1.columnWidths = new int[]{0, 170, 300, 0, 0};
+        gbl_panel_1.rowHeights = new int[]{50, 0, 50, 0, 0};
+        gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+        panel_1.setLayout(gbl_panel_1);
+        
+        JLabel lblNewLabel = new JLabel("Ingrese la Keyword:");
+        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+        gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
+        gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+        gbc_lblNewLabel.gridx = 1;
+        gbc_lblNewLabel.gridy = 1;
+        panel_1.add(lblNewLabel, gbc_lblNewLabel);
         
         textNombreKeyword = new JTextField();
         textNombreKeyword.setText("");
+        
+        
+        GridBagConstraints gbc_textNombreKeyword = new GridBagConstraints();
+        gbc_textNombreKeyword.insets = new Insets(0, 0, 5, 5);
+        gbc_textNombreKeyword.fill = GridBagConstraints.HORIZONTAL;
+        gbc_textNombreKeyword.gridx = 2;
+        gbc_textNombreKeyword.gridy = 1;
+        panel_1.add(textNombreKeyword, gbc_textNombreKeyword);
+        textNombreKeyword.setColumns(10);
+        
+        JPanel panel_2 = new JPanel();
+        GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+        gbc_panel_2.gridwidth = 2;
+        gbc_panel_2.insets = new Insets(0, 0, 0, 5);
+        gbc_panel_2.fill = GridBagConstraints.BOTH;
+        gbc_panel_2.gridx = 1;
+        gbc_panel_2.gridy = 3;
+        panel_1.add(panel_2, gbc_panel_2);
+        
+        JPanel panel = new JPanel();
+        panel_2.add(panel);
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         
         JButton botonAceptar = new JButton("Aceptar");
         botonAceptar.addActionListener(new ActionListener() {
@@ -92,31 +127,6 @@ public class AltaKeyword extends JInternalFrame {
         	}
         });
         panel.add(botonCancelar);
-        
-        JPanel panel_1 = new JPanel();
-        getContentPane().add(panel_1, BorderLayout.CENTER);
-        GridBagLayout gbl_panel_1 = new GridBagLayout();
-        gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0};
-        gbl_panel_1.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-        gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-        gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-        panel_1.setLayout(gbl_panel_1);
-        
-        JLabel lblNewLabel = new JLabel("Ingrese nombre de la Keyword");
-        GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-        gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
-        gbc_lblNewLabel.insets = new Insets(0, 0, 0, 5);
-        gbc_lblNewLabel.gridx = 1;
-        gbc_lblNewLabel.gridy = 4;
-        panel_1.add(lblNewLabel, gbc_lblNewLabel);
-        
-        
-        GridBagConstraints gbc_textNombreKeyword = new GridBagConstraints();
-        gbc_textNombreKeyword.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textNombreKeyword.gridx = 3;
-        gbc_textNombreKeyword.gridy = 4;
-        panel_1.add(textNombreKeyword, gbc_textNombreKeyword);
-        textNombreKeyword.setColumns(10);
         
 	}
 
