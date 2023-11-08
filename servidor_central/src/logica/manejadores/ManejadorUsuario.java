@@ -170,6 +170,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		ArrayList<DataUsuario> listaDTusr= new ArrayList<>();
 		for (Usuario usuario: mapaUsr.values()) {	
 			DataUsuario dataUsr= new DataUsuario(usuario.getNickname(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getImage());
+			dataUsr.setPassword(usuario.getPassword());
 			listaDTusr.add(dataUsr);
 		}
 		

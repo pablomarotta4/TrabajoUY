@@ -77,7 +77,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
         setIconifiable(true);
         setMaximizable(true);
         setClosable(true);
-        setTitle("Crear Oferta Laboral");
+        setTitle("Alta de Oferta Laboral");
         setBounds(10, 40, 750, 600);
         
         GridBagLayout gridBagLayout = new GridBagLayout();

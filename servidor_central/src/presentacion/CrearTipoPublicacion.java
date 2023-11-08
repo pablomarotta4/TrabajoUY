@@ -60,7 +60,7 @@ public class CrearTipoPublicacion extends JInternalFrame {
 	public CrearTipoPublicacion(IControladorCompraTipo compTip) {
 		
 		getContentPane().setLayout(new BorderLayout(0, 0));
-		setTitle("Crear Tipo de Publicacion");
+		setTitle("Alta de Tipo de publicación de Oferta Laboral");
 		setResizable(true);
         setResizable(true);
         setIconifiable(true);

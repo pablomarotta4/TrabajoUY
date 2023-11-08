@@ -8,6 +8,7 @@ public class DataUsuario {
 	private String nickname;
 	private String nombre;
 	private String apellido;
+	private String password;
 	private String email;
 	private String imageUrl;
 	
@@ -21,6 +22,7 @@ public class DataUsuario {
 		this.apellido = apellido;
 		this.email = email;
 		this.imageUrl = imageUrl;
+		this.password = "";
 	}
 	
 	public String getNickname() {
@@ -33,6 +35,10 @@ public class DataUsuario {
 	
 	public String getApellido() {
 		return apellido;
+	}
+	
+	public String getPassword() {
+		return password;
 	}
 	
 	public String getEmail() {
@@ -53,6 +59,10 @@ public class DataUsuario {
 	
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	public void setEmail(String email) {

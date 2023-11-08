@@ -54,7 +54,7 @@ public class CrearUsuario extends JInternalFrame{
         setIconifiable(true);
         setMaximizable(true);
         setClosable(true);
-        setTitle("Crear Usuario");
+        setTitle("Alta de Usuario");
         setBounds(10, 40, 1082, 609);
         getContentPane().setLayout(new BorderLayout(0, 0));
         

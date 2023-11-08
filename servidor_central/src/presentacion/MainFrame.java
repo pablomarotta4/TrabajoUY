@@ -85,31 +85,14 @@ public class MainFrame {
 		JMenu menuRegistros = new JMenu("Registros");
 		JMenu menuConsultas = new JMenu("Consultas");
 		JMenu menuSistema = new JMenu("Sistema");
+		JMenu menuAcciones = new JMenu("Acciones");
 		frame.setJMenuBar(menuBar);
 		menuBar.add(menuRegistros);
 		menuBar.add(menuConsultas);
+		menuBar.add(menuAcciones);
 		menuBar.add(menuSistema);
-		
-		// Se agrega la accion para que al hacer click a la opcion del menu se cree la ventana del caso de uso
-		JMenuItem menuCrearOferta = new JMenuItem("Crear Oferta Laboral");
-		menuCrearOferta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico, icu, ict);
-				frame.getContentPane().add(crearOfertaInternalFrame);
-				crearOfertaInternalFrame.setVisible(true);
-			}
-		});
-		
-		JMenuItem menuCrearTipoPublicacion = new JMenuItem("Crear Tipo de Publicacion");
-		menuCrearTipoPublicacion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				CrearTipoPublicacion crearTipoPubliacionInternalFrame = new CrearTipoPublicacion(ict);
-				frame.getContentPane().add(crearTipoPubliacionInternalFrame);
-				crearTipoPubliacionInternalFrame.setVisible(true);
-			}
-		});
-		
-		JMenuItem menuAltaUsuario = new JMenuItem("Crear Usuario");
+
+		JMenuItem menuAltaUsuario = new JMenuItem("Alta de Usuario");
 		menuAltaUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				CrearUsuario crearUsuarioInternalFrame = new CrearUsuario(icu);
@@ -118,22 +101,22 @@ public class MainFrame {
 			}
 		});
 		
-		
-		JMenuItem menuConsultarOferta = new JMenuItem("Consultar Oferta Laboral");
-		menuConsultarOferta.addActionListener(new ActionListener() {
+		// Se agrega la accion para que al hacer click a la opcion del menu se cree la ventana del caso de uso
+		JMenuItem menuCrearOferta = new JMenuItem("Alta de Oferta Laboral");
+		menuCrearOferta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu, null);
-				frame.getContentPane().add(consultarOfertaInternalFrame);
-				consultarOfertaInternalFrame.setVisible(true);
+				CrearOfertaLaboral crearOfertaInternalFrame = new CrearOfertaLaboral(ico, icu, ict);
+				frame.getContentPane().add(crearOfertaInternalFrame);
+				crearOfertaInternalFrame.setVisible(true);
 			}
 		});
 		
-		JMenuItem menuConsultarUsuario = new JMenuItem("Consultar Usuario");
-		menuConsultarUsuario.addActionListener(new ActionListener() {
+		JMenuItem menuCrearTipoPublicacion = new JMenuItem("Alta de Tipo de publicación de Oferta Laboral");
+		menuCrearTipoPublicacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConsultarUsuario consultarUsuarioInternalFrame = new ConsultarUsuario(icu,ico);				
-				frame.getContentPane().add(consultarUsuarioInternalFrame);
-				consultarUsuarioInternalFrame.setVisible(true);
+				CrearTipoPublicacion crearTipoPubliacionInternalFrame = new CrearTipoPublicacion(ict);
+				frame.getContentPane().add(crearTipoPubliacionInternalFrame);
+				crearTipoPubliacionInternalFrame.setVisible(true);
 			}
 		});
 		
@@ -145,6 +128,27 @@ public class MainFrame {
 				altaKeywordInternalFrame.setVisible(true);
 			}
 		});
+
+		
+		JMenuItem menuConsultarOferta = new JMenuItem("Consulta de Oferta Laboral");
+		menuConsultarOferta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConsultarOferta consultarOfertaInternalFrame = new ConsultarOferta(ico, icu, null);
+				frame.getContentPane().add(consultarOfertaInternalFrame);
+				consultarOfertaInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuConsultarUsuario = new JMenuItem("Consulta de Usuario");
+		menuConsultarUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConsultarUsuario consultarUsuarioInternalFrame = new ConsultarUsuario(icu,ico);				
+				frame.getContentPane().add(consultarUsuarioInternalFrame);
+				consultarUsuarioInternalFrame.setVisible(true);
+			}
+		});
+		
+
 			
 		
 		JMenuItem menuCrearPaquete = new JMenuItem("Crear Paquete Ofertas");
@@ -166,7 +170,7 @@ public class MainFrame {
 		});
 		
 		
-		JMenuItem menuCargarDatos = new JMenuItem("Cargar datos de prueba");
+		JMenuItem menuCargarDatos = new JMenuItem("Cargar Datos");
 		menuCargarDatos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -178,31 +182,25 @@ public class MainFrame {
 		});
 		
 
-		menuRegistros.add(menuCrearOferta);
-		menuRegistros.add(menuAltaUsuario);
-		menuRegistros.add(menuCrearPaquete);
-		
-		
-		menuRegistros.add(menuAgregarTipoaPaquete);
-		
-	
-		
-		
-		
-		
-		
-		menuRegistros.add(menuCrearTipoPublicacion);
-		menuRegistros.add(menuAltaKeyword);
-		menuConsultas.add(menuConsultarOferta);
-		menuConsultas.add(menuConsultarUsuario);
-		menuSistema.add(menuCargarDatos);
 
 		
-		JMenu menuAcciones = new JMenu("Acciones");
-		menuBar.add(menuAcciones);
+//		menuRegistros.add(menuCrearPaquete);
+//		menuRegistros.add(menuAgregarTipoaPaquete);
+//		menuConsultas.add(menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales);
+//		menuAcciones.add(menuModificarDatosDeUsuario);	
+		
+		menuRegistros.add(menuAltaUsuario);
+		menuRegistros.add(menuCrearOferta);
+		menuRegistros.add(menuCrearTipoPublicacion);
+		menuRegistros.add(menuAltaKeyword);
+		menuConsultas.add(menuConsultarUsuario);
+		menuConsultas.add(menuConsultarOferta);
+		menuSistema.add(menuCargarDatos);
+
+
 		
 		
-		JMenuItem menuPostulacionAOfertaLaboral = new JMenuItem("Postulacion a Oferta Laboral");
+		JMenuItem menuPostulacionAOfertaLaboral = new JMenuItem("Postulación a Oferta Laboral");
 		menuAcciones.add(menuPostulacionAOfertaLaboral);
 		menuPostulacionAOfertaLaboral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -213,7 +211,6 @@ public class MainFrame {
 		});
 		
 		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
-		menuAcciones.add(menuModificarDatosDeUsuario);
 		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario();
@@ -222,7 +219,7 @@ public class MainFrame {
 			}
 		});
 		
-		JMenuItem menuConfirmarRechazarOfertaLaboral = new JMenuItem("Confirmar/Rechazar Oferta Laboral");
+		JMenuItem menuConfirmarRechazarOfertaLaboral = new JMenuItem("Aceptar/Rechazar Oferta Laboral");
 		menuAcciones.add(menuConfirmarRechazarOfertaLaboral);
 		menuConfirmarRechazarOfertaLaboral.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -233,7 +230,6 @@ public class MainFrame {
 		});
 		
 		JMenuItem menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales = new JMenuItem("Consulta De Paquete De Tipos De Publicación De Ofertas Laborales");
-		menuConsultas.add(menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales);
 		menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales consultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales = new ConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales();

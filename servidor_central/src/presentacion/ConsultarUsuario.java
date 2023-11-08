@@ -65,7 +65,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         setIconifiable(true);
         setMaximizable(true);
         setClosable(true);
-        setTitle("Consulta Usuario");
+        setTitle("Consulta de Usuario");
         setBounds(100, 100, 750, 700);
         
         desktopPane = new JDesktopPane();
@@ -222,6 +222,29 @@ public class ConsultarUsuario  extends JInternalFrame{
         mostrarNickname.setEditable(false);
         mostrarNickname.setVisible(true);
         
+     // #### PASSWORD ####
+        JLabel labelPassword = new JLabel("Password: ");
+        gbl.setConstraints(labelPassword, gcon);
+        GridBagConstraints gbc_labelPassword = new GridBagConstraints();
+        gbc_labelPassword.fill = GridBagConstraints.HORIZONTAL;
+        gbc_labelPassword.insets = new Insets(0, 0, 5, 5);
+        gbc_labelPassword.gridx = 0;
+        gbc_labelPassword.gridy = 5;
+        getContentPane().add(labelPassword, gbc_labelPassword);
+        labelPassword.setVisible(true);
+        labelPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+        
+        JTextField mostrarPassword = new JTextField();
+        gbl.setConstraints(mostrarPassword, gcon);
+        GridBagConstraints gbc_mostrarPassword = new GridBagConstraints();
+        gbc_mostrarPassword.fill = GridBagConstraints.HORIZONTAL;
+        gbc_mostrarPassword.insets = new Insets(0, 0, 5, 5);
+        gbc_mostrarPassword.gridx = 1;
+        gbc_mostrarPassword.gridy = 5;
+        getContentPane().add(mostrarPassword, gbc_mostrarPassword);
+        mostrarPassword.setEditable(false);
+        mostrarPassword.setVisible(true);
+        
         
      // #### EMAIL ####
         JLabel labelEmail = new JLabel("Email: ");
@@ -230,7 +253,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelEmail.fill = GridBagConstraints.HORIZONTAL;
         gbc_labelEmail.insets = new Insets(0, 0, 5, 5);
         gbc_labelEmail.gridx = 0;
-        gbc_labelEmail.gridy = 5;
+        gbc_labelEmail.gridy = 6;
         getContentPane().add(labelEmail, gbc_labelEmail);
         labelEmail.setVisible(true);
         labelEmail.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -241,7 +264,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarEmail.fill = GridBagConstraints.HORIZONTAL;
         gbc_mostrarEmail.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarEmail.gridx = 1;
-        gbc_mostrarEmail.gridy = 5;
+        gbc_mostrarEmail.gridy = 6;
         getContentPane().add(mostrarEmail, gbc_mostrarEmail);
         mostrarEmail.setEditable(false);
         
@@ -253,7 +276,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelFechaNac.fill = GridBagConstraints.HORIZONTAL;
         gbc_labelFechaNac.insets = new Insets(0, 0, 5, 5);
         gbc_labelFechaNac.gridx = 0;
-        gbc_labelFechaNac.gridy = 6;
+        gbc_labelFechaNac.gridy = 7;
         getContentPane().add(labelFechaNac, gbc_labelFechaNac);
         labelFechaNac.setVisible(false);
         labelFechaNac.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -264,7 +287,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarFechaNac.fill = GridBagConstraints.HORIZONTAL;
         gbc_mostrarFechaNac.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarFechaNac.gridx = 1;
-        gbc_mostrarFechaNac.gridy = 6;
+        gbc_mostrarFechaNac.gridy = 7;
         getContentPane().add(mostrarFechaNac, gbc_mostrarFechaNac);
         mostrarFechaNac.setEditable(false);
         mostrarFechaNac.setVisible(false);
@@ -278,7 +301,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelNacionalidad.fill = GridBagConstraints.HORIZONTAL;
         gbc_labelNacionalidad.insets = new Insets(0, 0, 5, 5);
         gbc_labelNacionalidad.gridx = 0;
-        gbc_labelNacionalidad.gridy = 7;
+        gbc_labelNacionalidad.gridy = 8;
         getContentPane().add(labelNacionalidad, gbc_labelNacionalidad);
         labelNacionalidad.setVisible(false);
         labelNacionalidad.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -289,7 +312,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarNacionalidad.fill = GridBagConstraints.HORIZONTAL;
         gbc_mostrarNacionalidad.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarNacionalidad.gridx = 1;
-        gbc_mostrarNacionalidad.gridy = 7;
+        gbc_mostrarNacionalidad.gridy = 8;
         getContentPane().add(mostrarNacionalidad, gbc_mostrarNacionalidad);
         mostrarNacionalidad.setEditable(false);
         mostrarNacionalidad.setVisible(false);
@@ -303,7 +326,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelDescripcion.anchor = GridBagConstraints.EAST;
         gbc_labelDescripcion.insets = new Insets(0, 0, 5, 5);
         gbc_labelDescripcion.gridx = 0;
-        gbc_labelDescripcion.gridy = 8;
+        gbc_labelDescripcion.gridy = 9;
         getContentPane().add(labelDescripcion, gbc_labelDescripcion);
         labelDescripcion.setVisible(false);
         labelDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -315,7 +338,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarDescripcion.fill = GridBagConstraints.HORIZONTAL;
         gbc_mostrarDescripcion.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarDescripcion.gridx = 1;
-        gbc_mostrarDescripcion.gridy = 8;
+        gbc_mostrarDescripcion.gridy = 9;
         getContentPane().add(mostrarDescripcion, gbc_mostrarDescripcion);
         mostrarDescripcion.setEditable(false);
         mostrarDescripcion.setVisible(false);
@@ -329,7 +352,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelLink.fill = GridBagConstraints.VERTICAL;
         gbc_labelLink.insets = new Insets(0, 0, 5, 5);
         gbc_labelLink.gridx = 0;
-        gbc_labelLink.gridy = 9;
+        gbc_labelLink.gridy = 10;
         getContentPane().add(labelLink, gbc_labelLink);
         labelLink.setVisible(false);
         labelLink.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -340,7 +363,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarLink.fill = GridBagConstraints.BOTH;
         gbc_mostrarLink.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarLink.gridx = 1;
-        gbc_mostrarLink.gridy = 9;
+        gbc_mostrarLink.gridy = 10;
         getContentPane().add(mostrarLink, gbc_mostrarLink);
         mostrarLink.setEditable(false);
         
@@ -349,7 +372,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelOfertas.insets = new Insets(0, 0, 5, 5);
         gbc_labelOfertas.anchor = GridBagConstraints.EAST;
         gbc_labelOfertas.gridx = 0;
-        gbc_labelOfertas.gridy = 10;
+        gbc_labelOfertas.gridy = 11;
         getContentPane().add(labelOfertas, gbc_labelOfertas);
         labelOfertas.setVisible(false);
         
@@ -358,7 +381,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_comboOfertas.insets = new Insets(0, 0, 5, 5);
         gbc_comboOfertas.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboOfertas.gridx = 1;
-        gbc_comboOfertas.gridy = 10;
+        gbc_comboOfertas.gridy = 11;
         getContentPane().add(comboOfertas, gbc_comboOfertas);
         
         JLabel labelPostulaciones = new JLabel("Postulaciones: ");
@@ -366,7 +389,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelPostulaciones.insets = new Insets(0, 0, 5, 5);
         gbc_labelPostulaciones.anchor = GridBagConstraints.EAST;
         gbc_labelPostulaciones.gridx = 0;
-        gbc_labelPostulaciones.gridy = 11;
+        gbc_labelPostulaciones.gridy = 12;
         getContentPane().add(labelPostulaciones, gbc_labelPostulaciones);
         labelPostulaciones.setVisible(false);
         
@@ -375,7 +398,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_comboPostulaciones.insets = new Insets(0, 0, 5, 5);
         gbc_comboPostulaciones.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboPostulaciones.gridx = 1;
-        gbc_comboPostulaciones.gridy = 11;
+        gbc_comboPostulaciones.gridy = 12;
         getContentPane().add(comboPostulaciones, gbc_comboPostulaciones);
         comboPostulaciones.setVisible(false);
         comboOfertas.setVisible(false);
@@ -387,7 +410,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarNombreOferta.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarNombreOferta.anchor = GridBagConstraints.WEST;
         gbc_mostrarNombreOferta.gridx = 1;
-        gbc_mostrarNombreOferta.gridy = 12;
+        gbc_mostrarNombreOferta.gridy = 13;
         getContentPane().add(mostrarNombreOferta, gbc_mostrarNombreOferta);
         
         JLabel mostrarCiudadOferta = new JLabel();
@@ -395,7 +418,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarCiudadOferta.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarCiudadOferta.anchor = GridBagConstraints.WEST;
         gbc_mostrarCiudadOferta.gridx = 1;
-        gbc_mostrarCiudadOferta.gridy = 13;
+        gbc_mostrarCiudadOferta.gridy = 14;
         getContentPane().add(mostrarCiudadOferta, gbc_mostrarCiudadOferta);
         
         JLabel nomOf = new JLabel("Nombre de la oferta: ");
@@ -403,7 +426,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_labelnomOf.insets = new Insets(0, 0, 5, 5);
         gbc_labelnomOf.anchor = GridBagConstraints.EAST;
         gbc_labelnomOf.gridx = 0;
-        gbc_labelnomOf.gridy = 12;
+        gbc_labelnomOf.gridy = 13;
         getContentPane().add(nomOf, gbc_labelnomOf);
         
         JLabel ciuOf = new JLabel("Ciudad: ");
@@ -411,7 +434,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_ciuOf.insets = new Insets(0, 0, 5, 5);
         gbc_ciuOf.anchor = GridBagConstraints.EAST;
         gbc_ciuOf.gridx = 0;
-        gbc_ciuOf.gridy = 13;
+        gbc_ciuOf.gridy = 14;
         getContentPane().add(ciuOf, gbc_ciuOf);
         
         JLabel fechOf = new JLabel("Fecha: ");
@@ -419,7 +442,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_fechOf.insets = new Insets(0, 0, 5, 5);
         gbc_fechOf.anchor = GridBagConstraints.EAST;
         gbc_fechOf.gridx = 0;
-        gbc_fechOf.gridy = 14;
+        gbc_fechOf.gridy = 15;
         getContentPane().add(fechOf, gbc_fechOf);
         fechOf.setVisible(false);
         
@@ -428,7 +451,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarFechaOferta.insets = new Insets(0, 0, 5, 5);
         gbc_mostrarFechaOferta.anchor = GridBagConstraints.WEST;
         gbc_mostrarFechaOferta.gridx = 1;
-        gbc_mostrarFechaOferta.gridy = 14;
+        gbc_mostrarFechaOferta.gridy = 15;
         getContentPane().add(mostrarFechaOferta, gbc_mostrarFechaOferta);
         
         JButton ConsultarOfertaButton = new JButton("Consultar Oferta");
@@ -437,7 +460,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         GridBagConstraints gbc_ConsultarOfertaButton = new GridBagConstraints();
         gbc_ConsultarOfertaButton.insets = new Insets(0, 0, 5, 5);
         gbc_ConsultarOfertaButton.gridx = 1;
-        gbc_ConsultarOfertaButton.gridy = 15;
+        gbc_ConsultarOfertaButton.gridy = 16;
         getContentPane().add(ConsultarOfertaButton, gbc_ConsultarOfertaButton);
         mostrarFechaOferta.setVisible(false);
         
@@ -477,6 +500,11 @@ public class ConsultarUsuario  extends JInternalFrame{
                     labelNickname.setVisible(true);
                     mostrarNickname.setText(us.getNickname());
                     mostrarNickname.setVisible(true);
+                    
+                    // PASSWORD
+                    labelPassword.setVisible(true);
+                    mostrarPassword.setText(us.getPassword());
+                    mostrarPassword.setVisible(true);
                     
                     // EMAIL
                     labelEmail.setVisible(true);
