@@ -127,6 +127,25 @@
   <servlet-mapping>
     <servlet-name>ConsultarTipo</servlet-name>
     <url-pattern>/ConsultarTipo</url-pattern>
-
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginMovil</display-name>
+    <servlet-name>LoginMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.LoginMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginMovil</servlet-name>
+    <url-pattern>/LoginMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HomeMovil</display-name>
+    <servlet-name>HomeMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.HomeMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomeMovil</servlet-name>
+    <url-pattern>/HomeMovil</url-pattern>
   </servlet-mapping>
 </web-app>

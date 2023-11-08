@@ -1,0 +1,44 @@
+body{
+    font-family: monospace;
+    background: lightgray;
+}
+
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-area {
+    display: flex;
+    padding: 0;
+}
+
+.postulacion-box{
+    flex: 1;
+    flex-direction: row;
+}
+
+.right-box {
+    padding: 40px 30px 40px 40px;
+    flex: 1; /* Esto permite que ocupe el espacio disponible */
+}
+
+::placeholder{
+    font-size: 16px;
+}
+
+@media (max-width: 768px) { /* Cambia el valor aquí según tu diseño */
+    .container{
+        flex-direction: column;
+    }
+    .box-area{
+        flex-direction: column;
+    }
+    .left-box, .right-box {
+        flex: 1; /* Ocupar todo el ancho en pantallas más estrechas */
+    }
+}
