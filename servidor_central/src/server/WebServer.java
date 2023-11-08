@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
@@ -298,8 +299,15 @@ public class WebServer {
 	}
 	@WebMethod
 	public CollectionBean getDataTiposPublicacion(){
+		Map<String, DataTipoPublicacion> map = ctrlCompraTipo.getDataTiposPublicacion();
+		ArrayList<DataTipoPublicacion> listaTipos = new ArrayList<>();
+		
+		for(String nombreTipo: map.keySet()) {
+			listaTipos.add(map.get(nombreTipo));
+		}
+		
 		CollectionBean collection = new CollectionBean();
-		collection.setListaDataTipoPublicacion((HashMap<String, DataTipoPublicacion>) ctrlCompraTipo.getDataTiposPublicacion());
+		collection.setListaDataTipoPublicacion(listaTipos);
 		return collection;
 	}
 }

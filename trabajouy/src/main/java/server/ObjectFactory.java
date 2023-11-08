@@ -38,26 +38,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CollectionBean }
-     * 
-     * @return
-     *     the new instance of {@link CollectionBean }
-     */
-    public CollectionBean createCollectionBean() {
-        return new CollectionBean();
-    }
-
-    /**
-     * Create an instance of {@link CollectionBean.ListaDataTipoPublicacion }
-     * 
-     * @return
-     *     the new instance of {@link CollectionBean.ListaDataTipoPublicacion }
-     */
-    public CollectionBean.ListaDataTipoPublicacion createCollectionBeanListaDataTipoPublicacion() {
-        return new CollectionBean.ListaDataTipoPublicacion();
-    }
-
-    /**
      * Create an instance of {@link CamposVaciosExcepcion }
      * 
      * @return
@@ -125,6 +105,16 @@ public class ObjectFactory {
      */
     public LocalDate createLocalDate() {
         return new LocalDate();
+    }
+
+    /**
+     * Create an instance of {@link CollectionBean }
+     * 
+     * @return
+     *     the new instance of {@link CollectionBean }
+     */
+    public CollectionBean createCollectionBean() {
+        return new CollectionBean();
     }
 
     /**
@@ -205,16 +195,6 @@ public class ObjectFactory {
      */
     public Usuario createUsuario() {
         return new Usuario();
-    }
-
-    /**
-     * Create an instance of {@link CollectionBean.ListaDataTipoPublicacion.Entry }
-     * 
-     * @return
-     *     the new instance of {@link CollectionBean.ListaDataTipoPublicacion.Entry }
-     */
-    public CollectionBean.ListaDataTipoPublicacion.Entry createCollectionBeanListaDataTipoPublicacionEntry() {
-        return new CollectionBean.ListaDataTipoPublicacion.Entry();
     }
 
     /**
