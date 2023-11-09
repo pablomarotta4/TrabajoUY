@@ -55,6 +55,7 @@ public class ConsultarOferta extends JInternalFrame{
 	private Integer duracionFinal;
 	
 	public ConsultarOferta(IControladorOferta cop, IControladorUsuario icu, String preSeleccion) {
+
 		ctrlOferta = cop;	
 		ctrlUsuario = icu;
 		setResizable(true);
@@ -80,14 +81,6 @@ public class ConsultarOferta extends JInternalFrame{
         gbl_panel_1_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_1_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         panel_1_1.setLayout(gbl_panel_1_1);
-        
-        JPanel panel = new JPanel();
-        GridBagConstraints gbc_panel = new GridBagConstraints();
-        gbc_panel.insets = new Insets(0, 0, 5, 0);
-        gbc_panel.fill = GridBagConstraints.BOTH;
-        gbc_panel.gridx = 2;
-        gbc_panel.gridy = 0;
-        panel_1_1.add(panel, gbc_panel);
         
         JLabel lblEmpresa = new JLabel("Empresa:");
         GridBagConstraints gbc_lblEmpresa = new GridBagConstraints();
@@ -119,8 +112,6 @@ public class ConsultarOferta extends JInternalFrame{
         panel_1_1.add(comboBoxOferta, gbc_comboBoxOferta);
         comboBoxOferta.addItem("");
         comboBoxOferta.setSelectedIndex(0);
-
-
 
         
         JLabel lblNewLabel = new JLabel("Oferta Laboral:");
@@ -397,17 +388,19 @@ public class ConsultarOferta extends JInternalFrame{
 		gbc_scrollPaneCv.fill = GridBagConstraints.BOTH;
 		
 		
-
 		
 		if(preSeleccion != null) {
 			try {
 				
-				dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
+				dtOf  = ctrlOferta.listarDatosOferta(preSeleccion);
+				
+				lblEmpresa.setVisible(false);
+				lblNewLabel.setVisible(false);
+				comboBoxEmpresa.setVisible(false);
+				comboBoxOferta.setVisible(false);
+				
 				textNombre.setText(dtOf.getNombre());
-				costofinal = (Float) dtOf.getCosto();
-				txtCosto.setText(costofinal.toString() + " $");
-				duracionFinal = (Integer) dtOf.getDuracion();
-				txtfDuracion.setText(duracionFinal.toString() + " dias");
+				textEmpresa.setText(dtOf.getNombreEmpresa());
 				txtEstado.setText(dtOf.getEstado().toString());
 				textDescripcion.setText(dtOf.getDescripcion());
 				textCiudad.setText(dtOf.getCiudad());
@@ -415,8 +408,11 @@ public class ConsultarOferta extends JInternalFrame{
 				textHorario.setText(dtOf.getHorario());
 				textRemuneracion.setText(dtOf.getRemuneracion().toString() + " $");
 				textFechaAlta.setText(dtOf.getFechaAlta().toString());
-				textEmpresa.setText(dtOf.getNombreEmpresa());
-			
+				duracionFinal = (Integer) dtOf.getDuracion();
+				txtfDuracion.setText(duracionFinal.toString() + " dias");
+				costofinal = (Float) dtOf.getCosto();
+				txtCosto.setText(costofinal.toString() + " $");
+
 				List<String> keys = dtOf.getKeywords();
 				String keysText = "";
 				if (keys.size() != 0) {
@@ -431,6 +427,14 @@ public class ConsultarOferta extends JInternalFrame{
 					keysText = "";
 				}
 				textArea_3.setText(keysText);
+
+
+
+
+			
+
+				
+
 				
 				List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
 				String totalDataPostulaciones = "";
@@ -444,6 +448,7 @@ public class ConsultarOferta extends JInternalFrame{
 			}
 		}
 		else {
+			System.out.println("entro al else");
 	        comboBoxEmpresa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (comboBoxEmpresa.getSelectedItem() == "") {
@@ -463,7 +468,6 @@ public class ConsultarOferta extends JInternalFrame{
 				}
 	        });
 	        comboBoxEmpresa.setSelectedIndex(0);
-	        
 	        
 	        
 			comboBoxOferta.addActionListener(new ActionListener() {
