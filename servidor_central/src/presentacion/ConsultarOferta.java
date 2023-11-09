@@ -404,7 +404,15 @@ public class ConsultarOferta extends JInternalFrame{
 		
 		if(preSeleccion != null) {
 			try {
+				
 				DtOfertaLaboral dtOf  = ctrlOferta.listarDatosOferta(preSeleccion);
+				
+				lblEmpresa.setVisible(false);
+				comboBoxEmpresa.setVisible(false);
+				lblNewLabel.setVisible(false);
+				comboBoxOferta.setVisible(false);
+
+
 				textNombre.setText(dtOf.getNombre());
 				Float costofinal = (Float) dtOf.getCosto();
 				txtCosto.setText(costofinal.toString() + " $");
