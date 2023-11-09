@@ -61,7 +61,7 @@ public class CrearUsuario extends JInternalFrame{
         JPanel NorthPanel = new JPanel();
         getContentPane().add(NorthPanel, BorderLayout.NORTH);
         GridBagLayout gbl_NorthPanel = new GridBagLayout();
-        gbl_NorthPanel.columnWidths = new int[] {100, 150, 250, 150, 4};
+        gbl_NorthPanel.columnWidths = new int[] {100, 150, 300, 150, 4};
         gbl_NorthPanel.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0};
         gbl_NorthPanel.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_NorthPanel.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -186,7 +186,7 @@ public class CrearUsuario extends JInternalFrame{
         JPanel postulantePanel = new JPanel();
         CenterPanel.add(postulantePanel, BorderLayout.NORTH);
         GridBagLayout gbl_postulantePanel = new GridBagLayout();
-        gbl_postulantePanel.columnWidths = new int[]{100, 150, 250, 130, 0};
+        gbl_postulantePanel.columnWidths = new int[]{100, 150, 300, 130, 0};
         gbl_postulantePanel.rowHeights = new int[]{5, 0, 170, 0, 0};
         gbl_postulantePanel.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_postulantePanel.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
@@ -198,7 +198,7 @@ public class CrearUsuario extends JInternalFrame{
         GridBagLayout gdbEmpresa = new GridBagLayout();
         gdbEmpresa.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0};
         gdbEmpresa.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0};
-        gdbEmpresa.columnWidths = new int[] {220, 150, 250, 100};
+        gdbEmpresa.columnWidths = new int[] {220, 177, 300, 100};
         gdbEmpresa.rowHeights = new int[]{5, 0, 170, 0};
         empresaPanel.setLayout(gdbEmpresa);
         
