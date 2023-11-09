@@ -20,25 +20,24 @@ public class ConsultaPostulacion extends HttpServlet {
 	super();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-	    throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	HttpSession sesion = request.getSession();
 	EstadoSesion estadoSesion = (EstadoSesion) sesion.getAttribute("estado_sesion");
 	if (estadoSesion.equals(EstadoSesion.LOGIN_CORRECTO)) {
 		server.WebServer port = new server.WebServerService().getWebServerPort();
-	    if (port.consultarDatosUsuario(
-		    (String) request.getSession().getAttribute("nickname")) instanceof DataEmpresa) {
-		DtPostulacion postulacionInfo = port.listarDatosPostulacion(
-			(String) request.getParameter("nickname"), (String) request.getParameter("nombreOferta"));
-		request.getSession().setAttribute("datosPostulacion", (DtPostulacion) postulacionInfo);
-		request.getRequestDispatcher("WEB-INF/ofertas/consultarPostulacion.jsp").forward(request, response);
-	    } else if (port.consultarDatosUsuario(
-		    (String) request.getSession().getAttribute("nickname")) instanceof DataPostulante) {
-		DtPostulacion postulacionInfo = port.listarDatosPostulacion(
-			(String) request.getSession().getAttribute("nickname"),
-			(String) request.getSession().getAttribute("nombreOferta"));
-		request.getSession().setAttribute("datosPostulacion", (DtPostulacion) postulacionInfo);
-		request.getRequestDispatcher("WEB-INF/ofertas/consultarPostulacion.jsp").forward(request, response);
+	    if (port.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataEmpresa) {
+	    	DtPostulacion postulacionInfo = port.listarDatosPostulacion(
+	    			(String) request.getParameter("nickname"), (String) request.getParameter("nombreOferta")
+			);
+	    	request.getSession().setAttribute("datosPostulacion", (DtPostulacion) postulacionInfo);
+	    	request.getRequestDispatcher("WEB-INF/ofertas/consultarPostulacion.jsp").forward(request, response);
+	    } else if (port.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataPostulante) {
+	    	DtPostulacion postulacionInfo = port.listarDatosPostulacion(
+	    			(String) request.getSession().getAttribute("nickname"),
+	    			(String) request.getSession().getAttribute("nombreOferta")
+			);
+	    	request.getSession().setAttribute("datosPostulacion", (DtPostulacion) postulacionInfo);
+	    	request.getRequestDispatcher("WEB-INF/ofertas/consultarPostulacion.jsp").forward(request, response);
 	    }
 	} else {
 	    response.sendRedirect("login");
