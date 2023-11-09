@@ -70,17 +70,15 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         setTitle("Postulacion a Oferta Laboral");
         
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
         
         JPanel panel = new JPanel();
         scrollPane.setViewportView(panel);
         GridBagLayout gbl_panel = new GridBagLayout();
-        gbl_panel.columnWidths = new int[]{150, 300, 150, 0};
-        gbl_panel.rowHeights = new int[]{10, 0, 0, 0, 0, 0, 0, 0, 0, 150, 150, 80, 0, 20, 0, 150, 150, 0, 0, 0};
+        gbl_panel.columnWidths = new int[]{180, 300, 150, 0};
+        gbl_panel.rowHeights = new int[]{50, 0, 0, 0, 0, 0, 0, 0, 0, 150, 150, 80, 0, 20, 0, 150, 150, 0, 10, 0, 50, 0};
         gbl_panel.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-        gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+        gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel.setLayout(gbl_panel);
         
         JPanel panel_4 = new JPanel();
@@ -574,10 +572,11 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
         
         JPanel panel_3 = new JPanel();
         GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+        gbc_panel_3.insets = new Insets(0, 0, 5, 0);
         gbc_panel_3.gridwidth = 3;
         gbc_panel_3.fill = GridBagConstraints.BOTH;
         gbc_panel_3.gridx = 0;
-        gbc_panel_3.gridy = 18;
+        gbc_panel_3.gridy = 19;
         panel.add(panel_3, gbc_panel_3);
         
         JButton btnNewButton = new JButton("Aceptar");

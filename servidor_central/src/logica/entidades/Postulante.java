@@ -62,7 +62,7 @@ public class Postulante extends Usuario{
 	public DataPostulante getDataPostulante() {
 		DataPostulante dtpostulante = new DataPostulante(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.fechaNacimiento, this.nacionalidad, this.getImage());
 		dtpostulante.setPostulaciones(this.getDTPostulaciones());
-		
+		dtpostulante.setPassword(this.getPassword());
 		return dtpostulante;
 	}
 }

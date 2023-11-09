@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="nickname" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="imageUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
@@ -35,6 +36,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "nickname",
     "nombre",
     "apellido",
+    "password",
     "email",
     "imageUrl"
 })
@@ -47,6 +49,7 @@ public class DataUsuario {
     protected String nickname;
     protected String nombre;
     protected String apellido;
+    protected String password;
     protected String email;
     protected String imageUrl;
 
@@ -120,6 +123,30 @@ public class DataUsuario {
      */
     public void setApellido(String value) {
         this.apellido = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad password.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Define el valor de la propiedad password.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setPassword(String value) {
+        this.password = value;
     }
 
     /**

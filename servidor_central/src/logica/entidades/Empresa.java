@@ -63,6 +63,7 @@ public class Empresa extends Usuario{
 	public DataEmpresa getDataEmpresa() {
 		DataEmpresa dtempresa = new DataEmpresa(this.getNickname(), this.getNombre(), this.getApellido(), this.getEmail(), this.descripcion, this.linkWeb, this.getImage());
 		dtempresa.setOfertas(this.getDTOfertasLaborales());
+		dtempresa.setPassword(this.getPassword());
 		return dtempresa;
 	}
 	
