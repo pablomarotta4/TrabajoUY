@@ -6,8 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import server.DataUsuario;
+import server.DtOfertaLaboral;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.trabajouy.enums.EstadoSesion;
 
@@ -36,6 +39,24 @@ public class HomeMovil extends HttpServlet {
     
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		initSession(req);
+		String filter = (String) req.getParameter("filter");
+		server.WebServerService servicio = new server.WebServerService();
+		server.WebServer port = servicio.getWebServerPort();
+		ArrayList<DtOfertaLaboral> listaOfertas = null;
+		
+		DataUsuario usuario = (DataUsuario) req.getSession().getAttribute("usuario_logeado");
+		
+		String nicknameFilter = "";
+		if(usuario != null) {
+			nicknameFilter = usuario.getNickname();
+		}
+		if (filter != null && !filter.equals("")) {
+			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasByFilter(filter, nicknameFilter).getListaDtOfertas();
+		} else {
+			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasConfirmadasNoExpiradas(nicknameFilter).getListaDtOfertas();
+		}
+
+		req.setAttribute("lista_ofertas", listaOfertas);
 		req.getRequestDispatcher("/WEB-INF/movil/homeMovil.jsp").forward(req, resp);
 	}
 

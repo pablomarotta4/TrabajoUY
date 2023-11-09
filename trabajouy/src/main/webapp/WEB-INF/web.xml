@@ -148,4 +148,24 @@
     <servlet-name>HomeMovil</servlet-name>
     <url-pattern>/HomeMovil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaOfertaMovil</display-name>
+    <servlet-name>ConsultaOfertaMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.ConsultaOfertaMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaOfertaMovil</servlet-name>
+    <url-pattern>/ConsultaOfertaMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaPostulacionMovil</display-name>
+    <servlet-name>ConsultaPostulacionMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.ConsultaPostulacionMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaPostulacionMovil</servlet-name>
+    <url-pattern>/ConsultaPostulacionMovil</url-pattern>
+  </servlet-mapping>
 </web-app>
