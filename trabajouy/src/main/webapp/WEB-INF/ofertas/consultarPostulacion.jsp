@@ -43,7 +43,7 @@
                 </div>
                 <div id="fechaContainer">
                     <label id="fechaLabel" for="fecha">Fecha de postulacion: </label>
-                    <div id="fecha"><%= datosPostulacion.getFechaPostulacion().toString() %>		 </div>
+                    <div id="fecha"><%= datosPostulacion.getDate() %>		 </div>
                 </div>
             </div>
         </div>

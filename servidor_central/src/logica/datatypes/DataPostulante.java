@@ -17,6 +17,7 @@ public class DataPostulante extends DataUsuario {
 
 	private String nacionalidad;
 	private LocalDate nacimiento;
+	private String date;
 	private ArrayList<DTPostulacion> postulaciones;
 	
 	
@@ -35,6 +36,7 @@ public class DataPostulante extends DataUsuario {
 		this.nacimiento = fechaNac;
 		this.nacionalidad = nacionalidad;
 		this.postulaciones = new ArrayList<>();
+		this.date = fechaNac.toString();
 	}
 	
 	public void setPostulaciones(ArrayList<DTPostulacion> postulaciones) {
@@ -66,7 +68,12 @@ public class DataPostulante extends DataUsuario {
 	public int getAnioNac() {
 		return nacimiento.getYear();
 	}
-	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public ArrayList<DTPostulacion> getPostulaciones() {
 		return this.postulaciones;
 	}

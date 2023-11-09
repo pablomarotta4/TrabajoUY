@@ -43,7 +43,7 @@
 	                		DataPostulante postulante = (DataPostulante) usuarioC;
 	                %>
 	                <h3>Nacionalidad: <%= postulante.getNacionalidad() %></h3>
-	                <h3>Fecha de Nacimiento: <%= postulante.getNacimiento() %></h3>
+	                <h3>Fecha de Nacimiento: <%= postulante.getDate() %></h3>
 	                <% } 
 	                if (mismo) {
 	                %>

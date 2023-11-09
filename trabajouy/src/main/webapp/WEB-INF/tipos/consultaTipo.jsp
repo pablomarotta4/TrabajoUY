@@ -24,7 +24,7 @@
             <p>Exposicion: <%= tipo.getExposicion() %></p>
             <p>Duracion: <%= tipo.getDuracion() %></p>
             <p>Costo: <%= tipo.getCosto() %></p>
-            <p>Fecha de Alta: <%= tipo.getFecha().toString() %></p>
+            <p>Fecha de Alta: <%= tipo.getDate() %></p>
          </div>
 	</div>
 </body>
