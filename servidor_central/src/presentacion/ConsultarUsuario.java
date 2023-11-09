@@ -129,6 +129,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         List<String> usuariosDisponibles = icu.listarUsuarios();
 
         UsuariosComboBox.removeAllItems();
+        UsuariosComboBox.addItem("");
        
         for (String usuario : usuariosDisponibles) {
             UsuariosComboBox.addItem(usuario);
@@ -143,6 +144,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_ConsultarButton.gridy = 1;
         gbc_ConsultarButton.anchor = GridBagConstraints.WEST;
         getContentPane().add(ConsultarButton, gbc_ConsultarButton);
+        ConsultarButton.setVisible(false);
         
 
         gcon.gridx = 0;
@@ -493,58 +495,68 @@ public class ConsultarUsuario  extends JInternalFrame{
         mostrarNombreOferta.setVisible(false);
         mostrarCiudadOferta.setVisible(false);
 
-        
-        ConsultarButton.addActionListener(new ActionListener(){
-        	public void actionPerformed(ActionEvent e) {
-        		String seleccionado = (String) UsuariosComboBox.getSelectedItem();
+        UsuariosComboBox.addActionListener((ActionListener) new ActionListener() {
+        	public void actionPerformed(ActionEvent arg0) {
         		mostrarNombreOferta.setVisible(false);
 				mostrarCiudadOferta.setVisible(false);
 				mostrarFechaOferta.setVisible(false);
 				nomOf.setVisible(false);
 				ciuOf.setVisible(false);
 				fechOf.setVisible(false);
+				List<DtOfertaLaboral> dtofertaspostuladas = new ArrayList();
+				List<DtOfertaLaboral> dtofertas = new ArrayList();
 				
-        		if(!seleccionado.isEmpty()) {
-        			ConsultarOfertaButton.setVisible(false);
-        			List<DtOfertaLaboral> dtofertas = null;
-        			DataUsuario us = icu.consultarDatosUsuario(seleccionado);
+        		if (UsuariosComboBox.getSelectedItem() == "") {
+                	comboOfertas.removeAllItems();
+                	comboOfertas.addItem("");
+                	comboOfertas.setSelectedIndex(0);
+                	comboPostulaciones.removeAllItems();
+                	comboPostulaciones.addItem("");
+                	comboPostulaciones.setSelectedIndex(0);
+                	
+        			mostrarNombre.setText("");
+        			mostrarApellido.setText("");
+        			mostrarNickname.setText("");
+        			mostrarPassword.setText("");
+        			mostrarEmail.setText("");
         			
-        			// NOMBRE
-                    labelNombre.setVisible(true);
-                    mostrarNombre.setText(us.getNombre());
-                    mostrarNombre.setVisible(true);
+    				labelFechaNac.setVisible(false);
+                	labelNacionalidad.setVisible(false);
+                	mostrarFechaNac.setVisible(false);
+                	mostrarNacionalidad.setVisible(false);
+                	labelPostulaciones.setVisible(false);
+                	comboPostulaciones.setVisible(false);
+                    comboPostulaciones.removeAllItems();
                     
-                    // APELLIDO
-                    labelApellido.setVisible(true);
-                    mostrarApellido.setText(us.getApellido());
-                    mostrarApellido.setVisible(true);
+                	labelOfertas.setVisible(false);
+                	comboOfertas.setVisible(false);
+                	labelDescripcion.setVisible(false);
+                	labelLink.setVisible(false);
+                	mostrarDescripcion.setVisible(false);
+                	mostrarLink.setVisible(false);
+                	comboOfertas.setVisible(false);
+                    comboOfertas.removeAllItems();
                     
-                    // NICKNAME
-                    labelNickname.setVisible(true);
-                    mostrarNickname.setText(us.getNickname());
-                    mostrarNickname.setVisible(true);
-                    
-                    // PASSWORD
-                    labelPassword.setVisible(true);
-                    mostrarPassword.setText(us.getPassword());
-                    mostrarPassword.setVisible(true);
-                    
-                    // EMAIL
-                    labelEmail.setVisible(true);
-                    mostrarEmail.setText(us.getEmail());
-                    mostrarEmail.setVisible(true);
-                       
-                   
-                   
-                    if(us instanceof DataEmpresa) {
-                    	DataEmpresa use = (DataEmpresa) us;
-                    	
-                    	labelFechaNac.setVisible(false);
+                    ConsultarOfertaButton.setVisible(false);
+        			
+                	
+        		} else {
+        			DataUsuario us = icu.consultarDatosUsuario(UsuariosComboBox.getSelectedItem().toString());
+        			mostrarNombre.setText(us.getNombre());
+        			mostrarApellido.setText(us.getApellido());
+        			mostrarNickname.setText(us.getNickname());
+        			mostrarPassword.setText(us.getPassword());
+        			mostrarEmail.setText(us.getEmail());
+        			if (us instanceof DataEmpresa) {
+        				DataEmpresa use = (DataEmpresa) us;
+        				labelFechaNac.setVisible(false);
                     	labelNacionalidad.setVisible(false);
                     	mostrarFechaNac.setVisible(false);
                     	mostrarNacionalidad.setVisible(false);
                     	labelPostulaciones.setVisible(false);
                     	comboPostulaciones.setVisible(false);
+                        comboPostulaciones.removeAllItems();
+                        ConsultarOfertaButton.setVisible(false);
                     	
                     	// DESCRIPCION
                         labelDescripcion.setVisible(true);
@@ -555,30 +567,31 @@ public class ConsultarUsuario  extends JInternalFrame{
                         labelLink.setVisible(true);
                         mostrarLink.setText(use.getLink());
                         mostrarLink.setVisible(true);
-                    	
+                        
                         // OFERTAS
                         labelOfertas.setVisible(true);
                         comboOfertas.setVisible(true);
                         comboOfertas.removeAllItems();
-                        comboPostulaciones.removeAllItems();
-                        dtofertas = icu.consultarPostulaciones(us.getNickname());
+                        comboOfertas.addItem("");
+                        comboOfertas.setSelectedIndex(0);
+
+                        dtofertas = icu.consultarOfertas(use.getNickname());
                     	for(DtOfertaLaboral dtof: dtofertas) {
                     		comboOfertas.addItem(dtof.getNombre());
                     	}
-                    }
-                    else if(us instanceof DataPostulante) {
-                    	comboOfertas.removeAllItems();
-                        comboPostulaciones.removeAllItems();
-                    	DataPostulante usp = (DataPostulante) us;
-                    	
+        			} else {
+        				DataPostulante usp = (DataPostulante) us;
                     	labelOfertas.setVisible(false);
                     	comboOfertas.setVisible(false);
                     	labelDescripcion.setVisible(false);
                     	labelLink.setVisible(false);
                     	mostrarDescripcion.setVisible(false);
                     	mostrarLink.setVisible(false);
-                    	
-                    	// FECHA NACIMIENTO
+                    	comboOfertas.setVisible(false);
+                        comboOfertas.removeAllItems();
+                        ConsultarOfertaButton.setVisible(false);
+                        
+                        // FECHA NACIMIENTO
                         labelFechaNac.setVisible(true);
                         mostrarFechaNac.setText(usp.getNacimiento());
                         mostrarFechaNac.setVisible(true);
@@ -591,13 +604,15 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	// POSTULACIONES
                         labelPostulaciones.setVisible(true);
                         comboPostulaciones.setVisible(true);
-                    	dtofertas = icu.consultarPostulaciones(us.getNickname());
-                    	for(DtOfertaLaboral dtof: dtofertas) {
-                    		comboPostulaciones.addItem(dtof.getNombre());
-                    	}              	
-                    }
-                    if(comboPostulaciones.isVisible()) {
-                    	dtofertas2 = dtofertas;
+                        comboPostulaciones.removeAllItems();
+                        comboPostulaciones.addItem("");
+                        dtofertaspostuladas = icu.consultarPostulaciones(usp.getNickname());
+                    	for(DtOfertaLaboral dtoferpost: dtofertaspostuladas) {
+                    		comboPostulaciones.addItem(dtoferpost.getNombre());
+                    	}
+        			}
+        			if(comboPostulaciones.isVisible()) { //1
+                    	dtofertas2 = dtofertaspostuladas;
                     	comboPostulaciones.addActionListener(new ActionListener() {
                     	public void actionPerformed(ActionEvent e) {
                     		for(DtOfertaLaboral oferta : dtofertas2) {
@@ -622,8 +637,8 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	}
                     });
 
-                    }
-                    else if(comboOfertas.isVisible()){
+                    } // 1
+                    else if(comboOfertas.isVisible()){ // 2
                     	dtofertas2 = dtofertas;
                         comboOfertas.addActionListener(new ActionListener() {
                         	public void actionPerformed(ActionEvent e) {  
@@ -647,10 +662,8 @@ public class ConsultarUsuario  extends JInternalFrame{
                     		}
                     		});
                         
-                    	}
-                    
-
-                }
+                    	} // 2
+                } // 3
         		if(comboOfertas.isVisible()) {
                     ConsultarOfertaButton.addActionListener(new ActionListener() {
                     	public void actionPerformed(ActionEvent e) {
@@ -670,10 +683,193 @@ public class ConsultarUsuario  extends JInternalFrame{
                     	}
                 
                     });
-    			}
-            }
-        	
+    			} //3
+        		
+        	}
         });
+        
+//        ConsultarButton.addActionListener(new ActionListener(){
+//        	public void actionPerformed(ActionEvent e) {
+//        		String seleccionado = (String) UsuariosComboBox.getSelectedItem();
+//        		mostrarNombreOferta.setVisible(false);
+//				mostrarCiudadOferta.setVisible(false);
+//				mostrarFechaOferta.setVisible(false);
+//				nomOf.setVisible(false);
+//				ciuOf.setVisible(false);
+//				fechOf.setVisible(false);
+//				
+//        		if(!seleccionado.isEmpty()) {
+//        			ConsultarOfertaButton.setVisible(false);
+//        			List<DtOfertaLaboral> dtofertas = null;
+//        			DataUsuario us = icu.consultarDatosUsuario(seleccionado);
+//        			
+//        			// NOMBRE
+//                    labelNombre.setVisible(true);
+//                    mostrarNombre.setText(us.getNombre());
+//                    mostrarNombre.setVisible(true);
+//                    
+//                    // APELLIDO
+//                    labelApellido.setVisible(true);
+//                    mostrarApellido.setText(us.getApellido());
+//                    mostrarApellido.setVisible(true);
+//                    
+//                    // NICKNAME
+//                    labelNickname.setVisible(true);
+//                    mostrarNickname.setText(us.getNickname());
+//                    mostrarNickname.setVisible(true);
+//                    
+//                    // PASSWORD
+//                    labelPassword.setVisible(true);
+//                    mostrarPassword.setText(us.getPassword());
+//                    mostrarPassword.setVisible(true);
+//                    
+//                    // EMAIL
+//                    labelEmail.setVisible(true);
+//                    mostrarEmail.setText(us.getEmail());
+//                    mostrarEmail.setVisible(true);
+//                       
+//                   
+//                   
+//                    if(us instanceof DataEmpresa) {
+//                    	DataEmpresa use = (DataEmpresa) us;
+//                    	
+//                    	labelFechaNac.setVisible(false);
+//                    	labelNacionalidad.setVisible(false);
+//                    	mostrarFechaNac.setVisible(false);
+//                    	mostrarNacionalidad.setVisible(false);
+//                    	labelPostulaciones.setVisible(false);
+//                    	comboPostulaciones.setVisible(false);
+//                    	
+//                    	// DESCRIPCION
+//                        labelDescripcion.setVisible(true);
+//                        mostrarDescripcion.setText(use.getDescripcion());
+//                        mostrarDescripcion.setVisible(true);
+//                        
+//                        // LINK
+//                        labelLink.setVisible(true);
+//                        mostrarLink.setText(use.getLink());
+//                        mostrarLink.setVisible(true);
+//                    	
+//                        // OFERTAS
+//                        labelOfertas.setVisible(true);
+//                        comboOfertas.setVisible(true);
+//                        comboOfertas.removeAllItems();
+//                        comboOfertas.addItem("");
+//                        comboOfertas.setSelectedIndex(0);
+//
+//                        dtofertas = icu.consultarPostulaciones(us.getNickname());
+//                    	for(DtOfertaLaboral dtof: dtofertas) {
+//                    		comboOfertas.addItem(dtof.getNombre());
+//                    	}
+//                    }
+//                    else if(us instanceof DataPostulante) {
+//                    	comboOfertas.removeAllItems();
+//                        comboPostulaciones.removeAllItems();
+//                    	DataPostulante usp = (DataPostulante) us;
+//                    	
+//                    	labelOfertas.setVisible(false);
+//                    	comboOfertas.setVisible(false);
+//                    	labelDescripcion.setVisible(false);
+//                    	labelLink.setVisible(false);
+//                    	mostrarDescripcion.setVisible(false);
+//                    	mostrarLink.setVisible(false);
+//                    	
+//                    	// FECHA NACIMIENTO
+//                        labelFechaNac.setVisible(true);
+//                        mostrarFechaNac.setText(usp.getNacimiento());
+//                        mostrarFechaNac.setVisible(true);
+//                        
+//                        // NACIONALIDAD
+//                        labelNacionalidad.setVisible(true);
+//                        mostrarNacionalidad.setText(usp.getNacionalidad());
+//                        mostrarNacionalidad.setVisible(true);
+//                        
+//                    	// POSTULACIONES
+//                        labelPostulaciones.setVisible(true);
+//                        comboPostulaciones.setVisible(true);
+//                    	dtofertas = icu.consultarPostulaciones(us.getNickname());
+//                    	for(DtOfertaLaboral dtof: dtofertas) {
+//                    		comboPostulaciones.addItem(dtof.getNombre());
+//                    	}              	
+//                    }
+//                    if(comboPostulaciones.isVisible()) { //1
+//                    	dtofertas2 = dtofertas;
+//                    	comboPostulaciones.addActionListener(new ActionListener() {
+//                    	public void actionPerformed(ActionEvent e) {
+//                    		for(DtOfertaLaboral oferta : dtofertas2) {
+//                    			if(!dtofertas2.isEmpty()) {
+//                    			if(oferta.getNombre().equals((String) comboPostulaciones.getSelectedItem())) {
+//                    				ConsultarOfertaButton.setVisible(true);
+//									mostrarNombreOferta.setText(oferta.getNombre());
+//									mostrarCiudadOferta.setText(oferta.getCiudad());
+//									mostrarFechaOferta.setText(oferta.getFechaAlta().toString());
+//                    				mostrarNombreOferta.setVisible(true);
+//                    				mostrarCiudadOferta.setVisible(true);
+//                    				mostrarFechaOferta.setVisible(true);
+//                    				nomOf.setVisible(true);
+//                    				ciuOf.setVisible(true);
+//                    				fechOf.setVisible(true);
+//                    				comboSeleccion = (String) comboPostulaciones.getSelectedItem();
+//                    			}
+//                    		        
+//                    			}
+//                    			
+//                    		}
+//                    	}
+//                    });
+//
+//                    } // 1
+//                    else if(comboOfertas.isVisible()){ // 2
+//                    	dtofertas2 = dtofertas;
+//                        comboOfertas.addActionListener(new ActionListener() {
+//                        	public void actionPerformed(ActionEvent e) {  
+//                        		for(DtOfertaLaboral oferta : dtofertas2) {
+//                        			if(!dtofertas2.isEmpty()) {
+//                        				if(oferta.getNombre().equals((String) comboOfertas.getSelectedItem())) {
+//                        					ConsultarOfertaButton.setVisible(true);                    		        
+//                        					mostrarNombreOferta.setText(oferta.getNombre());
+//                        					mostrarCiudadOferta.setText(oferta.getCiudad());
+//                        					mostrarFechaOferta.setText(oferta.getFechaAlta().toString());
+//                        					mostrarNombreOferta.setVisible(true);
+//                        					mostrarCiudadOferta.setVisible(true);
+//                        					mostrarFechaOferta.setVisible(true);
+//                        					nomOf.setVisible(true);
+//                        					ciuOf.setVisible(true);
+//                        					fechOf.setVisible(true);
+//                        					comboSeleccion = (String) comboOfertas.getSelectedItem();
+//                        				}
+//                        			}
+//                        		}
+//                    		}
+//                    		});
+//                        
+//                    	} // 2
+//                    
+//
+//                } // 3
+//        		if(comboOfertas.isVisible()) {
+//                    ConsultarOfertaButton.addActionListener(new ActionListener() {
+//                    	public void actionPerformed(ActionEvent e) {
+//                    		ico.obtenerEmpresaDeOferta(comboSeleccion);
+//                    		abrirConsultaOferta(ico, icu, comboSeleccion);	
+//                    		comboSeleccion = null;
+//                    	}
+//                
+//                    });
+//    			}
+//    			else if(comboPostulaciones.isVisible()) {
+//    				ConsultarOfertaButton.addActionListener(new ActionListener() {
+//                    	public void actionPerformed(ActionEvent e) {
+//                    		ico.obtenerEmpresaDeOferta(comboSeleccion);
+//                    		abrirConsultaOferta(ico, icu, comboSeleccion);	
+//                    		comboSeleccion = null;
+//                    	}
+//                
+//                    });
+//    			} //3
+//            }
+//        	
+//        });
 
 	}
 }
