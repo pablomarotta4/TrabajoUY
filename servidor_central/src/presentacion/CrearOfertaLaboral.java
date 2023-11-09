@@ -434,6 +434,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
 						
 					}
 					
+					
 					if(comboBoxEmpresa.getSelectedItem() == null || comboBoxTipoPublicacion.getSelectedItem() == null ||
 						comboBoxEmpresa.getSelectedItem().toString() == "" || comboBoxTipoPublicacion.getSelectedItem().toString() == "") {
 						throw new ElementoInexistenteException("noEmpNoTipo");
