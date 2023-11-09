@@ -442,8 +442,8 @@ public class ConsultarOferta extends JInternalFrame{
 							
 						} else {
 							try {
-								System.out.println("oferta se supone: " + preSeleccion);
-								dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
+
+								dtOf  = ctrlOferta.listarDatosOferta(preSeleccion);
 		        				
 								List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
 								String totalDataPostulaciones = "";
