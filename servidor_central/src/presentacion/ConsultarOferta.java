@@ -75,25 +75,17 @@ public class ConsultarOferta extends JInternalFrame{
         JPanel panel_1_1 = new JPanel();
         scrollPane_1.setViewportView(panel_1_1);
         GridBagLayout gbl_panel_1_1 = new GridBagLayout();
-        gbl_panel_1_1.columnWidths = new int[]{50, 200, 300, 200, 0};
+        gbl_panel_1_1.columnWidths = new int[]{150, 300, 180, 0};
         gbl_panel_1_1.rowHeights = new int[]{50, 30, 30, 30, 0, 0, 150, 30, 30, 30, 30, 30, 0, 30, 150, 150, 0, 0};
-        gbl_panel_1_1.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+        gbl_panel_1_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_1_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         panel_1_1.setLayout(gbl_panel_1_1);
-        
-        JPanel panel_1 = new JPanel();
-        GridBagConstraints gbc_panel_1 = new GridBagConstraints();
-        gbc_panel_1.insets = new Insets(0, 0, 5, 5);
-        gbc_panel_1.fill = GridBagConstraints.BOTH;
-        gbc_panel_1.gridx = 0;
-        gbc_panel_1.gridy = 0;
-        panel_1_1.add(panel_1, gbc_panel_1);
         
         JPanel panel = new JPanel();
         GridBagConstraints gbc_panel = new GridBagConstraints();
         gbc_panel.insets = new Insets(0, 0, 5, 0);
         gbc_panel.fill = GridBagConstraints.BOTH;
-        gbc_panel.gridx = 3;
+        gbc_panel.gridx = 2;
         gbc_panel.gridy = 0;
         panel_1_1.add(panel, gbc_panel);
         
@@ -101,7 +93,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblEmpresa = new GridBagConstraints();
         gbc_lblEmpresa.anchor = GridBagConstraints.EAST;
         gbc_lblEmpresa.insets = new Insets(0, 0, 5, 5);
-        gbc_lblEmpresa.gridx = 1;
+        gbc_lblEmpresa.gridx = 0;
         gbc_lblEmpresa.gridy = 1;
         panel_1_1.add(lblEmpresa, gbc_lblEmpresa);
         
@@ -109,7 +101,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_comboBoxEmpresa = new GridBagConstraints();
         gbc_comboBoxEmpresa.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxEmpresa.insets = new Insets(0, 0, 5, 5);
-        gbc_comboBoxEmpresa.gridx = 2;
+        gbc_comboBoxEmpresa.gridx = 1;
         gbc_comboBoxEmpresa.gridy = 1;
         panel_1_1.add(comboBoxEmpresa, gbc_comboBoxEmpresa);
         comboBoxEmpresa.addItem("");
@@ -122,7 +114,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_comboBoxOferta = new GridBagConstraints();
         gbc_comboBoxOferta.fill = GridBagConstraints.HORIZONTAL;
         gbc_comboBoxOferta.insets = new Insets(0, 0, 5, 5);
-        gbc_comboBoxOferta.gridx = 2;
+        gbc_comboBoxOferta.gridx = 1;
         gbc_comboBoxOferta.gridy = 2;
         panel_1_1.add(comboBoxOferta, gbc_comboBoxOferta);
         comboBoxOferta.addItem("");
@@ -135,7 +127,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel.gridx = 1;
+        gbc_lblNewLabel.gridx = 0;
         gbc_lblNewLabel.gridy = 2;
         panel_1_1.add(lblNewLabel, gbc_lblNewLabel);
         
@@ -143,7 +135,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
         gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_7.gridx = 1;
+        gbc_lblNewLabel_7.gridx = 0;
         gbc_lblNewLabel_7.gridy = 3;
         panel_1_1.add(lblNewLabel_7, gbc_lblNewLabel_7);
         
@@ -153,7 +145,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textNombre = new GridBagConstraints();
         gbc_textNombre.insets = new Insets(0, 0, 5, 5);
         gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textNombre.gridx = 2;
+        gbc_textNombre.gridx = 1;
         gbc_textNombre.gridy = 3;
         panel_1_1.add(textNombre, gbc_textNombre);
         textNombre.setColumns(10);
@@ -162,7 +154,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_9 = new GridBagConstraints();
         gbc_lblNewLabel_9.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_9.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_9.gridx = 1;
+        gbc_lblNewLabel_9.gridx = 0;
         gbc_lblNewLabel_9.gridy = 4;
         panel_1_1.add(lblNewLabel_9, gbc_lblNewLabel_9);
         
@@ -172,7 +164,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textEmpresa = new GridBagConstraints();
         gbc_textEmpresa.insets = new Insets(0, 0, 5, 5);
         gbc_textEmpresa.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textEmpresa.gridx = 2;
+        gbc_textEmpresa.gridx = 1;
         gbc_textEmpresa.gridy = 4;
         panel_1_1.add(textEmpresa, gbc_textEmpresa);
         textEmpresa.setColumns(10);
@@ -181,7 +173,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblEstado = new GridBagConstraints();
         gbc_lblEstado.anchor = GridBagConstraints.EAST;
         gbc_lblEstado.insets = new Insets(0, 0, 5, 5);
-        gbc_lblEstado.gridx = 1;
+        gbc_lblEstado.gridx = 0;
         gbc_lblEstado.gridy = 5;
         panel_1_1.add(lblEstado, gbc_lblEstado);
         
@@ -191,7 +183,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_txtEstado = new GridBagConstraints();
         gbc_txtEstado.insets = new Insets(0, 0, 5, 5);
         gbc_txtEstado.fill = GridBagConstraints.HORIZONTAL;
-        gbc_txtEstado.gridx = 2;
+        gbc_txtEstado.gridx = 1;
         gbc_txtEstado.gridy = 5;
         panel_1_1.add(txtEstado, gbc_txtEstado);
         txtEstado.setColumns(10);
@@ -200,7 +192,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
         gbc_lblNewLabel_3.anchor = GridBagConstraints.NORTHEAST;
         gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_3.gridx = 1;
+        gbc_lblNewLabel_3.gridx = 0;
         gbc_lblNewLabel_3.gridy = 6;
         panel_1_1.add(lblNewLabel_3, gbc_lblNewLabel_3);
         
@@ -208,7 +200,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_scrollPane = new GridBagConstraints();
         gbc_scrollPane.fill = GridBagConstraints.BOTH;
         gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
-        gbc_scrollPane.gridx = 2;
+        gbc_scrollPane.gridx = 1;
         gbc_scrollPane.gridy = 6;
         panel_1_1.add(scrollPane, gbc_scrollPane);
         
@@ -221,7 +213,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
         gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_2.gridx = 1;
+        gbc_lblNewLabel_2.gridx = 0;
         gbc_lblNewLabel_2.gridy = 7;
         panel_1_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
         
@@ -231,7 +223,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textCiudad = new GridBagConstraints();
         gbc_textCiudad.insets = new Insets(0, 0, 5, 5);
         gbc_textCiudad.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textCiudad.gridx = 2;
+        gbc_textCiudad.gridx = 1;
         gbc_textCiudad.gridy = 7;
         panel_1_1.add(textCiudad, gbc_textCiudad);
         textCiudad.setColumns(10);
@@ -240,7 +232,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
         gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_1.gridx = 1;
+        gbc_lblNewLabel_1.gridx = 0;
         gbc_lblNewLabel_1.gridy = 8;
         panel_1_1.add(lblNewLabel_1, gbc_lblNewLabel_1);
         
@@ -250,7 +242,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textDepartamento = new GridBagConstraints();
         gbc_textDepartamento.insets = new Insets(0, 0, 5, 5);
         gbc_textDepartamento.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textDepartamento.gridx = 2;
+        gbc_textDepartamento.gridx = 1;
         gbc_textDepartamento.gridy = 8;
         panel_1_1.add(textDepartamento, gbc_textDepartamento);
         textDepartamento.setColumns(10);
@@ -259,7 +251,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
         gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_4.gridx = 1;
+        gbc_lblNewLabel_4.gridx = 0;
         gbc_lblNewLabel_4.gridy = 9;
         panel_1_1.add(lblNewLabel_4, gbc_lblNewLabel_4);
         
@@ -269,7 +261,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textHorario = new GridBagConstraints();
         gbc_textHorario.insets = new Insets(0, 0, 5, 5);
         gbc_textHorario.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textHorario.gridx = 2;
+        gbc_textHorario.gridx = 1;
         gbc_textHorario.gridy = 9;
         panel_1_1.add(textHorario, gbc_textHorario);
         textHorario.setColumns(10);
@@ -278,7 +270,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
         gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_5.gridx = 1;
+        gbc_lblNewLabel_5.gridx = 0;
         gbc_lblNewLabel_5.gridy = 10;
         panel_1_1.add(lblNewLabel_5, gbc_lblNewLabel_5);
         
@@ -288,7 +280,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textRemuneracion = new GridBagConstraints();
         gbc_textRemuneracion.insets = new Insets(0, 0, 5, 5);
         gbc_textRemuneracion.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textRemuneracion.gridx = 2;
+        gbc_textRemuneracion.gridx = 1;
         gbc_textRemuneracion.gridy = 10;
         panel_1_1.add(textRemuneracion, gbc_textRemuneracion);
         textRemuneracion.setColumns(10);
@@ -297,7 +289,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
         gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_6.gridx = 1;
+        gbc_lblNewLabel_6.gridx = 0;
         gbc_lblNewLabel_6.gridy = 11;
         panel_1_1.add(lblNewLabel_6, gbc_lblNewLabel_6);
         
@@ -307,7 +299,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_textFechaAlta = new GridBagConstraints();
         gbc_textFechaAlta.insets = new Insets(0, 0, 5, 5);
         gbc_textFechaAlta.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textFechaAlta.gridx = 2;
+        gbc_textFechaAlta.gridx = 1;
         gbc_textFechaAlta.gridy = 11;
         panel_1_1.add(textFechaAlta, gbc_textFechaAlta);
         textFechaAlta.setColumns(10);
@@ -316,7 +308,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblDuracion = new GridBagConstraints();
         gbc_lblDuracion.anchor = GridBagConstraints.EAST;
         gbc_lblDuracion.insets = new Insets(0, 0, 5, 5);
-        gbc_lblDuracion.gridx = 1;
+        gbc_lblDuracion.gridx = 0;
         gbc_lblDuracion.gridy = 12;
         panel_1_1.add(lblDuracion, gbc_lblDuracion);
         
@@ -326,7 +318,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_txtfDuracion = new GridBagConstraints();
         gbc_txtfDuracion.insets = new Insets(0, 0, 5, 5);
         gbc_txtfDuracion.fill = GridBagConstraints.HORIZONTAL;
-        gbc_txtfDuracion.gridx = 2;
+        gbc_txtfDuracion.gridx = 1;
         gbc_txtfDuracion.gridy = 12;
         panel_1_1.add(txtfDuracion, gbc_txtfDuracion);
         txtfDuracion.setColumns(10);
@@ -335,7 +327,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblCosto = new GridBagConstraints();
         gbc_lblCosto.anchor = GridBagConstraints.EAST;
         gbc_lblCosto.insets = new Insets(0, 0, 5, 5);
-        gbc_lblCosto.gridx = 1;
+        gbc_lblCosto.gridx = 0;
         gbc_lblCosto.gridy = 13;
         panel_1_1.add(lblCosto, gbc_lblCosto);
         
@@ -345,7 +337,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_txtCosto = new GridBagConstraints();
         gbc_txtCosto.insets = new Insets(0, 0, 5, 5);
         gbc_txtCosto.fill = GridBagConstraints.HORIZONTAL;
-        gbc_txtCosto.gridx = 2;
+        gbc_txtCosto.gridx = 1;
         gbc_txtCosto.gridy = 13;
         panel_1_1.add(txtCosto, gbc_txtCosto);
         txtCosto.setColumns(10);
@@ -354,7 +346,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
         gbc_lblNewLabel_10.anchor = GridBagConstraints.NORTHEAST;
         gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel_10.gridx = 1;
+        gbc_lblNewLabel_10.gridx = 0;
         gbc_lblNewLabel_10.gridy = 14;
         panel_1_1.add(lblNewLabel_10, gbc_lblNewLabel_10);
         
@@ -362,7 +354,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_scrollPane_3 = new GridBagConstraints();
         gbc_scrollPane_3.insets = new Insets(0, 0, 5, 5);
         gbc_scrollPane_3.fill = GridBagConstraints.BOTH;
-        gbc_scrollPane_3.gridx = 2;
+        gbc_scrollPane_3.gridx = 1;
         gbc_scrollPane_3.gridy = 14;
         panel_1_1.add(scrollPane_3, gbc_scrollPane_3);
         
@@ -375,7 +367,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_lblPostulaciones = new GridBagConstraints();
         gbc_lblPostulaciones.anchor = GridBagConstraints.NORTHEAST;
         gbc_lblPostulaciones.insets = new Insets(0, 0, 5, 5);
-        gbc_lblPostulaciones.gridx = 1;
+        gbc_lblPostulaciones.gridx = 0;
         gbc_lblPostulaciones.gridy = 15;
         panel_1_1.add(lblPostulaciones, gbc_lblPostulaciones);
         
@@ -383,7 +375,7 @@ public class ConsultarOferta extends JInternalFrame{
         GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
         gbc_scrollPane_2.insets = new Insets(0, 0, 5, 5);
         gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
-        gbc_scrollPane_2.gridx = 2;
+        gbc_scrollPane_2.gridx = 1;
         gbc_scrollPane_2.gridy = 15;
         panel_1_1.add(scrollPane_2, gbc_scrollPane_2);
         
