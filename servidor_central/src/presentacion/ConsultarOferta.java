@@ -63,7 +63,7 @@ public class ConsultarOferta extends JInternalFrame{
         setMaximizable(true); 
         setClosable(true);
         setTitle("Consulta de Oferta Laboral");
-        setBounds(10, 40, 764, 709);
+        setBounds(10, 40, 764, 1132);
         
       
         
@@ -75,8 +75,8 @@ public class ConsultarOferta extends JInternalFrame{
         JPanel panel_1_1 = new JPanel();
         scrollPane_1.setViewportView(panel_1_1);
         GridBagLayout gbl_panel_1_1 = new GridBagLayout();
-        gbl_panel_1_1.columnWidths = new int[]{50, 200, 250, 200, 0};
-        gbl_panel_1_1.rowHeights = new int[]{50, 30, 30, 30, 0, 0, 100, 30, 30, 30, 30, 30, 0, 30, 30, 120, 0, 0};
+        gbl_panel_1_1.columnWidths = new int[]{50, 200, 300, 200, 0};
+        gbl_panel_1_1.rowHeights = new int[]{50, 30, 30, 30, 0, 0, 150, 30, 30, 30, 30, 30, 0, 30, 150, 150, 0, 0};
         gbl_panel_1_1.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_1_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         panel_1_1.setLayout(gbl_panel_1_1);
@@ -358,13 +358,18 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_lblNewLabel_10.gridy = 14;
         panel_1_1.add(lblNewLabel_10, gbc_lblNewLabel_10);
         
-        JComboBox<String> comboBoxKeywords = new JComboBox<String>();
-        GridBagConstraints gbc_comboBoxKeywords = new GridBagConstraints();
-        gbc_comboBoxKeywords.fill = GridBagConstraints.HORIZONTAL;
-        gbc_comboBoxKeywords.insets = new Insets(0, 0, 5, 5);
-        gbc_comboBoxKeywords.gridx = 2;
-        gbc_comboBoxKeywords.gridy = 14;
-        panel_1_1.add(comboBoxKeywords, gbc_comboBoxKeywords);
+        JScrollPane scrollPane_3 = new JScrollPane();
+        GridBagConstraints gbc_scrollPane_3 = new GridBagConstraints();
+        gbc_scrollPane_3.insets = new Insets(0, 0, 5, 5);
+        gbc_scrollPane_3.fill = GridBagConstraints.BOTH;
+        gbc_scrollPane_3.gridx = 2;
+        gbc_scrollPane_3.gridy = 14;
+        panel_1_1.add(scrollPane_3, gbc_scrollPane_3);
+        
+        JTextArea textArea_3 = new JTextArea();
+        textArea_3.setLineWrap(true);
+        textArea_3.setEditable(false);
+        scrollPane_3.setViewportView(textArea_3);
         
         JLabel lblPostulaciones = new JLabel("Postulaciones:");
         GridBagConstraints gbc_lblPostulaciones = new GridBagConstraints();
@@ -375,7 +380,6 @@ public class ConsultarOferta extends JInternalFrame{
         panel_1_1.add(lblPostulaciones, gbc_lblPostulaciones);
         
         JScrollPane scrollPane_2 = new JScrollPane();
-        scrollPane_2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
         gbc_scrollPane_2.insets = new Insets(0, 0, 5, 5);
         gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
@@ -399,14 +403,7 @@ public class ConsultarOferta extends JInternalFrame{
 		if(preSeleccion != null) {
 			try {
 				
-				dtOf  = ctrlOferta.listarDatosOferta(preSeleccion);
-				
-				lblEmpresa.setVisible(false);
-				comboBoxEmpresa.setVisible(false);
-				lblNewLabel.setVisible(false);
-				comboBoxOferta.setVisible(false);
-
-
+				dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
 				textNombre.setText(dtOf.getNombre());
 				costofinal = (Float) dtOf.getCosto();
 				txtCosto.setText(costofinal.toString() + " $");
@@ -420,11 +417,22 @@ public class ConsultarOferta extends JInternalFrame{
 				textRemuneracion.setText(dtOf.getRemuneracion().toString() + " $");
 				textFechaAlta.setText(dtOf.getFechaAlta().toString());
 				textEmpresa.setText(dtOf.getNombreEmpresa());
-				
-				List<String> listaKeywords = dtOf.getKeywords();
-				for(int i = 0; i <= listaKeywords.size() - 1; i++) {
-					comboBoxKeywords.addItem(listaKeywords.get(i));
+			
+				List<String> keys = dtOf.getKeywords();
+				String keysText = "";
+				if (keys.size() != 0) {
+					for(int i = 0; i < keys.size(); i++) {
+						if (keysText != "") {
+							keysText = keysText + "\n" + keys.get(i);
+						} else {
+							keysText = keys.get(i);
+						}
+					}
+				} else {
+					keysText = "";
 				}
+				textArea_3.setText(keysText);
+				
 				List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
 				String totalDataPostulaciones = "";
 				for(int i = 0; i <= listaPostulaciones.size() - 1; i++) {
@@ -432,8 +440,7 @@ public class ConsultarOferta extends JInternalFrame{
 					totalDataPostulaciones += listaPostulaciones.get(i).toString();
 				}
 				textDataPostulacion.setText(totalDataPostulaciones.toString());
-				
-			}catch(ElementoInexistenteException ex) {
+			} catch(ElementoInexistenteException ex) {
 				
 			}
 		}
@@ -467,11 +474,14 @@ public class ConsultarOferta extends JInternalFrame{
 				
 					if (comboBoxOferta.getSelectedItem() == "" || comboBoxOferta.getSelectedItem() == null) {
 						
+						
+	        			textArea_3.setText("");
+						textDescripcion.setText("");
+						
 						textNombre.setText("");
 						txtCosto.setText("");
 						txtfDuracion.setText("");
 						txtEstado.setText("");
-						textDescripcion.setText("");
 						textCiudad.setText("");
 						textDepartamento.setText("");
 						textHorario.setText("");
@@ -497,10 +507,21 @@ public class ConsultarOferta extends JInternalFrame{
 							textFechaAlta.setText(dtOf.getFechaAlta().toString());
 							textEmpresa.setText(dtOf.getNombreEmpresa());
 						
-							List<String> listaKeywords = dtOf.getKeywords();
-							for(int i = 0; i <= listaKeywords.size() - 1; i++) {
-								comboBoxKeywords.addItem(listaKeywords.get(i));
-							}
+							List<String> keys = dtOf.getKeywords();
+	        				String keysText = "";
+	        				if (keys.size() != 0) {
+	        					for(int i = 0; i < keys.size(); i++) {
+	        						if (keysText != "") {
+	        							keysText = keysText + "\n" + keys.get(i);
+	        						} else {
+	        							keysText = keys.get(i);
+	        						}
+	        					}
+	        				} else {
+	        					keysText = "";
+	        				}
+	        				textArea_3.setText(keysText);
+	        				
 							List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
 							String totalDataPostulaciones = "";
 							for(int i = 0; i <= listaPostulaciones.size() - 1; i++) {
