@@ -28,7 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="remuneracion" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         <element name="fechaAlta" type="{http://server/}localDate" minOccurs="0"/>
  *         <element name="date" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         <element name="imageUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="imagen" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="costo" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         <element name="postulaciones" type="{http://server/}dtPostulacion" maxOccurs="unbounded" minOccurs="0"/>
  *         <element name="keywords" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
@@ -53,7 +53,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "remuneracion",
     "fechaAlta",
     "date",
-    "imageUrl",
+    "imagen",
     "costo",
     "postulaciones",
     "keywords",
@@ -71,7 +71,7 @@ public class DtOfertaLaboral {
     protected float remuneracion;
     protected LocalDate fechaAlta;
     protected String date;
-    protected String imageUrl;
+    protected String imagen;
     protected float costo;
     @XmlElement(nillable = true)
     protected List<DtPostulacion> postulaciones;
@@ -267,27 +267,27 @@ public class DtOfertaLaboral {
     }
 
     /**
-     * Obtiene el valor de la propiedad imageUrl.
+     * Obtiene el valor de la propiedad imagen.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImagen() {
+        return imagen;
     }
 
     /**
-     * Define el valor de la propiedad imageUrl.
+     * Define el valor de la propiedad imagen.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setImageUrl(String value) {
-        this.imageUrl = value;
+    public void setImagen(String value) {
+        this.imagen = value;
     }
 
     /**

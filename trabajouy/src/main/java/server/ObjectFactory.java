@@ -27,6 +27,7 @@ public class ObjectFactory {
     private final static QName _CamposVaciosExcepcion_QNAME = new QName("http://server/", "CamposVaciosExcepcion");
     private final static QName _ElementoInexistenteException_QNAME = new QName("http://server/", "ElementoInexistenteException");
     private final static QName _ElementoRepetidoException_QNAME = new QName("http://server/", "ElementoRepetidoException");
+    private final static QName _IOException_QNAME = new QName("http://server/", "IOException");
     private final static QName _NoExisteInstancia_QNAME = new QName("http://server/", "NoExisteInstancia");
     private final static QName _UsuarioRepetidoException_QNAME = new QName("http://server/", "UsuarioRepetidoException");
 
@@ -65,6 +66,16 @@ public class ObjectFactory {
      */
     public ElementoRepetidoException createElementoRepetidoException() {
         return new ElementoRepetidoException();
+    }
+
+    /**
+     * Create an instance of {@link IOException }
+     * 
+     * @return
+     *     the new instance of {@link IOException }
+     */
+    public IOException createIOException() {
+        return new IOException();
     }
 
     /**
@@ -234,6 +245,19 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://server/", name = "ElementoRepetidoException")
     public JAXBElement<ElementoRepetidoException> createElementoRepetidoException(ElementoRepetidoException value) {
         return new JAXBElement<>(_ElementoRepetidoException_QNAME, ElementoRepetidoException.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link IOException }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link IOException }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://server/", name = "IOException")
+    public JAXBElement<IOException> createIOException(IOException value) {
+        return new JAXBElement<>(_IOException_QNAME, IOException.class, null, value);
     }
 
     /**

@@ -24,7 +24,7 @@
         <div class="contenido">
             <div class="titulo">
                 <div>
-                    <img src=<%= oferta.getImageUrl() %>>
+                    <img src="/trabajouy/imagenes?id=<%=oferta.getImagen()%>">
                 </div>
                 <div class="title">
                     <h1><%= oferta.getNombre() %></h1>

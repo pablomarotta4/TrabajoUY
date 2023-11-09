@@ -36,7 +36,7 @@
         	<div id="ContenedorCajas">
 	         <div class="caja">
 	            <div class="cajaImagen">
-	                <img src=<%= oferta.getImageUrl() %> title="imagen-oferta" alt="imagen-oferta" style="max-height: 100%">
+	                <img src="/trabajouy/imagenes?id=<%=oferta.getImagen()%>" title="imagen-oferta" alt="imagen-oferta" style="max-height: 100%">
 	            </div>
 	            <div class="contenido">
 	                <h3><a href="consultarOferta?oferta=<%=java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>"><%= oferta.getNombre() %></a></h3>

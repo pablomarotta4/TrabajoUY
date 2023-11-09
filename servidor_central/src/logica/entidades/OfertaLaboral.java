@@ -19,7 +19,7 @@ public class OfertaLaboral {
 	private LocalDate fechaAlta;
 	private float costo;
 	private List<Postulacion> postulaciones;
-	private String imageUrl;
+	private String imagen;
 	private List<Keyword> keywords;
 	private Empresa empresa;
 	private TipoPublicacion tipo;
@@ -33,7 +33,7 @@ public class OfertaLaboral {
 			String horario,
 			float remuneracion,
 			LocalDate fechaAlta,
-			String imageUrl,
+			String imagen,
 			List<Keyword> keywords,
 			Empresa emp,
 			TipoPublicacion tipo
@@ -49,7 +49,7 @@ public class OfertaLaboral {
 		this.empresa = emp;
 		this.keywords = keywords;
 		this.tipo = tipo;
-		this.imageUrl = imageUrl;
+		this.imagen = imagen;
 		this.costo = tipo.getCosto();
 		this.estado = EstadoOferta.INGRESADA;
 	}	
@@ -91,7 +91,7 @@ public class OfertaLaboral {
 			this.horario,
 			this.remuneracion,
 			this.fechaAlta,
-			this.imageUrl,
+			this.imagen,
 			listaDtPostulacion,
 			listaKeywords,
 			this.empresa.getNickname(),
