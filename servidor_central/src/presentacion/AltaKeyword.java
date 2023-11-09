@@ -25,7 +25,6 @@ import java.awt.Insets;
 
 public class AltaKeyword extends JInternalFrame {
 
-	private IControladorOferta ctrlOf;
 	private JTextField textNombreKeyword;
 
 
