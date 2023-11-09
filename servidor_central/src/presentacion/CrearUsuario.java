@@ -309,7 +309,7 @@ public class CrearUsuario extends JInternalFrame{
         JPanel CancelConfirmPanel = new JPanel();
         SouthPanel1.add(CancelConfirmPanel);
         
-        JButton ConfirmarButton = new JButton("Confirmar");
+        JButton ConfirmarButton = new JButton("Aceptar");
         CancelConfirmPanel.add(ConfirmarButton);
         
         JButton CancelarButton = new JButton("Cancelar");

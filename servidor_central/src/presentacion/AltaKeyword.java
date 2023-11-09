@@ -41,9 +41,9 @@ public class AltaKeyword extends JInternalFrame {
         JPanel panel_1 = new JPanel();
         getContentPane().add(panel_1, BorderLayout.CENTER);
         GridBagLayout gbl_panel_1 = new GridBagLayout();
-        gbl_panel_1.columnWidths = new int[]{0, 170, 300, 0, 0};
+        gbl_panel_1.columnWidths = new int[]{180, 300, 150, 0};
         gbl_panel_1.rowHeights = new int[]{50, 0, 50, 0, 0};
-        gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+        gbl_panel_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
         panel_1.setLayout(gbl_panel_1);
         
@@ -51,7 +51,7 @@ public class AltaKeyword extends JInternalFrame {
         GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
         gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
         gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-        gbc_lblNewLabel.gridx = 1;
+        gbc_lblNewLabel.gridx = 0;
         gbc_lblNewLabel.gridy = 1;
         panel_1.add(lblNewLabel, gbc_lblNewLabel);
         
@@ -62,15 +62,13 @@ public class AltaKeyword extends JInternalFrame {
         GridBagConstraints gbc_textNombreKeyword = new GridBagConstraints();
         gbc_textNombreKeyword.insets = new Insets(0, 0, 5, 5);
         gbc_textNombreKeyword.fill = GridBagConstraints.HORIZONTAL;
-        gbc_textNombreKeyword.gridx = 2;
+        gbc_textNombreKeyword.gridx = 1;
         gbc_textNombreKeyword.gridy = 1;
         panel_1.add(textNombreKeyword, gbc_textNombreKeyword);
         textNombreKeyword.setColumns(10);
         
         JPanel panel_2 = new JPanel();
         GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-        gbc_panel_2.gridwidth = 2;
-        gbc_panel_2.insets = new Insets(0, 0, 0, 5);
         gbc_panel_2.fill = GridBagConstraints.BOTH;
         gbc_panel_2.gridx = 1;
         gbc_panel_2.gridy = 3;
