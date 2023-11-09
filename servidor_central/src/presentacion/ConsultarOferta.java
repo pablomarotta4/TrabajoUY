@@ -427,28 +427,47 @@ public class ConsultarOferta extends JInternalFrame{
 					keysText = "";
 				}
 				textArea_3.setText(keysText);
-
-
-
-
-			
-
-				
-
 				
 				List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
-				String totalDataPostulaciones = "";
-				for(int i = 0; i <= listaPostulaciones.size() - 1; i++) {
-					totalDataPostulaciones += "Postulante " + Integer.toString(i + 1) + "\n";
-					totalDataPostulaciones += listaPostulaciones.get(i).toString();
+				for(int i = 0; i < listaPostulaciones.size(); i++) {
+					comboBoxPostulaciones.addItem(listaPostulaciones.get(i).getNickpostulante());
 				}
-				textDataPostulacion.setText(totalDataPostulaciones.toString());
+				
+				comboBoxPostulaciones.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					
+						if (comboBoxPostulaciones.getSelectedItem() == "" || comboBoxPostulaciones.getSelectedItem() == null) {
+
+							textDataPostulacion.setText("");
+							
+						} else {
+							try {
+								System.out.println("oferta se supone: " + preSeleccion);
+								dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
+		        				
+								List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
+								String totalDataPostulaciones = "";
+								for(DTPostulacion pos : listaPostulaciones) {
+									if (comboBoxPostulaciones.getSelectedItem() == pos.getNickpostulante()) {
+										totalDataPostulaciones += "CV REDUCIDO: " + pos.getCvReducido() + "\n"+"\n";
+										totalDataPostulaciones += "MOTIVACION: " + pos.getMotivacion() + "\n"+"\n";
+										totalDataPostulaciones += "FECHA DE ALTA: " + pos.getFechaPostulacion().toString() + "\n";
+									}
+								}
+								textDataPostulacion.setText(totalDataPostulaciones.toString());
+							} catch(ElementoInexistenteException ex) {
+								
+							}
+						}
+					
+					
+					}
+				});
 			} catch(ElementoInexistenteException ex) {
 				
 			}
 		}
 		else {
-			System.out.println("entro al else");
 	        comboBoxEmpresa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (comboBoxEmpresa.getSelectedItem() == "") {
