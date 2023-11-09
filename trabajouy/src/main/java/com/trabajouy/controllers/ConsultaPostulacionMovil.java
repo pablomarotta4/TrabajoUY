@@ -34,10 +34,10 @@ public class ConsultaPostulacionMovil extends HttpServlet {
 		EstadoSesion estadoSesion = (EstadoSesion) sesion.getAttribute("estado_sesion");
 		if (estadoSesion.equals(EstadoSesion.LOGIN_CORRECTO)) {
 			server.WebServer port = new server.WebServerService().getWebServerPort();
-			if (port.consultarDatosUsuario((String) request.getSession().getAttribute("nickname")) instanceof DataPostulante) {
+			if (port.consultarDatosUsuario((String) request.getParameter("nickname")) instanceof DataPostulante) {
 				DtPostulacion postulacionInfo = port.listarDatosPostulacion(
-				(String) request.getSession().getAttribute("nickname"),
-				(String) request.getSession().getAttribute("nombreOferta"));
+				(String) request.getParameter("nickname"),
+				(String) request.getParameter("nombreOferta"));
 			request.getSession().setAttribute("datosPostulacion", (DtPostulacion) postulacionInfo);
 			request.getRequestDispatcher("WEB-INF/movil/consultaPostulacionMovil.jsp").forward(request, response);
 		    }
