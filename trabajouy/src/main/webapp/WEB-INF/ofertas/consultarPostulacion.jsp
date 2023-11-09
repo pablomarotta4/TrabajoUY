@@ -49,7 +49,7 @@
         </div>
         <div id="subcardOfer">
             <div id="ofertaContainer">
-                <img id="imagenOferta" src="<%= oferta.getImagen() %>"  alt="oferta">
+                <img id="imagenOferta"src="/trabajouy/imagenes?id=<%=oferta.getImagen()%>"  alt="oferta">
                 <div id="ofertaNombre">	<%= datosPostulacion.getNombreOferta() %> </div>
             </div>
         </div>

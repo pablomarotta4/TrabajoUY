@@ -26,7 +26,7 @@
 	 	<div class="main-container">
 	        <div class="datosPresentacion">
 	            <div class="cajaImagen">
-	                <img src=<%= usuarioC.getImageUrl() %> alt="imagen">
+	                <img src="/trabajouy/imagenes?id=<%=usuarioC.getImageUrl()%>" alt="imagen">
 	            </div>
 	            <div class="datosBasicos">
 	                <h2><%= usuarioC.getNickname() %></h2>

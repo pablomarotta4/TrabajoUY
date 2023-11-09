@@ -29,7 +29,7 @@
   
     	<div class="caja">
 			  <div class="cajaImagen">
-			  		<img src= <%= usuario.getImageUrl() %> title ="imagen-usuario" alt="img-usuario">
+			  		<img src="/trabajouy/imagenes?id=<%=usuario.getImageUrl()%>" title ="imagen-usuario" alt="img-usuario">
 			  </div>
 			  <div class="contenido"> 
 			  		<h3><a href="consultausuario?usuario_consulta=<%= usuario.getNickname()%>"><%=nombreUsuario%></a></h3>
