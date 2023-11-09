@@ -26,7 +26,7 @@
 	 	<div class="main-container">
 	        <div class="datosPresentacion">
 	            <div class="cajaImagen">
-	                <img src=<%= usuarioC.getImageUrl() %> alt="imagen">
+	                <img src="/trabajouy/imagenes?id=<%=usuarioC.getImageUrl()%>" alt="imagen">
 	            </div>
 	            <div class="datosBasicos">
 	                <h2><%= usuarioC.getNickname() %></h2>
@@ -43,7 +43,7 @@
 	                		DataPostulante postulante = (DataPostulante) usuarioC;
 	                %>
 	                <h3>Nacionalidad: <%= postulante.getNacionalidad() %></h3>
-	                <h3>Fecha de Nacimiento: <%= postulante.getNacimiento() %></h3>
+	                <h3>Fecha de Nacimiento: <%= postulante.getDate() %></h3>
 	                <% } 
 	                if (mismo) {
 	                %>

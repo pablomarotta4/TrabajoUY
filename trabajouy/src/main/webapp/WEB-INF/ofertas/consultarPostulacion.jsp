@@ -23,7 +23,7 @@
         <div class="card">
             <div id="datosContainer">
             <%
-            DtPostulacion datosPostulacion = (DtPostulacion) request.getSession().getAttribute("datosPostulacion");
+            DtPostulacion datosPostulacion = (DtPostulacion) request.getAttribute("datosPostulacion");
 	    			server.WebServerService servicio = new server.WebServerService();
     				server.WebServer port = servicio.getWebServerPort();
             		DtOfertaLaboral oferta = port.listarDatosOferta(datosPostulacion.getNombreOferta());
@@ -43,13 +43,13 @@
                 </div>
                 <div id="fechaContainer">
                     <label id="fechaLabel" for="fecha">Fecha de postulacion: </label>
-                    <div id="fecha"><%= datosPostulacion.getFechaPostulacion().toString() %>		 </div>
+                    <div id="fecha"><%= datosPostulacion.getDate() %>		 </div>
                 </div>
             </div>
         </div>
         <div id="subcardOfer">
             <div id="ofertaContainer">
-                <img id="imagenOferta" src="<%= oferta.getImageUrl() %>"  alt="oferta">
+                <img id="imagenOferta"src="/trabajouy/imagenes?id=<%=oferta.getImagen()%>"  alt="oferta">
                 <div id="ofertaNombre">	<%= datosPostulacion.getNombreOferta() %> </div>
             </div>
         </div>

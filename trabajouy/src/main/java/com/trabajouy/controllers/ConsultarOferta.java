@@ -6,8 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 import server.ElementoInexistenteException;
+import server.EstadoOferta;
+import server.DataUsuario;
 import server.DtOfertaLaboral;
 
 
@@ -25,6 +28,22 @@ public class ConsultarOferta extends HttpServlet {
 		server.WebServer port = new server.WebServerService().getWebServerPort();
 		try {
 			DtOfertaLaboral ofertaSeleccionada = port.listarDatosOferta(nombreOferta);
+						
+			LocalDate fechaAlta = LocalDate.parse(ofertaSeleccionada.getDate());
+			int duracion = ofertaSeleccionada.getDuracion();
+			
+			if (
+				!ofertaSeleccionada.getEstado().equals(EstadoOferta.CONFIRMADA) || 
+				!fechaAlta.plusDays(duracion).isAfter(LocalDate.now())
+			) {
+				DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
+				if(usuario != null && ofertaSeleccionada.getNombreEmpresa().equals(usuario.getNickname())) {
+					request.setAttribute("oferta-seleccionada", ofertaSeleccionada);				
+					request.getRequestDispatcher("/WEB-INF/ofertas/consultaOferta.jsp").include(request, response);
+				} else {
+					response.sendRedirect("/trabajouy/ofertas");
+				}				
+			}
 			request.setAttribute("oferta-seleccionada", ofertaSeleccionada);				
 			request.getRequestDispatcher("/WEB-INF/ofertas/consultaOferta.jsp").include(request, response);
 		} catch (server.ElementoInexistenteException_Exception e) {

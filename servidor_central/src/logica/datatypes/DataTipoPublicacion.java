@@ -13,6 +13,7 @@ public class DataTipoPublicacion {
 	private int duracion;
 	private float costo;
 	private LocalDate fecha;
+	private String date;
 	
 	public DataTipoPublicacion() {
 		
@@ -25,6 +26,7 @@ public class DataTipoPublicacion {
 		this.duracion = duracion;
 		this.costo = costo;
 		this.fecha = fecha;
+		this.date = fecha.toString();
 	}
 
 	public String getNombre() {
@@ -50,7 +52,12 @@ public class DataTipoPublicacion {
 	public LocalDate getFecha() {
 		return fecha;
 	}
-	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}

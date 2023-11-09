@@ -127,6 +127,15 @@
   <servlet-mapping>
     <servlet-name>ConsultarTipo</servlet-name>
     <url-pattern>/ConsultarTipo</url-pattern>
-
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Imagenes</display-name>
+    <servlet-name>Imagenes</servlet-name>
+    <servlet-class>com.trabajouy.controllers.Imagenes</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Imagenes</servlet-name>
+    <url-pattern>/Imagenes</url-pattern>
   </servlet-mapping>
 </web-app>

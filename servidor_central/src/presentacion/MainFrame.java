@@ -255,9 +255,7 @@ public class MainFrame {
 	private void cargarUsuarios() {
 		// CARGA DE POSTULANTES
 		try {
-			String imagePath = 
-					File.separator + 
-					"images" + File.separator;
+			String imagePath = "";
 			
 			this.icu.crearPostulante(
 			    "lgarcia",
@@ -557,8 +555,7 @@ public class MainFrame {
 					"Unete a nuestro equipo de desarrollo frontend y crea ´\r\n"
 					+ "experiencias de usuario excepcionales.";
 			String imagePath = 
-					File.separator + 
-					"images" + File.separator;
+					"";
 			ArrayList<String> keywords = new ArrayList<>();
 			keywords.add("Tiempo completo");
 			keywords.add("Medio tiempo");
