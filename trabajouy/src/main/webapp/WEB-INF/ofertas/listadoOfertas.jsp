@@ -51,7 +51,7 @@
 					<a href="/trabajouy/postulacion?nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>">Postularme</a>
 						<% } 
 						else {%>
-					<a href="/trabajouy/consultaPostulacion?nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>">Consultar postulación</a>
+					<a href="/trabajouy/consultaPostulacion?nickname=<%=java.net.URLEncoder.encode(usuario.getNickname(), "UTF-8")%>&nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>">Consultar postulación</a>
 						<% }
 					}%>
 	        	</div>

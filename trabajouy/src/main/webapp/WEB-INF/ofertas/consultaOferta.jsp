@@ -43,9 +43,15 @@
             <a href="login"><input class="btn-postular" type="button" value="Postularse"></a>
             <% 
             	} else if(usuario instanceof DataPostulante){
+            		server.WebServerService servicio = new server.WebServerService();
+            		server.WebServer port = servicio.getWebServerPort();
+                	
+            		if (!port.estaPostulado(usuario.getNickname(),oferta.getNombre())){
      		%>	
      			<a href="/trabajouy/postulacion?nombreOferta=<%=java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8")%>"><input class="btn-postular" type="button" value="Postularse"></a>
-     		<% } %>
+     		<%  	}else { %>
+     			<a href="/trabajouy/consultaPostulacion?nickname=<%=java.net.URLEncoder.encode(usuario.getNickname(), "UTF-8")%>&nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>"><input class="btn-postular" type="button" value="Consultar postulacion"></a>
+     		<%}}%>
         </div>
 
         <!--CAJAS DE POSTULACIONES Y PAQUETES-->

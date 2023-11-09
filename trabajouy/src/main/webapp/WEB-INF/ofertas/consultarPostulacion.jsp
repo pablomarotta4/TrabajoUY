@@ -23,7 +23,7 @@
         <div class="card">
             <div id="datosContainer">
             <%
-            DtPostulacion datosPostulacion = (DtPostulacion) request.getSession().getAttribute("datosPostulacion");
+            DtPostulacion datosPostulacion = (DtPostulacion) request.getAttribute("datosPostulacion");
 	    			server.WebServerService servicio = new server.WebServerService();
     				server.WebServer port = servicio.getWebServerPort();
             		DtOfertaLaboral oferta = port.listarDatosOferta(datosPostulacion.getNombreOferta());

@@ -51,14 +51,13 @@ public class Postulacion extends HttpServlet {
 		}
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
-		try {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nickname = (String) request.getSession().getAttribute("nickname");
-		String cvReducido = (String) request.getParameter("cvReducido");
-		String motivacion = (String) request.getParameter("motivacion");
 		String nombreOferta = (String) request.getSession().getAttribute("nombreOferta");
-		server.WebServer port = new server.WebServerService().getWebServerPort();
+		try {
+			String cvReducido = (String) request.getParameter("cvReducido");
+			String motivacion = (String) request.getParameter("motivacion");
+			server.WebServer port = new server.WebServerService().getWebServerPort();
 			port.altaPostulacion(nickname, nombreOferta, cvReducido, motivacion, LocalDate.now().toString());
 		} catch (server.ElementoRepetidoException_Exception e) {
 		    	response.sendRedirect("/trabajouy/consultaPostulacion");
@@ -71,6 +70,6 @@ public class Postulacion extends HttpServlet {
 			response.sendRedirect("home");
 		}
 		
-		response.sendRedirect("/trabajouy/consultaPostulacion");
+		response.sendRedirect("/trabajouy/consultaPostulacion?nickname=" + nickname + "&nombreOferta=" + nombreOferta);
 	}
 }
