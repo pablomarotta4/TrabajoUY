@@ -98,7 +98,7 @@
                     <!--FOTO-->
                     <div class="foto-postulante"><img src=<%= port.getFotoUsuario(usuario.getNickname()) %> alt="foto-usuario"></div>
                     <!--NOMBRE-->
-                    <div class="nombre-postulante"><a href="/trabajouy/postulacion?nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>&nickname=<%=usuario.getNickname()%>"><%=usuario.getNickname() %></a></div>
+                    <div class="nombre-postulante"><a href="/trabajouy/consultaPostulacion?nickname=<%=java.net.URLEncoder.encode(usuario.getNickname(), "UTF-8")%>&nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>&nickname=<%=usuario.getNickname()%>"><%=usuario.getNickname() %></a></div>
                 </div>
            </div>
            	<%		
