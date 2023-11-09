@@ -109,6 +109,8 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_comboBoxEmpresa.gridx = 2;
         gbc_comboBoxEmpresa.gridy = 1;
         panel_1_1.add(comboBoxEmpresa, gbc_comboBoxEmpresa);
+        comboBoxEmpresa.addItem("");
+        comboBoxEmpresa.setSelectedIndex(0);
         List<String> listaEmpresas = ctrlUsuario.listarNickEmpresas();
         for(int i = 0; i <= listaEmpresas.size() - 1; i++) {
         	comboBoxEmpresa.addItem(listaEmpresas.get(i));
@@ -121,16 +123,9 @@ public class ConsultarOferta extends JInternalFrame{
         gbc_comboBoxOferta.gridx = 2;
         gbc_comboBoxOferta.gridy = 2;
         panel_1_1.add(comboBoxOferta, gbc_comboBoxOferta);
-        comboBoxEmpresa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBoxOferta.removeAllItems();
-				
-				List<String> listaOfertas = ctrlOferta.listarOfertasAceptadasByEmpresa(comboBoxEmpresa.getSelectedItem().toString());
-				for(int i = 0; i <= listaOfertas.size() - 1; i++) {	
-					comboBoxOferta.addItem(listaOfertas.get(i));
-				}
-			}
-        });
+        comboBoxOferta.addItem("");
+        comboBoxOferta.setSelectedIndex(0);
+
 
 
         
@@ -395,6 +390,17 @@ public class ConsultarOferta extends JInternalFrame{
 		GridBagConstraints gbc_scrollPaneCv = new GridBagConstraints();
 		gbc_scrollPaneCv.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPaneCv.fill = GridBagConstraints.BOTH;
+		
+        comboBoxEmpresa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBoxOferta.removeAllItems();
+				
+				List<String> listaOfertas = ctrlOferta.listarOfertasAceptadasByEmpresa(comboBoxEmpresa.getSelectedItem().toString());
+				for(int i = 0; i <= listaOfertas.size() - 1; i++) {	
+					comboBoxOferta.addItem(listaOfertas.get(i));
+				}
+			}
+        });
 		
 		if(preSeleccion != null) {
 			try {
