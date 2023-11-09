@@ -76,9 +76,9 @@ public class ConsultarOferta extends JInternalFrame{
         scrollPane_1.setViewportView(panel_1_1);
         GridBagLayout gbl_panel_1_1 = new GridBagLayout();
         gbl_panel_1_1.columnWidths = new int[]{150, 300, 180, 0};
-        gbl_panel_1_1.rowHeights = new int[]{50, 30, 30, 30, 0, 0, 150, 30, 30, 30, 30, 30, 0, 30, 150, 150, 0, 0};
+        gbl_panel_1_1.rowHeights = new int[]{50, 30, 30, 30, 0, 0, 150, 30, 30, 30, 30, 30, 0, 30, 150, 30, 200, 0, 0};
         gbl_panel_1_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
-        gbl_panel_1_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+        gbl_panel_1_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         panel_1_1.setLayout(gbl_panel_1_1);
         
         JPanel panel = new JPanel();
@@ -365,26 +365,33 @@ public class ConsultarOferta extends JInternalFrame{
         
         JLabel lblPostulaciones = new JLabel("Postulaciones:");
         GridBagConstraints gbc_lblPostulaciones = new GridBagConstraints();
-        gbc_lblPostulaciones.anchor = GridBagConstraints.NORTHEAST;
+        gbc_lblPostulaciones.anchor = GridBagConstraints.EAST;
         gbc_lblPostulaciones.insets = new Insets(0, 0, 5, 5);
         gbc_lblPostulaciones.gridx = 0;
         gbc_lblPostulaciones.gridy = 15;
         panel_1_1.add(lblPostulaciones, gbc_lblPostulaciones);
+        
+        JComboBox<String> comboBoxPostulaciones = new JComboBox<String>();
+        GridBagConstraints gbc_comboBoxPostulaciones = new GridBagConstraints();
+        gbc_comboBoxPostulaciones.insets = new Insets(0, 0, 5, 5);
+        gbc_comboBoxPostulaciones.fill = GridBagConstraints.HORIZONTAL;
+        gbc_comboBoxPostulaciones.gridx = 1;
+        gbc_comboBoxPostulaciones.gridy = 15;
+        panel_1_1.add(comboBoxPostulaciones, gbc_comboBoxPostulaciones);
+        comboBoxPostulaciones.addItem("");
         
         JScrollPane scrollPane_2 = new JScrollPane();
         GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
         gbc_scrollPane_2.insets = new Insets(0, 0, 5, 5);
         gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
         gbc_scrollPane_2.gridx = 1;
-        gbc_scrollPane_2.gridy = 15;
+        gbc_scrollPane_2.gridy = 16;
         panel_1_1.add(scrollPane_2, gbc_scrollPane_2);
         
         JTextArea textDataPostulacion = new JTextArea();
+        scrollPane_2.setViewportView(textDataPostulacion);
         textDataPostulacion.setEditable(false);
         textDataPostulacion.setLineWrap(true);
-        scrollPane_2.setViewportView(textDataPostulacion);
-        
-        scrollPane_2.setViewportView(textDataPostulacion);
 		GridBagConstraints gbc_scrollPaneCv = new GridBagConstraints();
 		gbc_scrollPaneCv.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPaneCv.fill = GridBagConstraints.BOTH;
@@ -440,12 +447,10 @@ public class ConsultarOferta extends JInternalFrame{
 	        comboBoxEmpresa.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (comboBoxEmpresa.getSelectedItem() == "") {
-						System.out.println(comboBoxEmpresa.getSelectedItem().toString());
 						comboBoxOferta.removeAllItems();
 						comboBoxOferta.addItem("");
 						comboBoxOferta.setSelectedIndex(0);
 					} else {
-						System.out.println(comboBoxEmpresa.getSelectedItem());
 	                	comboBoxOferta.removeAllItems();
 	                	comboBoxOferta.addItem("");
 	                	String empresadelcombo = comboBoxEmpresa.getSelectedItem().toString();
@@ -463,12 +468,18 @@ public class ConsultarOferta extends JInternalFrame{
 	        
 			comboBoxOferta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					
+					comboBoxPostulaciones.removeAllItems();
+					comboBoxPostulaciones.addItem("");
+					comboBoxPostulaciones.setSelectedIndex(0);
 				
 					if (comboBoxOferta.getSelectedItem() == "" || comboBoxOferta.getSelectedItem() == null) {
 						
+
 						
 	        			textArea_3.setText("");
 						textDescripcion.setText("");
+						textDataPostulacion.setText("");
 						
 						textNombre.setText("");
 						txtCosto.setText("");
@@ -514,11 +525,40 @@ public class ConsultarOferta extends JInternalFrame{
 	        				}
 	        				textArea_3.setText(keysText);
 	        				
+	        				
+							List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
+							for(int i = 0; i < listaPostulaciones.size(); i++) {
+								comboBoxPostulaciones.addItem(listaPostulaciones.get(i).getNickpostulante());
+							}
+						} catch(ElementoInexistenteException ex) {
+							
+						}
+					}
+				
+				
+				}
+			});
+			
+			comboBoxPostulaciones.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				
+					if (comboBoxPostulaciones.getSelectedItem() == "" || comboBoxPostulaciones.getSelectedItem() == null) {
+
+						textDataPostulacion.setText("");
+						
+					} else {
+						try {
+							
+							dtOf  = ctrlOferta.listarDatosOferta(comboBoxOferta.getSelectedItem().toString());
+	        				
 							List<DTPostulacion> listaPostulaciones = dtOf.getPostulaciones();
 							String totalDataPostulaciones = "";
-							for(int i = 0; i <= listaPostulaciones.size() - 1; i++) {
-								totalDataPostulaciones += "Postulante " + Integer.toString(i + 1) + "\n";
-								totalDataPostulaciones += listaPostulaciones.get(i).toString();
+							for(DTPostulacion pos : listaPostulaciones) {
+								if (comboBoxPostulaciones.getSelectedItem() == pos.getNickpostulante()) {
+									totalDataPostulaciones += "CV REDUCIDO: " + pos.getCvReducido() + "\n"+"\n";
+									totalDataPostulaciones += "MOTIVACION: " + pos.getMotivacion() + "\n"+"\n";
+									totalDataPostulaciones += "FECHA DE ALTA: " + pos.getFechaPostulacion().toString() + "\n";
+								}
 							}
 							textDataPostulacion.setText(totalDataPostulaciones.toString());
 						} catch(ElementoInexistenteException ex) {
@@ -529,6 +569,8 @@ public class ConsultarOferta extends JInternalFrame{
 				
 				}
 			});
+			
+			
         
 		}
         
