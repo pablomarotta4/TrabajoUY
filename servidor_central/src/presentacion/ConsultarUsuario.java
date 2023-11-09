@@ -134,17 +134,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         for (String usuario : usuariosDisponibles) {
             UsuariosComboBox.addItem(usuario);
         }
-
-        JButton ConsultarButton = new JButton("Consultar datos de usuario");
         gcon.gridx = 2;
-        gbl.setConstraints(ConsultarButton, gcon);
-        GridBagConstraints gbc_ConsultarButton = new GridBagConstraints();
-        gbc_ConsultarButton.insets = new Insets(0, 0, 5, 0);
-        gbc_ConsultarButton.gridx = 3;
-        gbc_ConsultarButton.gridy = 1;
-        gbc_ConsultarButton.anchor = GridBagConstraints.WEST;
-        getContentPane().add(ConsultarButton, gbc_ConsultarButton);
-        ConsultarButton.setVisible(false);
         
 
         gcon.gridx = 0;
@@ -446,7 +436,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_mostrarCiudadOferta.gridy = 14;
         getContentPane().add(mostrarCiudadOferta, gbc_mostrarCiudadOferta);
         
-        JLabel nomOf = new JLabel("Nombre de la oferta:");
+        JLabel nomOf = new JLabel("Nombre de la Oferta:");
         GridBagConstraints gbc_labelnomOf = new GridBagConstraints();
         gbc_labelnomOf.insets = new Insets(0, 0, 5, 5);
         gbc_labelnomOf.anchor = GridBagConstraints.EAST;
@@ -462,7 +452,7 @@ public class ConsultarUsuario  extends JInternalFrame{
         gbc_ciuOf.gridy = 14;
         getContentPane().add(ciuOf, gbc_ciuOf);
         
-        JLabel fechOf = new JLabel("Fecha:");
+        JLabel fechOf = new JLabel("Fecha de Alta:");
         GridBagConstraints gbc_fechOf = new GridBagConstraints();
         gbc_fechOf.insets = new Insets(0, 0, 5, 5);
         gbc_fechOf.anchor = GridBagConstraints.EAST;
