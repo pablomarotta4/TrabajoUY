@@ -44,6 +44,7 @@ import javax.swing.SwingConstants;
 
 
 
+
 public class CrearTipoPublicacion extends JInternalFrame {
 	
 	private IControladorCompraTipo ctrlCompraTipo;
