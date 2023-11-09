@@ -77,7 +77,7 @@ public class ConsultarOferta extends JInternalFrame{
         scrollPane_1.setViewportView(panel_1_1);
         GridBagLayout gbl_panel_1_1 = new GridBagLayout();
         gbl_panel_1_1.columnWidths = new int[]{150, 300, 180, 0};
-        gbl_panel_1_1.rowHeights = new int[]{50, 30, 30, 30, 0, 0, 150, 30, 30, 30, 30, 30, 0, 30, 150, 30, 200, 0, 0};
+        gbl_panel_1_1.rowHeights = new int[]{50, 30, 30, 30, 0, 0, 150, 30, 30, 30, 30, 30, 0, 30, 150, 30, 300, 0, 0};
         gbl_panel_1_1.columnWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
         gbl_panel_1_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
         panel_1_1.setLayout(gbl_panel_1_1);
