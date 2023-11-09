@@ -16,6 +16,7 @@ public class DtOfertaLaboral {
 	private String horario;
 	private float remuneracion;
 	private LocalDate fechaAlta;
+	private String date;
 	private String imageUrl;
 	private float costo;
 	private ArrayList<DTPostulacion> postulaciones;
@@ -56,6 +57,7 @@ public class DtOfertaLaboral {
 		this.keywords = keywords;
 		this.costo = costo;
 		this.imageUrl = imageUrl;
+		this.date = fechaAlta.toString();
 	}	
 	
 	public DtOfertaLaboral(
@@ -88,6 +90,7 @@ public class DtOfertaLaboral {
 		this.costo = costo;
 		this.estado = estado;
 		this.imageUrl = imageUrl;
+		this.date = fechaAlta.toString();
 	}	
 	
 	public String getNombre() {
@@ -168,6 +171,9 @@ public class DtOfertaLaboral {
 		}
 		return postulacion;
 	}
+	public String getDate() {
+		return date;
+	}
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -219,6 +225,9 @@ public class DtOfertaLaboral {
 	
 	public void setEstado(EstadoOferta estado) {
 		this.estado = estado;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	
 //	@Override

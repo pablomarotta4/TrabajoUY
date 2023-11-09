@@ -35,7 +35,7 @@
                 <p><strong>Descripción:</strong><%= oferta.getDescripcion() %></p>
                 <p><strong>Remuneración: </strong>$<%=oferta.getRemuneracion() %></p>
                 <p><strong>Horarios: </strong><%= oferta.getHorario()%></p>
-                <p><strong>Fecha de alta: </strong><%=oferta.getFechaAlta()%></p>
+                <p><strong>Fecha de alta: </strong><%=oferta.getDate()%></p>
                 <p><strong>Keywords: </strong><%=oferta.getKeywords().toString() %></p>
             </div>
 			
