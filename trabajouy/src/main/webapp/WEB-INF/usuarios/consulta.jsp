@@ -49,6 +49,7 @@
 			        </div>
 			        
 			        <div class="boxes">
+			        		<h1> Prueba: <%= mismo %></h1>
 		            		<% if (mismo && usuarioC instanceof DataPostulante) {
 				            		DataPostulante postulante = (DataPostulante) usuarioC;
 				            		ArrayList<DtPostulacion> postulaciones = (ArrayList<DtPostulacion>) postulante.getPostulaciones();
