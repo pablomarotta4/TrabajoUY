@@ -130,12 +130,72 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>Imagenes</display-name>
-    <servlet-name>Imagenes</servlet-name>
-    <servlet-class>com.trabajouy.controllers.Imagenes</servlet-class>
+    <display-name>LoginMovil</display-name>
+    <servlet-name>LoginMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.LoginMovil</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>Imagenes</servlet-name>
-    <url-pattern>/Imagenes</url-pattern>
+    <servlet-name>LoginMovil</servlet-name>
+    <url-pattern>/LoginMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HomeMovil</display-name>
+    <servlet-name>HomeMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.HomeMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomeMovil</servlet-name>
+    <url-pattern>/HomeMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaOfertaMovil</display-name>
+    <servlet-name>ConsultaOfertaMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.ConsultaOfertaMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaOfertaMovil</servlet-name>
+    <url-pattern>/ConsultaOfertaMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConsultaPostulacionMovil</display-name>
+    <servlet-name>ConsultaPostulacionMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.ConsultaPostulacionMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultaPostulacionMovil</servlet-name>
+    <url-pattern>/ConsultaPostulacionMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PostulacionMovil</display-name>
+    <servlet-name>PostulacionMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.PostulacionMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostulacionMovil</servlet-name>
+    <url-pattern>/PostulacionMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListaPostulaciones</display-name>
+    <servlet-name>ListaPostulaciones</servlet-name>
+    <servlet-class>com.trabajouy.controllers.ListaPostulaciones</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListaPostulaciones</servlet-name>
+    <url-pattern>/ListaPostulaciones</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutMovil</display-name>
+    <servlet-name>LogoutMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.LogoutMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutMovil</servlet-name>
+    <url-pattern>/LogoutMovil</url-pattern>
   </servlet-mapping>
 </web-app>

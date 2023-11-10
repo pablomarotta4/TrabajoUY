@@ -1,0 +1,13 @@
+a {
+	text-decoration: none;
+    color: white;
+}
+
+.perfil{
+    justify-content: right;
+}
+@media (max-width: 768px){
+    .perfil{
+        align-items: right;
+    }
+}
