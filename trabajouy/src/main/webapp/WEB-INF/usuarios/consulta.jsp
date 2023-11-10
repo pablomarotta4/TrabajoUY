@@ -18,7 +18,7 @@
 		<% 	DataUsuario usuarioL = (DataUsuario) request.getSession().getAttribute("usuario_logeado"); 
 			DataUsuario usuarioC = (DataUsuario) request.getAttribute("usuario_consulta");
 			boolean mismo;
-			if ((usuarioL != null) && (usuarioL.getNickname() == usuarioC.getNickname())) {
+			if ((usuarioL != null) && (usuarioL.getNickname().equals(usuarioC.getNickname()))) {
 				mismo = true;
 			} else {
 				mismo = false;
@@ -47,6 +47,8 @@
 			                <%  } %>
 			            </div>
 			        </div>
+
+			        
 			        
 			        <div class="boxes">
 			        		<h1> Prueba: <%= mismo %></h1>
