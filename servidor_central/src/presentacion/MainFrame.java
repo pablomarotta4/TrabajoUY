@@ -257,6 +257,7 @@ public class MainFrame {
 		try {
 			String imagePath = "";
 			
+			
 			this.icu.crearPostulante(
 			    "lgarcia",
 			    "Lucía",
@@ -441,7 +442,7 @@ public class MainFrame {
 				    "ibii4xo",
 				    null,
 			        desc, 
-			        "http://www.EcoTechInnovations.com"
+			        "MIEM.com.uy"
 			);
 			desc = 
 			    "\"TechSolutions Inc.\" es una empresa líder en el sector de tecnología de la información y el software."
