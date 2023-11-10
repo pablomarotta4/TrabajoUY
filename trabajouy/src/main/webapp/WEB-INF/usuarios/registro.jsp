@@ -76,7 +76,7 @@
                 <div id="input-empresa" class="input-empresa">
                     <div class="input-element">
                         <label for="">Descripcion general</label>
-                        <textarea name="descripcion" id="" cols="30" rows="10"></textarea>
+                        <textarea style="height:250px; overflow-y: scroll" name="descripcion" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div class="input-element">
                         <label for="">link</label>
