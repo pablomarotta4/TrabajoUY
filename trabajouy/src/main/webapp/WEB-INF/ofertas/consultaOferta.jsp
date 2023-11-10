@@ -16,7 +16,7 @@
 <body>
    	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<%
-	DtOfertaLaboral oferta = (DtOfertaLaboral) request.getAttribute("oferta-seleccionada");
+			DtOfertaLaboral oferta = (DtOfertaLaboral) request.getAttribute("oferta-seleccionada");
 		 	DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 	%>
     <!--MAIN CONTAINER-->

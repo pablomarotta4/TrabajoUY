@@ -43,9 +43,10 @@ public class ConsultarOferta extends HttpServlet {
 				} else {
 					response.sendRedirect("/trabajouy/ofertas");
 				}				
+			} else {
+				request.setAttribute("oferta-seleccionada", ofertaSeleccionada);				
+				request.getRequestDispatcher("/WEB-INF/ofertas/consultaOferta.jsp").include(request, response);
 			}
-			request.setAttribute("oferta-seleccionada", ofertaSeleccionada);				
-			request.getRequestDispatcher("/WEB-INF/ofertas/consultaOferta.jsp").include(request, response);
 		} catch (server.ElementoInexistenteException_Exception e) {
 			e.printStackTrace();
 		}
