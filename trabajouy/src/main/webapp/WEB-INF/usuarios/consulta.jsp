@@ -44,14 +44,15 @@
 			                %>
 			                <h3>Nacionalidad: <%= postulante.getNacionalidad() %></h3>
 			                <h3>Fecha de Nacimiento: <%= postulante.getDate() %></h3>
+			                <%  } %>
 			            </div>
 			        </div>
 			        
 			        <div class="boxes">
-		            		<%  }
-				                if (mismo && usuarioC instanceof DataPostulante) {
+		            		<% if (mismo && usuarioC instanceof DataPostulante) {
 				            		DataPostulante postulante = (DataPostulante) usuarioC;
 				            		ArrayList<DtPostulacion> postulaciones = (ArrayList<DtPostulacion>) postulante.getPostulaciones();
+				            		
 				            		if (postulaciones != null) {
 				            			for(DtPostulacion pos: postulaciones) { %>
 					            		<div class="boxPerfil">
@@ -60,39 +61,36 @@
 					                    </div>
 					            	<% }
 			               			}
-			            			if (usuarioC instanceof DataEmpresa) {
-				            			DataEmpresa empresa = (DataEmpresa) usuarioC;
-				            			ArrayList<DtOfertaLaboral> ofertas = (ArrayList<DtOfertaLaboral>) empresa.getOfertas();
-				            		
-				            			if (ofertas != null) {	                    	
-						            		for(DtOfertaLaboral ofer: ofertas) { 
-						            			if (ofer.getEstado() == EstadoOferta.CONFIRMADA) { %>
-						            				<div class="boxPerfil">
-							                        	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
-							                   		</div>
-						            		
-						            		 <% }  	
-						            		}
-						            	}
-									} 
-			            			if (mismo && usuarioC instanceof DataEmpresa) {
-			            				DataEmpresa empresa = (DataEmpresa) usuarioC;
-				            			ArrayList<DtOfertaLaboral> ofertas = (ArrayList<DtOfertaLaboral>) empresa.getOfertas();
-				            			
-				            			if (ofertas != null) {	                    	
-						            		for(DtOfertaLaboral ofer: ofertas) { 
-						            			if (ofer.getEstado() != EstadoOferta.CONFIRMADA) { %>
-						            				<div class="boxPerfil">
-							                        	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
-							                   		</div>
-						            		
-						            		 <% }  	
-						            		}
-						            	}
-			            			}
+		            		 	}
+		            			if (usuarioC instanceof DataEmpresa) {
+			            			DataEmpresa empresa = (DataEmpresa) usuarioC;
+			            			ArrayList<DtOfertaLaboral> ofertas = (ArrayList<DtOfertaLaboral>) empresa.getOfertas();
 			            		
-								} %>       	
-       	 			</div>
+			            			if (ofertas != null) {	                    	
+					            		for(DtOfertaLaboral ofer: ofertas) { 
+					            			if (ofer.getEstado() == EstadoOferta.CONFIRMADA) { %>
+					            				<div class="boxPerfil">
+						                        	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
+						                   		</div>				            		
+					            		 <% }  	
+					            		}
+					            	}
+								} 
+		            			if (mismo && usuarioC instanceof DataEmpresa) {
+		            				DataEmpresa empresa = (DataEmpresa) usuarioC;
+			            			ArrayList<DtOfertaLaboral> ofertas = (ArrayList<DtOfertaLaboral>) empresa.getOfertas();
+			            			
+			            			if (ofertas != null) {	                    	
+					            		for(DtOfertaLaboral ofer: ofertas) { 
+					            			if (ofer.getEstado() != EstadoOferta.CONFIRMADA) { %>
+					            				<div class="boxPerfil">
+						                        	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
+						                   		</div>				            		
+					            		 <% }  	
+					            		}
+					            	}
+		            			} %>       	
+       	 			</div> <!-- div de boxes -->
        	 				
 				</div>
 
