@@ -15,7 +15,7 @@ import logica.entidades.Usuario;
 public interface IManejadorUsuario {
 	
 	public void crearPostulante(String nickname, String nombre, String apellido, String email, String password, byte[] imageBytes, String nacionalidad, LocalDate nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion;
-	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password, String imageUrl, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion;
+	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password,  byte[] imageBytes, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion;
 	public Boolean existeUsuarioNick(String nickname);
 	public Boolean existeUsuarioEmail(String email);
 	public Usuario buscarUsuario(String nick);

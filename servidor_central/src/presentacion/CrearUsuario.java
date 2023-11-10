@@ -331,7 +331,7 @@ public class CrearUsuario extends JInternalFrame{
                        	throw new CamposVaciosExcepcion("Ingrese la nacionalidad");
             		}
                     if (TipoUsuario.equals("Empresa")) {
-                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(),"", descripcionArea.getText(), linkField.getText());
+                        icu.crearEmpresa(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(),null, descripcionArea.getText(), linkField.getText());
                     } else if (TipoUsuario.equals("Postulante")) {
                     	Date fechaInput = calendar.getDate();
                     	LocalDate fecha = fechaInput.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

@@ -33,8 +33,8 @@ public class ControladorUsuario implements IControladorUsuario{
 		manejadorUsuario.crearPostulante(nickname, nombre, apellido, email, password, imageBytes, nacionalidad, nacimiento);
 	}
 	
-	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password, String imageUrl, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {
-		manejadorUsuario.crearEmpresa(nickname, nombre, apellido, email, password, imageUrl, descripcion, link);
+	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password,  byte[] imageBytes, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {
+		manejadorUsuario.crearEmpresa(nickname, nombre, apellido, email, password, imageBytes, descripcion, link);
 		System.out.println("Empresa" + nickname);
 	}
 	

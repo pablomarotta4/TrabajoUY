@@ -49,7 +49,9 @@ public class Registro extends HttpServlet {
 				if (request.getParameter("user-type").equals("empresa")) {
 					String descripcion = request.getParameter("descripcion");
 					String link = request.getParameter("link");
-					port.crearEmpresa(nickname, nombre, apellido, email, password, File.separator +  "images"  + File.separator + nickname + ".jpg", descripcion, link);
+					Part image = request.getPart("imageFile");	
+					byte[] imageBytes = image.getInputStream().readAllBytes();
+					port.crearEmpresa(nickname, nombre, apellido, email, password, imageBytes, descripcion, link);
 //					Part image = request.getPart("imageFile");		
 //					String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
 //					File targetFile = new File(path + nickname + ".jpg");

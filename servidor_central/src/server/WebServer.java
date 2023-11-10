@@ -113,12 +113,12 @@ public class WebServer {
 			String apellido, 
 			String email, 
 			String password, 
-			String imageUrl, 
+			byte[] imageBytes, 
 			String descripcion, 
 			String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		    	
 		    	try {
-		    		ctrlUsuario.crearEmpresa(nickname, nombre, apellido, email, password, imageUrl, descripcion, link);
+		    		ctrlUsuario.crearEmpresa(nickname, nombre, apellido, email, password, imageBytes, descripcion, link);
 		    	} catch (UsuarioRepetidoException | CamposVaciosExcepcion exep) {
 		    		throw exep;
 		    	}
