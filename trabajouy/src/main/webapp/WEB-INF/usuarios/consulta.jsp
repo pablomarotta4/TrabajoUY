@@ -65,7 +65,7 @@
 	            %>
 	            				<div class="boxPerfil">
 			                        <h2>Postulacion a Oferta: <a href="/trabajouy/consultarOferta?oferta=<%=pos.getNombreOferta()%>"> <%= pos.getNombreOferta() %></a></h2>
-			                        <h3><a href="/trabajouy/postulacion?nombreOferta=<%= java.net.URLEncoder.encode(pos.getNombreOferta(), "UTF-8")%>"> Ver detalles </a></h3>
+			                        <h3><a href="/trabajouy/consultaPostulacion?nickname=<%=pos.getNickpostulante()%>&nombreOferta=<%= java.net.URLEncoder.encode(pos.getNombreOferta(), "UTF-8")%>"> Ver detalles </a></h3>
 			                    </div>
 			    <% 			}
                			}
