@@ -52,10 +52,6 @@ public class Registro extends HttpServlet {
 					Part image = request.getPart("imageFile");	
 					byte[] imageBytes = image.getInputStream().readAllBytes();
 					port.crearEmpresa(nickname, nombre, apellido, email, password, imageBytes, descripcion, link);
-//					Part image = request.getPart("imageFile");		
-//					String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
-//					File targetFile = new File(path + nickname + ".jpg");
-//					Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 					System.out.println(port.getEmpresa(nickname).getNickname());
 					request.getRequestDispatcher("/WEB-INF/usuarios/login.jsp").forward(request, response);
 				}
