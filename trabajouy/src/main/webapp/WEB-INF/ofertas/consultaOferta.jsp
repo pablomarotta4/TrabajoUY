@@ -76,10 +76,11 @@
                 </div>
                 	<%	
                 		for(DtPostulacion postulacion: postulaciones){
+                			DataUsuario usuarioPost = port.consultarDatosUsuario(postulacion.getNickpostulante());
                 	%>
 	                <div class="postulante">
 	                    <!--FOTO-->
-	                    <div class="foto-postulante"><img src=<%= port.getFotoUsuario(postulacion.getNickpostulante()) %> alt="foto-usuario"></div>
+	                    <div class="foto-postulante"><img style="max-width: 35%;" src="/trabajouy/imagenes?id=<%=usuarioPost.getImageUrl()%>%>" alt="foto-usuario"></div>
 	                    <!--NOMBRE-->
 	                    <div class="nombre-postulante"><a href="/trabajouy/consultaPostulacion?nombreOferta=<%=java.net.URLEncoder.encode(postulacion.getNombreOferta(), "UTF-8")%>&nickname=<%=postulacion.getNickpostulante() %>"><%= postulacion.getNickpostulante()%></a></div>
 	                </div>
@@ -98,7 +99,7 @@
                 </div>
                 <div class="postulante">
                     <!--FOTO-->
-                    <div class="foto-postulante"><img src=<%= port.getFotoUsuario(usuario.getNickname()) %> alt="foto-usuario"></div>
+                    <div class="foto-postulante"><img src="/trabajouy/imagenes?id=<%=usuario.getImageUrl()%>" alt="foto-usuario"></div>
                     <!--NOMBRE-->
                     <div class="nombre-postulante"><a href="/trabajouy/consultaPostulacion?nickname=<%=java.net.URLEncoder.encode(usuario.getNickname(), "UTF-8")%>&nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>&nickname=<%=usuario.getNickname()%>"><%=usuario.getNickname() %></a></div>
                 </div>
