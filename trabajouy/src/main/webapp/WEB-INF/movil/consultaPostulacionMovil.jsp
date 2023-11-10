@@ -72,15 +72,15 @@
 	              
 	            </ul>
 	            <div class="d-flex perfil" role="search">
-	              <img src="media/images/trabajoUy.png" class="img-fluid" style="width: 100px; padding-right: 20px;">
+	                    <img src="/trabajouy/imagenes?id=<%=usuario.getImageUrl()%>" class="img-fluid" style="height: 80px;">
 	              <%
 						
 						if(usuario != null){
 				  %>
 	              <h2 class="navbar-brand d-flex align-items-center justify-content-center m-3"  style="color: white;"><%= usuario.getNombre()%> <%=usuario.getApellido() %></h2>
 				  <span class="navbar-brand d-flex align-items-center justify-content-center"  style="color: white; margin: 0;"> | </span>
-				  <a href="/trabajouy/logoutMovil">
-				  	<h2 class="navbar-brand d-flex align-items-center justify-content-center m-3"  style="color: white;">Cerrar Sesión</h2>
+				  <a href="/trabajouy/logoutMovil" class="d-flex align-items-center justify-content-center m-3">
+				  	<h2 class="navbar-brand "  style="color: white;margin:0;">Cerrar Sesión</h2>
 				  </a>
 	              <%
 	              	}						
@@ -105,7 +105,7 @@
 		                    <p><strong>Nombre: </strong><%= datosPostulante.getNombre() %> <%= datosPostulante.getApellido() %> </p>
 				            <p><strong>CV Reducido: </strong><%= datosPostulacion.getCvReducido() %></p>
 				            <p><strong>Motivación: </strong><%= datosPostulacion.getMotivacion() %></p>
-				            <p><strong>Fecha de Postulación: </strong><%= datosPostulacion.getFechaPostulacion().toString() %></p>
+				            <p><strong>Fecha de Postulación: </strong><%= datosPostulacion.getDate() %></p>
                     	</div>
                 	</div>
             	</div>

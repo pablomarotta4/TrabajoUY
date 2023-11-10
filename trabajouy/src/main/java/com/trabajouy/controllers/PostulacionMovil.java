@@ -79,7 +79,7 @@ public class PostulacionMovil extends HttpServlet {
 					response.sendRedirect("homeMovil");
 				}
 				
-				response.sendRedirect("/trabajouy/consultaPostulacionMovil?nombreOferta=" + nombreOferta + "&nickname=" + nickname);
+				response.sendRedirect("/trabajouy/consultaPostulacionMovil?nombreOferta=" + java.net.URLEncoder.encode(nombreOferta, "UTF-8")+ "&nickname=" + nickname);
 			}
 		}
 

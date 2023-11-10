@@ -41,7 +41,7 @@ public class LoginMovil extends HttpServlet {
  			if (estadoSesion.equals(EstadoSesion.NO_LOGIN)) {
  				req.getRequestDispatcher("/WEB-INF/movil/loginMovil.jsp").forward(req, resp);
  			} else {
- 				resp.sendRedirect("/trabajouy/ofertas");
+ 				resp.sendRedirect("/trabajouy/loginMovil");
  			}
  		}
  	}
