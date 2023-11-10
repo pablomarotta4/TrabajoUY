@@ -83,7 +83,7 @@ public class WebServer {
     		String apellido, 
     		String email,
     		String pass, 
-    		String imageUrl, 
+    		byte[] imageBytes, 
     		String nacionalidad, 
     		String nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
     	
@@ -97,7 +97,7 @@ public class WebServer {
     				apellido, 
     				email, 
     				pass, 
-    				imageUrl, 
+    				imageBytes, 
     				nacionalidad, 
     				fechaNac
 				);

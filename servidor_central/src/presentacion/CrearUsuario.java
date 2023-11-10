@@ -335,7 +335,7 @@ public class CrearUsuario extends JInternalFrame{
                     } else if (TipoUsuario.equals("Postulante")) {
                     	Date fechaInput = calendar.getDate();
                     	LocalDate fecha = fechaInput.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                        icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(),"", nacionalidadField.getText(), fecha );
+                        icu.crearPostulante(nicknameField.getText(), nombreField.getText(), apellidoField.getText(), emailField.getText(),contraseñaField.getText(), null, nacionalidadField.getText(), fecha );
                     }
                     
                     if (TipoUsuario.isEmpty()) {

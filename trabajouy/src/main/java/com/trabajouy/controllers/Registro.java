@@ -59,14 +59,11 @@ public class Registro extends HttpServlet {
 				}
 				else if (request.getParameter("user-type").equals("postulante")) {
 					String nacionalidadString = request.getParameter("nacionalidad");
-					
+					Part image = request.getPart("imageFile");	
+					byte[] imageBytes = image.getInputStream().readAllBytes();
 					String fechaString =  request.getParameter("fechaNac");
 					if (!fechaString.equals("")) {
-						port.crearPostulante(nickname, nombre, apellido, email, password, File.separator +  "images"  + File.separator + nickname + ".jpg", nacionalidadString, fechaString);
-//						Part image = request.getPart("imageFile");		
-//						String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
-//						File targetFile = new File(path + nickname + ".jpg");
-//						Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+						port.crearPostulante(nickname, nombre, apellido, email, password, imageBytes, nacionalidadString, fechaString);
 						request.getRequestDispatcher("/WEB-INF/usuarios/login.jsp").forward(request, response);
 
 					}
