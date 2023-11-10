@@ -174,12 +174,20 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		}
 	}
 	
-	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException {
-		Usuario user = usuarios.get(nickname);
-		if (user == null) {
+	public boolean evaluarCredenciales(String input, String password) throws ElementoInexistenteException {
+		Usuario user = usuarios.get(input);
+		
+		if (user == null && existeUsuarioEmail(input)) {
+			for(Usuario usuario : usuarios.values()) {
+				System.out.println(usuario.getEmail());
+				if (usuario.getEmail().equals(input)) {
+					user = usuario;
+				}
+			}	
+		} else if (user == null && !existeUsuarioEmail(input)) {
 			throw new ElementoInexistenteException("No existe el usuario en el sistema.");
 		}
-		return user.evaluarCredenciales(nickname, password);
+		return user.evaluarCredenciales(input, password);
 	}
 	
 	
