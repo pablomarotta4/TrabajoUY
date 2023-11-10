@@ -1,5 +1,8 @@
 package server;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ import excepciones.ElementoRepetidoException;
 import excepciones.NoExisteInstancia;
 import excepciones.UsuarioRepetidoException;
 import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.jws.soap.SOAPBinding.ParameterStyle;
@@ -79,7 +83,7 @@ public class WebServer {
     		String apellido, 
     		String email,
     		String pass, 
-    		String imageUrl, 
+    		byte[] imageBytes, 
     		String nacionalidad, 
     		String nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
     	
@@ -93,7 +97,7 @@ public class WebServer {
     				apellido, 
     				email, 
     				pass, 
-    				imageUrl, 
+    				imageBytes, 
     				nacionalidad, 
     				fechaNac
 				);
@@ -157,13 +161,13 @@ public class WebServer {
     							  String ciudad,
     							  String departamento,
     							  String fechaAlta,
-    							  String imageUrl,
+    							  byte[] imageBytes,
     							  CollectionBean keywords) throws ElementoRepetidoException, ElementoInexistenteException {
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate fechaLD = LocalDate.parse(fechaAlta, formatter);
 		ArrayList<String> listaKeywords = keywords.getListaStrings();
 		try {
-			ctrlOferta.altaOfertaLaboral(empresa, tipoPublicacion, nombre, descripcion, horario, remuneracion, ciudad, departamento, fechaLD, imageUrl, listaKeywords);
+			ctrlOferta.altaOfertaLaboral(empresa, tipoPublicacion, nombre, descripcion, horario, remuneracion, ciudad, departamento, fechaLD, imageBytes, listaKeywords);
 		} catch (ElementoRepetidoException | ElementoInexistenteException exep) {
 			throw exep;
 		}
@@ -313,4 +317,18 @@ public class WebServer {
 		collection.setListaDataTipoPublicacion(listaTipos);
 		return collection;
 	}
+    @WebMethod
+    public byte[] getFile(@WebParam(name = "fileName") String name)
+                    throws  IOException {
+        byte[] byteArray = null;
+        try {
+                File f = new File("files/" + name);
+                FileInputStream streamer = new FileInputStream(f);
+                byteArray = new byte[streamer.available()];
+                streamer.read(byteArray);
+        } catch (IOException e) {
+                throw e;
+        }
+        return byteArray;
+    }
 }

@@ -23,7 +23,7 @@ public interface IControladorOferta {
 			String ciudad,
 			String departamento,
 			LocalDate fechaAlta,
-			String imageUrl,
+			byte[] imageBytes,
 			ArrayList<String> keywords
 		) throws ElementoRepetidoException, ElementoInexistenteException;
 	

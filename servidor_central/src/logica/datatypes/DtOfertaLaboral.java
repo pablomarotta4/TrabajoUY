@@ -16,7 +16,8 @@ public class DtOfertaLaboral {
 	private String horario;
 	private float remuneracion;
 	private LocalDate fechaAlta;
-	private String imageUrl;
+	private String date;
+	private String imagen;
 	private float costo;
 	private ArrayList<DTPostulacion> postulaciones;
 	private ArrayList<String> keywords;
@@ -36,7 +37,7 @@ public class DtOfertaLaboral {
 			String horario,
 			float remuneracion,
 			LocalDate fechaAlta,
-			String imageUrl,
+			String imagen,
 			ArrayList<DTPostulacion> postulaciones,
 			ArrayList<String> keywords,
 			String nombreEmpresa,
@@ -55,7 +56,8 @@ public class DtOfertaLaboral {
 		this.nombreEmpresa = nombreEmpresa;
 		this.keywords = keywords;
 		this.costo = costo;
-		this.imageUrl = imageUrl;
+		this.imagen = imagen;
+		this.date = fechaAlta.toString();
 	}	
 	
 	public DtOfertaLaboral(
@@ -66,7 +68,7 @@ public class DtOfertaLaboral {
 			String horario,
 			float remuneracion,
 			LocalDate fechaAlta,
-			String imageUrl,
+			String imagen,
 			ArrayList<DTPostulacion> postulaciones,
 			ArrayList<String> keywords,
 			String nombreEmpresa,
@@ -87,7 +89,8 @@ public class DtOfertaLaboral {
 		this.keywords = keywords;
 		this.costo = costo;
 		this.estado = estado;
-		this.imageUrl = imageUrl;
+		this.imagen = imagen;
+		this.date = fechaAlta.toString();
 	}	
 	
 	public String getNombre() {
@@ -113,8 +116,8 @@ public class DtOfertaLaboral {
 		return this.fechaAlta;
 	}
 	
-	public String getImageUrl() {
-		return this.imageUrl;
+	public String getimagen() {
+		return this.imagen;
 	}
 	
 	public ArrayList<DTPostulacion> getPostulaciones() {
@@ -168,6 +171,9 @@ public class DtOfertaLaboral {
 		}
 		return postulacion;
 	}
+	public String getDate() {
+		return date;
+	}
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -189,8 +195,8 @@ public class DtOfertaLaboral {
 		this.horario = horario;
 	}
 	
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setimagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 	public void setNombreEmpresa(String nombreEmpresa) {
@@ -219,6 +225,9 @@ public class DtOfertaLaboral {
 	
 	public void setEstado(EstadoOferta estado) {
 		this.estado = estado;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	
 //	@Override

@@ -81,16 +81,19 @@ public class CrearOferta extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/ofertas/crearOferta.jsp").forward(request, response);
         }
         
-		Part image = request.getPart("imageFile");		
-		if(image != null) {
-			String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
-			File targetFile = new File(path + nombreOferta + ".jpg");
-			if(targetFile.exists()) {
-				Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);	
-			}			
-		}
-		ArrayList<String> listaKeywords = new ArrayList<>();
+		Part image = request.getPart("imageFile");	
+		byte[] imageBytes = image.getInputStream().readAllBytes();
 		
+//		if(image != null) {
+//			String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
+//			File targetFile = new File(path + nombreOferta + ".jpg");
+//			if(targetFile.exists()) {
+//				Files.copy(image.getInputStream(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);	
+//			}			
+//			
+		
+			
+		ArrayList<String> listaKeywords = new ArrayList<>();
 		for (String keyword : keywordsEnSistema) {
 			String keySeleccionada = (String) request.getParameter(keyword.replaceAll("\\s", ""));
 			if (keySeleccionada != null) {
@@ -115,7 +118,7 @@ public class CrearOferta extends HttpServlet {
 						ciudad, 
 						departamento, 
 						LocalDate.now().toString(), 
-						File.separator +  "images"  + File.separator + nombreOferta + ".jpg", 
+						imageBytes, 
 						collection
 					);
 			}

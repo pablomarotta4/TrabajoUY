@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="duracion" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         <element name="costo" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         <element name="fecha" type="{http://server/}localDate" minOccurs="0"/>
+ *         <element name="date" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -37,7 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "exposicion",
     "duracion",
     "costo",
-    "fecha"
+    "fecha",
+    "date"
 })
 public class DataTipoPublicacion {
 
@@ -47,6 +49,7 @@ public class DataTipoPublicacion {
     protected int duracion;
     protected float costo;
     protected LocalDate fecha;
+    protected String date;
 
     /**
      * Obtiene el valor de la propiedad nombre.
@@ -166,6 +169,30 @@ public class DataTipoPublicacion {
      */
     public void setFecha(LocalDate value) {
         this.fecha = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad date.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * Define el valor de la propiedad date.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDate(String value) {
+        this.date = value;
     }
 
 }

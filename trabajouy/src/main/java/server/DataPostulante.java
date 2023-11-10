@@ -21,6 +21,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       <sequence>
  *         <element name="nacionalidad" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="nacimiento" type="{http://server/}localDate" minOccurs="0"/>
+ *         <element name="date" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="postulaciones" type="{http://server/}dtPostulacion" maxOccurs="unbounded" minOccurs="0"/>
  *       </sequence>
  *     </extension>
@@ -34,6 +35,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "dataPostulante", propOrder = {
     "nacionalidad",
     "nacimiento",
+    "date",
     "postulaciones"
 })
 public class DataPostulante
@@ -42,6 +44,7 @@ public class DataPostulante
 
     protected String nacionalidad;
     protected LocalDate nacimiento;
+    protected String date;
     @XmlElement(nillable = true)
     protected List<DtPostulacion> postulaciones;
 
@@ -91,6 +94,30 @@ public class DataPostulante
      */
     public void setNacimiento(LocalDate value) {
         this.nacimiento = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad date.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * Define el valor de la propiedad date.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDate(String value) {
+        this.date = value;
     }
 
     /**

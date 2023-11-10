@@ -29,8 +29,8 @@ public class ControladorUsuario implements IControladorUsuario{
 		this.manejadorUsuario = fact.getManejadorUsuario();
 	}
 	
-	public void crearPostulante(String nickname, String nombre, String apellido, String email, String password, String imageUrl, String nacionalidad, LocalDate nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
-		manejadorUsuario.crearPostulante(nickname, nombre, apellido, email, password, imageUrl, nacionalidad, nacimiento);
+	public void crearPostulante(String nickname, String nombre, String apellido, String email, String password, byte[] imageBytes, String nacionalidad, LocalDate nacimiento) throws UsuarioRepetidoException, CamposVaciosExcepcion {
+		manejadorUsuario.crearPostulante(nickname, nombre, apellido, email, password, imageBytes, nacionalidad, nacimiento);
 	}
 	
 	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password, String imageUrl, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {

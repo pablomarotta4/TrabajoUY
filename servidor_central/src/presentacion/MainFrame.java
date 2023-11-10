@@ -78,7 +78,7 @@ public class MainFrame {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setBounds(500, 20, 900, 1000);
+		frame.setBounds(450, 20, 1000, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -255,9 +255,7 @@ public class MainFrame {
 	private void cargarUsuarios() {
 		// CARGA DE POSTULANTES
 		try {
-			String imagePath = 
-					File.separator + 
-					"images" + File.separator;
+			String imagePath = "";
 			
 			this.icu.crearPostulante(
 			    "lgarcia",
@@ -265,7 +263,7 @@ public class MainFrame {
 			    "García",
 			    "lgarcia85@gmail.com",
 			    "awdrg543",
-			    imagePath + "lgarcia.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1985, 3, 15)
 			);
@@ -275,7 +273,7 @@ public class MainFrame {
 			    "López",
 			    "matias.lopez90@hotmail.com",
 			    "edrft543",
-			    imagePath + "matilo.jpg",
+			    null,
 			    "Argentina",
 			    LocalDate.of(1990, 8, 21)
 			);
@@ -285,7 +283,7 @@ public class MainFrame {
 			    "Rodríguez",
 			    "marrod@gmail.com",
 			    "r5t6y7u8",
-			    imagePath + "maro.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1988, 11, 10)
 			);
@@ -296,7 +294,7 @@ public class MainFrame {
 			    "Fernández",
 			    "javierf93@yahoo.com",
 			    "45idgaf67",
-			    imagePath + "javierf.jpg",
+			    null,
 			    "Mexicana",
 			    LocalDate.of(1993, 6, 5)
 			);
@@ -306,7 +304,7 @@ public class MainFrame {
 			    "Martínez",
 			    "vale87@gmail.com",
 			    "poiuy987",
-			    imagePath + "valen25.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1987, 2, 25)
 			);
@@ -316,7 +314,7 @@ public class MainFrame {
 			    "Pérez",
 			    "anpe92@hotmail.com",
 			    "xdrgb657",
-			    imagePath + "andpe12.jpg",
+			    null,
 			    "Chilena",
 			    LocalDate.of(1992, 4, 12)
 			);
@@ -326,7 +324,7 @@ public class MainFrame {
 			    "Silva",
 			    "camilasilva89@gmail.com",
 			    "mnjkiu89",
-			    imagePath + "sicam.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1989, 9, 30)
 			);
@@ -336,7 +334,7 @@ public class MainFrame {
 			    "González",
 			    "gonza95@yahoo.com",
 			    "ytrewq10",
-			    imagePath + "sebgon.jpg",
+			    null,
 			    "Colombiana",
 			    LocalDate.of(1995, 1, 18)
 			);
@@ -346,7 +344,7 @@ public class MainFrame {
 			    "López",
 			    "loisa@gmail.com",
 			    "sbsplol1",
-			    imagePath + "isabel.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1991, 7, 7)
 			);
@@ -356,7 +354,7 @@ public class MainFrame {
 			    "Ramírez",
 			    "marram@hotmail.com",
 			    "okmnji98",
-			    imagePath + "marram02.jpg",
+			    null,
 			    "Argentina",
 			    LocalDate.of(1986, 12, 2)
 			);
@@ -557,8 +555,7 @@ public class MainFrame {
 					"Unete a nuestro equipo de desarrollo frontend y crea ´\r\n"
 					+ "experiencias de usuario excepcionales.";
 			String imagePath = 
-					File.separator + 
-					"images" + File.separator;
+					"";
 			ArrayList<String> keywords = new ArrayList<>();
 			keywords.add("Tiempo completo");
 			keywords.add("Medio tiempo");
@@ -576,7 +573,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo",
 					LocalDate.of(2023, 9, 30),
-					imagePath + "desarrollador_frontend.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Desarrollador Frontend");
@@ -595,7 +592,7 @@ public class MainFrame {
 					"Punta del Este", 
 					"Maldonado", 
 					LocalDate.of(2023, 9, 29),
-					imagePath + "estratega_de_negocios.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Estratega de Negocios");
@@ -616,7 +613,7 @@ public class MainFrame {
 					"Rosario", 
 					"Colonia", 
 					LocalDate.of(2023, 10, 29),
-					imagePath + "diseñador_ux_ui.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Disenador UX/UI");
@@ -636,7 +633,7 @@ public class MainFrame {
 					"Maldonado", 
 					"Maldonado", 
 					LocalDate.of(2023, 10, 19),
-					imagePath + "analista_de_datos.jpg",
+					null,
 					keywords
 			);
 			
@@ -657,7 +654,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 10, 20),
-					imagePath + "content_manager.jpg",
+					null,
 					keywords
 			);
 			
@@ -677,7 +674,7 @@ public class MainFrame {
 					"Minas", 
 					"Lavalleja",
 					LocalDate.of(2023, 11, 2),
-					imagePath + "soporte_tecnico.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Soporte Técnico");
@@ -694,7 +691,7 @@ public class MainFrame {
 					"Flores", 
 					"Flores", 
 					LocalDate.of(2023, 11, 2),
-					imagePath + "analista_de_marketing_digital.jpg",
+					null,
 					new ArrayList<String>()
 			);
 			this.ico.confirmarOferta("A. de Marketing Digital");
@@ -711,7 +708,7 @@ public class MainFrame {
 					"Colonia Suiza", 
 					"Colonia", 
 					LocalDate.of(2023, 11, 4),
-					imagePath + "contador_senior.jpg",
+					null,
 					new ArrayList<String>()
 			);
 			this.ico.rechazarOferta("Contador Senior");
@@ -735,7 +732,7 @@ public class MainFrame {
 					"Paysandú", 
 					"Paysandú", 
 					LocalDate.of(2023, 10, 29),
-					imagePath + "tecnico_de_red.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Técnico/a Básico Red");
@@ -758,7 +755,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 11, 4),
-					imagePath + "desarrollador_de_software_senior.jpg",
+					null,
 					keywords
 			);
 					
@@ -778,7 +775,7 @@ public class MainFrame {
 					"Río Negro", 
 					"Fray Bentos", 
 					LocalDate.of(2023, 10, 25),
-					imagePath + "desarrollador_de_software_full_stack.jpg",
+					null,
 					keywords
 			);
 			
@@ -800,7 +797,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 11, 5),
-					imagePath + "gerente_de_proyectos.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Gerente de Proyecto");
@@ -821,7 +818,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 11, 1),
-					imagePath + "ingeniero_de_calidad_de_software.jpg",
+					null,
 					keywords
 			);
 		} catch (ElementoRepetidoException e) {

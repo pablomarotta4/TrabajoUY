@@ -131,7 +131,7 @@ public class PostulacionAOfertaLaboral extends JInternalFrame {
                 	comboBox_1.removeAllItems();
                 	comboBox_1.addItem("");
         			String empresadelcombo = comboBox_0.getSelectedItem().toString();
-        	        List<String> listanombreofertas = ico.listarOfertasByEmpresa(empresadelcombo);
+        	        List<String> listanombreofertas = ico.listarOfertasAceptadasByEmpresa(empresadelcombo);
         	        for(int i = 0; i < listanombreofertas.size(); i++)
                     	comboBox_1.addItem(listanombreofertas.get(i));
         	        }

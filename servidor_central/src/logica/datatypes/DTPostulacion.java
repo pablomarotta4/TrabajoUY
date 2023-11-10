@@ -12,7 +12,8 @@ public class DTPostulacion {
 	private LocalDate fechaPostulacion;
 	private String nombreOferta ;
 	private String nickpostulante;
-
+	private String date;
+	
 	public DTPostulacion() {
 		
 	}
@@ -28,6 +29,7 @@ public class DTPostulacion {
 		this.fechaPostulacion = fechaPostulacion;
 		this.nickpostulante = nickPostulante;
 		this.nombreOferta = nombreOferta;
+		this.date = fechaPostulacion.toString();
 	}
 	
 	public String getNickpostulante() {
@@ -57,7 +59,12 @@ public class DTPostulacion {
 		return this.nombreOferta;
 	}
 
-	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public boolean equals(DTPostulacion pos) {
 		return
 			cvReducido.equals(pos.getCvReducido()) &&
