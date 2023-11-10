@@ -179,7 +179,6 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		
 		if (user == null && existeUsuarioEmail(input)) {
 			for(Usuario usuario : usuarios.values()) {
-				System.out.println(usuario.getEmail());
 				if (usuario.getEmail().equals(input)) {
 					user = usuario;
 				}

@@ -66,13 +66,32 @@ public class ControladorUsuario implements IControladorUsuario{
 
 	public DataUsuario consultarDatosUsuario(String nick) {
 		Usuario usr = manejadorUsuario.buscarUsuario(nick);
-	    if (usr instanceof Postulante) {
-	        Postulante postulante = (Postulante) usr;
-	        return postulante.getDataPostulante();
-	    } else if (usr instanceof Empresa) {
-	        Empresa empresa = (Empresa) usr;
-	        return empresa.getDataEmpresa();
-	    }
+		
+		if (usr != null) {
+		    if (usr instanceof Postulante) {
+		        Postulante postulante = (Postulante) usr;
+		        return postulante.getDataPostulante();
+		    } else if (usr instanceof Empresa) {
+		        Empresa empresa = (Empresa) usr;
+		        return empresa.getDataEmpresa();
+		    }
+		} else {
+			if (manejadorUsuario.existeUsuarioEmail(nick)) {
+				Map<String, Usuario> usuarios = manejadorUsuario.getUsuarios();
+				for(Usuario usuario : usuarios.values()) {
+					if (usuario.getEmail().equals(nick)) {
+						if (usuario instanceof Postulante) {
+					        Postulante postulante = (Postulante) usuario;
+					        return postulante.getDataPostulante();
+					    } else if (usuario instanceof Empresa) {
+					        Empresa empresa = (Empresa) usuario;
+					        return empresa.getDataEmpresa();
+					    }
+					}
+				}
+			}
+		}
+
 		return null;
 	}
 
