@@ -44,6 +44,7 @@ public interface IControladorOferta {
 	public DtOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta);
 	public void confirmarOferta(String nombreOferta);
 	public void rechazarOferta(String nombreOferta);
+	public void finalizarOferta(String nombreOferta);
 	public CollectionBean listarDtOfertas();
 	public CollectionBean listarDtOfertasConfirmadasNoExpiradas(String nickUsuario);
 	public ArrayList<DtOfertaLaboral> listarDtOfertasByFilter(String filter, String nickUsuario);

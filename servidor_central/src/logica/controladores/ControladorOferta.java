@@ -254,6 +254,10 @@ public class ControladorOferta implements IControladorOferta{
 		this.manejadorOferta.getOfertaDeNombre(nombreOferta).setEstadoRechazada();
 	}
 	
+	public void finalizarOferta(String nombreOferta) {
+		this.manejadorOferta.getOfertaDeNombre(nombreOferta).setEstadoFinalizada();
+	}
+	
 	public List<String> listarNombreOfertas() {
 		List<String> listaOfertas = new ArrayList<String>();
 		Map<String, OfertaLaboral> ofertas = this.manejadorOferta.getOfertas();

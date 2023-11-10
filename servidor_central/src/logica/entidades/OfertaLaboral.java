@@ -141,6 +141,10 @@ public class OfertaLaboral {
 		this.estado = EstadoOferta.RECHAZADA;
 	}
 	
+	public void setEstadoFinalizada() {
+		this.estado = EstadoOferta.FINALIZADA;
+	}
+	
 	public EstadoOferta getEstado() {
 		return this.estado;
 	}
