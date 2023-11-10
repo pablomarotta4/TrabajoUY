@@ -80,7 +80,7 @@
                 	%>
 	                <div class="postulante">
 	                    <!--FOTO-->
-	                    <div class="foto-postulante"><img style="max-width: 35%;" src="/trabajouy/imagenes?id=<%=usuarioPost.getImageUrl()%>%>" alt="foto-usuario"></div>
+	                    <div class="foto-postulante"><img style="max-width: 35%;" src="/trabajouy/imagenes?id=<%=usuarioPost.getImageUrl()%>" alt="foto-usuario"></div>
 	                    <!--NOMBRE-->
 	                    <div class="nombre-postulante"><a href="/trabajouy/consultaPostulacion?nombreOferta=<%=java.net.URLEncoder.encode(postulacion.getNombreOferta(), "UTF-8")%>&nickname=<%=postulacion.getNickpostulante() %>"><%= postulacion.getNickpostulante()%></a></div>
 	                </div>
