@@ -274,6 +274,17 @@ public class ControladorOferta implements IControladorOferta{
 				listaOfertas.add(oferta.getDataType());							
 			}	
 		}
+		
+		for (int i = 0; i < listaOfertas.size() - 1; i++) {
+		    for (int j = i + 1; j < listaOfertas.size(); j++) {
+		        DtOfertaLaboral of_i = listaOfertas.get(i);
+		        DtOfertaLaboral of_j = listaOfertas.get(j);
+		        if (of_i.getExposicion() > of_j.getExposicion()) {
+		            listaOfertas.set(j, of_i);
+		            listaOfertas.set(i, of_j);
+		        }
+		    }
+		}
 		CollectionBean ret = new CollectionBean();
 		ret.setListaDtOfertas(listaOfertas);
 		return ret;
@@ -357,6 +368,17 @@ public class ControladorOferta implements IControladorOferta{
 					listaOfertas.add(oferta.getDataType());
 				}
 			}
+		}
+		
+		for (int i = 0; i < listaOfertas.size() - 1; i++) {
+		    for (int j = i + 1; j < listaOfertas.size(); j++) {
+		        DtOfertaLaboral of_i = listaOfertas.get(i);
+		        DtOfertaLaboral of_j = listaOfertas.get(j);
+		        if (of_i.getExposicion() > of_j.getExposicion()) {
+		            listaOfertas.set(j, of_i);
+		            listaOfertas.set(i, of_j);
+		        }
+		    }
 		}
 		return listaOfertas;
 	}

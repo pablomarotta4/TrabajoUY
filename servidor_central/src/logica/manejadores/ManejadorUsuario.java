@@ -43,7 +43,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 	public void crearPostulante(String nickname, String nombre, String apellido, String email, String password, byte[] imageBytes, String nacionalidad, LocalDate nacimiento) 
 			throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		if (!existeUsuarioNick(nickname) && !existeUsuarioEmail(email)) {
-			if (nickname.isEmpty()) 
+		   if (nickname.isEmpty())
 				throw new CamposVaciosExcepcion("Debe ingresar un nickname.");
 			else if (email.isEmpty())
 				throw new CamposVaciosExcepcion("Debe ingresar un email.");

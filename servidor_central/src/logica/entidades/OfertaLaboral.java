@@ -83,7 +83,8 @@ public class OfertaLaboral {
 				listaKeywords.add(this.keywords.get(i).getKeyword());
 			}
 		}
-		return new DtOfertaLaboral(
+		
+		DtOfertaLaboral dtOf = new DtOfertaLaboral(
 			this.nombre,
 			this.descripcion,
 			this.ciudad,
@@ -99,6 +100,8 @@ public class OfertaLaboral {
 			this.costo,
 			this.estado
 		);
+		dtOf.setExposicion(this.tipo.getExposicion());
+		return dtOf;
 	}
 	
 //	public boolean estaPostulado(String nickname) {

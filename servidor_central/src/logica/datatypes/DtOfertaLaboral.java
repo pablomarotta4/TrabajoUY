@@ -24,6 +24,7 @@ public class DtOfertaLaboral {
 	private String nombreEmpresa;
 	private int duracion;
 	private EstadoOferta estado;
+	private int exposicion;
 	
 	public DtOfertaLaboral() {
 		
@@ -229,7 +230,12 @@ public class DtOfertaLaboral {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+	public int getExposicion() {
+		return this.exposicion;
+	}
+	public void setExposicion(int exposicion) {
+		this.exposicion = exposicion;
+	}
 //	@Override
 //	public String toString() {
 //	    return "DTOfertaLaboral{" +
