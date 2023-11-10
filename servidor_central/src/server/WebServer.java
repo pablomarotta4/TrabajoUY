@@ -187,9 +187,11 @@ public class WebServer {
 	}
     
     @WebMethod
-    public ArrayList<String> listarNickEmpresas(){
+    public CollectionBean listarNickEmpresas(){
+    	CollectionBean collection = new CollectionBean();
+		collection.setListaStrings(ctrlUsuario.listarNickEmpresas());
 
-    	return (ArrayList<String>) ctrlUsuario.listarNickEmpresas();
+    	return collection;
     }
 
     @WebMethod
@@ -213,9 +215,10 @@ public class WebServer {
 		return ctrlUsuario.estaPostulado(nickname, nombreOferta);
 	}
     @WebMethod
-	public ArrayList<DtOfertaLaboral> consultarPostulaciones(String nick){
-		ArrayList<DtOfertaLaboral> listaOfertas = ctrlUsuario.consultarPostulaciones(nick);
-		return listaOfertas;
+	public CollectionBean consultarPostulaciones(String nick){
+    	CollectionBean collection = new CollectionBean();
+    	collection.setListaDtOfertas(ctrlUsuario.consultarPostulaciones(nick));
+		return collection;
 	}
     @WebMethod
 	public ArrayList<DtOfertaLaboral> consultarOfertas(String nick){
