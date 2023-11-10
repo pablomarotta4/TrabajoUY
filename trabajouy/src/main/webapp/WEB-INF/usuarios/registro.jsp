@@ -86,7 +86,7 @@
                 <%
                 	Boolean vacio = (Boolean) request.getAttribute("campos-vacios");
                     Boolean userRepetido = (Boolean) request.getAttribute("user-repetido");		
-                    
+                    Boolean passDistintas = (Boolean) request.getAttribute("passDistintas");
                     if(vacio != null){
                     	if(vacio.equals(true)){
                 %>    		
@@ -108,7 +108,15 @@
                 <%
                     	}
                     }
-                        		
+                    if(passDistintas != null){
+                    	if(passDistintas.equals(true)){
+                %>
+                <div class="error" >
+	                <p>Las contraseñas no coinciden.</p>
+                </div>
+                <%
+                    	}	
+                    }                        		
                 %>
                 
                 

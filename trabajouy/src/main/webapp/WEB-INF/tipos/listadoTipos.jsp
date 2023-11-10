@@ -27,6 +27,12 @@
            		</div>		
 			<%	
 				}
+				
+				if(listaTipos.size() == 0){
+			%>
+				<h2>No hay tipos de publicacion.</h2>
+			<%		
+				}
 			}
 			%>
 	

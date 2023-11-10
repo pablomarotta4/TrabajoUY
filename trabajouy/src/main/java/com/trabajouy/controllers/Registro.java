@@ -72,10 +72,10 @@ public class Registro extends HttpServlet {
 						request.getRequestDispatcher("/WEB-INF/usuarios/registro.jsp").forward(request, response);
 					}
 				}
+			} else {
+				request.setAttribute("passDistintas", true);
+				request.getRequestDispatcher("/WEB-INF/usuarios/registro.jsp").forward(request, response);
 			}
-			
-			
-			
 		}
 		catch (CamposVaciosExcepcion_Exception ex) {
 			request.setAttribute("campos-vacios", true);
