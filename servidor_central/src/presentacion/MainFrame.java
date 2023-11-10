@@ -263,7 +263,7 @@ public class MainFrame {
 			    "García",
 			    "lgarcia85@gmail.com",
 			    "awdrg543",
-			    imagePath + "lgarcia.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1985, 3, 15)
 			);
@@ -273,7 +273,7 @@ public class MainFrame {
 			    "López",
 			    "matias.lopez90@hotmail.com",
 			    "edrft543",
-			    imagePath + "matilo.jpg",
+			    null,
 			    "Argentina",
 			    LocalDate.of(1990, 8, 21)
 			);
@@ -283,7 +283,7 @@ public class MainFrame {
 			    "Rodríguez",
 			    "marrod@gmail.com",
 			    "r5t6y7u8",
-			    imagePath + "maro.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1988, 11, 10)
 			);
@@ -294,7 +294,7 @@ public class MainFrame {
 			    "Fernández",
 			    "javierf93@yahoo.com",
 			    "45idgaf67",
-			    imagePath + "javierf.jpg",
+			    null,
 			    "Mexicana",
 			    LocalDate.of(1993, 6, 5)
 			);
@@ -304,7 +304,7 @@ public class MainFrame {
 			    "Martínez",
 			    "vale87@gmail.com",
 			    "poiuy987",
-			    imagePath + "valen25.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1987, 2, 25)
 			);
@@ -314,7 +314,7 @@ public class MainFrame {
 			    "Pérez",
 			    "anpe92@hotmail.com",
 			    "xdrgb657",
-			    imagePath + "andpe12.jpg",
+			    null,
 			    "Chilena",
 			    LocalDate.of(1992, 4, 12)
 			);
@@ -324,7 +324,7 @@ public class MainFrame {
 			    "Silva",
 			    "camilasilva89@gmail.com",
 			    "mnjkiu89",
-			    imagePath + "sicam.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1989, 9, 30)
 			);
@@ -334,7 +334,7 @@ public class MainFrame {
 			    "González",
 			    "gonza95@yahoo.com",
 			    "ytrewq10",
-			    imagePath + "sebgon.jpg",
+			    null,
 			    "Colombiana",
 			    LocalDate.of(1995, 1, 18)
 			);
@@ -344,7 +344,7 @@ public class MainFrame {
 			    "López",
 			    "loisa@gmail.com",
 			    "sbsplol1",
-			    imagePath + "isabel.jpg",
+			    null,
 			    "Uruguaya",
 			    LocalDate.of(1991, 7, 7)
 			);
@@ -354,7 +354,7 @@ public class MainFrame {
 			    "Ramírez",
 			    "marram@hotmail.com",
 			    "okmnji98",
-			    imagePath + "marram02.jpg",
+			    null,
 			    "Argentina",
 			    LocalDate.of(1986, 12, 2)
 			);

@@ -1,5 +1,11 @@
 package logica.manejadores;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +40,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		return instance;
 	}
 	
-	public void crearPostulante(String nickname, String nombre, String apellido, String email, String password, String imageUrl, String nacionalidad, LocalDate nacimiento) 
+	public void crearPostulante(String nickname, String nombre, String apellido, String email, String password, byte[] imageBytes, String nacionalidad, LocalDate nacimiento) 
 			throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		if (!existeUsuarioNick(nickname) && !existeUsuarioEmail(email)) {
 			if (nickname.isEmpty()) 
@@ -46,7 +52,19 @@ public class ManejadorUsuario implements IManejadorUsuario{
 			else if (nacionalidad.isEmpty())
 				throw new CamposVaciosExcepcion("Debe ingresar una descripcion.");
 			else {
-				Postulante user = new Postulante(nickname, nombre, apellido, email, password, imageUrl, nacimiento, nacionalidad);
+				String nombreImagen = nickname + ".jpg";
+				nombreImagen = nombreImagen.toLowerCase();
+				String path = "files/";
+				File targetFile = new File(path + nombreImagen);
+				if(!targetFile.exists() && imageBytes != null) {
+					InputStream imageStream = new ByteArrayInputStream(imageBytes);
+					try {
+						Files.copy(imageStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}	
+				}	
+				Postulante user = new Postulante(nickname, nombre, apellido, email, password, nombreImagen, nacimiento, nacionalidad);
 				agregarUsuario(user);
 			}
 		}
