@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+
+import org.junit.platform.commons.util.StringUtils;
 
 import excepciones.ElementoInexistenteException;
 import excepciones.ElementoRepetidoException;
@@ -54,7 +62,7 @@ public class ControladorOferta implements IControladorOferta{
 			String ciudad,
 			String departamento,
 			LocalDate fechaAlta,
-			String imageUrl,
+			byte[] imageBytes,
 			ArrayList<String> keywordsSeleccionadas
 	) throws ElementoRepetidoException, ElementoInexistenteException {
 		
@@ -100,8 +108,27 @@ public class ControladorOferta implements IControladorOferta{
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
-		
 
+		String nombreImagen = nombre.replace(" ", "_");
+		nombreImagen = nombreImagen.replace("/", "_");
+		nombreImagen = nombreImagen.toLowerCase();
+		nombreImagen = nombreImagen.replace("á", "a");
+		nombreImagen = nombreImagen.replace("é", "e");
+		nombreImagen = nombreImagen.replace("í", "i");
+		nombreImagen = nombreImagen.replace("ó", "o");
+		nombreImagen = nombreImagen.replace("ú", "u");
+		nombreImagen += ".jpg";
+		
+		String path = "files/";
+		File targetFile = new File(path + nombreImagen);
+		if(!targetFile.exists() && imageBytes != null) {
+			InputStream imageStream = new ByteArrayInputStream(imageBytes);
+			try {
+				Files.copy(imageStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}	
+		}	
 		
 		OfertaLaboral nuevaOferta = 				
 				new OfertaLaboral(
@@ -112,7 +139,7 @@ public class ControladorOferta implements IControladorOferta{
 				horario,
 				remuneracion,
 				fechaAlta,
-				imageUrl,
+				nombreImagen,
 				listaKeywords,
 				empresa,
 				tipo

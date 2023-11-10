@@ -449,7 +449,7 @@ public class CrearOfertaLaboral extends JInternalFrame{
 							ciudad,
 							departamento,
 							fecha,
-							"",
+							null,
 							(ArrayList<String>) selectedKeywords
 					);
 					
