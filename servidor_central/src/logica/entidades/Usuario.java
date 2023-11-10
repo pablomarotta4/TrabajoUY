@@ -64,7 +64,7 @@ public class Usuario {
 		this.imageUrl = image;
 	}
 	
-	public boolean evaluarCredenciales(String nick, String pass) {
-		return (this.nickname.equals(nick)) && (this.password.equals(pass));
+	public boolean evaluarCredenciales(String input, String pass) {
+		return ((this.nickname.equals(input)) && (this.password.equals(pass)) || (this.email.equals(input)) && (this.password.equals(pass)));
 	}
 }
