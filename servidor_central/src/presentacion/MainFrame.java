@@ -915,7 +915,7 @@ public class MainFrame {
 					"Disenador UX/UI", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 9, 30)
+					LocalDate.of(2023, 10, 30)
 			);
 			
 			cvv = 
@@ -955,6 +955,47 @@ public class MainFrame {
 					motivacion, 
 					LocalDate.of(2023, 10, 2)
 			);
+			
+			cvv = 
+			"Licenciada en Administraci´on,\r\n"
+			+ "me considero la mejor menejadora\r\n"
+			+ "de contenidos del mundo,\r\n"
+			+ "tengo experiencia en gesti´on\r\n"
+			+ "de equipos y proyectos.\r\n"
+			+ "Conocimientos en Microsoft\r\n"
+			+ "Office.";
+					
+			motivacion = 
+			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
+			+ "equipo dinámico y contribuir con\r\n"
+			+ "mis habilidades de liderazgo.\r\n"
+			+ ""
+			+ "";
+			this.ico.altaPostulacion(
+					"lgarcia", 
+					"Content Manager", 
+					cvv, 
+					motivacion, 
+					LocalDate.of(2023, 10, 21)
+			);
+			
+			cvv = 
+			"Me manejo las redes, tengo 20M\r\n"
+			+ "de seguidores.";
+					
+			motivacion = 
+			"Me gustar´ıa combinar mi pasi´on\r\n"
+			+ "por la m´usica con una oportunidad\r\n"
+			+ "laboral que me permita\r\n"
+			+ "seguir creciendo como artista.";
+			this.ico.altaPostulacion(
+					"valen25", 
+					"Content Manager", 
+					cvv, 
+					motivacion, 
+					LocalDate.of(2023, 10, 22)
+			);	
+			
 			JOptionPane.showMessageDialog(
 					frame,
 					"La operación se ha realizado con éxito",
