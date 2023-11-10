@@ -78,7 +78,7 @@ public class MainFrame {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setBounds(500, 20, 900, 1000);
+		frame.setBounds(450, 20, 1000, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();
