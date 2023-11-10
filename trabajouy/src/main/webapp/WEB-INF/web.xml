@@ -168,4 +168,34 @@
     <servlet-name>ConsultaPostulacionMovil</servlet-name>
     <url-pattern>/ConsultaPostulacionMovil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PostulacionMovil</display-name>
+    <servlet-name>PostulacionMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.PostulacionMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostulacionMovil</servlet-name>
+    <url-pattern>/PostulacionMovil</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListaPostulaciones</display-name>
+    <servlet-name>ListaPostulaciones</servlet-name>
+    <servlet-class>com.trabajouy.controllers.ListaPostulaciones</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListaPostulaciones</servlet-name>
+    <url-pattern>/ListaPostulaciones</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LogoutMovil</display-name>
+    <servlet-name>LogoutMovil</servlet-name>
+    <servlet-class>com.trabajouy.controllers.LogoutMovil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutMovil</servlet-name>
+    <url-pattern>/LogoutMovil</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -60,7 +60,7 @@ public class LoginMovil extends HttpServlet {
  				 req.getSession().setAttribute("estado_sesion", EstadoSesion.LOGIN_CORRECTO);
  				 req.getSession().setAttribute("usuario_logeado", user);
  				 req.getSession().setAttribute("nickname", nickname);
- 				 response.sendRedirect("/trabajouy/home");
+ 				 response.sendRedirect("/trabajouy/homeMovil");
  			} else {
  				req.setAttribute("estado_sesion", EstadoSesion.LOGIN_INCORRECTO);
  				req.getRequestDispatcher("/WEB-INF/movil/loginMovil.jsp").forward(req, response);

@@ -4,21 +4,19 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
-	<link rel="stylesheet" href="media/styles/homeMovilCss.css">
-	<link rel="stylesheet" href="media/styles/loginMovilCss.css">
+	<title>Postularción a Oferta Laboral</title>
+    <link rel="stylesheet" href="media/styles/homeMovilCss.css">
+    <link rel="stylesheet" href="media/styles/loginMovilCss.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<%@page import="server.CollectionBean"%>
-	<%@page import="server.DataUsuario"%>	
-	<%@page import="server.DtOfertaLaboral"%>	
-	<%@page import="server.DataEmpresa"%>
-	<%@page import="server.DataPostulante"%>
-	<%@page import="java.util.ArrayList"%>
+    <%@page import="server.DataUsuario"%>
+    <%@page import="server.CollectionBean"%>
 </head>
 <body style="background: lightgray">
 	<%
-	DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
+		DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 	%>
+	
+	
 	<nav class="navbar navbar-expand-lg " style="background-color: #296073;">
 	        <div class="container-fluid">
 	          <a href="homeMovil"><img src="media/images/trabajoUy.png" class="img-fluid" style="width: 100px;"></a>
@@ -90,49 +88,42 @@
 	          </div>
 	        </div>
 	      </nav>
-	      
-	      <div class="container d-flex justify-content-center align-items-center min-vh-100">
-	      <%	
-    			
-   			
-        	ArrayList<DtOfertaLaboral> ofertas = (ArrayList<DtOfertaLaboral>) request.getAttribute("lista_ofertas");
-       		if(ofertas != null){
-        		for(DtOfertaLaboral oferta : ofertas){	
-       	  %>
-	      <!-- OFERTAS -->
+		<div class="container d-flex justify-content-center align-items-center min-vh-100">
+			<form action="/trabajouy/postulacionMovil" method="post">
+		        <!--CUADRO DE EMPRESA-->
+		        <div class="border rounded-5 p-5 bg-white shadow box-area" style="width: 100%;margin: 15px;">		
+		            <!-- NOMBRE Y DESCRIPCION-->
+		            <div class="col-md-6 right-box">
+		                <div class="row align-items-center">
+		                    <div class="header-text mb-4">
+		                        <h1 style="font-family: monospace;color: gray;">Postulación a <strong style="color: black;"><%=request.getSession().getAttribute("nombreOferta") %></strong></h1>
+		                    </div>
+		                    <div class="input-group"  style="margin-left: 7px;">
+		                    	<label id="fechaLabel" for="fecha" style="margin-right: 7px;">Fecha: </label>
+								<input id="fecha" type="date" name="fecha" value="<%= request.getAttribute("fechaActual") %>">            </div>
+		                    </div>
+		                	<div class="input-group" style="margin: 5px;">
+								<span class="input-group-text">CV Reducido: </span>
+							  	<textarea id="cvReducido" name="cvReducido" class="form-control" aria-label="With textarea"></textarea>
+							</div>
+							<div class="input-group" style="margin: 5px;">
+								<span class="input-group-text">Motivación: </span>
+							  	<textarea id="motivacion" name="motivacion" class="form-control" aria-label="With textarea"></textarea>
+							</div>
+							
+							<div class="input-group mb-5" style="margin-top: 20px;">         
+	                        	<input type="submit" value="Postularse" class="btn btn-lg btn-primary w-30 fs-6">
+	                    	</div>
+		                </div>
+		            </div>
+		        </div>
+	        </form>
+        </div>
 
-	        <!--CUADRO DE OFERTA-->
-	        <div class="border rounded-5 p-3 bg-white shadow box-area" style="width: 85%;margin: 15px;">
-	
-	            <!-- FOTO --> 
-	            <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box" style="background: lightblue;">
-	                <div class="featured-image mb-3">
-	                    <img src=<%= oferta.getImageUrl() %>" class="img-fluid" style="width: 250px;">
-	                </div>
-	            </div>
-	
-	            <!-- NOMBRE Y DESCRIPCION-->
-	            <div class="col-md-6 right-box">
-	                <div class="row align-items-center">
-	                    <div class="header-text mb-4">
-	                        <a href="consultaOfertaMovil?oferta=<%=java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>"><h2 style="font-family: monospace;color: gray;"><%= oferta.getNombre() %></h2></a>
-	                        <p><strong><%= oferta.getNombreEmpresa() %></strong></p>
-	                    </div>
-	                    <div class="input-group mb-3">
-	                    	<p><%=oferta.getDescripcion() %></p>
-	                    </div>
-	                </div>
-	            </div>
 	
 	
-	        </div>
-	        <%
-        		}
-       		}
-	        %>
-	        </div>
-	  
-	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </body>
 </html>
