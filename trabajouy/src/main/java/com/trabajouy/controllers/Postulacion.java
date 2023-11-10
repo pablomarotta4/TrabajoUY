@@ -70,6 +70,6 @@ public class Postulacion extends HttpServlet {
 			response.sendRedirect("home");
 		}
 		
-		response.sendRedirect("/trabajouy/consultaPostulacion?nickname=" + nickname + "&nombreOferta=" + nombreOferta);
+		response.sendRedirect("/trabajouy/consultaPostulacion?nickname=" + nickname + "&nombreOferta=" + java.net.URLEncoder.encode(nombreOferta, "UTF-8"));
 	}
 }
