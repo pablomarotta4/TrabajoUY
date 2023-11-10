@@ -41,9 +41,7 @@ public class Login extends HttpServlet {
 		try {
 			server.WebServerService servicio = new server.WebServerService();
 			server.WebServer port = servicio.getWebServerPort();
-			System.out.println("antes del credenciales validas");
 			boolean credencialesValidas = port.evaluarCredenciales(nickname, password);
-			System.out.println("despues del credenciales validas: " + credencialesValidas);
 			if (credencialesValidas) {
 				 DataUsuario user = port.consultarDatosUsuario(nickname);
 				 req.setAttribute("estado_sesion", EstadoSesion.LOGIN_CORRECTO);
