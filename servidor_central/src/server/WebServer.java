@@ -161,13 +161,13 @@ public class WebServer {
     							  String ciudad,
     							  String departamento,
     							  String fechaAlta,
-    							  String imageUrl,
+    							  byte[] imageBytes,
     							  CollectionBean keywords) throws ElementoRepetidoException, ElementoInexistenteException {
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate fechaLD = LocalDate.parse(fechaAlta, formatter);
 		ArrayList<String> listaKeywords = keywords.getListaStrings();
 		try {
-			ctrlOferta.altaOfertaLaboral(empresa, tipoPublicacion, nombre, descripcion, horario, remuneracion, ciudad, departamento, fechaLD, imageUrl, listaKeywords);
+			ctrlOferta.altaOfertaLaboral(empresa, tipoPublicacion, nombre, descripcion, horario, remuneracion, ciudad, departamento, fechaLD, imageBytes, listaKeywords);
 		} catch (ElementoRepetidoException | ElementoInexistenteException exep) {
 			throw exep;
 		}

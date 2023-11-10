@@ -573,7 +573,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo",
 					LocalDate.of(2023, 9, 30),
-					imagePath + "desarrollador_frontend.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Desarrollador Frontend");
@@ -592,7 +592,7 @@ public class MainFrame {
 					"Punta del Este", 
 					"Maldonado", 
 					LocalDate.of(2023, 9, 29),
-					imagePath + "estratega_de_negocios.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Estratega de Negocios");
@@ -613,7 +613,7 @@ public class MainFrame {
 					"Rosario", 
 					"Colonia", 
 					LocalDate.of(2023, 10, 29),
-					imagePath + "diseñador_ux_ui.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Disenador UX/UI");
@@ -633,7 +633,7 @@ public class MainFrame {
 					"Maldonado", 
 					"Maldonado", 
 					LocalDate.of(2023, 10, 19),
-					imagePath + "analista_de_datos.jpg",
+					null,
 					keywords
 			);
 			
@@ -654,7 +654,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 10, 20),
-					imagePath + "content_manager.jpg",
+					null,
 					keywords
 			);
 			
@@ -674,7 +674,7 @@ public class MainFrame {
 					"Minas", 
 					"Lavalleja",
 					LocalDate.of(2023, 11, 2),
-					imagePath + "soporte_tecnico.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Soporte Técnico");
@@ -691,7 +691,7 @@ public class MainFrame {
 					"Flores", 
 					"Flores", 
 					LocalDate.of(2023, 11, 2),
-					imagePath + "analista_de_marketing_digital.jpg",
+					null,
 					new ArrayList<String>()
 			);
 			this.ico.confirmarOferta("A. de Marketing Digital");
@@ -708,7 +708,7 @@ public class MainFrame {
 					"Colonia Suiza", 
 					"Colonia", 
 					LocalDate.of(2023, 11, 4),
-					imagePath + "contador_senior.jpg",
+					null,
 					new ArrayList<String>()
 			);
 			this.ico.rechazarOferta("Contador Senior");
@@ -732,7 +732,7 @@ public class MainFrame {
 					"Paysandú", 
 					"Paysandú", 
 					LocalDate.of(2023, 10, 29),
-					imagePath + "tecnico_de_red.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Técnico/a Básico Red");
@@ -755,7 +755,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 11, 4),
-					imagePath + "desarrollador_de_software_senior.jpg",
+					null,
 					keywords
 			);
 					
@@ -775,7 +775,7 @@ public class MainFrame {
 					"Río Negro", 
 					"Fray Bentos", 
 					LocalDate.of(2023, 10, 25),
-					imagePath + "desarrollador_de_software_full_stack.jpg",
+					null,
 					keywords
 			);
 			
@@ -797,7 +797,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 11, 5),
-					imagePath + "gerente_de_proyectos.jpg",
+					null,
 					keywords
 			);
 			this.ico.confirmarOferta("Gerente de Proyecto");
@@ -818,7 +818,7 @@ public class MainFrame {
 					"Montevideo", 
 					"Montevideo", 
 					LocalDate.of(2023, 11, 1),
-					imagePath + "ingeniero_de_calidad_de_software.jpg",
+					null,
 					keywords
 			);
 		} catch (ElementoRepetidoException e) {
