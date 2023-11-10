@@ -375,7 +375,7 @@ public class MainFrame {
 			        "Johnson", 
 			        "info@EcoTech.com", 
 				    "qsxcdw43",
-				    imagePath + "EcoTech.jpg",
+				    null,
 			        desc, 
 			        "http://www.EcoTechInnovations.com"
 			);
@@ -396,7 +396,7 @@ public class MainFrame {
 			        "Smith", 
 			        "contacto@FusionTech.net", 
 				    "qpwoei586",
-				    imagePath + "FusionTech.jpg",
+				    null,
 			        desc, 
 			        "http://www.FusionTechDynamics.net"
 			);
@@ -414,7 +414,7 @@ public class MainFrame {
 			        "Brown", 
 			        "jobs@GlobalHealth.uy", 
 				    "asdfg654",
-				    imagePath + "GlobalHealth.jpg",
+				    null,
 			        desc, 
 			        "http://www.GlobalHealthDynamics.uy/info"
 			);
@@ -426,7 +426,7 @@ public class MainFrame {
 			        "Rocha", 
 			        "jarrington@ANTEL.com.uy", 
 				    "2nru096",
-				    imagePath + "ANTEL.jpg",
+				    null,
 			        desc, 
 			        "ANTEL.com.uy"
 			);
@@ -439,7 +439,7 @@ public class MainFrame {
 			        "Bengoechea", 
 			        "eldiez@MIEM.org.uy", 
 				    "ibii4xo",
-				    imagePath + "MIEM.jpg",
+				    null,
 			        desc, 
 			        "http://www.EcoTechInnovations.com"
 			);
@@ -454,7 +454,7 @@ public class MainFrame {
 			        "Venn", 
 			        "Mercedes@TechSolutions.com.uy", 
 				    "1ngs03p",
-				    imagePath + "TechSolutions.jpg",
+				    null,
 			        desc, 
 			        "TechSolutions.com"
 			);

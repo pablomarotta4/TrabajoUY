@@ -78,7 +78,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 		}
 	}
 	
-	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password, String imageUrl, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {	
+	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password, byte[] imageBytes, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {	
 		if (!existeUsuarioNick(nickname) && !existeUsuarioEmail(email)) {
 			if (nickname.isEmpty()) 
 				throw new CamposVaciosExcepcion("Debe ingresar un nickname.");
@@ -89,8 +89,20 @@ public class ManejadorUsuario implements IManejadorUsuario{
 			else if (descripcion.isEmpty())
 				throw new CamposVaciosExcepcion("Debe ingresar una descripcion.");
 			else {
-			Empresa user = new Empresa(nickname, nombre, apellido, email, password, imageUrl, descripcion, link);
-			agregarUsuario(user);
+				String nombreImagen = nickname + ".jpg";
+				nombreImagen = nombreImagen.toLowerCase();
+				String path = "files/";
+				File targetFile = new File(path + nombreImagen);
+				if(!targetFile.exists() && imageBytes != null) {
+					InputStream imageStream = new ByteArrayInputStream(imageBytes);
+					try {
+						Files.copy(imageStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}	
+				}	
+				Empresa user = new Empresa(nickname, nombre, apellido, email, password, nombreImagen, descripcion, link);
+				agregarUsuario(user);
 			}
 		}
 		else {
