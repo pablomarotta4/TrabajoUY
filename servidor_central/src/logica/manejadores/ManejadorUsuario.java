@@ -56,10 +56,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 				nombreImagen = nombreImagen.toLowerCase();
 				String path = "files/";
 				File targetFile = new File(path + nombreImagen);
-				System.out.println("asdfasdfasdf");
-				System.out.println(imageBytes);
 				if(!targetFile.exists() && imageBytes != null) {
-					System.out.println("here");
 					InputStream imageStream = new ByteArrayInputStream(imageBytes);
 					try {
 						Files.copy(imageStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
