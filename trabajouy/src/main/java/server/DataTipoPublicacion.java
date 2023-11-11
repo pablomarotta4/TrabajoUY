@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dataTipoPublicacion complex type.
+ * <p>Clase Java para dataTipoPublicacion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>{@code
  * <complexType name="dataTipoPublicacion">
@@ -52,7 +52,7 @@ public class DataTipoPublicacion {
     protected String date;
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Gets the value of the descripcion property.
+     * Obtiene el valor de la propiedad descripcion.
      * 
      * @return
      *     possible object is
@@ -88,7 +88,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Sets the value of the descripcion property.
+     * Define el valor de la propiedad descripcion.
      * 
      * @param value
      *     allowed object is
@@ -100,7 +100,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Gets the value of the exposicion property.
+     * Obtiene el valor de la propiedad exposicion.
      * 
      */
     public int getExposicion() {
@@ -108,7 +108,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Sets the value of the exposicion property.
+     * Define el valor de la propiedad exposicion.
      * 
      */
     public void setExposicion(int value) {
@@ -116,7 +116,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Gets the value of the duracion property.
+     * Obtiene el valor de la propiedad duracion.
      * 
      */
     public int getDuracion() {
@@ -124,7 +124,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Sets the value of the duracion property.
+     * Define el valor de la propiedad duracion.
      * 
      */
     public void setDuracion(int value) {
@@ -132,7 +132,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Gets the value of the costo property.
+     * Obtiene el valor de la propiedad costo.
      * 
      */
     public float getCosto() {
@@ -140,7 +140,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Sets the value of the costo property.
+     * Define el valor de la propiedad costo.
      * 
      */
     public void setCosto(float value) {
@@ -148,7 +148,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Gets the value of the fecha property.
+     * Obtiene el valor de la propiedad fecha.
      * 
      * @return
      *     possible object is
@@ -160,7 +160,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Sets the value of the fecha property.
+     * Define el valor de la propiedad fecha.
      * 
      * @param value
      *     allowed object is
@@ -172,7 +172,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Gets the value of the date property.
+     * Obtiene el valor de la propiedad date.
      * 
      * @return
      *     possible object is
@@ -184,7 +184,7 @@ public class DataTipoPublicacion {
     }
 
     /**
-     * Sets the value of the date property.
+     * Define el valor de la propiedad date.
      * 
      * @param value
      *     allowed object is

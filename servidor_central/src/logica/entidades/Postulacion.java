@@ -11,6 +11,7 @@ public class Postulacion {
 	private LocalDate fechaPostulacion;
 	private OfertaLaboral ofertaLaboral;
 	private Postulante postulante;
+	private int orden;
 	
 	public Postulacion(String cvReducido, String motivacion, LocalDate fechaPostulacion, Postulante postulante, OfertaLaboral ofer) {
 		this.cvReducido = cvReducido;
@@ -18,6 +19,7 @@ public class Postulacion {
 		this.fechaPostulacion = fechaPostulacion;
 		this.postulante = postulante;
 		this.ofertaLaboral = ofer;
+		this.orden = -1;
 	}
 	public String getMotivacion() {
 		return motivacion;
@@ -58,5 +60,10 @@ public class Postulacion {
 				this.ofertaLaboral.getNombre()
 		);
 	}
-	
+	public int getOrden() {
+		return orden;
+	}
+	public void setOrden(int orden) {
+		this.orden = orden;
+	}
 }

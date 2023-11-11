@@ -8,9 +8,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for usuario complex type.
+ * <p>Clase Java para usuario complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>{@code
  * <complexType name="usuario">
@@ -50,7 +50,7 @@ public class Usuario {
     protected String nombre;
 
     /**
-     * Gets the value of the apellido property.
+     * Obtiene el valor de la propiedad apellido.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class Usuario {
     }
 
     /**
-     * Sets the value of the apellido property.
+     * Define el valor de la propiedad apellido.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class Usuario {
     }
 
     /**
-     * Gets the value of the email property.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class Usuario {
     }
 
     /**
-     * Sets the value of the email property.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class Usuario {
     }
 
     /**
-     * Gets the value of the image property.
+     * Obtiene el valor de la propiedad image.
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class Usuario {
     }
 
     /**
-     * Sets the value of the image property.
+     * Define el valor de la propiedad image.
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class Usuario {
     }
 
     /**
-     * Gets the value of the nickname property.
+     * Obtiene el valor de la propiedad nickname.
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class Usuario {
     }
 
     /**
-     * Sets the value of the nickname property.
+     * Define el valor de la propiedad nickname.
      * 
      * @param value
      *     allowed object is
@@ -146,7 +146,7 @@ public class Usuario {
     }
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -158,7 +158,7 @@ public class Usuario {
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is

@@ -53,8 +53,19 @@ public class SeleccionarPostulacion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombreOferta = request.getParameter("nombre-oferta");
 		
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+		DtOfertaLaboral oferta = null;
+		try {
+			oferta = port.listarDatosOferta(nombreOferta);
+		} catch (ElementoInexistenteException_Exception e) {
+			e.printStackTrace();
+		}
 		
-		
+		List<DtPostulacion> postulaciones = oferta.getPostulaciones();
+		for(DtPostulacion post: postulaciones) {
+			String orden = request.getParameter(post.getNickpostulante() + "-orden");
+			port.setOrdenPostulacion(post.getNickpostulante(), nombreOferta, Integer.parseInt(orden));
+		}
 	}
 
 }

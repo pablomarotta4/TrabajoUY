@@ -411,4 +411,15 @@ public class ControladorOferta implements IControladorOferta{
 	    return ofertasConfirmadas;
 	}
 	
+	public void setOrdenPostulacion(String nickPost, String nombreOferta, int orden) {
+		List<Postulacion> postulaciones = this.manejadorPostulacion.getPostulaciones();
+		for(Postulacion post : postulaciones) {
+			if(
+				post.getPostulante().getNickname().equals(nickPost) &&
+				post.getOfertaLaboral().getNombre().equals(nombreOferta)
+			) {
+				post.setOrden(orden);
+			}
+		}
+	}
 }
