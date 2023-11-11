@@ -603,7 +603,7 @@ public class MainFrame {
 			
 			desc = 
 				"Trabaja en colaboración con nuestro talentoso  "
-				+ "equipo de diseno para crear soluciones impactantes.";
+				+ "equipo de diseño para crear soluciones impactantes.";
 			keywords.clear();
 			keywords.add("Medio tiempo");
 			keywords.add("Remoto");
@@ -611,7 +611,7 @@ public class MainFrame {
 			this.ico.altaOfertaLaboral(
 					"FusionTech", 
 					"Estándar", 
-					"Disenador UX/UI", 
+					"Diseñador UX/UI", 
 					desc, 
 					"14:00 - 18:00", 
 					65000, 
@@ -621,7 +621,7 @@ public class MainFrame {
 					null,
 					keywords
 			);
-			this.ico.confirmarOferta("Disenador UX/UI");
+			this.ico.confirmarOferta("Diseñador UX/UI");
 			
 			desc = 
 				"Ayuda a nuestros clientes a tomar decisiones "
@@ -910,7 +910,7 @@ public class MainFrame {
 			+ "contribuir al mantenimiento eficiente";
 			this.ico.altaPostulacion(
 					"javierf", 
-					"Disenador UX/UI", 
+					"Diseñador UX/UI", 
 					cvv, 
 					motivacion, 
 					LocalDate.of(2023, 10, 30)
