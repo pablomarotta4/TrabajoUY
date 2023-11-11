@@ -52,13 +52,15 @@ public class Postulacion {
 		this.ofertaLaboral = ofertaLaboral;
 	}
 	public DTPostulacion getDatatype() {
-		return new DTPostulacion(
+		DTPostulacion post =new DTPostulacion(
 				this.cvReducido,
 				this.motivacion,
 				this.fechaPostulacion,
 				this.postulante.getNickname(),
 				this.ofertaLaboral.getNombre()
 		);
+		post.setOrden(this.orden);
+		return post;
 	}
 	public int getOrden() {
 		return orden;
