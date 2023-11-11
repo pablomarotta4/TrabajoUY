@@ -66,7 +66,6 @@ public class SeleccionarPostulacion extends HttpServlet {
 			String orden = request.getParameter(post.getNickpostulante() + "-orden");
 			port.setOrdenPostulacion(post.getNickpostulante(), nombreOferta, Integer.parseInt(orden));
 		}
-		port.finalizarOferta(nombreOferta);
 		response.sendRedirect("/trabajouy/consultarOferta?oferta=" + oferta.getNombre());
 	}
 

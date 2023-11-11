@@ -96,17 +96,20 @@
                 			DataUsuario usuarioPost = port.consultarDatosUsuario(postulacion.getNickpostulante());
                 	%>
 	                <div class="postulante">
-	                    <span><%=postulacion.getOrden()%>-</span>
+	                	<% if(postulacion.getOrden() != -1){%>
+	                    <span><strong><%=postulacion.getOrden()%>-</strong></span>
+	                    <%}%>
 	                    <div class="foto-postulante"><img style="max-width: 35%;" src="/trabajouy/imagenes?id=<%=usuarioPost.getImageUrl()%>" alt="foto-usuario"></div>
 	                    <!--NOMBRE-->
 	                    <div class="nombre-postulante"><a href="/trabajouy/consultaPostulacion?nombreOferta=<%=java.net.URLEncoder.encode(postulacion.getNombreOferta(), "UTF-8")%>&nickname=<%=postulacion.getNickpostulante() %>"><%= postulacion.getNickpostulante()%></a></div>
 	                </div>
                 	<%
                 		}
+                		int orden = postulaciones.get(0).getOrden();
                 		if(postulaciones.size() > 0 &&
                     	   estaVigente != null && 
                            oferta.getEstado().equals(EstadoOferta.CONFIRMADA) &&
-                    	   !estaVigente){
+                    	   !estaVigente && orden == -1){
                 	%>
 					<a href="/trabajouy/seleccionarPostulacion?nombreOferta=<%=java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8")%>"><input class="btn-postular" type="button" value="Seleccionar postulaciones"></a>
 					<%} %>                	
