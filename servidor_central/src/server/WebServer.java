@@ -320,9 +320,10 @@ public class WebServer {
     @WebMethod
     public byte[] getFile(@WebParam(name = "fileName") String name)
                     throws  IOException {
+    	String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
         byte[] byteArray = null;
         try {
-                File f = new File("files/" + name);
+                File f = new File(path + name);
                 FileInputStream streamer = new FileInputStream(f);
                 byteArray = new byte[streamer.available()];
                 streamer.read(byteArray);

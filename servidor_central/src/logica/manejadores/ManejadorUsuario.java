@@ -54,7 +54,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 			else {
 				String nombreImagen = nickname + ".jpg";
 				nombreImagen = nombreImagen.toLowerCase();
-				String path = "files/";
+				String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
 				File targetFile = new File(path + nombreImagen);
 				if(!targetFile.exists() && imageBytes != null) {
 					InputStream imageStream = new ByteArrayInputStream(imageBytes);
@@ -91,7 +91,7 @@ public class ManejadorUsuario implements IManejadorUsuario{
 			else {
 				String nombreImagen = nickname + ".jpg";
 				nombreImagen = nombreImagen.toLowerCase();
-				String path = "files/";
+				String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "img" + File.separator;
 				File targetFile = new File(path + nombreImagen);
 				if(!targetFile.exists() && imageBytes != null) {
 					InputStream imageStream = new ByteArrayInputStream(imageBytes);
