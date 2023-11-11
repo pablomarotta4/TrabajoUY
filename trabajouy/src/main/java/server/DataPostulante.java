@@ -10,9 +10,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dataPostulante complex type.
+ * <p>Java class for dataPostulante complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>{@code
  * <complexType name="dataPostulante">
@@ -49,7 +49,7 @@ public class DataPostulante
     protected List<DtPostulacion> postulaciones;
 
     /**
-     * Obtiene el valor de la propiedad nacionalidad.
+     * Gets the value of the nacionalidad property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class DataPostulante
     }
 
     /**
-     * Define el valor de la propiedad nacionalidad.
+     * Sets the value of the nacionalidad property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class DataPostulante
     }
 
     /**
-     * Obtiene el valor de la propiedad nacimiento.
+     * Gets the value of the nacimiento property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class DataPostulante
     }
 
     /**
-     * Define el valor de la propiedad nacimiento.
+     * Sets the value of the nacimiento property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class DataPostulante
     }
 
     /**
-     * Obtiene el valor de la propiedad date.
+     * Gets the value of the date property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class DataPostulante
     }
 
     /**
-     * Define el valor de la propiedad date.
+     * Sets the value of the date property.
      * 
      * @param value
      *     allowed object is
