@@ -1008,4 +1008,47 @@ class Tests {
 		List<DtOfertaLaboral> listaOfertas = collection.getListaDtOfertas();
 		assertTrue(listaOfertas.get(0).getNombre().equals("nombreoferta") && listaOfertas.get(1).getNombre().equals("nombreoferta2"));
 	}
+	
+	@Test
+	@Order(43)
+	void listarDtOfertasByFilterKeywordTest() {
+		ArrayList<DtOfertaLaboral> listaOfertas = ico.listarDtOfertasByFilter("keyword1", "nickempresa");
+		assertTrue(listaOfertas.get(0).getNombre().equals("nombreoferta") && listaOfertas.get(1).getNombre().equals("nombreoferta2"));
+	}
+	
+	@Test
+	@Order(44)
+	void listarDtOfertasByFilterEmpresaTest() {
+		ArrayList<DtOfertaLaboral> listaOfertas = ico.listarDtOfertasByFilter("nickempresa", "nickempresa");
+		assertTrue(listaOfertas.get(0).getNombre().equals("nombreoferta") && listaOfertas.get(1).getNombre().equals("nombreoferta2"));
+	}
+	
+	@Test
+	@Order(45)
+	void listarDtOfertasByFilterOfertaTest() {
+		ArrayList<DtOfertaLaboral> listaOfertas = ico.listarDtOfertasByFilter("nombreoferta", "nickempresa");
+		assertTrue(listaOfertas.get(0).getNombre().equals("nombreoferta"));
+	}
+	
+	@Test
+	@Order(46)
+	void listarOfertasAceptadasTest() {
+		ArrayList<DtOfertaLaboral> listaOfertas = ico.listarOfertasAceptadas();
+		assertTrue(listaOfertas.get(0).getNombre().equals("nombreoferta"));
+	}
+	
+	@Test
+	@Order(47)
+	void setOrdenPostulacion() {
+		ico.setOrdenPostulacion("nickpostulante", "nombreoferta", 1);
+		DtOfertaLaboral oferta = null;
+		try {
+			oferta = ico.listarDatosOferta("nombreoferta");
+		} catch (ElementoInexistenteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<DTPostulacion> postulaciones = oferta.getPostulaciones();
+		assertTrue(postulaciones.get(0).getOrden() == 1);
+	}
 }
