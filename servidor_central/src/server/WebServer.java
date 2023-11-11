@@ -331,4 +331,8 @@ public class WebServer {
         }
         return byteArray;
     }
+    @WebMethod
+    public void finalizarOferta(String nombreOferta) {
+    	ctrlOferta.finalizarOferta(nombreOferta);
+    }
 }
