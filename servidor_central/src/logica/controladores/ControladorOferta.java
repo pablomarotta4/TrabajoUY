@@ -127,7 +127,7 @@ public class ControladorOferta implements IControladorOferta{
 				Files.copy(imageStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
 				e.printStackTrace();
-			}	
+			}
 		}	
 		
 		OfertaLaboral nuevaOferta = 				
@@ -242,7 +242,6 @@ public class ControladorOferta implements IControladorOferta{
 	}
 	
 	public DtOfertaLaboral obtenerEmpresaDeOferta(String nombreOferta) {
-		
 		return this.manejadorOferta.getOfertaDeNombre(nombreOferta).getDataType();
 	}
 	 

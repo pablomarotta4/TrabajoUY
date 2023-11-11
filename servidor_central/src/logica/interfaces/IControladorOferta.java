@@ -52,4 +52,5 @@ public interface IControladorOferta {
 	public boolean estaPostulado(String nick, String nombreOferta);
 	public ArrayList<DtOfertaLaboral> listarOfertasAceptadas();
 	public void setOrdenPostulacion(String nickPost, String nombreOferta, int orden);
+	public CollectionBean listarDtOfertasForEmpresa(String nickEmpresa);
 }

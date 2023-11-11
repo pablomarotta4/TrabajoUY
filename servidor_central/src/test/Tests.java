@@ -24,6 +24,7 @@ import excepciones.ElementoRepetidoException;
 import excepciones.NoExisteInstancia;
 import excepciones.UsuarioRepetidoException;
 import logica.datatypes.DtOfertaLaboral;
+import logica.beans.CollectionBean;
 import logica.datatypes.DTPostulacion;
 import logica.datatypes.DataPostulante;
 import logica.datatypes.DataUsuario;
@@ -953,6 +954,7 @@ class Tests {
 	}
 	
 	@Test
+	@Order(38)
 	void listarDatosPostulacionExistente() {
 		
 		try {
@@ -975,4 +977,35 @@ class Tests {
 		assertTrue(postulante.estaPostulado("oferta1313"));
 	}
 	
+	@Test
+	@Order(39)
+	void listarOfertasAceptadasByEmpresaTest() {
+		ico.confirmarOferta("nombreoferta");
+		List<String> listaOfertas = ico.listarOfertasAceptadasByEmpresa("nickempresa");
+		boolean ofertaEsperada = listaOfertas.get(0).equals("nombreoferta");
+		assertTrue(ofertaEsperada);
+	}
+	
+	@Test
+	@Order(40)
+	void listarOfertasIngresadasByEmpresaTest() {
+		List<String> listaOfertas = ico.listarOfertasIngresadasByEmpresa("nickempresa");
+		assertTrue(listaOfertas.get(0).equals("nombreoferta2"));
+	}
+	
+	@Test
+	@Order(41)
+	void listarDtOfertasConfirmadasNoExpiradasTest() {
+		CollectionBean collection = ico.listarDtOfertasConfirmadasNoExpiradas("nickempresa");
+		List<DtOfertaLaboral> listaOfertas = collection.getListaDtOfertas();
+		assertTrue(listaOfertas.get(0).getNombre().equals("nombreoferta") && listaOfertas.get(1).getNombre().equals("nombreoferta2"));
+	}
+	
+	@Test
+	@Order(42)
+	void listarDtOfertasForEmpresaTest() {
+		CollectionBean collection = ico.listarDtOfertasForEmpresa("nickempresa");
+		List<DtOfertaLaboral> listaOfertas = collection.getListaDtOfertas();
+		assertTrue(listaOfertas.get(0).getNombre().equals("nombreoferta") && listaOfertas.get(1).getNombre().equals("nombreoferta2"));
+	}
 }
