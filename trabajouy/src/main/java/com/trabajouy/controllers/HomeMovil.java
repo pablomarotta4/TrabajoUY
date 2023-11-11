@@ -49,15 +49,18 @@ public class HomeMovil extends HttpServlet {
 		String nicknameFilter = "";
 		if(usuario != null) {
 			nicknameFilter = usuario.getNickname();
-		}
-		if (filter != null && !filter.equals("")) {
-			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasByFilter(filter, nicknameFilter).getListaDtOfertas();
-		} else {
-			listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasConfirmadasNoExpiradas(nicknameFilter).getListaDtOfertas();
-		}
 
-		req.setAttribute("lista_ofertas", listaOfertas);
-		req.getRequestDispatcher("/WEB-INF/movil/homeMovil.jsp").forward(req, resp);
+			if (filter != null && !filter.equals("")) {
+				listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasByFilter(filter, nicknameFilter).getListaDtOfertas();
+			} else {
+				listaOfertas = (ArrayList<DtOfertaLaboral>) port.listarDtOfertasConfirmadasNoExpiradas(nicknameFilter).getListaDtOfertas();
+			}
+	
+			req.setAttribute("lista_ofertas", listaOfertas);
+			req.getRequestDispatcher("/WEB-INF/movil/homeMovil.jsp").forward(req, resp);
+		}else if (usuario == null){
+			resp.sendRedirect("loginMovil");
+		}
 	}
 
 	/**

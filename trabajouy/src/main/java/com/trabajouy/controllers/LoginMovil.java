@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import server.DataEmpresa;
 import server.DataUsuario;
 import server.ElementoInexistenteException_Exception;
 
@@ -53,6 +54,11 @@ public class LoginMovil extends HttpServlet {
  		try {
  			server.WebServerService servicio = new server.WebServerService();
  			server.WebServer port = servicio.getWebServerPort();
+ 			DataUsuario usuario = port.consultarDatosUsuario(nickname);
+ 			if(usuario instanceof DataEmpresa) {
+ 				req.setAttribute("estado_sesion", EstadoSesion.LOGIN_INCORRECTO);
+ 				req.getRequestDispatcher("/WEB-INF/movil/loginMovil.jsp").forward(req, response);
+ 			}
  			boolean credencialesValidas = port.evaluarCredenciales(nickname, password);
  			if (credencialesValidas) {
  				 DataUsuario user = port.consultarDatosUsuario(nickname);
@@ -64,7 +70,6 @@ public class LoginMovil extends HttpServlet {
  			} else {
  				req.setAttribute("estado_sesion", EstadoSesion.LOGIN_INCORRECTO);
  				req.getRequestDispatcher("/WEB-INF/movil/loginMovil.jsp").forward(req, response);
- 				System.out.println("credenciales invalidas");
  			}
  		} catch (ElementoInexistenteException_Exception ex) {
  			req.setAttribute("estado_sesion", EstadoSesion.LOGIN_INCORRECTO);
