@@ -105,7 +105,10 @@
 	                </div>
                 	<%
                 		}
-                		int orden = postulaciones.get(0).getOrden();
+                		int orden = -1;
+                		if(postulaciones.size() > 0){
+                			orden = postulaciones.get(0).getOrden();
+                		}
                 		if(postulaciones.size() > 0 &&
                     	   estaVigente != null && 
                            oferta.getEstado().equals(EstadoOferta.CONFIRMADA) &&
