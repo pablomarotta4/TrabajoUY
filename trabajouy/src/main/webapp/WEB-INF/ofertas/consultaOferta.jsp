@@ -4,6 +4,7 @@
 <%@page import="server.DataUsuario"%>
 <%@page import="server.DataPostulante"%>
 <%@page import="server.DtPostulacion" %>
+<%@page import="server.EstadoOferta" %>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +42,10 @@
                 <p><strong>Keywords: </strong><%=oferta.getKeywords().toString() %></p>
             </div>
 			
-            <% 	if(usuario == null){ %>
+            <% 	
+            	Boolean empresaCreadora = (Boolean) request.getAttribute("empresa_creadora");
+            	Boolean estaVigente = (Boolean) request.getAttribute("esta_vigente");
+            	if(usuario == null){ %>
             <a href="login"><input class="btn-postular" type="button" value="Postularse"></a>
             <% 
             	} else if(usuario instanceof DataPostulante){
@@ -53,7 +57,20 @@
      			<a href="/trabajouy/postulacion?nombreOferta=<%=java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8")%>"><input class="btn-postular" type="button" value="Postularse"></a>
      		<%  	}else { %>
      			<a href="/trabajouy/consultaPostulacion?nickname=<%=java.net.URLEncoder.encode(usuario.getNickname(), "UTF-8")%>&nombreOferta=<%= java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8") %>"><input class="btn-postular" type="button" value="Consultar postulacion"></a>
-     		<%}}%>
+     		<%}
+            	} else if(
+            			empresaCreadora != null &&
+            			estaVigente != null &&
+            			empresaCreadora && 
+            			oferta.getEstado().equals(EstadoOferta.CONFIRMADA) &&
+            			!estaVigente
+            			){
+            %>
+            	<a href="/trabajouy/finalizarOferta?nombreOferta=<%=java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8")%>"><input class="btn-postular" type="button" value="Finalizar oferta"></a>
+            <%
+            	}
+     		
+     		%>
         </div>
 
         <!--CAJAS DE POSTULACIONES Y PAQUETES-->
