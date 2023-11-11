@@ -662,9 +662,7 @@ public class MainFrame {
 					null,
 					keywords
 			);
-			/////////////////////////////////////
-			// HAY QUE FINALIZAR ESTA OFERTA
-			////////////////////////////////////
+			this.ico.finalizarOferta("Content Manager");
 			
 			desc = 
 				"Ofrece un excelente servicio de soporte t´ecnico a\r\n"
