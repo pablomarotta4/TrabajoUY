@@ -46,12 +46,15 @@ public class SeleccionarPostulacion extends HttpServlet {
 		}
 		List<DtPostulacion> postulaciones = oferta.getPostulaciones();
 		request.setAttribute("lista_postulaciones", postulaciones);
+		request.setAttribute("nombre_oferta", nombreOferta);
 		request.getRequestDispatcher("WEB-INF/ofertas/seleccionarPostulacion.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nombreOferta = request.getParameter("nombre-oferta");
+		
+		
+		
 	}
 
 }
