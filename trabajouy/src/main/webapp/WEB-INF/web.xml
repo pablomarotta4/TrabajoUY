@@ -198,4 +198,24 @@
     <servlet-name>LogoutMovil</servlet-name>
     <url-pattern>/LogoutMovil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FinalizarOferta</display-name>
+    <servlet-name>FinalizarOferta</servlet-name>
+    <servlet-class>com.trabajouy.controllers.FinalizarOferta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FinalizarOferta</servlet-name>
+    <url-pattern>/FinalizarOferta</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SeleccionarPostulacion</display-name>
+    <servlet-name>SeleccionarPostulacion</servlet-name>
+    <servlet-class>com.trabajouy.controllers.SeleccionarPostulacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SeleccionarPostulacion</servlet-name>
+    <url-pattern>/SeleccionarPostulacion</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -13,6 +13,7 @@ public class DTPostulacion {
 	private String nombreOferta ;
 	private String nickpostulante;
 	private String date;
+	private int orden;
 	
 	public DTPostulacion() {
 		
@@ -92,6 +93,14 @@ public class DTPostulacion {
 	
 	public void setNickpostulante(String nickpostulante) {
 		this.nickpostulante = nickpostulante;
+	}
+
+	public int getOrden() {
+		return orden;
+	}
+
+	public void setOrden(int orden) {
+		this.orden = orden;
 	}
 	
 }

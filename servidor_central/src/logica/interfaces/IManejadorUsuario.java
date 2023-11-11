@@ -24,7 +24,7 @@ public interface IManejadorUsuario {
 	public Map<String, Usuario> getUsuarios();
 	public ArrayList<DtOfertaLaboral> obtenerOfertasPostulaciones(String nick);
 	public boolean evaluarCredenciales(String nickname, String password) throws ElementoInexistenteException;
-	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad);
+	public void modificarUsuario(String nick, String nombre, String apellido, String password, String descripcion, String link, LocalDate fechaNac, String nacionalidad);
 	public ArrayList<DataUsuario> listarDTUsuarios();
 }
 		

@@ -35,6 +35,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="nombreEmpresa" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="duracion" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         <element name="estado" type="{http://server/}estadoOferta" minOccurs="0"/>
+ *         <element name="exposicion" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -59,7 +60,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "keywords",
     "nombreEmpresa",
     "duracion",
-    "estado"
+    "estado",
+    "exposicion"
 })
 public class DtOfertaLaboral {
 
@@ -81,6 +83,7 @@ public class DtOfertaLaboral {
     protected int duracion;
     @XmlSchemaType(name = "string")
     protected EstadoOferta estado;
+    protected int exposicion;
 
     /**
      * Obtiene el valor de la propiedad nombre.
@@ -430,6 +433,22 @@ public class DtOfertaLaboral {
      */
     public void setEstado(EstadoOferta value) {
         this.estado = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad exposicion.
+     * 
+     */
+    public int getExposicion() {
+        return exposicion;
+    }
+
+    /**
+     * Define el valor de la propiedad exposicion.
+     * 
+     */
+    public void setExposicion(int value) {
+        this.exposicion = value;
     }
 
 }

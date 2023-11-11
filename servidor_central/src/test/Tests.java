@@ -44,7 +44,7 @@ class Tests {
 		Factory fact = Factory.getInstance();
 		ico = fact.getControladorOferta();
 		icu = fact.getControladorUsuario();	
-		ict = fact.getControladorCompraTipo();
+		ict = fact.getControladorCompraTipo(); 
 	}
 	
 	
@@ -381,7 +381,7 @@ class Tests {
 	@Order(19)
 	void crearPostulanteSinString(){
 		try {
-			icu.crearPostulante(null, "a", "a", "pass123", null, null, "a", LocalDate.of(1, 1, 1));
+			icu.crearPostulante("", "a", "a", "pass123", null, null, "a", LocalDate.of(1, 1, 1));
 		} catch(CamposVaciosExcepcion e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -389,14 +389,14 @@ class Tests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertThrows(CamposVaciosExcepcion.class, ()->{icu.crearPostulante(null, "a", "a", "pass123", null, null, "a", LocalDate.of(1, 1, 1));});
+		assertThrows(CamposVaciosExcepcion.class, ()->{icu.crearPostulante("", "a", "a", "pass123", null, null, "a", LocalDate.of(1, 1, 1));});
 	}
 	
 	@Test
 	@Order(20)
 	void crearPostulanteSinStrings(){
 		try {
-			icu.crearPostulante(null, null, null, null, null, null , null, LocalDate.of(1, 1, 1));
+			icu.crearPostulante("", null, null, null, null, null , null, LocalDate.of(1, 1, 1));
 		} catch(CamposVaciosExcepcion e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -404,7 +404,7 @@ class Tests {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertThrows(CamposVaciosExcepcion.class, ()->{icu.crearPostulante(null, "a", "a", null, null,null, "a", LocalDate.of(1, 1, 1));});
+		assertThrows(CamposVaciosExcepcion.class, ()->{icu.crearPostulante("", "a", "a", null, null,null, "a", LocalDate.of(1, 1, 1));});
 	}
 	
 	@Test
@@ -424,77 +424,82 @@ class Tests {
 		}
 	}
 	
-//	@Test()
-//	@Order(22)
-//	void altaOfertaOK() {
-//		System.out.println("altaOfertaOK");
-//		String nombreOferta = "nombreoferta";
-//		try {
-//			// Datos que necesita la funcion
-//			icu.crearEmpresa(
-//					"nickempresa", 
-//					"nombreempresa", 
-//					"apellidoempresa", 
-//					"emailempresa", 
-//					"pass123", 
-//					null,
-//					"descripcionempresa", 
-//					"linkempresa"
-//			);
-//			
-//			ict.crearTipoPublicacion(
-//					"nombretipo1", 
-//					"descripciontipo", 
-//					1, 
-//					1, 
-//					10, 
-//					LocalDate.of(2000, 1, 1)
-//			);
-//			
-//			// Funcion a testear
-//			ico.altaOfertaLaboral(
-//					"nickempresa", 
-//					"nombretipo1", 
-//					nombreOferta, 
-//					"descripcion", 
-//					"horario", 
-//					10, 
-//					"ciudad", 
-//					"departamento", 
-//					LocalDate.of(2000, 2, 2), 
-//					null,
-//					List.of("keyword1", "keyword2")
-//			);
-//
-//			DtOfertaLaboral ofertaCreada  = ico.listarDatosOferta(nombreOferta);
-//			DtOfertaLaboral ofertaEsperada = new DtOfertaLaboral(
-//					nombreOferta, 
-//					"descripcion", 
-//					"ciudad",
-//					"departamento",
-//					"horario", 
-//					10, 
-//					LocalDate.of(2000, 2, 2), 
-//					null,
-//					List.of(new DTPostulacion()),
-//					List.of("keyword1", "keyword2"),
-//					"nickempresa",
-//					"nombretipo1", 
-//					10
-//			); 
-//			boolean equals = ofertaEsperada.equals(ofertaCreada);
-//			assertTrue(equals);
-//		} catch (ElementoRepetidoException | ElementoInexistenteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (UsuarioRepetidoException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (CamposVaciosExcepcion e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+	@Test()
+	@Order(22)
+	void altaOfertaOK() {
+		System.out.println("altaOfertaOK");
+		String nombreOferta = "nombreoferta";
+		try {
+			// Datos que necesita la funcion
+			icu.crearEmpresa(
+					"nickempresa", 
+					"nombreempresa", 
+					"apellidoempresa", 
+					"emailempresa", 
+					"pass123", 
+					null,
+					"descripcionempresa", 
+					"linkempresa"
+			);
+			
+			ict.crearTipoPublicacion(
+					"nombretipo1", 
+					"descripciontipo", 
+					1, 
+					1, 
+					10, 
+					LocalDate.of(2000, 1, 1)
+			);
+			ArrayList<String> keys = new ArrayList<>();
+			keys.add("keyword1");
+			keys.add("keyword2");
+			// Funcion a testear
+			ico.altaOfertaLaboral(
+					"nickempresa", 
+					"nombretipo1", 
+					nombreOferta, 
+					"descripcion", 
+					"horario", 
+					10, 
+					"ciudad", 
+					"departamento", 
+					LocalDate.of(2000, 2, 2), 
+					null,
+					keys
+			);
+
+			DtOfertaLaboral ofertaCreada  = ico.listarDatosOferta(nombreOferta);
+			ArrayList<DTPostulacion> listPostulacion = new ArrayList<>();
+			listPostulacion.add(new DTPostulacion());
+			
+			DtOfertaLaboral ofertaEsperada = new DtOfertaLaboral(
+					nombreOferta, 
+					"descripcion", 
+					"ciudad",
+					"departamento",
+					"horario", 
+					10, 
+					LocalDate.of(2000, 2, 2), 
+					null,
+					listPostulacion,
+					keys,
+					"nickempresa",
+					"nombretipo1", 
+					10
+			); 
+			boolean equals = ofertaEsperada.equals(ofertaCreada);
+			assertTrue(equals);
+		} catch (ElementoRepetidoException | ElementoInexistenteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UsuarioRepetidoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (CamposVaciosExcepcion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	 
 	@Test
 	@Order(23)
@@ -870,33 +875,33 @@ class Tests {
 	@Order(33)
 	void crearPostulanteSinEmail() {
 		try {
-			icu.crearPostulante("65472341", "a", "a",  null, null, null, "a", LocalDate.of(1, 1, 1));
+			icu.crearPostulante("65472341", "a", "a",  "", null, null, "a", LocalDate.of(1, 1, 1));
 		} catch(Exception e) {
 			
 		}
-		assertThrows(CamposVaciosExcepcion.class, () -> { icu.crearPostulante("65472341", "a", "a", null, null, null, "a", LocalDate.of(1, 1, 1));});
+		assertThrows(CamposVaciosExcepcion.class, () -> { icu.crearPostulante("65472341", "a", "a", "", null, null, "a", LocalDate.of(1, 1, 1));});
 	}
 
 	@Test
 	@Order(34)
 	void crearPostulanteSinNombreNiApellido() {
 		try {
-			icu.crearPostulante("65472341", null, null, "57232423", null, null, "a", LocalDate.of(1, 1, 1));
+			icu.crearPostulante("65472341", "", "", "57232423", null, null, "a", LocalDate.of(1, 1, 1));
 		} catch(Exception e) {
 			
 		}
-		assertThrows(CamposVaciosExcepcion.class, () -> { icu.crearPostulante("65472341", null, null, "57232423", "pass123", null,"a", LocalDate.of(1, 1, 1));});
+		assertThrows(CamposVaciosExcepcion.class, () -> { icu.crearPostulante("65472341", "", "", "57232423", "pass123", null,"a", LocalDate.of(1, 1, 1));});
 	}
 	
 	@Test
 	@Order(35)
 	void crearPostulanteSinNacionalidad() {
 		try {
-			icu.crearPostulante("65472341", "a", "a", "6723234234", null, null,null, LocalDate.of(1, 1, 1));
+			icu.crearPostulante("65472341", "a", "a", "6723234234", "", null,"", LocalDate.of(1, 1, 1));
 		} catch(Exception e) {
 			
 		}
-		assertThrows(CamposVaciosExcepcion.class, () -> { icu.crearPostulante("65472341", "a", "a", "6723234234", "pass123", null, null, LocalDate.of(1, 1, 1));});
+		assertThrows(CamposVaciosExcepcion.class, () -> { icu.crearPostulante("65472341", "a", "a", "6723234234", "pass123", null, "", LocalDate.of(1, 1, 1));});
 	}
 	
 	@Test

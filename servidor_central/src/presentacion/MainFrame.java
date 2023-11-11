@@ -187,7 +187,7 @@ public class MainFrame {
 //		menuRegistros.add(menuCrearPaquete);
 //		menuRegistros.add(menuAgregarTipoaPaquete);
 //		menuConsultas.add(menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales);
-//		menuAcciones.add(menuModificarDatosDeUsuario);	
+
 		
 		menuRegistros.add(menuAltaUsuario);
 		menuRegistros.add(menuCrearOferta);
@@ -210,15 +210,6 @@ public class MainFrame {
 			}
 		});
 		
-		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
-		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario();
-				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
-				modificarDatosDeUsuarioInternalFrame.setVisible(true);
-			}
-		});
-		
 		JMenuItem menuConfirmarRechazarOfertaLaboral = new JMenuItem("Aceptar/Rechazar Oferta Laboral");
 		menuAcciones.add(menuConfirmarRechazarOfertaLaboral);
 		menuConfirmarRechazarOfertaLaboral.addActionListener(new ActionListener() {
@@ -226,6 +217,16 @@ public class MainFrame {
 				ConfirmarRechazarOfertaLaboral confirmarRechazarOfertaLaboralInternalFrame = new ConfirmarRechazarOfertaLaboral();
 				frame.getContentPane().add(confirmarRechazarOfertaLaboralInternalFrame);
 				confirmarRechazarOfertaLaboralInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
+		menuAcciones.add(menuModificarDatosDeUsuario);	
+		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario();
+				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
+				modificarDatosDeUsuarioInternalFrame.setVisible(true);
 			}
 		});
 		
@@ -256,6 +257,7 @@ public class MainFrame {
 		// CARGA DE POSTULANTES
 		try {
 			String imagePath = "";
+			
 			
 			this.icu.crearPostulante(
 			    "lgarcia",
@@ -441,7 +443,7 @@ public class MainFrame {
 				    "ibii4xo",
 				    null,
 			        desc, 
-			        "http://www.EcoTechInnovations.com"
+			        "MIEM.com.uy"
 			);
 			desc = 
 			    "\"TechSolutions Inc.\" es una empresa líder en el sector de tecnología de la información y el software."
@@ -551,12 +553,14 @@ public class MainFrame {
 	
 	private void cargarOfertas() {
 		try {
+			
 			String desc = 
 					"Unete a nuestro equipo de desarrollo frontend y crea ´\r\n"
 					+ "experiencias de usuario excepcionales.";
 			String imagePath = 
 					"";
 			ArrayList<String> keywords = new ArrayList<>();
+			keywords.clear();
 			keywords.add("Tiempo completo");
 			keywords.add("Medio tiempo");
 			keywords.add("Remoto");
@@ -577,6 +581,7 @@ public class MainFrame {
 					keywords
 			);
 			this.ico.confirmarOferta("Desarrollador Frontend");
+			
 			desc = 
 				"Forma parte de nuestro equipo de estrategia y "
 				+ "contribuye al crecimiento de las empresas cliente";
@@ -596,9 +601,10 @@ public class MainFrame {
 					keywords
 			);
 			this.ico.confirmarOferta("Estratega de Negocios");
+			
 			desc = 
 				"Trabaja en colaboración con nuestro talentoso  "
-				+ "equipo de diseno para crear soluciones impactantes.";
+				+ "equipo de diseño para crear soluciones impactantes.";
 			keywords.clear();
 			keywords.add("Medio tiempo");
 			keywords.add("Remoto");
@@ -606,7 +612,7 @@ public class MainFrame {
 			this.ico.altaOfertaLaboral(
 					"FusionTech", 
 					"Estándar", 
-					"Disenador UX/UI", 
+					"Diseñador UX/UI", 
 					desc, 
 					"14:00 - 18:00", 
 					65000, 
@@ -616,7 +622,7 @@ public class MainFrame {
 					null,
 					keywords
 			);
-			this.ico.confirmarOferta("Disenador UX/UI");
+			this.ico.confirmarOferta("Diseñador UX/UI");
 			
 			desc = 
 				"Ayuda a nuestros clientes a tomar decisiones "
@@ -657,6 +663,7 @@ public class MainFrame {
 					null,
 					keywords
 			);
+			this.ico.finalizarOferta("Content Manager");
 			
 			desc = 
 				"Ofrece un excelente servicio de soporte t´ecnico a\r\n"
@@ -678,9 +685,12 @@ public class MainFrame {
 					keywords
 			);
 			this.ico.confirmarOferta("Soporte Técnico");
+			
 			desc = 
 				"Unete a nuestro equipo de marketing y trabaja en ´\r\n"
 				+ "estrategias digitales innovadoras.";
+			keywords.clear();
+			keywords.add("Freelance");
 			this.ico.altaOfertaLaboral(
 					"EcoTech", 
 					"Premium", 
@@ -692,12 +702,15 @@ public class MainFrame {
 					"Flores", 
 					LocalDate.of(2023, 11, 2),
 					null,
-					new ArrayList<String>()
+					keywords
 			);
 			this.ico.confirmarOferta("A. de Marketing Digital");
+			
 			desc = 
 				"Únete a nuestro equipo contable y ayuda en la ´\r\n"
 				+ "gestión financiera de la empresa";
+			keywords.clear();
+			keywords.add("Tiempo completo");
 			this.ico.altaOfertaLaboral(
 					"GlobalHealth", 
 					"Destacada", 
@@ -709,9 +722,10 @@ public class MainFrame {
 					"Colonia", 
 					LocalDate.of(2023, 11, 4),
 					null,
-					new ArrayList<String>()
+					keywords
 			);
 			this.ico.rechazarOferta("Contador Senior");
+			
 			desc = 
 					"RÉGIMEN DE CONTRATO EN FUNCION PUB-\r\n"
 					+ "LICA EN UN TODO DE ACUERDO A LA\r\n"
@@ -736,7 +750,7 @@ public class MainFrame {
 					keywords
 			);
 			this.ico.confirmarOferta("Técnico/a Básico Red");
-				
+			
 			desc = 
 					"Unete a nuestro equipo y lidera proyectos de desar-\r\n"
 					+ "rollo de software sostenible y ecol´ogico. Impulsa la\r\n"
@@ -758,7 +772,7 @@ public class MainFrame {
 					null,
 					keywords
 			);
-					
+			
 			desc = 
 					"Unete a nuestro equipo para crear soluciones de soft-\r\n"
 					+ "ware personalizadas de extremo a extremo. Colabora\r\n"
@@ -772,8 +786,8 @@ public class MainFrame {
 					desc, 
 					"04:00 - 13:00", 
 					135000, 
-					"Río Negro", 
 					"Fray Bentos", 
+					"Río Negro", 
 					LocalDate.of(2023, 10, 25),
 					null,
 					keywords
@@ -801,6 +815,7 @@ public class MainFrame {
 					keywords
 			);
 			this.ico.confirmarOferta("Gerente de Proyecto");
+			
 			desc = 
 					"Asegura la calidad de nuestros productos de software\r\n"
 					+ "sostenibles. ´Unete a nosotros para garantizar un im-\r\n"
@@ -896,10 +911,10 @@ public class MainFrame {
 			+ "contribuir al mantenimiento eficiente";
 			this.ico.altaPostulacion(
 					"javierf", 
-					"Disenador UX/UI", 
+					"Diseñador UX/UI", 
 					cvv, 
 					motivacion, 
-					LocalDate.of(2023, 9, 30)
+					LocalDate.of(2023, 10, 30)
 			);
 			
 			cvv = 
@@ -939,6 +954,47 @@ public class MainFrame {
 					motivacion, 
 					LocalDate.of(2023, 10, 2)
 			);
+			
+			cvv = 
+			"Licenciada en Administraci´on,\r\n"
+			+ "me considero la mejor menejadora\r\n"
+			+ "de contenidos del mundo,\r\n"
+			+ "tengo experiencia en gesti´on\r\n"
+			+ "de equipos y proyectos.\r\n"
+			+ "Conocimientos en Microsoft\r\n"
+			+ "Office.";
+					
+			motivacion = 
+			"Estoy emocionada por la oportunidad de formar parte de un\r\n"
+			+ "equipo dinámico y contribuir con\r\n"
+			+ "mis habilidades de liderazgo.\r\n"
+			+ ""
+			+ "";
+			this.ico.altaPostulacion(
+					"lgarcia", 
+					"Content Manager", 
+					cvv, 
+					motivacion, 
+					LocalDate.of(2023, 10, 21)
+			);
+			
+			cvv = 
+			"Me manejo las redes, tengo 20M\r\n"
+			+ "de seguidores.";
+					
+			motivacion = 
+			"Me gustar´ıa combinar mi pasi´on\r\n"
+			+ "por la m´usica con una oportunidad\r\n"
+			+ "laboral que me permita\r\n"
+			+ "seguir creciendo como artista.";
+			this.ico.altaPostulacion(
+					"valen25", 
+					"Content Manager", 
+					cvv, 
+					motivacion, 
+					LocalDate.of(2023, 10, 22)
+			);	
+			
 			JOptionPane.showMessageDialog(
 					frame,
 					"La operación se ha realizado con éxito",

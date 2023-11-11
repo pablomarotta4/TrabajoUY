@@ -58,7 +58,7 @@
 	            		DataPostulante postulante = (DataPostulante) usuarioC;
 	            		ArrayList<DtPostulacion> postulaciones = (ArrayList<DtPostulacion>) postulante.getPostulaciones();
 	            %>
-	            		<div class="boxes">
+	            		<div class="boxes" style="overflow:auto;">
 	            <%
 	            		if (postulaciones != null) {
 	            			for(DtPostulacion pos: postulaciones) { 
@@ -86,7 +86,7 @@
 	            
 	            		if (confirmadas && ofertas != null) {
 	            %>
-		            	<div class="boxes">
+		            	<div class="boxes" style="overflow:auto;">
 		        <%
 	            			for(DtOfertaLaboral ofer: ofertas) { 
 	            				if (ofer.getEstado() == EstadoOferta.CONFIRMADA) {
@@ -107,7 +107,7 @@
 	            
 	            		if (ofertas != null) {
 	            %>
-		            	<div class="boxes">
+		            	<div class="boxes" style="overflow:auto;">
 		        <%
 	            			for(DtOfertaLaboral ofer: ofertas) { 
 	            				if (ofer.getEstado() != EstadoOferta.CONFIRMADA) {

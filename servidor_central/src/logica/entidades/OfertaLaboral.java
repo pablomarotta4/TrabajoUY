@@ -75,7 +75,21 @@ public class OfertaLaboral {
 		
 		if (this.postulaciones.size() > 0) {
 			for (int i = 0; i <= this.postulaciones.size() - 1; i++) {
+				System.out.println("post orden" + postulaciones.get(i).getOrden());
 				listaDtPostulacion.add(postulaciones.get(i).getDatatype());
+			}
+			
+			if(listaDtPostulacion.get(0).getOrden() != -1) {
+				for(int i = 0; i < listaDtPostulacion.size() - 1; i++) {
+					for(int j = i + 1; j < listaDtPostulacion.size(); j++) {
+						DTPostulacion post1 = listaDtPostulacion.get(i);
+						DTPostulacion post2 = listaDtPostulacion.get(j);
+						if(post1.getOrden() > post2.getOrden()) {
+							listaDtPostulacion.set(j, post1);
+							listaDtPostulacion.set(i, post2);
+						}
+					}
+				}
 			}
 		}
 		if (this.keywords.size() > 0) {
@@ -139,6 +153,10 @@ public class OfertaLaboral {
 	
 	public void setEstadoRechazada() {
 		this.estado = EstadoOferta.RECHAZADA;
+	}
+	
+	public void setEstadoFinalizada() {
+		this.estado = EstadoOferta.FINALIZADA;
 	}
 	
 	public EstadoOferta getEstado() {

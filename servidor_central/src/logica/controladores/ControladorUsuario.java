@@ -112,8 +112,8 @@ public class ControladorUsuario implements IControladorUsuario{
 	}
 	
 	
-	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
-		manejadorUsuario.modificarUsuario(nick, nombre, apellido, email, descripcion, link, fechaNac, nacionalidad);
+	public void modificarUsuario(String nick, String nombre, String apellido, String password, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
+		manejadorUsuario.modificarUsuario(nick, nombre, apellido, password, descripcion, link, fechaNac, nacionalidad);
 	}
 
 //	@Override

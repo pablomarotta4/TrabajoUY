@@ -254,6 +254,10 @@ public class ControladorOferta implements IControladorOferta{
 		this.manejadorOferta.getOfertaDeNombre(nombreOferta).setEstadoRechazada();
 	}
 	
+	public void finalizarOferta(String nombreOferta) {
+		this.manejadorOferta.getOfertaDeNombre(nombreOferta).setEstadoFinalizada();
+	}
+	
 	public List<String> listarNombreOfertas() {
 		List<String> listaOfertas = new ArrayList<String>();
 		Map<String, OfertaLaboral> ofertas = this.manejadorOferta.getOfertas();
@@ -406,5 +410,16 @@ public class ControladorOferta implements IControladorOferta{
 	    }
 	    return ofertasConfirmadas;
 	}
-
+	
+	public void setOrdenPostulacion(String nickPost, String nombreOferta, int orden) {
+		List<Postulacion> postulaciones = this.manejadorPostulacion.getPostulaciones();
+		for(Postulacion post : postulaciones) {
+			if(
+				post.getPostulante().getNickname().equals(nickPost) &&
+				post.getOfertaLaboral().getNombre().equals(nombreOferta)
+			) {
+				post.setOrden(orden);
+			}
+		}
+	}
 }

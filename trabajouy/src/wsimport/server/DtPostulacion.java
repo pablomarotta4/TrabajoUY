@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="nombreOferta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="nickpostulante" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="date" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="orden" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -37,7 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "fechaPostulacion",
     "nombreOferta",
     "nickpostulante",
-    "date"
+    "date",
+    "orden"
 })
 public class DtPostulacion {
 
@@ -47,6 +49,7 @@ public class DtPostulacion {
     protected String nombreOferta;
     protected String nickpostulante;
     protected String date;
+    protected int orden;
 
     /**
      * Obtiene el valor de la propiedad cvReducido.
@@ -190,6 +193,22 @@ public class DtPostulacion {
      */
     public void setDate(String value) {
         this.date = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad orden.
+     * 
+     */
+    public int getOrden() {
+        return orden;
+    }
+
+    /**
+     * Define el valor de la propiedad orden.
+     * 
+     */
+    public void setOrden(int value) {
+        this.orden = value;
     }
 
 }

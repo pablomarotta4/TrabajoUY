@@ -31,14 +31,15 @@ public class ConsultarOferta extends HttpServlet {
 						
 			LocalDate fechaAlta = LocalDate.parse(ofertaSeleccionada.getDate());
 			int duracion = ofertaSeleccionada.getDuracion();
-			
-			if (
-				!ofertaSeleccionada.getEstado().equals(EstadoOferta.CONFIRMADA) || 
-				!fechaAlta.plusDays(duracion).isAfter(LocalDate.now())
-			) {
+			boolean estaConfirmada = ofertaSeleccionada.getEstado().equals(EstadoOferta.CONFIRMADA);
+			boolean estaVigente = fechaAlta.plusDays(duracion).isAfter(LocalDate.now());
+			request.setAttribute("empresa_creadora", true);
+			request.setAttribute("esta_vigente", estaVigente);
+			request.setAttribute("esta_confirmada", estaConfirmada);
+			request.setAttribute("oferta-seleccionada", ofertaSeleccionada);
+			if (!estaConfirmada || !estaVigente) {
 				DataUsuario usuario = (DataUsuario) request.getSession().getAttribute("usuario_logeado");
 				if(usuario != null && ofertaSeleccionada.getNombreEmpresa().equals(usuario.getNickname())) {
-					request.setAttribute("oferta-seleccionada", ofertaSeleccionada);				
 					request.getRequestDispatcher("/WEB-INF/ofertas/consultaOferta.jsp").include(request, response);
 				} else {
 					response.sendRedirect("/trabajouy/ofertas");
