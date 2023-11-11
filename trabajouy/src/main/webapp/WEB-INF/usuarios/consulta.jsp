@@ -58,12 +58,12 @@
 	            		DataPostulante postulante = (DataPostulante) usuarioC;
 	            		ArrayList<DtPostulacion> postulaciones = (ArrayList<DtPostulacion>) postulante.getPostulaciones();
 	            %>
-	            		<div class="boxes">
+	            		<div class="boxes" style="overflow:auto;">
 	            <%
 	            		if (postulaciones != null) {
 	            			for(DtPostulacion pos: postulaciones) { 
 	            %>
-	            				<div class="boxPerfil" style="overflow:auto;">
+	            				<div class="boxPerfil">
 			                        <h2>Postulacion a Oferta: <a href="/trabajouy/consultarOferta?oferta=<%=pos.getNombreOferta()%>"> <%= pos.getNombreOferta() %></a></h2>
 			                        <h3><a href="/trabajouy/consultaPostulacion?nickname=<%=pos.getNickpostulante()%>&nombreOferta=<%= java.net.URLEncoder.encode(pos.getNombreOferta(), "UTF-8")%>"> Ver detalles </a></h3>
 			                    </div>
@@ -86,12 +86,12 @@
 	            
 	            		if (confirmadas && ofertas != null) {
 	            %>
-		            	<div class="boxes">
+		            	<div class="boxes" style="overflow:auto;">
 		        <%
 	            			for(DtOfertaLaboral ofer: ofertas) { 
 	            				if (ofer.getEstado() == EstadoOferta.CONFIRMADA) {
 	            %>
-	            					<div class="boxPerfil" style="overflow:auto;">
+	            					<div class="boxPerfil">
 					                	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
 					                </div>
 			    <% 				}
@@ -107,12 +107,12 @@
 	            
 	            		if (ofertas != null) {
 	            %>
-		            	<div class="boxes">
+		            	<div class="boxes" style="overflow:auto;">
 		        <%
 	            			for(DtOfertaLaboral ofer: ofertas) { 
 	            				if (ofer.getEstado() != EstadoOferta.CONFIRMADA) {
 	            %>
-	            					<div class="boxPerfil" style="overflow:auto;">
+	            					<div class="boxPerfil">
 					                	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
 					                </div>
 			    <% 				}
