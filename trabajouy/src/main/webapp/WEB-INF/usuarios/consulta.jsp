@@ -63,7 +63,7 @@
 	            		if (postulaciones != null) {
 	            			for(DtPostulacion pos: postulaciones) { 
 	            %>
-	            				<div class="boxPerfil">
+	            				<div class="boxPerfil" style="overflow:auto;">
 			                        <h2>Postulacion a Oferta: <a href="/trabajouy/consultarOferta?oferta=<%=pos.getNombreOferta()%>"> <%= pos.getNombreOferta() %></a></h2>
 			                        <h3><a href="/trabajouy/consultaPostulacion?nickname=<%=pos.getNickpostulante()%>&nombreOferta=<%= java.net.URLEncoder.encode(pos.getNombreOferta(), "UTF-8")%>"> Ver detalles </a></h3>
 			                    </div>
@@ -91,7 +91,7 @@
 	            			for(DtOfertaLaboral ofer: ofertas) { 
 	            				if (ofer.getEstado() == EstadoOferta.CONFIRMADA) {
 	            %>
-	            					<div class="boxPerfil">
+	            					<div class="boxPerfil" style="overflow:auto;">
 					                	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
 					                </div>
 			    <% 				}
@@ -112,7 +112,7 @@
 	            			for(DtOfertaLaboral ofer: ofertas) { 
 	            				if (ofer.getEstado() != EstadoOferta.CONFIRMADA) {
 	            %>
-	            					<div class="boxPerfil">
+	            					<div class="boxPerfil" style="overflow:auto;">
 					                	<h2>Oferta Laboral: <a href="/trabajouy/consultarOferta?oferta=<%=ofer.getNombre()%>"> <%= ofer.getNombre() %></a> (<%= ofer.getEstado() %>)</h2>
 					                </div>
 			    <% 				}
