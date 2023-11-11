@@ -28,7 +28,7 @@ public interface IControladorUsuario {
 //	public Postulante getPostulante(String nickPostulante);
 	public ArrayList<DtOfertaLaboral> consultarPostulaciones(String nick);
 	public ArrayList<DtOfertaLaboral> consultarOfertas(String nick);
-	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad);
+	public void modificarUsuario(String nick, String nombre, String apellido, String password, String descripcion, String link, LocalDate fechaNac, String nacionalidad);
 	public String getFotoUsuario(String nickname);
 	public ArrayList<DataUsuario> listarDTUsuarios();
 	public Empresa getEmpresa(String nickEmpresa);

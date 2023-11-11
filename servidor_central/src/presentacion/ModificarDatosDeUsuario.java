@@ -415,7 +415,13 @@ public class ModificarDatosDeUsuario extends JInternalFrame{
 			public void actionPerformed(ActionEvent e) {
 				JFrame frame = new JFrame("Popup");
 				
-				if (tfNickname.getText() == "") {
+				if (cbUsuarios.getSelectedItem() == "") {
+					JOptionPane.showMessageDialog(
+							frame,
+							"No se ha realizado ninguna modificacion",
+							"Sistema",
+							JOptionPane.INFORMATION_MESSAGE
+							);
 					dispose();
 				} else {
 					
@@ -426,26 +432,34 @@ public class ModificarDatosDeUsuario extends JInternalFrame{
 							
 							if(taDescripcion.getText().isEmpty()) {
 								throw new CamposVaciosExcepcion("Descripcion no puede ser vacia");
-							} else {
-								icu.modificarUsuario(tfNickname.getText(),
+							}
+							
+							if(tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfPass.getText().isEmpty()) {
+								throw new CamposVaciosExcepcion("Campos vacios");
+							}
+	
+							icu.modificarUsuario(tfNickname.getText(),
 										tfNombre.getText(),
 										tfApellido.getText(),
-										tfEmail.getText(),
+										tfPass.getText(),
 										taDescripcion.getText(),
 										tfLink.getText(),
 										null,
 										null);
 								
-							}	
 						}
 						else if(dtUser instanceof DataPostulante) {
 							
-							String stringDia = tfDia.getText();
-							String stringMes = tfMes.getText();
-							String stringAnio = tfAño.getText();
+							if(tfDia.getText().isEmpty() || tfMes.getText().isEmpty() || tfAño.getText().isEmpty()) {
+								throw new CamposVaciosExcepcion("Complete los campos de la fecha");
+							}
 							
-							if(stringDia.isEmpty() || stringMes.isEmpty() || stringAnio.isEmpty()) {
-								throw new CamposVaciosExcepcion("Complete los campos de la fecha.");
+							if(tfNombre.getText().isEmpty() || tfApellido.getText().isEmpty() || tfPass.getText().isEmpty()) {
+								throw new CamposVaciosExcepcion("Campos vacios");
+							}
+							
+							if(tfNacionalidad.getText().isEmpty()) {
+								throw new CamposVaciosExcepcion("Ingrese la nacionalidad");
 							}
 							
 							int dia = Integer.parseInt(tfDia.getText());
@@ -456,7 +470,7 @@ public class ModificarDatosDeUsuario extends JInternalFrame{
 							icu.modificarUsuario(tfNickname.getText(),
 									tfNombre.getText(),
 									tfApellido.getText(),
-									tfEmail.getText(),
+									tfPass.getText(),
 									null,
 									null,
 									fecha,
@@ -464,84 +478,20 @@ public class ModificarDatosDeUsuario extends JInternalFrame{
 						}
 						JOptionPane.showMessageDialog(
 								frame,
-								"La operación se ha realizado con éxito",
+								"Usuario Modificado",
 								"Éxito",
 								JOptionPane.INFORMATION_MESSAGE
 								);
 						dispose();
 					} catch (Exception exep) {
-						
+						JOptionPane.showMessageDialog(
+								frame,
+								exep.getMessage(),
+								"Error",
+								JOptionPane.ERROR_MESSAGE
+								);
 					}
 				}
-				
-				DataUsuario dtUser = icu.consultarDatosUsuario(tfNickname.getText());
-				try {
-					if(dtUser instanceof DataEmpresa) {
-						String desc = taDescripcion.getText();
-						String link = tfLink.getText();
-						
-						if(desc.isEmpty() || link.isEmpty()) {
-							throw new CamposVaciosExcepcion("Ingrese todos los campos");
-						}
-						
-						icu.modificarUsuario(tfNickname.getText(),
-								tfNombre.getText(),
-								tfApellido.getText(),
-								tfEmail.getText(),
-								taDescripcion.getText(),
-								tfLink.getText(),
-								null,
-								null);
-						
-					}
-					else if(dtUser instanceof DataPostulante) {
-						String stringDia = tfDia.getText();
-						String stringMes = tfMes.getText();
-						String stringAnio = tfAño.getText();
-						
-						if(stringDia.isEmpty() || stringMes.isEmpty() || stringAnio.isEmpty()) {
-							throw new CamposVaciosExcepcion("Complete los campos de la fecha.");
-						}
-						
-						int dia = Integer.parseInt(tfDia.getText());
-						int mes = Integer.parseInt(tfMes.getText());
-						int anio = Integer.parseInt(tfAño.getText());
-						LocalDate fecha = LocalDate.of(anio, mes, dia);
-						
-						icu.modificarUsuario(tfNickname.getText(),
-								tfNombre.getText(),
-								tfApellido.getText(),
-								tfEmail.getText(),
-								null,
-								null,
-								fecha,
-								tfNacionalidad.getText());
-					}
-					JOptionPane.showMessageDialog(
-							frame,
-							"La operación se ha realizado con éxito",
-							"Éxito",
-							JOptionPane.INFORMATION_MESSAGE
-							);
-					dispose();
-				}
-				catch(DateTimeException ex) {
-                	JOptionPane.showMessageDialog(
-                			frame, 
-                			"Formato de fecha incorrecto.",
-                			"Error", 
-                			JOptionPane.ERROR_MESSAGE
-                			);
-                }
-				catch(CamposVaciosExcepcion ex) {
-                	JOptionPane.showMessageDialog(
-    						frame,
-    						ex.getMessage(),
-    						"Error",
-    						JOptionPane.ERROR_MESSAGE
-                	
-                	);
-                }	
 			}//end ACTIONPERFORMED
 		});
 		

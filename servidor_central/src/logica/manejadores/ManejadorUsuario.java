@@ -168,21 +168,26 @@ public class ManejadorUsuario implements IManejadorUsuario{
 	
 
 	
-	public void modificarUsuario(String nick, String nombre, String apellido, String email, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
-		Usuario user = this.usuarios.get(nick);
-		user.setNombre(nombre);
-		user.setApellido(apellido);
-		user.setEmail(email);
+	public void modificarUsuario(String nick, String nombre, String apellido, String password, String descripcion, String link, LocalDate fechaNac, String nacionalidad) {
 		
-		if (user instanceof Postulante) {
-			Postulante userPost = (Postulante) user;
-			userPost.setFechaNacimiento(fechaNac);
-			userPost.setNacionalidad(nacionalidad);
-		}
-		else if (user instanceof Empresa) {
-			Empresa userEmp = (Empresa) user;
-			userEmp.setLink(link);
-			userEmp.setDescripcion(descripcion);
+		Usuario user = this.usuarios.get(nick);
+		
+		if (user != null) {
+			
+			user.setNombre(nombre);
+			user.setApellido(apellido);
+			user.setPassword(password);
+			
+			if (user instanceof Postulante) {
+				Postulante userPost = (Postulante) user;
+				userPost.setFechaNacimiento(fechaNac);
+				userPost.setNacionalidad(nacionalidad);
+			}
+			else if (user instanceof Empresa) {
+				Empresa userEmp = (Empresa) user;
+				userEmp.setLink(link);
+				userEmp.setDescripcion(descripcion);
+			}
 		}
 	}
 	
