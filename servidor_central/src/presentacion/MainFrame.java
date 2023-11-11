@@ -187,7 +187,7 @@ public class MainFrame {
 //		menuRegistros.add(menuCrearPaquete);
 //		menuRegistros.add(menuAgregarTipoaPaquete);
 //		menuConsultas.add(menuConsultaDePaqueteDeTiposDePublicaciónDeOfertasLaborales);
-//		menuAcciones.add(menuModificarDatosDeUsuario);	
+
 		
 		menuRegistros.add(menuAltaUsuario);
 		menuRegistros.add(menuCrearOferta);
@@ -210,15 +210,6 @@ public class MainFrame {
 			}
 		});
 		
-		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
-		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario();
-				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
-				modificarDatosDeUsuarioInternalFrame.setVisible(true);
-			}
-		});
-		
 		JMenuItem menuConfirmarRechazarOfertaLaboral = new JMenuItem("Aceptar/Rechazar Oferta Laboral");
 		menuAcciones.add(menuConfirmarRechazarOfertaLaboral);
 		menuConfirmarRechazarOfertaLaboral.addActionListener(new ActionListener() {
@@ -226,6 +217,16 @@ public class MainFrame {
 				ConfirmarRechazarOfertaLaboral confirmarRechazarOfertaLaboralInternalFrame = new ConfirmarRechazarOfertaLaboral();
 				frame.getContentPane().add(confirmarRechazarOfertaLaboralInternalFrame);
 				confirmarRechazarOfertaLaboralInternalFrame.setVisible(true);
+			}
+		});
+		
+		JMenuItem menuModificarDatosDeUsuario = new JMenuItem("Modificar Datos de Usuario");
+		menuAcciones.add(menuModificarDatosDeUsuario);	
+		menuModificarDatosDeUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ModificarDatosDeUsuario modificarDatosDeUsuarioInternalFrame = new ModificarDatosDeUsuario();
+				frame.getContentPane().add(modificarDatosDeUsuarioInternalFrame);
+				modificarDatosDeUsuarioInternalFrame.setVisible(true);
 			}
 		});
 		
