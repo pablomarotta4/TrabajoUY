@@ -62,6 +62,17 @@
                 }
                 %>
                 </div>
+                <% 
+                String error = (String) request.getAttribute("error");
+               	if(error != null){
+               	%>
+               	<div class="error">
+	                <p><%=error%></p>
+                </div>
+               	<%	 
+               	}
+                %>
+                
                 <div class="buttons">
                     <button id="botonCrear" type="submit">Enviar orden</button>  
                     <a href="/trabajouy/home"><input type="button" value="Cancelar"></a>

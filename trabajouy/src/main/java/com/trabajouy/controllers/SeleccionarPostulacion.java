@@ -12,6 +12,7 @@ import server.DtPostulacion;
 import server.ElementoInexistenteException_Exception;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -62,9 +63,29 @@ public class SeleccionarPostulacion extends HttpServlet {
 		}
 		
 		List<DtPostulacion> postulaciones = oferta.getPostulaciones();
+		ArrayList<Integer> arrayOrdenes = new ArrayList<>();
+		for(int i: arrayOrdenes) {
+			arrayOrdenes.set(i, -1);
+		}
 		for(DtPostulacion post: postulaciones) {
 			String orden = request.getParameter(post.getNickpostulante() + "-orden");
-			port.setOrdenPostulacion(post.getNickpostulante(), nombreOferta, Integer.parseInt(orden));
+			int ordenNum = Integer.parseInt(orden);
+			boolean found = false;
+			int i = 0;
+			while(i <= arrayOrdenes.size() - 1 && !found) {
+				found = arrayOrdenes.get(i).equals(ordenNum);
+				i++;
+			}  
+
+			if(ordenNum < 1 || ordenNum > postulaciones.size() || found) {
+				request.setAttribute("lista_postulaciones", postulaciones);
+				request.setAttribute("nombre_oferta", nombreOferta);
+				request.setAttribute("error", "Valores de orden incorrectos.");
+				request.getRequestDispatcher("WEB-INF/ofertas/seleccionarPostulacion.jsp").forward(request, response);
+			} else {
+				port.setOrdenPostulacion(post.getNickpostulante(), nombreOferta, ordenNum);
+				arrayOrdenes.add(ordenNum);
+			}
 		}
 		response.sendRedirect("/trabajouy/consultarOferta?oferta=" + oferta.getNombre());
 	}
