@@ -64,8 +64,8 @@ img{
 .btn-postular{
     border: none;
     margin-right: 10px;
-    width: 130px;
     border-radius: 10px;
+    padding: 6px;
     height: 40px;
     background-color: var(--secondary);
     color: white;

@@ -22,7 +22,6 @@ public class FinalizarOferta extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nombreOferta = (String) request.getParameter("nombreOferta");
 		
-		System.out.println(nombreOferta);
 		if(nombreOferta != null) {
 			server.WebServer port = new server.WebServerService().getWebServerPort();
 			port.finalizarOferta(nombreOferta);

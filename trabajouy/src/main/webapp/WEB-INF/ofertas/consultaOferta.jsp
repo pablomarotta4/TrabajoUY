@@ -103,7 +103,13 @@
 	                </div>
                 	<%
                 		}
+                		if(postulaciones.size() > 0 &&
+                    	   estaVigente != null && 
+                           oferta.getEstado().equals(EstadoOferta.CONFIRMADA) &&
+                    	   !estaVigente){
                 	%>
+					<a href="/trabajouy/seleccionarPostulacion?nombreOferta=<%=java.net.URLEncoder.encode(oferta.getNombre(), "UTF-8")%>"><input class="btn-postular" type="button" value="Seleccionar postulaciones"></a>
+					<%} %>                	
             </div>
             <%
             		}
