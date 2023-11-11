@@ -10,9 +10,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dataEmpresa complex type.
+ * <p>Clase Java para dataEmpresa complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>{@code
  * <complexType name="dataEmpresa">
@@ -46,7 +46,7 @@ public class DataEmpresa
     protected List<DtOfertaLaboral> ofertas;
 
     /**
-     * Gets the value of the descripcion property.
+     * Obtiene el valor de la propiedad descripcion.
      * 
      * @return
      *     possible object is
@@ -58,7 +58,7 @@ public class DataEmpresa
     }
 
     /**
-     * Sets the value of the descripcion property.
+     * Define el valor de la propiedad descripcion.
      * 
      * @param value
      *     allowed object is
@@ -70,7 +70,7 @@ public class DataEmpresa
     }
 
     /**
-     * Gets the value of the link property.
+     * Obtiene el valor de la propiedad link.
      * 
      * @return
      *     possible object is
@@ -82,7 +82,7 @@ public class DataEmpresa
     }
 
     /**
-     * Sets the value of the link property.
+     * Define el valor de la propiedad link.
      * 
      * @param value
      *     allowed object is

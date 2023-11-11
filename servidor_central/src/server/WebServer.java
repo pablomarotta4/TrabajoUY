@@ -335,4 +335,8 @@ public class WebServer {
     public void finalizarOferta(String nombreOferta) {
     	ctrlOferta.finalizarOferta(nombreOferta);
     }
+    @WebMethod
+    public void setOrdenPostulacion(String nickPost, String nombreOferta, int orden) {
+    	ctrlOferta.setOrdenPostulacion(nickPost, nombreOferta, orden);
+    }
 }

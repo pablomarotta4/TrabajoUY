@@ -46,12 +46,28 @@ public class SeleccionarPostulacion extends HttpServlet {
 		}
 		List<DtPostulacion> postulaciones = oferta.getPostulaciones();
 		request.setAttribute("lista_postulaciones", postulaciones);
+		request.setAttribute("nombre_oferta", nombreOferta);
 		request.getRequestDispatcher("WEB-INF/ofertas/seleccionarPostulacion.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nombreOferta = request.getParameter("nombre-oferta");
+		
+		server.WebServer port = new server.WebServerService().getWebServerPort();
+		DtOfertaLaboral oferta = null;
+		try {
+			oferta = port.listarDatosOferta(nombreOferta);
+		} catch (ElementoInexistenteException_Exception e) {
+			e.printStackTrace();
+		}
+		
+		List<DtPostulacion> postulaciones = oferta.getPostulaciones();
+		for(DtPostulacion post: postulaciones) {
+			String orden = request.getParameter(post.getNickpostulante() + "-orden");
+			port.setOrdenPostulacion(post.getNickpostulante(), nombreOferta, Integer.parseInt(orden));
+		}
+		port.finalizarOferta(nombreOferta);
+		response.sendRedirect("/trabajouy/consultarOferta?oferta=" + oferta.getNombre());
 	}
 
 }

@@ -51,4 +51,5 @@ public interface IControladorOferta {
 	public DTPostulacion listarDatosPostulacion(String nick, String nombreOferta);
 	public boolean estaPostulado(String nick, String nombreOferta);
 	public ArrayList<DtOfertaLaboral> listarOfertasAceptadas();
+	public void setOrdenPostulacion(String nickPost, String nombreOferta, int orden);
 }

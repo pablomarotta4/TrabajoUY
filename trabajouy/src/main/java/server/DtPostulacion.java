@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dtPostulacion complex type.
+ * <p>Clase Java para dtPostulacion complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>{@code
  * <complexType name="dtPostulacion">
@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         <element name="nombreOferta" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="nickpostulante" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         <element name="date" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="orden" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -37,7 +38,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "fechaPostulacion",
     "nombreOferta",
     "nickpostulante",
-    "date"
+    "date",
+    "orden"
 })
 public class DtPostulacion {
 
@@ -47,9 +49,10 @@ public class DtPostulacion {
     protected String nombreOferta;
     protected String nickpostulante;
     protected String date;
+    protected int orden;
 
     /**
-     * Gets the value of the cvReducido property.
+     * Obtiene el valor de la propiedad cvReducido.
      * 
      * @return
      *     possible object is
@@ -61,7 +64,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Sets the value of the cvReducido property.
+     * Define el valor de la propiedad cvReducido.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +76,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Gets the value of the motivacion property.
+     * Obtiene el valor de la propiedad motivacion.
      * 
      * @return
      *     possible object is
@@ -85,7 +88,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Sets the value of the motivacion property.
+     * Define el valor de la propiedad motivacion.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +100,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Gets the value of the fechaPostulacion property.
+     * Obtiene el valor de la propiedad fechaPostulacion.
      * 
      * @return
      *     possible object is
@@ -109,7 +112,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Sets the value of the fechaPostulacion property.
+     * Define el valor de la propiedad fechaPostulacion.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +124,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Gets the value of the nombreOferta property.
+     * Obtiene el valor de la propiedad nombreOferta.
      * 
      * @return
      *     possible object is
@@ -133,7 +136,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Sets the value of the nombreOferta property.
+     * Define el valor de la propiedad nombreOferta.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +148,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Gets the value of the nickpostulante property.
+     * Obtiene el valor de la propiedad nickpostulante.
      * 
      * @return
      *     possible object is
@@ -157,7 +160,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Sets the value of the nickpostulante property.
+     * Define el valor de la propiedad nickpostulante.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +172,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Gets the value of the date property.
+     * Obtiene el valor de la propiedad date.
      * 
      * @return
      *     possible object is
@@ -181,7 +184,7 @@ public class DtPostulacion {
     }
 
     /**
-     * Sets the value of the date property.
+     * Define el valor de la propiedad date.
      * 
      * @param value
      *     allowed object is
@@ -190,6 +193,22 @@ public class DtPostulacion {
      */
     public void setDate(String value) {
         this.date = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad orden.
+     * 
+     */
+    public int getOrden() {
+        return orden;
+    }
+
+    /**
+     * Define el valor de la propiedad orden.
+     * 
+     */
+    public void setOrden(int value) {
+        this.orden = value;
     }
 
 }
