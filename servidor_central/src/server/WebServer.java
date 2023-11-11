@@ -56,7 +56,7 @@ public class WebServer {
 		this.ctrlUsuario = Factory.getInstance().getControladorUsuario();
 		this.ctrlOferta = Factory.getInstance().getControladorOferta();
 		this.ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
-
+		
 		endpoint = Endpoint.publish("http://localhost:8085/webService", this);
 	}
 	
