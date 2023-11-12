@@ -2,6 +2,7 @@ package server;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import excepciones.CamposVaciosExcepcion;
 import excepciones.ElementoInexistenteException;
@@ -57,7 +59,20 @@ public class WebServer {
 		this.ctrlOferta = Factory.getInstance().getControladorOferta();
 		this.ctrlCompraTipo = Factory.getInstance().getControladorCompraTipo();
 		
-		endpoint = Endpoint.publish("http://localhost:8085/webService", this);
+		String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "config.properties";
+		Properties appProps = new Properties();
+		try {
+			appProps.load(new FileInputStream(path));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		String host = (String) appProps.get("host");
+		String port = (String) appProps.get("port");
+		String url = host + ":" + port + "/webService";
+		endpoint = Endpoint.publish(url, this);
 	}
 	
     @WebMethod(exclude = true)
