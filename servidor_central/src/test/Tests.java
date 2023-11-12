@@ -24,9 +24,13 @@ import excepciones.ElementoRepetidoException;
 import excepciones.NoExisteInstancia;
 import excepciones.UsuarioRepetidoException;
 import logica.datatypes.DtOfertaLaboral;
+import logica.datatypes.EstadoOferta;
 import logica.beans.CollectionBean;
+import logica.beans.DateBean;
 import logica.datatypes.DTPostulacion;
+import logica.datatypes.DataEmpresa;
 import logica.datatypes.DataPostulante;
+import logica.datatypes.DataTipoPublicacion;
 import logica.datatypes.DataUsuario;
 import logica.interfaces.Factory;
 import logica.interfaces.IControladorCompraTipo;
@@ -1051,4 +1055,259 @@ class Tests {
 		List<DTPostulacion> postulaciones = oferta.getPostulaciones();
 		assertTrue(postulaciones.get(0).getOrden() == 1);
 	}
+	
+	@Test
+	@Order(48)
+	void obtenerEmpresaOfertaExistente() {
+		assertNotNull(ico.obtenerEmpresaDeOferta("Oferta1"));
+	}
+	
+	@Test
+	@Order(49)
+	void rechazarOfertaExistente() {
+		
+		try {
+			ico.rechazarOferta("nombreoferta");
+			assertTrue(ico.listarDatosOferta("nombreoferta").getEstado() == EstadoOferta.RECHAZADA);
+		} catch (Exception e) {
+			fail("error");
+		}
+	}
+		
+	@Test
+	@Order(50)
+	void finalizarOfertaExistente() {
+		
+		try {
+			ico.finalizarOferta("Oferta1");
+			assertTrue(ico.listarDatosOferta("Oferta1").getEstado() == EstadoOferta.FINALIZADA);
+		} catch (Exception e) {
+			fail("error");
+		}	
+	}
+	
+	@Test
+	@Order(51)
+	void listarDatosOfertaNoExiste() {
+		
+		try {
+			DtOfertaLaboral ofer = ico.listarDatosOferta("nokkkexiteesta");
+		} catch (ElementoInexistenteException e) {
+			
+		}	
+		
+		assertThrows(ElementoInexistenteException.class, () -> { ico.listarDatosOferta("nokkkexiteesta"); });
+	}
+	
+	@Test
+	@Order(52)
+	void beanPrueba1() {
+		
+		CollectionBean bean1 = new CollectionBean();
+		
+		ArrayList<String> aaa = new ArrayList<String>();
+		bean1.setListaStrings(aaa);
+		assertNotNull(bean1.getListaStrings());
+	
+	}
+	
+	@Test
+	@Order(53)
+	void beanPrueba2() {
+		
+		CollectionBean bean2 = new CollectionBean();
+		
+		ArrayList<DataTipoPublicacion> aaa = new ArrayList<DataTipoPublicacion>();
+		bean2.setListaDataTipoPublicacion(aaa);
+		assertNotNull(bean2.getListaDataTipoPublicacion());
+	
+	}
+	
+	@Test
+	@Order(54)
+	void beanPrueba3() {
+		
+		CollectionBean bean3 = new CollectionBean();
+		
+		ArrayList<DataUsuario> aaa = new ArrayList<DataUsuario>();
+		bean3.setListaDataUsuarios(aaa);
+		assertNotNull(bean3.getListaDataUsuarios());
+	
+	}
+	
+	@Test
+	@Order(55)
+	void dateBean() {
+		
+		DateBean beand = new DateBean();
+		
+		beand.setDate("2023-04-04");
+		assertTrue(beand.getDate() == "2023-04-04");
+	
+	}
+	
+	@Test
+	@Order(56)
+	void datosEmpresa() {
+		
+		assertNotNull(icu.getDTEmpresa("nickempresa"));
+	
+	}
+	
+	@Test
+	@Order(57)
+	void datosPostulante() {
+		
+		assertNotNull(icu.getDTPostulante("Juan1"));
+	
+	}
+	
+	@Test
+	@Order(58)
+	void crearEmpresaExistente1() {
+		
+		try {
+			icu.crearEmpresa("Empresa1", "A", "B", "Empresa1E", "pass123", null, "Empresa1D", "Empresa1L");
+			
+		} catch (UsuarioRepetidoException | CamposVaciosExcepcion e) {
+			
+		}
+		
+		assertThrows(UsuarioRepetidoException.class, () -> { icu.crearEmpresa("Empresa1", "A", "B", "Empresa1E", "pass123", null, "Empresa1D", "Empresa1L"); });
+	
+	}
+	
+	@Test
+	@Order(59)
+	void crearEmpresaExistente2() {
+		
+		try {
+			icu.crearEmpresa("Empresa1", "A", "B", "Empresa1Eee", "pass123", null, "Empresa1D", "Empresa1L");
+			
+		} catch (UsuarioRepetidoException | CamposVaciosExcepcion e) {
+			
+		}
+		
+		assertThrows(UsuarioRepetidoException.class, () -> { icu.crearEmpresa("Empresa1", "A", "B", "Empresa1Eee", "pass123", null, "Empresa1D", "Empresa1L"); });
+	
+	}
+	
+	@Test
+	@Order(60)
+	void crearEmpresaExistente3() {
+		
+		try {
+			icu.crearEmpresa("Empresa111", "A", "B", "Empresa1E", "pass123", null, "Empresa1D", "Empresa1L");
+			
+		} catch (UsuarioRepetidoException | CamposVaciosExcepcion e) {
+			
+		}
+		
+		assertThrows(UsuarioRepetidoException.class, () -> { icu.crearEmpresa("Empresa111", "A", "B", "Empresa1E", "pass123", null, "Empresa1D", "Empresa1L"); });
+	
+	}
+	
+	@Test
+	@Order(60)
+	void crearDataTipo() {
+		
+		DataTipoPublicacion aaa = new DataTipoPublicacion();
+		aaa.setDate("2023-04-04");
+		aaa.setCosto(54);
+		aaa.setDescripcion("des");
+		aaa.setDuracion(20);
+		aaa.setExposicion(55);
+		aaa.setFecha(null);
+		aaa.setNombre("aaa");
+		
+		String sss = aaa.getDate();
+		float iii = aaa.getCosto();
+		String ddd = aaa.getDescripcion();
+		int ddu = aaa.getDuracion();
+		int eee = aaa.getExposicion();
+		LocalDate fff = aaa.getFecha();
+		String nnn = aaa.getNombre();
+		
+		
+		assertNotNull(aaa);
+	
+	}
+	
+	@Test
+	@Order(61)
+	void crearDataEmpresa() {
+		
+		DataEmpresa aaa = new DataEmpresa();
+
+		aaa.setDescripcion("des");
+
+		aaa.setLink("aaa");
+		
+
+		String ddd = aaa.getDescripcion();
+		String nnn = aaa.getLink();
+		
+		
+		assertNotNull(aaa);
+	
+	}
+	
+	@Test
+	@Order(62)
+	void crearDataPostulante() {
+		
+		DataPostulante aaa = new DataPostulante();
+
+		aaa.setNacimiento(null);
+		aaa.setNacionalidad("peru");
+		aaa.setDate("2023-04-04");
+
+		String nacil = aaa.getNacionalidad();
+		
+		assertNotNull(aaa);
+	
+	}
+	
+	@Test
+	@Order(62)
+	void crearDataUsuario() {
+		
+		DataUsuario aaa = new DataUsuario();
+
+		aaa.setApellido("pedro");
+		aaa.setEmail("aa");
+		aaa.setImageUrl("z");
+		aaa.setNickname("jgf");
+		aaa.setNombre("jhjh");
+		aaa.setPassword("papa");
+		
+		String pass = aaa.getPassword();
+		
+		assertNotNull(aaa);
+	
+	}
+	
+	@Test
+	@Order(62)
+	void crearDataOferta() {
+		
+		DtOfertaLaboral aaa = new DtOfertaLaboral();
+
+		aaa.setCiudad("ad");
+		aaa.setCosto(50F);
+		aaa.setDate("2023-04-04");
+		aaa.setDepartamento("aaaaa");
+		aaa.setDescripcion("des");
+		aaa.setDuracion(50);
+		aaa.setExposicion(66);
+		aaa.setFechaAlta(null);
+		aaa.setHorario("no");
+		aaa.setimagen("i");
+		aaa.setNombre("name");
+		aaa.setNombreEmpresa("xd");
+
+		assertNotNull(aaa);
+	
+	}
+	
 }
