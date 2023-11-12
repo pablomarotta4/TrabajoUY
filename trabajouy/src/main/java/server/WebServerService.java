@@ -1,8 +1,14 @@
 
 package server;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
+
 import javax.xml.namespace.QName;
 import jakarta.xml.ws.Service;
 import jakarta.xml.ws.WebEndpoint;
@@ -30,7 +36,20 @@ public class WebServerService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8085/webService?wsdl");
+        	String path = System.getProperty("user.home") + File.separator + "trabajouy" + File.separator + "config.properties";
+    		Properties appProps = new Properties();
+    		try {
+    			appProps.load(new FileInputStream(path));
+    		} catch (FileNotFoundException ex) {
+    			e.printStackTrace();
+    		} catch (IOException ex) {
+    			e.printStackTrace();
+    		}
+    		
+    		String host = (String) appProps.get("host");
+    		String port = (String) appProps.get("port");
+    		String urlString = host + ":" + port + "/webService";
+            url = new URL(urlString);
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
