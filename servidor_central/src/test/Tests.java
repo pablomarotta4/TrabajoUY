@@ -1,5 +1,5 @@
 package test;
-
+//entrega
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -388,11 +388,9 @@ class Tests {
 		try {
 			icu.crearPostulante("", "a", "a", "pass123", null, null, "a", LocalDate.of(1, 1, 1));
 		} catch(CamposVaciosExcepcion e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (UsuarioRepetidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 		assertThrows(CamposVaciosExcepcion.class, ()->{icu.crearPostulante("", "a", "a", "pass123", null, null, "a", LocalDate.of(1, 1, 1));});
 	}
@@ -403,11 +401,9 @@ class Tests {
 		try {
 			icu.crearPostulante("", null, null, null, null, null , null, LocalDate.of(1, 1, 1));
 		} catch(CamposVaciosExcepcion e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (UsuarioRepetidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 		assertThrows(CamposVaciosExcepcion.class, ()->{icu.crearPostulante("", "a", "a", null, null,null, "a", LocalDate.of(1, 1, 1));});
 	}
@@ -495,14 +491,11 @@ class Tests {
 			boolean equals = ofertaEsperada.equals(ofertaCreada);
 			assertTrue(equals);
 		} catch (ElementoRepetidoException | ElementoInexistenteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (UsuarioRepetidoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (CamposVaciosExcepcion e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 	}
 	 
