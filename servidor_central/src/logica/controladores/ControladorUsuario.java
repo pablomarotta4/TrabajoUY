@@ -35,7 +35,7 @@ public class ControladorUsuario implements IControladorUsuario{
 	
 	public void crearEmpresa(String nickname, String nombre, String apellido, String email, String password,  byte[] imageBytes, String descripcion, String link) throws UsuarioRepetidoException, CamposVaciosExcepcion {
 		manejadorUsuario.crearEmpresa(nickname, nombre, apellido, email, password, imageBytes, descripcion, link);
-		System.out.println("Empresa" + nickname);
+
 	}
 	
 	public ArrayList<String> listarNickEmpresas() {

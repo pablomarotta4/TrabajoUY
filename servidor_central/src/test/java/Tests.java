@@ -92,7 +92,7 @@ class Tests {
 					LocalDate.of(2000, 1, 1)
 			);
 		} catch (UsuarioRepetidoException e) {
-			System.out.println("Exception: " + e.getMessage());
+
 		}
 		assertThrows(
 				UsuarioRepetidoException.class,
@@ -370,7 +370,7 @@ class Tests {
 					keys);
 			ico.altaPostulacion("Juan1", "Oferta1", "cvR", "motivado", LocalDate.of(2005, 4, 12));
 		} catch (Exception e) {
-			e.printStackTrace();
+
 			fail("error");
 		}
 		assertTrue(icu.consultarPostulaciones("Juan1").size() != 0);
@@ -411,24 +411,24 @@ class Tests {
 	@Test
 	@Order(21)
 	void altaKeyword() {
-		System.out.println("altaKeyword");
+
 		try {
 			ico.altaKeyword("keyword1");
 			ico.altaKeyword("keyword2");
 			List<String> listaCreada = ico.listarKeywords();
 			List<String> listaEsperada = List.of("key1", "keyword1", "keyword2");
-			System.out.println(listaCreada);
+
 			assertEquals(listaEsperada, listaCreada);
 		} catch (ElementoRepetidoException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 	}
 	
 	@Test()
 	@Order(22)
 	void altaOfertaOK() {
-		System.out.println("altaOfertaOK");
+
 		String nombreOferta = "nombreoferta";
 		try {
 			// Datos que necesita la funcion
@@ -502,7 +502,7 @@ class Tests {
 	@Test
 	@Order(23)
 	void altaOfertaEmpresaNoExiste() {
-		System.out.println("altaOfertaEmpresaNoExiste");
+
 		ArrayList<String> keys = new ArrayList<>();
 		keys.add("keyword1");
 		keys.add("keyword2");
@@ -549,7 +549,7 @@ class Tests {
 	@Test
 	@Order(24)
 	void altaPostulacionOk() {
-		System.out.println("altaPostulacionOk");
+
 		try {
 			icu.crearPostulante(
 					"nickpostulante", 
@@ -580,12 +580,10 @@ class Tests {
 					"nombreoferta"
 			);
 			boolean success = postulacionEsperada.equals(postulacionCreada);
-			System.out.println(success);
-			System.out.println(postulacionEsperada.toString());
-			System.out.println(postulacionCreada.toString());
+
 			assertTrue(success);
 		} catch(Exception ex) {
-			ex.printStackTrace();
+
 		}
 	}
 	
@@ -640,10 +638,10 @@ class Tests {
 			);
 		} catch (ElementoRepetidoException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (ElementoInexistenteException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Exception: " + e.getMessage());
+
 		}
 		assertThrows(
 				ElementoInexistenteException.class, 
@@ -667,7 +665,7 @@ class Tests {
 	@Test
 	@Order(27)
 	void altaOfertaYaExisteOfertaTest() {
-		System.out.println("\naltaOfertaYaExisteOfertaTest:");
+
 		ArrayList<String> keys = new ArrayList<>();
 		keys.add("keyword1");
 		keys.add("keyword2");
@@ -686,10 +684,10 @@ class Tests {
 					keys
 			);
 		} catch (ElementoRepetidoException e) {
-			System.out.println("Error: " + e.getMessage());
+
 		} catch (ElementoInexistenteException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 		assertThrows(
 				ElementoRepetidoException.class, 
@@ -713,7 +711,7 @@ class Tests {
 	@Test
 	@Order(28)
 	void altaOfertaNoExisteTipo() {
-		System.out.println("\naltaOfertaNoExisteTipo:");
+
 		ArrayList<String> keys = new ArrayList<>();
 		keys.add("keyword1");
 		keys.add("keyword2");
@@ -733,9 +731,9 @@ class Tests {
 			);
 		} catch (ElementoRepetidoException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (ElementoInexistenteException e) {
-			System.out.println("Error: " + e.getMessage());
+
 		}
 		assertThrows(
 				ElementoInexistenteException.class, 
@@ -759,11 +757,11 @@ class Tests {
 	@Test
 	@Order(29)
 	void altaKeywordElementoRepetidoTest() {
-		System.out.println("\naltaKeywordElementoRepetidoTest");
+
 		try {
 			ico.altaKeyword("keyword1");
 		} catch (ElementoRepetidoException e) {
-			System.out.println("Error: " + e.getMessage());
+
 		}
 		assertThrows(
 				ElementoRepetidoException.class, 
@@ -774,7 +772,7 @@ class Tests {
 	@Test
 	@Order(30)
 	void altaPostulacionNoExisteOfertaTest() {
-		System.out.println("\naltaPostulacionNoExisteOfertaTest");
+
 		try {
 			ico.altaPostulacion(
 					"nickpostulante", 
@@ -784,11 +782,11 @@ class Tests {
 					LocalDate.of(1, 1, 1)
 			);
 		} catch (ElementoRepetidoException e) {
-			e.printStackTrace();
+
 		} catch (NoExisteInstancia e) {
-			System.out.println("Error: " + e.getMessage());
+
 		} catch (ElementoInexistenteException e) {
-			System.out.println("Error: " + e.getMessage());
+
 		}
 		assertThrows(
 				NoExisteInstancia.class, 
@@ -805,7 +803,7 @@ class Tests {
 	@Test
 	@Order(31)
 	void altaPostulacionNoExistePostulanteTest() {
-		System.out.println("\naltaPostulacionNoExistePostulanteTest");
+
 		try {
 			ico.altaPostulacion(
 					"postulanteinexistente", 
@@ -816,13 +814,13 @@ class Tests {
 			);
 		} catch (ElementoRepetidoException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (NoExisteInstancia e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (ElementoInexistenteException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Error: " + e.getMessage());
+
 		}
 		assertThrows(
 				ElementoInexistenteException.class, 
@@ -839,7 +837,7 @@ class Tests {
 	@Test
 	@Order(32)
 	void altaPostulacionPostulacionRepetidaTest() {
-		System.out.println("\naltaPostulacionPostulacionRepetidaTest");
+
 		try {
 			ico.altaPostulacion(
 					"nickpostulante", 
@@ -849,13 +847,13 @@ class Tests {
 					LocalDate.of(1, 1, 1)
 			);
 		} catch (ElementoRepetidoException e) {
-			System.out.println("Error: " + e.getMessage());
+
 		} catch (NoExisteInstancia e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		} catch (ElementoInexistenteException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 		assertThrows(
 				ElementoRepetidoException.class, 
@@ -957,7 +955,7 @@ class Tests {
 		try {
 			icu.crearEmpresa("empresa1313", "a", "n", "empresa1313Email", "pass123", null, "d", "l");
 			ict.crearTipoPublicacion("tipo131356", "d", 34512, 11, 32, LocalDate.of(1, 1, 1));
-			System.out.print(icu.getEmpresa("empresa1313").getNickname());
+
 			ico.altaOfertaLaboral("empresa1313", "tipo131356", "oferta1313", "d", "si", 345, "a", "a", LocalDate.of(1, 1, 1), null, new ArrayList<String>());
 			ico.altaPostulacion("Juan1", "oferta1313", "cb", "no", LocalDate.of(1, 1, 1));
 		
@@ -1043,7 +1041,7 @@ class Tests {
 			oferta = ico.listarDatosOferta("nombreoferta");
 		} catch (ElementoInexistenteException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 		List<DTPostulacion> postulaciones = oferta.getPostulaciones();
 		assertTrue(postulaciones.get(0).getOrden() == 1);

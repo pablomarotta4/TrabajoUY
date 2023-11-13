@@ -86,7 +86,7 @@ public class WebServer {
     
     @WebMethod 
     public void pruebaCollection(ArrayList<String> list) {
-    	System.out.println("hola");
+
     }
     
     ////////////////////////////////////////////////////////////////

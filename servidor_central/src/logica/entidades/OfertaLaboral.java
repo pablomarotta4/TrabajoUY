@@ -75,7 +75,6 @@ public class OfertaLaboral {
 		
 		if (this.postulaciones.size() > 0) {
 			for (int i = 0; i <= this.postulaciones.size() - 1; i++) {
-				System.out.println("post orden" + postulaciones.get(i).getOrden());
 				listaDtPostulacion.add(postulaciones.get(i).getDatatype());
 			}
 			

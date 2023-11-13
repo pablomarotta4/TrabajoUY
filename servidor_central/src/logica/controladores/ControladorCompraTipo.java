@@ -67,7 +67,6 @@ public class ControladorCompraTipo implements IControladorCompraTipo{
 		Map<String, Paquete> paquets = this.manejadorPaquetes.getPaquetes();
 		
 		if (paquets.size() > 0) {
-//			System.out.println(paquets.keySet());
 			for (String nombre : paquets.keySet()) {
 				nombresPaquetes.add(nombre);	
 			}

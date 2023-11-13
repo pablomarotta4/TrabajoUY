@@ -52,7 +52,7 @@ public class Registro extends HttpServlet {
 					Part image = request.getPart("imageFile");	
 					byte[] imageBytes = image.getInputStream().readAllBytes();
 					port.crearEmpresa(nickname, nombre, apellido, email, password, imageBytes, descripcion, link);
-					System.out.println(port.getEmpresa(nickname).getNickname());
+
 					request.getRequestDispatcher("/WEB-INF/usuarios/login.jsp").forward(request, response);
 				}
 				else if (request.getParameter("user-type").equals("postulante")) {

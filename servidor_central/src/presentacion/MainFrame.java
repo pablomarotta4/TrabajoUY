@@ -837,9 +837,9 @@ public class MainFrame {
 					keywords
 			);
 		} catch (ElementoRepetidoException e) {
-			System.out.println(e.getMessage());
+
 		} catch (ElementoInexistenteException e) {
-			System.out.println(e.getMessage());
+
 		}
 	}
 	
@@ -1011,9 +1011,9 @@ public class MainFrame {
                 );
 
 		} catch (NoExisteInstancia e) {
-			System.out.println(e.getMessage());
+
 		} catch (ElementoInexistenteException e) {
-			System.out.println(e.getMessage());
+
 		}
 	}
 }

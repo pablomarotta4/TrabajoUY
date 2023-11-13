@@ -42,22 +42,7 @@ public class AgregarTipoDePublicacióndeOfertaLaboralaPaquete extends JInternalF
 	private JPanel contentPane;
 	private JTextField txtCantidad;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AgregarTipoDePublicacióndeOfertaLaboralaPaquete frame = new AgregarTipoDePublicacióndeOfertaLaboralaPaquete();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
+
 
 	/**
 	 * Create the frame.
@@ -157,9 +142,7 @@ public class AgregarTipoDePublicacióndeOfertaLaboralaPaquete extends JInternalF
 
 		cmbPaquetes.removeAllItems();
        
-		/* for (int i = 0; i < listaPaquetes.size(); i++) {
-	            System.out.println(listaPaquetes.get(i));
-	        }*/
+
 		
         for (String paq : listaPaquetes) {
         	cmbPaquetes.addItem(paq);

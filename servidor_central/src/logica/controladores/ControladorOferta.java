@@ -95,19 +95,7 @@ public class ControladorOferta implements IControladorOferta{
 		}
 
 
-//		try {
-//			BufferedImage image = ImageIO.read(new File(imageUrl));
-//			if(image == null) {
-//				String path = System.getProperty("user.home") + File.separator + 
-//						"trabajouy" + File.separator + 
-//						"ofertas" + File.separator + 
-//						"images" + File.separator;
-//				
-//				ImageIO.write(image , "jpg", new File(path + File.separator + nombre + ".jpg"));
-//			}
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+
 
 		String nombreImagen = nombre.replace(" ", "_");
 		nombreImagen = nombreImagen.replace("/", "_");
